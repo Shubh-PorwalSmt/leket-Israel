@@ -19,18 +19,18 @@ CREATE TABLE "region" (
   "name" varchar
 );
 
-CREATE TABLE "agriculture_field_location" (
+CREATE TABLE "field_location" (
   "id" int PRIMARY KEY,
   "polygon" wkb,
   "city" int,
   "region" int
 );
 
-CREATE TABLE "farmer_field" (
+CREATE TABLE "farmer_crop_field" (
   "id" int PRIMARY KEY,
-  "farmer_id" varchar,
+  "leket_farmer_id" varchar,
   "crop" int,
-  "agriculture_field_location" int,
+  "field_location" int,
   "entry_datetime" datetime
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE "attractiveness" (
 
 CREATE TABLE "crop_field_history" (
   "id" int PRIMARY KEY,
-  "farmer_field" int,
+  "farmer_crop_field" int,
   "ndvi" float,
   "ripe_factor" int,
   "attractive_factor" int,
@@ -66,15 +66,15 @@ CREATE TABLE "crop_field_history_feedback" (
   "attractive_factor_feedback" varchar
 );
 
-ALTER TABLE "city" ADD FOREIGN KEY ("id") REFERENCES "agriculture_field_location" ("city");
+ALTER TABLE "city" ADD FOREIGN KEY ("id") REFERENCES "field_location" ("city");
 
-ALTER TABLE "region" ADD FOREIGN KEY ("id") REFERENCES "agriculture_field_location" ("region");
+ALTER TABLE "region" ADD FOREIGN KEY ("id") REFERENCES "field_location" ("region");
 
-ALTER TABLE "agriculture_field_location" ADD FOREIGN KEY ("id") REFERENCES "farmer_field" ("agriculture_field_location");
+ALTER TABLE "field_location" ADD FOREIGN KEY ("id") REFERENCES "farmer_crop_field" ("field_location");
 
-ALTER TABLE "crop" ADD FOREIGN KEY ("id") REFERENCES "farmer_field" ("crop");
+ALTER TABLE "crop" ADD FOREIGN KEY ("id") REFERENCES "farmer_crop_field" ("crop");
 
-ALTER TABLE "farmer_field" ADD FOREIGN KEY ("id") REFERENCES "crop_field_history" ("farmer_field");
+ALTER TABLE "farmer_crop_field" ADD FOREIGN KEY ("id") REFERENCES "crop_field_history" ("farmer_crop_field");
 
 ALTER TABLE "ripeness" ADD FOREIGN KEY ("id") REFERENCES "crop_field_history" ("ripe_factor");
 

@@ -1,13 +1,20 @@
-import { Card, Typography, AppBar, Toolbar, IconButton, Button, ButtonGroup } from "@mui/material";
+import { Card, Typography, InputBase, AppBar, Toolbar, IconButton, Button, ButtonGroup } from "@mui/material";
 import { Search, Toc, QueueMusic } from '@mui/icons-material';
 import { useState } from "react";
 
 const Header = () => {
+    const [openSearchBar, setOpenSearchBar] = useState(false);
     const [leftBtnColor, setLeftBtnColor] = useState('orange');
     const [rightBtnColor, setRightBtnColor] = useState('white');
-
+    
     const drawerWidth = 70;
     
+    const searchStyle = {
+        borderRadius: openSearchBar ? '12px' : '20px',
+        backgroundColor: 'rgba(254, 254, 254, 0.5)',
+        marginLeft: '24px'
+    };
+
     const rightButtonStyle = {
         backgroundColor: rightBtnColor,
         color: rightBtnColor === 'orange' ? 'white' : 'black',
@@ -25,6 +32,8 @@ const Header = () => {
             backgroundColor: leftBtnColor
         }
     };
+
+    const handleSearchBar = () => setOpenSearchBar(!openSearchBar);
 
     const handleClickViewBtnColor = () => {
         setLeftBtnColor(rightBtnColor);
@@ -44,10 +53,11 @@ const Header = () => {
                         <Toc />
                     </Button>
                 </ButtonGroup>
-                <Card sx={{ borderRadius: '30%', backgroundColor: 'rgba(254, 254, 254, 0.5)', marginLeft: '24px' }}>
-                    <IconButton color="inherit">
+                <Card sx={searchStyle}>
+                    <IconButton color="inherit" onClick={handleSearchBar}>
                         <Search />
                     </IconButton>
+                    {openSearchBar ? <InputBase placeholder="Search..." /> : ''}
                 </Card>
                 <Typography sx={{ marginLeft: 'auto', fontWeight: 'bold', fontSize: '24px' }} edge="start"
                     component="span" variant="h6" color="inherit">

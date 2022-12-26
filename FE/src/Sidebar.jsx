@@ -1,7 +1,11 @@
 import { Grid, Stack, IconButton, Drawer, Box } from "@mui/material";
-import { Recommend, Settings } from '@mui/icons-material';
+import SettingsIcon from '@mui/icons-material/Settings'
+import { Recommend } from '@mui/icons-material';
+import { useState } from "react";
+import Settings from "./Settings";
 
 const Sidebar = () => {
+  const [openSettingsPopup, setOpenSettingsPopup] = useState(false);
   const drawerWidth    = 80,
         boxButtonWidth = 70;
   
@@ -9,6 +13,8 @@ const Sidebar = () => {
     color: "white",
     justifySelf: 'flex-start'
   }
+
+  const handleSettingsPopup = () => setOpenSettingsPopup(true);
 
   return (
     <>
@@ -50,12 +56,13 @@ const Sidebar = () => {
             </IconButton>
           </Stack>
           <Grid item>
-            <IconButton>
-              <Settings sx={button} />
+            <IconButton onClick={handleSettingsPopup}>
+              <SettingsIcon sx={button} />
             </IconButton>
           </Grid>
         </Stack>
       </Drawer>
+      {openSettingsPopup ? <Settings /> : ''}
     </>
   )
 }

@@ -30,7 +30,10 @@ const Sidebar = () => {
         <Box
           component="img"
           alt=""
-          src="https://www.w3schools.com/images/lamp.jpg"
+          width={70}
+          height={70}
+          // TOOD: need to fix size to fit properly
+          src="http://localhost:3000/images/LeketIsraelLogos.png"
         />
         <Stack
           spacing={1.5}

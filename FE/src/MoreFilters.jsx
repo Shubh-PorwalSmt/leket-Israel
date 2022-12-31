@@ -1,13 +1,8 @@
-import { Box, CardContent, Typography, Grid, IconButton } from "@mui/material"
+import { Box, CardContent, Typography, Grid, IconButton, TextField, InputBase } from "@mui/material"
 import { KeyboardArrowDown, Clear } from '@mui/icons-material';
-import { useState } from "react";
 import ExpandableMenu from "./ExpandableMenu";
 
-const MoreFilters = ({ cardText, imageStyle }) => {
-    const [optionArea, setOptionArea] = useState('הכל');
-    const [optionCareStatus, setOptionCareStatus] = useState('הכל');
-    const [optionMoreFilters, setOptionMoreFilters] = useState('');
-
+const MoreFilters = ({ cardText, imageStyle, handleClearFilters, optionArea, optionCareStatus, optionMoreFilters, setOptionArea, setOptionCareStatus, setOptionMoreFilters }) => {
     const displayAreaTag = <CardContent>
         <Box display="flex" flexDirection='row'>
             <KeyboardArrowDown style={{ color: "green" }} sx={imageStyle} />
@@ -36,25 +31,21 @@ const MoreFilters = ({ cardText, imageStyle }) => {
         </Box>
     </CardContent>
 
-    const handleClearFilters = () => {
-        setOptionArea('');
-        setOptionCareStatus('');
-        setOptionMoreFilters('');
-    };
-
     return (
         <div>
             <Box display='flex' flexDirection='column'>
-                <Typography variant="h5" fontWeight="bold" fontSize='20px' sx={cardText}>עוד מסננים</Typography>
+                    <Typography variant="h5" fontWeight="bold" fontSize='20px' sx={cardText}>עוד מסננים</Typography>
                 <Grid container direction="row" justifyContent="flex-end" alignItems="center" columnGap={2} marginTop="3%">
                     <IconButton color="error" size="large" onClick={handleClearFilters}>
                         <Clear />
                     </IconButton>
-                    <Box display="flex" flexDirection='row'>
-                        <ExpandableMenu items={['קיווי', 'אבטיח', 'תות', 'אפרסמון']} displayTag={displayMoreFiltersTag} setOption={setOptionMoreFilters} />
+                    <Box display="flex" flexDirection='column'>
+                        <ExpandableMenu items={['רמת בשלות', 'מדד אטרקטיביות', 'מספר חקלאי']} displayTag={displayMoreFiltersTag} setOption={setOptionMoreFilters} />
+                        {/* TODO: need to fix moreFilters option */}
+                        {/* {!!optionMoreFilters ? <TextField /> : ''} */}
                     </Box>
                     <Box display="flex" flexDirection='row'>
-                        <ExpandableMenu items={['הכל', 'קיווי', 'אבטיח', 'תות', 'אפרסמון']} displayTag={displayCareStatusTag} setOption={setOptionCareStatus} />
+                        <ExpandableMenu items={['הכל', 'בטיפול', 'לא בטיפול', 'לא עדכני']} displayTag={displayCareStatusTag} setOption={setOptionCareStatus} />
                     </Box>
                     <Box display="flex" flexDirection='row'>
                         <ExpandableMenu items={['הכל', 'מרכז', 'צפון', 'דרום']} displayTag={displayAreaTag} setOption={setOptionArea} />

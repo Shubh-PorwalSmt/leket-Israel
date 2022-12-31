@@ -1,23 +1,27 @@
-import { Card, Typography, InputBase, AppBar, Toolbar, IconButton, Button, ButtonGroup } from "@mui/material";
-import { Search, Toc, QueueMusic } from '@mui/icons-material';
+import { Typography, AppBar, Toolbar, Button, ButtonGroup, Box } from "@mui/material";
+import { Toc, QueueMusic, Add } from '@mui/icons-material';
 import { useState } from "react";
 
-const Header = () => {
-    const [openSearchBar, setOpenSearchBar] = useState(false);
+const Header = ({ setDensity, setSearchText, CustomSearch }) => {
     const [leftBtnColor, setLeftBtnColor] = useState('orange');
     const [rightBtnColor, setRightBtnColor] = useState('white');
     
     const drawerWidth = 70;
     
-    const searchStyle = {
-        borderRadius: openSearchBar ? '12px' : '20px',
-        backgroundColor: 'rgba(254, 254, 254, 0.5)',
-        marginLeft: '24px'
+    const addCropStyle = {
+        borderRadius: '12px',
+        marginLeft: '24px',
+        backgroundColor: 'white',
+        color: '#3A6E47',
+        fontWeight: '700',
+        '&:hover': {
+            backgroundColor: 'transparent'
+        }
     };
 
     const rightButtonStyle = {
         backgroundColor: rightBtnColor,
-        color: rightBtnColor === 'orange' ? 'white' : 'black',
+        color: rightBtnColor === 'orange' ? 'white' : '#3A6E47',
         maxWidth: '20px',
         '&:hover': {
             backgroundColor: rightBtnColor
@@ -26,18 +30,18 @@ const Header = () => {
 
     const leftButtonStyle = {
         backgroundColor: leftBtnColor,
-        color: leftBtnColor === 'orange' ? 'white' : 'black',
+        color: leftBtnColor === 'orange' ? 'white' : '#3A6E47',
         maxWidth: '20px',
         '&:hover': {
             backgroundColor: leftBtnColor
         }
     };
 
-    const handleSearchBar = () => setOpenSearchBar(!openSearchBar);
-
     const handleClickViewBtnColor = () => {
         setLeftBtnColor(rightBtnColor);
         setRightBtnColor(leftBtnColor);
+
+        rightBtnColor === 'orange' ? setDensity('standard') : setDensity('comfortable');
     }
     
     return (
@@ -46,19 +50,20 @@ const Header = () => {
              color="transparent">
             <Toolbar variant="dense">
                 <ButtonGroup variant="contained" sx={{ borderRadius: '10%' }}>
-                    <Button onClick={handleClickViewBtnColor} sx={rightButtonStyle}>
-                        <QueueMusic />
-                    </Button>
                     <Button onClick={handleClickViewBtnColor} sx={leftButtonStyle}>
+                        {/* <QueueMusic /> */}
+                        {/* TODO: need to fix color change in this icon (maybe convert first to real icon/svg?) */}
+                        <Box component="img" alt="" src="http://localhost:3000/images/gridForm.png" />
+                    </Button>
+                    <Button onClick={handleClickViewBtnColor} sx={rightButtonStyle}>
                         <Toc />
                     </Button>
                 </ButtonGroup>
-                <Card sx={searchStyle}>
-                    <IconButton color="inherit" onClick={handleSearchBar}>
-                        <Search />
-                    </IconButton>
-                    {openSearchBar ? <InputBase placeholder="Search..." /> : ''}
-                </Card>
+                <Button variant="contained" sx={addCropStyle}>
+                    <Add />
+                    הוספת שטח
+                </Button>
+                <CustomSearch setSearchText={setSearchText} />
                 <Typography sx={{ marginLeft: 'auto', fontWeight: 'bold', fontSize: '24px' }} edge="start"
                     component="span" variant="h6" color="inherit">
                     לקט ישראל

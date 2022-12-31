@@ -1,15 +1,20 @@
 import { Menu, MenuItem, Card } from "@mui/material";
 import { useState } from 'react'
 
-const ExpandableMenu = ({ items, displayTag, setOption }) => {
+const ExpandableMenu = ({ items, displayTag, cropKind=null, setCropKind=null, setOption }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     
     const open = Boolean(anchorEl);
 
     const handleClick = e => setAnchorEl(e.currentTarget);
 
-    const handleMenuItemClick = (e) => {
-        setOption(e.currentTarget.firstChild.data);
+    const handleMenuItemClick = e => {
+        let item = e.currentTarget.firstChild.data;
+        setOption(item);
+
+        if (cropKind)
+            setCropKind([...cropKind, item]);
+        
         setAnchorEl(null);
     }
 

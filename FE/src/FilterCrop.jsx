@@ -1,18 +1,25 @@
-import { Box, Card, CardContent, Typography, Grid, ToggleButton, ToggleButtonGroup } from "@mui/material"
-import { DirectionsCarFilled, KeyboardArrowDown } from '@mui/icons-material';
-import { useState } from 'react'
+import { Box, CardContent, Typography, Grid, ToggleButton, ToggleButtonGroup } from "@mui/material"
+import { KeyboardArrowDown } from '@mui/icons-material';
 import ExpandableMenu from "./ExpandableMenu";
 
 const FilterCrop = ({ cardText, imageStyle, cropKind, moreCropKinds, setCropKind, setMoreCropKinds }) => {
     const handleCropSelection = (e, crop) => { setCropKind(crop); }
 
-    const cropCard = {
+    const cropToggleBtn = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         width: 110,
         height: 80,
-        borderRadius: '10px',
+        borderRadius: '100px',
+        // backgroundColor: 'white',
+        boxShadow:'1px 1px 10px 1px #d4d4d4'
+    };
+
+    const toggleBtnText = {
+        display: 'flex',
+        justifyContent: 'center',
+        fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
     };
 
     const displayTag = <CardContent>
@@ -26,43 +33,40 @@ const FilterCrop = ({ cardText, imageStyle, cropKind, moreCropKinds, setCropKind
     return (
         <Box display="flex" flexDirection='column'>
             <Typography variant="h5" fontSize='20px' fontWeight="bold" sx={cardText}>מסנן סוג יבול</Typography>
-            <Grid container direction="row" justifyContent="flex-end" alignItems="center" columnGap={2} marginTop="2%">
+            <Grid container direction="row" justifyContent="flex-end" alignItems="center" columnGap={2} marginTop="1%">
                 <Box display="flex" flexDirection='row'>
                     <ExpandableMenu items={['חציל', 'קיווי', 'אבטיח', 'תות', 'אפרסמון']} displayTag={displayTag}
                         cropKind={cropKind} setCropKind={setCropKind} setOption={setMoreCropKinds} />
                 </Box>
-                <ToggleButtonGroup value={cropKind} onChange={handleCropSelection} color="success">
-                    <ToggleButton value="גזר" sx={cropCard}>
-                        {/* <Card sx={cropCard}> */}
-                            <CardContent>
-                                <Box component="img" sx={imageStyle} alt="" src="http://localhost:3000/images/vegetables/CarrotIcon.png" />
-                                <Typography component="div" variant="h6" fontSize='16px' sx={cardText}>גזר</Typography>
-                            </CardContent>
-                        {/* </Card> */}
+                <ToggleButtonGroup sx={{
+                        display: "grid",
+                        gridTemplateColumns: "auto auto auto auto",
+                        gridGap: "15px",
+                        padding: "10px",
+                    }} value={cropKind} onChange={handleCropSelection} color="success">
+                    <ToggleButton value="גזר" sx={cropToggleBtn}>
+                        <CardContent>
+                            <Box component="img" sx={imageStyle} alt="" src="http://localhost:3000/images/vegetables/CarrotIcon.png" />
+                            <Typography component="div" variant="h6" fontSize='16px' sx={toggleBtnText}>גזר</Typography>
+                        </CardContent>
                     </ToggleButton>
-                    <ToggleButton value="גמבה" sx={cropCard}>
-                        {/* <Card sx={cropCard}> */}
-                            <CardContent>
-                                <Box component="img" sx={imageStyle} alt="" src="http://localhost:3000/images/vegetables/PapperIcon.png" />
-                                <Typography component="div" variant="h6" fontSize='16px' sx={cardText}>גמבה</Typography>
-                            </CardContent>
-                        {/* </Card> */}
+                    <ToggleButton value="גמבה" sx={cropToggleBtn}>
+                        <CardContent>
+                            <Box component="img" sx={imageStyle} alt="" src="http://localhost:3000/images/vegetables/PapperIcon.png" />
+                            <Typography component="div" variant="h6" fontSize='16px' sx={toggleBtnText}>גמבה</Typography>
+                        </CardContent>
                     </ToggleButton>
-                    <ToggleButton value="מלפפון" sx={cropCard}>
-                        {/* <Card sx={cropCard}> */}
-                            <CardContent>
-                                <Box component="img" sx={imageStyle} alt="" src="http://localhost:3000/images/vegetables/CucumberIcon.png" />
-                                <Typography component="div" variant="h6" fontSize='16px' sx={cardText}>מלפפון</Typography>
-                            </CardContent>
-                        {/* </Card> */}
+                    <ToggleButton value="מלפפון" sx={cropToggleBtn}>
+                        <CardContent>
+                            <Box component="img" sx={imageStyle} alt="" src="http://localhost:3000/images/vegetables/CucumberIcon.png" />
+                            <Typography component="div" variant="h6" fontSize='16px' sx={toggleBtnText}>מלפפון</Typography>
+                        </CardContent>
                     </ToggleButton>
-                    <ToggleButton value="עגבניה" sx={cropCard}>
-                        {/* <Card sx={cropCard}> */}
-                            <CardContent>
-                                <Box component="img" sx={imageStyle} alt="" src="http://localhost:3000/images/vegetables/TomatoIcon.png" />
-                                <Typography component="div" variant="h6" fontSize='16px' sx={cardText}>עגבניה</Typography>
-                            </CardContent>
-                        {/* </Card> */}
+                    <ToggleButton value="עגבניה" sx={cropToggleBtn}>
+                        <CardContent>
+                            <Box component="img" sx={imageStyle} alt="" src="http://localhost:3000/images/vegetables/TomatoIcon.png" />
+                            <Typography component="div" variant="h6" fontSize='16px' sx={toggleBtnText}>עגבניה</Typography>
+                        </CardContent>
                     </ToggleButton>
                 </ToggleButtonGroup>
             </Grid>

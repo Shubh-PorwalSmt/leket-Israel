@@ -1,5 +1,5 @@
 import { Typography, AppBar, Toolbar, Button, ButtonGroup, Box } from "@mui/material";
-import { Toc, QueueMusic, Add } from '@mui/icons-material';
+import { Toc, Add } from '@mui/icons-material';
 import { useState } from "react";
 
 const Header = ({ setDensity, setSearchText, CustomSearch }) => {
@@ -30,7 +30,6 @@ const Header = ({ setDensity, setSearchText, CustomSearch }) => {
 
     const leftButtonStyle = {
         backgroundColor: leftBtnColor,
-        color: leftBtnColor === 'orange' ? 'white' : '#3A6E47',
         maxWidth: '20px',
         '&:hover': {
             backgroundColor: leftBtnColor
@@ -51,9 +50,8 @@ const Header = ({ setDensity, setSearchText, CustomSearch }) => {
             <Toolbar variant="dense">
                 <ButtonGroup variant="contained" sx={{ borderRadius: '10%' }}>
                     <Button onClick={handleClickViewBtnColor} sx={leftButtonStyle}>
-                        {/* <QueueMusic /> */}
-                        {/* TODO: need to fix color change in this icon (maybe convert first to real icon/svg?) */}
-                        <Box component="img" alt="" src="http://localhost:3000/images/gridForm.png" />
+                        <Box component="img" alt="" width={22} height={22} src="http://localhost:3000/images/header/gridForm.png"
+                            sx={{ filter: leftBtnColor === 'orange' ? 'brightness(0) invert(1)' : 'invert(34%) sepia(56%) saturate(372%) hue-rotate(83deg) brightness(75%) contrast(87%)', }} />
                     </Button>
                     <Button onClick={handleClickViewBtnColor} sx={rightButtonStyle}>
                         <Toc />
@@ -64,7 +62,7 @@ const Header = ({ setDensity, setSearchText, CustomSearch }) => {
                     הוספת שטח
                 </Button>
                 <CustomSearch setSearchText={setSearchText} />
-                <Typography sx={{ marginLeft: 'auto', fontWeight: 'bold', fontSize: '24px' }} edge="start"
+                <Typography sx={{ marginLeft: 'auto', fontFamily: '"Roboto","Helvetica","Arial",sans-serif', fontWeight: 'bold', fontSize: '24px' }} edge="start"
                     component="span" variant="h6" color="inherit">
                     לקט ישראל
                 </Typography>

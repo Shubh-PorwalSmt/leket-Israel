@@ -1,10 +1,10 @@
-import { Card, Chip } from '@mui/material';
-import { DataGrid, GridToolbarContainer, GridToolbarExport, GridActionsCellItem } from '@mui/x-data-grid';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Security, FileCopy } from '@mui/icons-material'
-import { useEffect, useCallback } from 'react';
+import { Card, Chip, Button, Checkbox } from '@mui/material';
+import { DataGrid, GridActionsCellItem, GridToolbarContainer, gridVisibleSortedRowIdsSelector, useGridApiContext} from '@mui/x-data-grid';
+// import { createTheme } from '@mui/material/styles';
+import { Security, FileCopy } from '@mui/icons-material';
+import { createSvgIcon } from '@mui/material/utils';
+import { useEffect } from 'react';
 import moment from 'moment/moment';
-// import { useCallback } from 'react';
 
 const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod }) => {
   const columns = [
@@ -45,6 +45,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
       headerName: 'NDVI',
       // width: 52,
       editable: false,
+      renderCell: params => (<NDVI label={params.value} />)
     },
     {
       field: 'area',
@@ -97,7 +98,6 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   ];
 
   // Make filter functions for more filters and more crop kinds
-
   const applyFilterSearch = () => {
     const filteredRows = originalRows.filter(row => {
       return row.fieldName.toLowerCase().includes(searchText.toLowerCase());
@@ -168,21 +168,22 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   useEffect(applyFilteringAndSorting, [originalRows, setRows, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod]);
 
   // TODO: setup themes!
-  const theme = createTheme({
-    // TODO: need to orgenize colors
-    palette: {
-      one: {
-        ligntGreen: '#DEF9E0',
-      },
-      two: {
-        ligntBlue: '#EBF2FF',
-      },
-      three: {
-        ligntRed: '#FFDADA'
-      },
-    },
-  });
-  // Form of actions
+  // const theme = createTheme({
+  //   // TODO: need to orgenize colors
+  //   palette: {
+  //     one: {
+  //       ligntGreen: '#DEF9E0',
+  //     },
+  //     two: {
+  //       ligntBlue: '#EBF2FF',
+  //     },
+  //     three: {
+  //       ligntRed: '#FFDADA'
+  //     },
+  //   },
+  // });
+
+  // TODO: Form of actions
   // const deleteUser = useCallback(id => () => {
   //     setTimeout(() => {
   //       setRows((prevRows) => prevRows.filter((row) => row.id !== id));
@@ -193,8 +194,18 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   const paginationNavigator = {
     '.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar': {
       direction: 'ltr'
+    },
+    '.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate': {
+      color: '#498758'
+    },
+    '.css-17656ml-MuiDataGrid-root .MuiDataGrid-cell': {
+      // TODO: ...
+      borderBottom: '0px solid rgba(224, 224, 224, 1)'
+    },
+    '.css-11spe67-MuiDataGrid-root .MuiDataGrid-row.Mui-selected': {
+      backgroundColor: '#498758'
     }
-  }
+  };
 
   const Status = ({ label }) => {
     return (
@@ -205,43 +216,68 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
     )
   };
 
-  const Export = () => {
+  const NDVI = ({ label }) => {
+    return (
+        <Chip label={label} />
+    )
+  };
+
+  const CustomExport = () => {
+    const apiRef = useGridApiContext();
+    
+    const getFilteredRows = ({ apiRef }) => gridVisibleSortedRowIdsSelector(apiRef);
+    
+    const handleExport = options => apiRef.current.exportDataAsCsv(options);
+    
+    const ExportIcon = createSvgIcon(
+      <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />,
+      'SaveAlt',
+    );
+
     return (
       <GridToolbarContainer>
-        <GridToolbarExport sx={{ direction: 'ltr', color: 'success' }} />
+        <Button sx={{
+            direction: 'ltr',
+            color: '#5cb85c',
+            borderRadius: '10px',
+            fontWeight: 'bold',
+            fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+            '&:hover': {
+              backgroundColor: 'transparent'
+            },
+          }} onClick={() => handleExport({ getRowsToExport: getFilteredRows })}>
+          <ExportIcon sx={{ paddingRight: '8%' }} />
+          ייצא
+        </Button>
       </GridToolbarContainer>
     );
-  }
+  };
+
+  const CustomCheckBox = () => {
+    return (
+      <Checkbox color="success" />
+    )
+  };
 
   return (
     <>
-      <Card dir="rtl" sx={{ width: '95%', marginTop: '3%' }}>
+      <Card dir="rtl" sx={{ width: '94%', marginTop: '3%' }}>
         <DataGrid
           rows={rows}
           sx={paginationNavigator}
           columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
+          pageSize={9}
+          rowsPerPageOptions={[9]}
           checkboxSelection
           disableRowSelectionOnClick
           disableColumnFilter
           autoHeight
           density={density}
           components={{
-            Toolbar: Export
+            Toolbar: CustomExport,
+            Checkbox: CustomCheckBox
           }}
           initialState={{
-            filter: {
-              filterModel: {
-                items: [
-                  // {
-                    // columnField: 'fieldName',
-                    // operatorValue: 'equals',
-                    // value: 'Some'
-                  // }
-                ],
-              },
-            },
             columns: {
               columnVisibilityModel: {
                 id: false

@@ -24,7 +24,7 @@ const ExpandableMenu = ({ items, displayTag, cropKind=null, setCropKind=null, se
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 140,
+        width: 125,
         height: 80,
         borderRadius: '10px',
     };

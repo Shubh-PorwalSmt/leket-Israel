@@ -14,7 +14,7 @@ const Sort = ({ cardText, sortMethod, setSortMethod }) => {
     </CardContent>
 
     return (
-        <Box display="flex" flexDirection='column'>
+        <Box display="flex" flexDirection='column' marginTop="0.4%">
             <Typography variant="h5" fontSize='20px' fontWeight="bold" marginBottom="10%" sx={cardText}>מיון</Typography>
             <ExpandableMenu items={['אטרקטביות', 'מיקום', 'דירוג', 'עדכון אחרון']} displayTag={displayTag} setOption={setSortMethod} />
         </Box>

@@ -1,10 +1,15 @@
-import { Card, Chip, Button, Checkbox } from '@mui/material';
-import { DataGrid, GridActionsCellItem, GridToolbarContainer, gridVisibleSortedRowIdsSelector, useGridApiContext} from '@mui/x-data-grid';
+import { Card, Chip, Button, IconButton, Checkbox, Typography } from '@mui/material';
+import { DataGrid, GridActionsCellItem, GridToolbarContainer, useGridApiContext} from '@mui/x-data-grid';
+import { KeyboardArrowDown } from '@mui/icons-material';
+// import { DataGridPro, useGridSelector, GRID_DETAIL_PANEL_TOGGLE_COL_DEF, gridDetailPanelExpandedRowsContentCacheSelector } from '@mui/x-data-grid-pro'
 // import { createTheme } from '@mui/material/styles';
 import { Security, FileCopy } from '@mui/icons-material';
 import { createSvgIcon } from '@mui/material/utils';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
+
 import moment from 'moment/moment';
+import { CsvBuilder } from 'filefy';
+import * as XLSX from 'xlsx/xlsx.mjs';
 
 const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod }) => {
   const columns = [
@@ -28,7 +33,6 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
     {
       field: 'attractionScale',
       headerName: 'מדד אטרקטיביות',
-      type: 'number',
       // width: 115,
       editable: false,
     },
@@ -93,11 +97,14 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
           />,
         ],
     },
-    
-    
+    {
+      // ...GRID_DETAIL_PANEL_TOGGLE_COL_DEF,
+      // renderCell: params => (
+      //   <CustomDetailPanelToggle id={params.id} value={params.value} />
+      // ),
+    },
   ];
 
-  // Make filter functions for more filters and more crop kinds
   const applyFilterSearch = () => {
     const filteredRows = originalRows.filter(row => {
       return row.fieldName.toLowerCase().includes(searchText.toLowerCase());
@@ -106,7 +113,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
     setRows(filteredRows);
   };
 
-  // TODO: need to check this again (why is it called filtering? can't filter by last update?) maybe sorting?
+  // TODO: Need to check this again (why is it called filtering? can't filter by last update?) maybe sorting?
   const checkMoreFilters = (moreFilters, row) => {
     switch(moreFilters) {
       case 'רמת בשלות':
@@ -191,21 +198,18 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   //   },
   // [],);
 
-  const paginationNavigator = {
+  const dataGridStyle = {
     '.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar': {
       direction: 'ltr'
     },
     '.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate': {
       color: '#498758'
     },
-    '.css-17656ml-MuiDataGrid-root .MuiDataGrid-cell': {
-      // TODO: ...
-      borderBottom: '0px solid rgba(224, 224, 224, 1)'
-    },
-    '.css-11spe67-MuiDataGrid-root .MuiDataGrid-row.Mui-selected': {
-      backgroundColor: '#498758'
-    }
   };
+
+  const getDetailPanelContent = useCallback(() => {
+    <Typography component="div" variant="h4">dsf</Typography>
+  }, []);
 
   const Status = ({ label }) => {
     return (
@@ -225,9 +229,32 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   const CustomExport = () => {
     const apiRef = useGridApiContext();
     
-    const getFilteredRows = ({ apiRef }) => gridVisibleSortedRowIdsSelector(apiRef);
+    const getFilteredRows = ({ apiRef }) => {
+      const cRows = apiRef.current.getSelectedRows();
+      const sRows = cRows.size > 0 ? Array.from(cRows, entry => entry[1]) : rows;
+      
+      /* TODO: need to add an option in Settings page to select in which file type we want to download the data
+      (currently it exports into excel file, but it can also be exported as csv file as well) */
+
+      // for CSV
+      // new CsvBuilder("fields.csv")
+      //   .addRows(sRows.map(rowData => columns.map(col => rowData[col.field])))
+      //   .exportFile();
+      
+      // for EXCEL
+      const worksheet = XLSX.utils.json_to_sheet(sRows);
+      const workBook = XLSX.utils.book_new();
+
+      XLSX.utils.book_append_sheet(workBook, worksheet, 'fields');
+
+      XLSX.writeFile(workBook, 'field.xlsx');
+    }
     
-    const handleExport = options => apiRef.current.exportDataAsCsv(options);
+    const handleExport = options => {
+      try {
+        apiRef.current.exportDataAsCsv(options);
+      } catch (e) {}
+    }
     
     const ExportIcon = createSvgIcon(
       <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z" />,
@@ -246,7 +273,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
               backgroundColor: 'transparent'
             },
           }} onClick={() => handleExport({ getRowsToExport: getFilteredRows })}>
-          <ExportIcon sx={{ paddingRight: '8%' }} />
+          <ExportIcon sx={{ paddingRight: '10%' }} />
           ייצא
         </Button>
       </GridToolbarContainer>
@@ -264,18 +291,26 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
       <Card dir="rtl" sx={{ width: '94%', marginTop: '3%' }}>
         <DataGrid
           rows={rows}
-          sx={paginationNavigator}
+          sx={dataGridStyle}
           columns={columns}
           pageSize={9}
           rowsPerPageOptions={[9]}
           checkboxSelection
           disableRowSelectionOnClick
           disableColumnFilter
+          hideFooterSelectedRowCount
+          disableSelectionOnClick
           autoHeight
           density={density}
+          getDetailPanelHeight={() => 'auto'}
+          getDetailPanelContent={({ row }) => (
+            <Typography component="div" variant="h4">{row}</Typography>
+          )}
           components={{
             Toolbar: CustomExport,
-            Checkbox: CustomCheckBox
+            Checkbox: CustomCheckBox,
+            // DetailPanelExpandIcon: KeyboardArrowDown,
+            // DetailPanelCollapseIcon: KeyboardArrowDown,
           }}
           initialState={{
             columns: {

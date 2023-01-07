@@ -1,24 +1,32 @@
 import { Menu, MenuItem, Card } from "@mui/material";
 import { useState } from 'react'
 
-const ExpandableMenu = ({ items, displayTag, cropKind=null, setCropKind=null, setOption }) => {
+const ExpandableMenu = ({ items, displayTag, cropKind=null, setCropKind=null, setOption, rotateArrow, setRotateArrow }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     
     const open = Boolean(anchorEl);
 
-    const handleClick = e => setAnchorEl(e.currentTarget);
+    const handleClick = e => {
+        setRotateArrow(!rotateArrow);
+        setAnchorEl(e.currentTarget);
+    }
 
     const handleMenuItemClick = e => {
+        setRotateArrow(!rotateArrow);
+        
         let item = e.currentTarget.firstChild.data;
         setOption(item);
 
-        if (cropKind)
+        if (cropKind != null)
             setCropKind([...cropKind, item]);
         
         setAnchorEl(null);
     }
 
-    const handleClose = () => setAnchorEl(null);
+    const handleClose = () => {
+        setRotateArrow(!rotateArrow);
+        setAnchorEl(null);
+    }
 
     const cropCard = {
         display: 'flex',
@@ -35,7 +43,8 @@ const ExpandableMenu = ({ items, displayTag, cropKind=null, setCropKind=null, se
                 aria-haspopup="true" aria-expanded={ open ? 'true' : undefined } onClick={handleClick}>
                 {displayTag}
             </Card>
-            <Menu id="basic-menu" anchorEl={anchorEl} open={open} onClose={handleClose} anchorOrigin={{
+            <Menu id="basic-menu" anchorEl={anchorEl} open={open} onClose={handleClose}
+                anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'right',
                 }}

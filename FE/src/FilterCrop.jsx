@@ -1,8 +1,11 @@
 import { Box, CardContent, Typography, Grid, ToggleButton, ToggleButtonGroup } from "@mui/material"
 import { KeyboardArrowDown } from '@mui/icons-material';
 import ExpandableMenu from "./ExpandableMenu";
+import { useState } from "react";
 
 const FilterCrop = ({ cardText, imageStyle, cropKind, moreCropKinds, setCropKind, setMoreCropKinds }) => {
+    const [rotateArrow, setRotateArrow] = useState(false);
+    
     const handleCropSelection = (e, crop) => { setCropKind(crop); }
 
     const cropToggleBtn = {
@@ -24,9 +27,11 @@ const FilterCrop = ({ cardText, imageStyle, cropKind, moreCropKinds, setCropKind
 
     const displayTag = <CardContent>
         <Box display="flex" flexDirection='row'>
-            <KeyboardArrowDown style={{ color: "green" }} sx={imageStyle} />
-            <Typography component="div" variant="h6" fontSize='16px' sx={cardText}>עוד סוגי יבול</Typography>
-            <Typography component="div" variant="h6" fontSize='16px' fontWeight="bold" sx={cardText}>{moreCropKinds}</Typography>
+            <KeyboardArrowDown style={{ color: "green", rotate: rotateArrow ? '180deg' : '0deg' }} sx={imageStyle} />
+            <div>
+                <Typography component="div" variant="h6" fontSize='14px' sx={cardText}>עוד סוגי יבול</Typography>
+                <Typography component="div" variant="h6" fontSize='14px' fontWeight="bold" sx={cardText}>{moreCropKinds}</Typography>
+            </div>
         </Box>
     </CardContent>
 
@@ -35,9 +40,10 @@ const FilterCrop = ({ cardText, imageStyle, cropKind, moreCropKinds, setCropKind
             <Typography variant="h5" fontSize='20px' fontWeight="bold" sx={cardText}>מסנן סוג יבול</Typography>
             <Grid container direction="row" justifyContent="flex-end" alignItems="center" columnGap={2} marginTop="1%">
                 <Box display="flex" flexDirection='row'>
-                    <ExpandableMenu items={['חציל', 'קיווי', 'אבטיח', 'תות', 'אפרסמון']} displayTag={displayTag}
-                        cropKind={cropKind} setCropKind={setCropKind} setOption={setMoreCropKinds} />
+                    <ExpandableMenu items={['חציל', 'קיווי', 'אבטיח', 'תות', 'אפרסמון']} displayTag={displayTag} cropKind={cropKind}
+                        setCropKind={setCropKind} setOption={setMoreCropKinds} rotateArrow={rotateArrow} setRotateArrow={setRotateArrow} />
                 </Box>
+                {/* TODO: Plan is when a crop hs selected from the toggle button group, it will be added to the items which is shown above */}
                 <ToggleButtonGroup sx={{
                         display: "grid",
                         gridTemplateColumns: "auto auto auto auto",

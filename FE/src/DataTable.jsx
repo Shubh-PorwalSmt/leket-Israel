@@ -1,15 +1,13 @@
-import { Card, Chip, Button, IconButton, Checkbox, Typography } from '@mui/material';
+import { Card, Chip, Button, Checkbox } from '@mui/material';
 import { DataGrid, GridActionsCellItem, GridToolbarContainer, useGridApiContext} from '@mui/x-data-grid';
-import { KeyboardArrowDown } from '@mui/icons-material';
-// import { DataGridPro, useGridSelector, GRID_DETAIL_PANEL_TOGGLE_COL_DEF, gridDetailPanelExpandedRowsContentCacheSelector } from '@mui/x-data-grid-pro'
 // import { createTheme } from '@mui/material/styles';
 import { Security, FileCopy } from '@mui/icons-material';
 import { createSvgIcon } from '@mui/material/utils';
-import { useEffect, useCallback } from 'react';
-
+import { useEffect } from 'react';
 import moment from 'moment/moment';
 import { CsvBuilder } from 'filefy';
 import * as XLSX from 'xlsx/xlsx.mjs';
+import { set } from 'lodash';
 
 const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod }) => {
   const columns = [
@@ -80,7 +78,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
       field: 'actions',
         type: 'actions',
         // width: 80,
-        getActions: (params) => [
+        getActions: params => [
           <GridActionsCellItem
             icon={<Security />}
             label="Action 1"
@@ -96,15 +94,23 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
             showInMenu
           />,
         ],
-    },
-    {
-      // ...GRID_DETAIL_PANEL_TOGGLE_COL_DEF,
-      // renderCell: params => (
-      //   <CustomDetailPanelToggle id={params.id} value={params.value} />
-      // ),
-    },
+    }
   ];
 
+  const dataGridStyle = {
+    '.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar': {
+      direction: 'ltr'
+    },
+    '.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate': {
+      color: '#498758'
+    },
+  };
+
+  const handleClickRow = (params, event, details) => {
+    // popup for each row
+  };
+
+  //#region Filters
   const applyFilterSearch = () => {
     const filteredRows = originalRows.filter(row => {
       return row.fieldName.toLowerCase().includes(searchText.toLowerCase());
@@ -173,6 +179,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   
   useEffect(applyFilterSearch, [originalRows, searchText, setRows]);
   useEffect(applyFilteringAndSorting, [originalRows, setRows, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod]);
+  //#endregion
 
   // TODO: setup themes!
   // const theme = createTheme({
@@ -198,19 +205,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   //   },
   // [],);
 
-  const dataGridStyle = {
-    '.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar': {
-      direction: 'ltr'
-    },
-    '.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate': {
-      color: '#498758'
-    },
-  };
-
-  const getDetailPanelContent = useCallback(() => {
-    <Typography component="div" variant="h4">dsf</Typography>
-  }, []);
-
+  //#region CustomComponents
   const Status = ({ label }) => {
     return (
       // <ThemeProvider theme={theme}>
@@ -285,6 +280,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
       <Checkbox color="success" />
     )
   };
+  //#endregion
 
   return (
     <>
@@ -292,6 +288,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
         <DataGrid
           rows={rows}
           sx={dataGridStyle}
+          onRowClick={handleClickRow}
           columns={columns}
           pageSize={9}
           rowsPerPageOptions={[9]}
@@ -302,24 +299,18 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
           disableSelectionOnClick
           autoHeight
           density={density}
-          getDetailPanelHeight={() => 'auto'}
-          getDetailPanelContent={({ row }) => (
-            <Typography component="div" variant="h4">{row}</Typography>
-          )}
+          rowThreshold={0}
           components={{
             Toolbar: CustomExport,
             Checkbox: CustomCheckBox,
-            // DetailPanelExpandIcon: KeyboardArrowDown,
-            // DetailPanelCollapseIcon: KeyboardArrowDown,
           }}
           initialState={{
             columns: {
               columnVisibilityModel: {
                 id: false
               },
-            },
-          }}
-        />
+            }
+          }} />
       </Card>
     </>
   )

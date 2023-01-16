@@ -71,6 +71,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ## Get data from db organized like so:
+
+# For the data grid:
 ```json
 
 {

@@ -1,13 +1,14 @@
 import { Card, Chip, Button, Checkbox } from '@mui/material';
 import { DataGrid, GridActionsCellItem, GridToolbarContainer, useGridApiContext} from '@mui/x-data-grid';
-// import { createTheme } from '@mui/material/styles';
 import { Security, FileCopy } from '@mui/icons-material';
 import { createSvgIcon } from '@mui/material/utils';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
 import moment from 'moment/moment';
 import { CsvBuilder } from 'filefy';
 import * as XLSX from 'xlsx/xlsx.mjs';
-import { set } from 'lodash';
+
+import RowDetails from './RowDetails';
 
 const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod }) => {
   const columns = [
@@ -31,7 +32,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
     {
       field: 'attractionScale',
       headerName: 'מדד אטרקטיביות',
-      // width: 115,
+      width: 115,
       editable: false,
     },
     {
@@ -64,7 +65,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
     {
       field: 'status',
       headerName: 'סטטוס',
-      // width: 60,
+      width: 140,
       editable: false,
       renderCell: params => (<Status label={params.value} />),
     },
@@ -104,11 +105,21 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
     '.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate': {
       color: '#498758'
     },
+    '.MuiDataGrid-row': {
+      color: '#4a8758'
+    },
+    '.css-f3jnds-MuiDataGrid-columnHeaders': {
+      color: '#006400'
+    }
   };
 
-  const handleClickRow = (params, event, details) => {
-    // popup for each row
-  };
+  //#region Popup
+  const [open, setOpen] = useState([false, null]);
+
+  const handleClickRowOpen = params => setOpen([true, Object.entries(params)[0][1]]);
+  
+  const handleClickRowClose = () => setOpen([false, null]);
+  //#endregion
 
   //#region Filters
   const applyFilterSearch = () => {
@@ -181,22 +192,6 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   useEffect(applyFilteringAndSorting, [originalRows, setRows, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod]);
   //#endregion
 
-  // TODO: setup themes!
-  // const theme = createTheme({
-  //   // TODO: need to orgenize colors
-  //   palette: {
-  //     one: {
-  //       ligntGreen: '#DEF9E0',
-  //     },
-  //     two: {
-  //       ligntBlue: '#EBF2FF',
-  //     },
-  //     three: {
-  //       ligntRed: '#FFDADA'
-  //     },
-  //   },
-  // });
-
   // TODO: Form of actions
   // const deleteUser = useCallback(id => () => {
   //     setTimeout(() => {
@@ -208,16 +203,16 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   //#region CustomComponents
   const Status = ({ label }) => {
     return (
-      // <ThemeProvider theme={theme}>
-        <Chip color={label === 'בטיפול' ? 'success' : label === 'לא בטיפול' ? 'error' : 'primary'}
-          label={label} />
-      // {/* </ThemeProvider> */}
+        <Chip label={label}
+          sx={{ backgroundColor: label === 'בטיפול' ? '#def9e0' : label === 'לא בטיפול' ? '#FFDADA' : label === 'לא עדכני' ? '#a2c0fa'
+                : label === 'בטיפול רכז' ? '#f9ecde' : label === 'דורש בדיקה' ? '#fca9a8' : '#ebf2ff'}} />
+          // #f9ecde #fca9a8 #ebf2ff
     )
   };
 
   const NDVI = ({ label }) => {
     return (
-        <Chip label={label} />
+        <div>{label}</div>
     )
   };
 
@@ -288,7 +283,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
         <DataGrid
           rows={rows}
           sx={dataGridStyle}
-          onRowClick={handleClickRow}
+          onRowClick={handleClickRowOpen}
           columns={columns}
           pageSize={9}
           rowsPerPageOptions={[9]}
@@ -311,6 +306,7 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
               },
             }
           }} />
+        <RowDetails onClose={handleClickRowClose} rowSet={open} />
       </Card>
     </>
   )

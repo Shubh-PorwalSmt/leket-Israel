@@ -68,3 +68,37 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Get data from db organized like so:
+```json
+
+{
+    "Field 1" : {
+        "id": 1,
+        "fieldName": "haifa",
+        "cropKind": "עגבניה",
+        "attractionScale": 9.5, 
+        "maturityLevel": "גבוה",
+        "NSVIScale": 0.1,
+        "area": "דרום",
+        "agriculturalNumber": "#123456",
+        "status": "דורש בדיקה",
+        "lastUpdate": "10.01.2022"
+    },
+    "Field 2" : {
+        "id": 2,
+        "fieldName": "metula",
+        "cropKind": "גמבה",
+        "attractionScale": 2, 
+        "maturityLevel": "גבוה",
+        "NSVIScale": 0.3,
+        "area": "מרכז",
+        "agriculturalNumber": "#234765",
+        "status": "בטיפול",
+        "lastUpdate": "17.06.2022"
+    }
+    // ...
+}
+
+```

@@ -56,15 +56,15 @@ const Header = ({ setDensity, setSearchText, CustomSearch }) => {
                 color="transparent">
                 <Toolbar variant="dense">
                     <ButtonGroup variant="contained" sx={{ borderRadius: '10%' }}>
-                        <Button onClick={handleClickViewBtnColor} sx={leftButtonStyle}>
+                        <Button elevation={9} onClick={handleClickViewBtnColor} sx={leftButtonStyle}>
                             <Box component="img" alt="" width={25} height={25} src="http://localhost:3000/images/header/gridForm.png"
                                 sx={{ filter: leftBtnColor === 'orange' ? 'brightness(0) invert(1)' : 'invert(34%) sepia(56%) saturate(372%) hue-rotate(83deg) brightness(75%) contrast(87%)', }} />
                         </Button>
-                        <Button onClick={handleClickViewBtnColor} sx={rightButtonStyle}>
+                        <Button elevation={9} onClick={handleClickViewBtnColor} sx={rightButtonStyle}>
                             <Toc />
                         </Button>
                     </ButtonGroup>
-                    <Button variant="contained" onClick={handleAddFieldOpen} sx={addCropStyle}>
+                    <Button variant="contained" elevation={9} onClick={handleAddFieldOpen} sx={addCropStyle}>
                         <Add />
                         הוספת שטח
                     </Button>

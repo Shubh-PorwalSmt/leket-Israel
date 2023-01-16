@@ -42,7 +42,8 @@ const MoreFilters = ({ cardText, imageStyle, handleClearFilters, optionArea, opt
             <KeyboardArrowDown style={{ color: "green", alignSelf: 'center', rotate: rotateArrow2 ? '180deg' : '0deg' }} sx={imageStyle} />
             <div>
                 <Typography component="div" variant="h6" display='ruby' fontSize='14px' sx={careStyle}>סטטוס טיפול</Typography>
-                <Typography component="div" variant="h6" fontSize='14px' fontWeight="bold" sx={cardText}>{optionCareStatus}</Typography>
+                <Typography component="div" variant="h6" fontSize={optionCareStatus === 'בטיפול מ. אזור' ? '13px' : '14px'}
+                    fontWeight="bold" sx={cardText}>{optionCareStatus}</Typography>
             </div>
         </Box>
     </CardContent>
@@ -72,7 +73,7 @@ const MoreFilters = ({ cardText, imageStyle, handleClearFilters, optionArea, opt
                         {/* {!!optionMoreFilters ? <TextField /> : ''} */}
                     </Box>
                     <Box display="flex" flexDirection='row'>
-                        <ExpandableMenu items={['הכל', 'בטיפול', 'לא בטיפול', 'לא עדכני']} displayTag={displayCareStatusTag}
+                        <ExpandableMenu items={['הכל', 'בטיפול', 'לא בטיפול', 'לא עדכני', 'בטיפול רכז', 'דורש בדיקה', 'בטיפול מ. אזור']} displayTag={displayCareStatusTag}
                             setOption={setOptionCareStatus} rotateArrow={rotateArrow2} setRotateArrow={setRotateArrow2} />
                     </Box>
                     <Box display="flex" flexDirection='row'>

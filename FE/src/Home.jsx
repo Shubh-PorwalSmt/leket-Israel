@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import { useState, useMemo } from "react";
 import SortPanel from "./SortPanel";
 import DataTable from "./DataTable";
@@ -44,7 +45,7 @@ const Home = ({ density, searchText }) => {
   };
 
   return (
-    <>
+    <Grid container display="grid" marginTop="3%" sx={{ paddingLeft: 7, paddingRight: 7 }}>
       <SortPanel sortMethod={sortMethod} setSortMethod={setSortMethod} handleClearFilters={handleClearFilters} cropKind={cropKind}
         setCropKind={setCropKind} moreCropKinds={moreCropKinds} setMoreCropKinds={setMoreCropKinds} optionArea={optionArea}
         optionCareStatus={optionCareStatus} optionMoreFilters={optionMoreFilters} setOptionArea={setOptionArea}
@@ -52,7 +53,7 @@ const Home = ({ density, searchText }) => {
       <DataTable rows={rows} setRows={setRows} originalRows={originalRows} density={density} searchText={searchText} cropKind={cropKind}
         optionArea={optionArea} optionCareStatus={optionCareStatus} moreCropKinds={moreCropKinds} optionMoreFilters={optionMoreFilters}
         sortMethod={sortMethod}/>
-    </>
+    </Grid>
   );
 }
 

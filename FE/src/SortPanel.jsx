@@ -16,13 +16,13 @@ const SortPanel = ({ sortMethod, setSortMethod, handleClearFilters, cropKind, se
   
   return (
     <>        
-      <Grid container direction="row" justifyContent="flex-end" alignItems="flex-start" spacing={-12.5} columnGap={6} marginTop="3%">
+      <Grid container direction="row" justifyContent="flex-end" alignItems="flex-start" columnGap={6} marginTop="5%">
           <MoreFilters cardText={cardText} imageStyle={imageStyle} handleClearFilters={handleClearFilters}
             optionArea={optionArea} optionCareStatus={optionCareStatus} optionMoreFilters={optionMoreFilters}
             setOptionArea={setOptionArea} setOptionCareStatus={setOptionCareStatus} setOptionMoreFilters={setOptionMoreFilters} />
           <FilterCrop cardText={cardText} imageStyle={imageStyle} cropKind={cropKind} setCropKind={setCropKind}
             moreCropKinds={moreCropKinds} setMoreCropKinds={setMoreCropKinds} />
-          <Divider orientation='vertical' flexItem />
+          <Divider orientation='vertical' light flexItem />
           <Sort sortMethod={sortMethod} setSortMethod={setSortMethod} cardText={cardText} />
       </Grid>
     </>

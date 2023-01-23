@@ -1,6 +1,6 @@
 import { Card, Chip, Button, Checkbox } from '@mui/material';
 import { DataGrid, GridActionsCellItem, GridToolbarContainer, useGridApiContext} from '@mui/x-data-grid';
-import { Security, FileCopy } from '@mui/icons-material';
+import { Security, FileCopy, Add } from '@mui/icons-material';
 import { createSvgIcon } from '@mui/material/utils';
 import { useEffect, useState } from 'react';
 
@@ -11,6 +11,7 @@ import * as XLSX from 'xlsx/xlsx.mjs';
 import RowDetails from './RowDetails';
 
 const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod }) => {
+
   const columns = [
     {
       field: 'id',
@@ -219,6 +220,17 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   const CustomExport = () => {
     const apiRef = useGridApiContext();
     
+    const addCropStyle = {
+        borderRadius: '12px',
+        marginRight: '12px',
+        backgroundColor: 'white',
+        color: '#3A6E47',
+        fontWeight: '700',
+        '&:hover': {
+            backgroundColor: '#eaf0ee'
+        }
+    };
+    
     const getFilteredRows = ({ apiRef }) => {
       const cRows = apiRef.current.getSelectedRows();
       const sRows = cRows.size > 0 ? Array.from(cRows, entry => entry[1]) : rows;
@@ -253,18 +265,22 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
 
     return (
       <GridToolbarContainer>
-        <Button sx={{
+        <Button variant="text" sx={{
             direction: 'ltr',
             color: '#5cb85c',
             borderRadius: '10px',
             fontWeight: 'bold',
             fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
             '&:hover': {
-              backgroundColor: 'transparent'
-            },
+              backgroundColor: '#eaf0ee'
+            }
           }} onClick={() => handleExport({ getRowsToExport: getFilteredRows })}>
           <ExportIcon sx={{ paddingRight: '10%' }} />
           ייצא
+        </Button>
+        <Button variant="text" href="/addfield" elevation={9} sx={addCropStyle}>
+            הוספת שטח
+            <Add />
         </Button>
       </GridToolbarContainer>
     );
@@ -279,14 +295,14 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
 
   return (
     <>
-      <Card dir="rtl" sx={{ width: '94%', marginTop: '3%' }}>
+      <Card dir="rtl" elevation={10} sx={{ marginTop: '3%', borderRadius: '14px' }}>
         <DataGrid
           rows={rows}
           sx={dataGridStyle}
           onRowClick={handleClickRowOpen}
           columns={columns}
-          pageSize={9}
-          rowsPerPageOptions={[9]}
+          pageSize={7}
+          rowsPerPageOptions={[7]}
           checkboxSelection
           disableRowSelectionOnClick
           disableColumnFilter

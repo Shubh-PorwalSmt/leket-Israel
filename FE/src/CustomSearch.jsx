@@ -1,13 +1,10 @@
-import { useState } from 'react'
 import { Card, InputBase, IconButton } from "@mui/material";
 import { Search } from '@mui/icons-material';
 
 const CustomSearch = ({ setSearchText }) => {
-    const [openSearchBar, setOpenSearchBar] = useState(false);
 
     const searchStyle = {
-        borderRadius: openSearchBar ? '20px' : '20px',
-        backgroundColor: 'rgba(254, 254, 254, 0.5)',
+        borderRadius: '12px',
         marginLeft: '24px',
         color: '#3A6E47',
         '.css-zylse7-MuiButtonBase-root-MuiIconButton-root:hover': {
@@ -17,20 +14,19 @@ const CustomSearch = ({ setSearchText }) => {
 
     const inputSearchStyle = {
         '.css-yz9k0d-MuiInputBase-input': {
-            paddingLeft: '5px' 
+            paddingRight: '15px',
+            color: '#636363'
         }
     }
-
-    const handleSearchBar = () => setOpenSearchBar(!openSearchBar);
 
     const handleSearchBarChange = e => setSearchText(e.target.value);
 
     return (
         <Card sx={searchStyle}>
-            <IconButton color="inherit" onClick={handleSearchBar}>
+            <IconButton color="inherit">
                 <Search />
             </IconButton>
-            {openSearchBar ? <InputBase sx={inputSearchStyle} onChange={handleSearchBarChange} placeholder="Search..."  /> : ''}
+            <InputBase sx={inputSearchStyle} dir="rtl" onChange={handleSearchBarChange} placeholder="הקלד שם שדה"  />
         </Card>
     )
 }

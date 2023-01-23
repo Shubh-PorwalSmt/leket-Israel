@@ -1,25 +1,10 @@
-import { Typography, AppBar, Toolbar, Button, ButtonGroup, Box } from "@mui/material";
-import { Toc, Add } from '@mui/icons-material';
+import { Typography, AppBar, Toolbar, Button, ButtonGroup, Box, Divider } from "@mui/material";
+import { Toc, Logout } from '@mui/icons-material';
 import { useState } from "react";
-import AddField from "./AddField";
 
 const Header = ({ setDensity, setSearchText, CustomSearch }) => {
-    const [open, setOpen] = useState(false);
-    const [leftBtnColor, setLeftBtnColor] = useState('orange');
+    const [leftBtnColor, setLeftBtnColor]   = useState('orange');
     const [rightBtnColor, setRightBtnColor] = useState('white');
-    
-    const drawerWidth = 70;
-    
-    const addCropStyle = {
-        borderRadius: '12px',
-        marginLeft: '24px',
-        backgroundColor: 'white',
-        color: '#3A6E47',
-        fontWeight: '700',
-        '&:hover': {
-            backgroundColor: 'transparent'
-        }
-    };
 
     const rightButtonStyle = {
         backgroundColor: rightBtnColor,
@@ -44,17 +29,12 @@ const Header = ({ setDensity, setSearchText, CustomSearch }) => {
 
         rightBtnColor === 'orange' ? setDensity('standard') : setDensity('comfortable');
     }
-
-    const handleAddFieldOpen = () => setOpen(true);
-  
-    const handleAddFieldClose = () => setOpen(false);
     
     return (
         <>
-            <AppBar elevation={0} position='absolute'
-                sx={{ width: `calc(100% - ${drawerWidth}px)`, mr: `${drawerWidth}px` }} 
-                color="transparent">
-                <Toolbar variant="dense">
+            <AppBar elevation={0} position='absolute' sx={{ backgroundColor: "#488856" }}>
+                {/* sx={{ width: `calc(100% - ${drawerWidth}px)`, mr: `${drawerWidth}px`, backgroundColor: "#488856" }}> */}
+                <Toolbar>
                     <ButtonGroup variant="contained" sx={{ borderRadius: '10%' }}>
                         <Button elevation={9} onClick={handleClickViewBtnColor} sx={leftButtonStyle}>
                             <Box component="img" alt="" width={25} height={25} src="http://localhost:3000/images/header/gridForm.png"
@@ -64,18 +44,20 @@ const Header = ({ setDensity, setSearchText, CustomSearch }) => {
                             <Toc />
                         </Button>
                     </ButtonGroup>
-                    <Button variant="contained" elevation={9} onClick={handleAddFieldOpen} sx={addCropStyle}>
-                        <Add />
-                        הוספת שטח
-                    </Button>
                     <CustomSearch setSearchText={setSearchText} />
-                    <Typography sx={{ marginLeft: 'auto', fontFamily: '"Roboto","Helvetica","Arial",sans-serif', fontWeight: 'bold', fontSize: '24px' }} edge="start"
+                    <Button variant="text" startIcon={<Logout />} sx={{ color: '#b4dbbe', marginLeft: 'auto', marginRight: '4px',
+                        fontFamily: '"Roboto","Helvetica","Arial",sans-serif', fontWeight: 'bold', fontSize: '13.5px', borderRadius: '10px', }}>
+                        התנתקות
+                    </Button>
+                    <Divider orientation="vertical" variant="middle" sx={{ backgroundColor: 'white', marginTop: '32px', marginBottom: '32px' }} light flexItem />
+                    <Typography sx={{ marginLeft: '10px', fontFamily: '"Roboto","Helvetica","Arial",sans-serif', fontWeight: 'bold', fontSize: '20px' }} edge="start"
                         component="span" variant="h6" color="inherit">
-                        לקט ישראל
+                        צהריים טובים אלירן
                     </Typography>
+                    <Box component="img" sx={{ backgroundColor: '#fefaef', boxShadow: 5 }} alt="" borderRadius='0px 0px 0px 20px'
+                        marginLeft={4} marginRight={-3} width={80} height={80} src="http://localhost:3000/images/sidebar/LeketIsraelLogos.png" />
                 </Toolbar>
             </AppBar>
-            <AddField onClose={handleAddFieldClose} open={open} />
         </>
     )
 }

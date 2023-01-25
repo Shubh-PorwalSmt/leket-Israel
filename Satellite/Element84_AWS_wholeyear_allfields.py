@@ -46,7 +46,7 @@ def plot_index(datatoplot,nameofdata,x_field,y_field,fieldcenter):
     )
 
     ax=axis[0,0]
-    im=ax.imshow(datatoplot,cmap='RdYlGn',vmin=-1, vmax=1,extent=[min(x_field),max(x_field),min(y_field),max(y_field)]) # plots
+    im=ax.imshow(datatoplot,cmap='RdYlGn',extent=[min(x_field),max(x_field),min(y_field),max(y_field)]) # plots
     ax.scatter(fieldcenter[0],fieldcenter[1], s=20, c='red', marker='o')
     cax = fig.add_axes([ax.get_position().x1+0.01,ax.get_position().y0,0.02,ax.get_position().height]) # scale the colorbar
     cbar=fig.colorbar(im,cax=cax, shrink=0.95) # plot the scaled colorbar
@@ -73,21 +73,59 @@ def satellite_index(data,bandlist,itemdate,**kwargs):
         fieldcenter
     
     if 'index_list' in kwargs: # we can add as many indices as we want.
+        band01_original=data[bandlist.index('B01')].values.astype(float, order='C')
+        band02=data[bandlist.index('B02')].values.astype(float, order='C')
+        band03=data[bandlist.index('B03')].values.astype(float, order='C')
+        band04=data[bandlist.index('B04')].values.astype(float, order='C')
+        band05_original=data[bandlist.index('B05')].values.astype(float, order='C')
+        band06_original=data[bandlist.index('B06')].values.astype(float, order='C')
+        band07_original=data[bandlist.index('B07')].values.astype(float, order='C')
+        band08=data[bandlist.index('B08')].values.astype(float, order='C')
+        band09_original=data[bandlist.index('B09')].values.astype(float, order='C')
+        # band10=data[bandlist.index('B10')].values.astype(float, order='C') # did not download
+        band11_original=data[bandlist.index('B11')].values.astype(float, order='C')
+        band12_original=data[bandlist.index('B12')].values.astype(float, order='C')
+        
+        # corrections of bands to the same pixel size. instead of averaging the small ones, i'm cutting up the large ones.
+        # or just copy pasting it.
+        
+        band01=np.delete(np.delete(np.repeat(np.repeat(band01_original,6,axis=1),6,axis=0),np.arange(band02.shape[0],band01_original.shape[0]*6),0),np.arange(band02.shape[1],band01_original.shape[1]*6),1)
+        band05=np.delete(np.delete(np.repeat(np.repeat(band05_original,2,axis=1),2,axis=0),np.arange(band02.shape[0],band05_original.shape[0]*2),0),np.arange(band02.shape[1],band05_original.shape[1]*2),1)
+        band06=np.delete(np.delete(np.repeat(np.repeat(band06_original,2,axis=1),2,axis=0),np.arange(band02.shape[0],band06_original.shape[0]*2),0),np.arange(band02.shape[1],band06_original.shape[1]*2),1)
+        band07=np.delete(np.delete(np.repeat(np.repeat(band07_original,2,axis=1),2,axis=0),np.arange(band02.shape[0],band07_original.shape[0]*2),0),np.arange(band02.shape[1],band07_original.shape[1]*2),1)
+        band09=np.delete(np.delete(np.repeat(np.repeat(band09_original,6,axis=1),6,axis=0),np.arange(band02.shape[0],band09_original.shape[0]*6),0),np.arange(band02.shape[1],band09_original.shape[1]*6),1)
+        band11=np.delete(np.delete(np.repeat(np.repeat(band11_original,2,axis=1),2,axis=0),np.arange(band02.shape[0],band11_original.shape[0]*2),0),np.arange(band02.shape[1],band11_original.shape[1]*2),1)
+        band12=np.delete(np.delete(np.repeat(np.repeat(band12_original,2,axis=1),2,axis=0),np.arange(band02.shape[0],band12_original.shape[0]*2),0),np.arange(band02.shape[1],band12_original.shape[1]*2),1)
+        
         if 'RGB' in kwargs['index_list']:
             # RGB = Red, Green, Blue. in that order.
             
-            RGB_data=[data[bandlist.index('B04')].astype(float, order='C'),data[bandlist.index('B03')].astype(float, order='C'),data[bandlist.index('B02')].astype(float, order='C')]
-            RGB_norm_small=[x.values/np.amax(x.values) for x in RGB_data] # send to function instead
+            RGB_data=[band04,band03,band02]
+            RGB_norm_small=[x/np.amax(x) for x in RGB_data] # send to function instead
             RGB_plot_small=np.dstack(RGB_norm_small)
             plot_image(RGB_plot_small*2.5,'RGB_small_'+itemdate,x_field,y_field,fieldcenter)  # times 3.5 to increase image brightness
             
         if 'NDVI' in kwargs['index_list']:
             
             # ndvi = (NIR - RED) / (NIR + RED)
-            band08=data[bandlist.index('B08')].values.astype(float, order='C')
-            band04=data[bandlist.index('B04')].values.astype(float, order='C')
             NDVI_data=(band08-band04) / (band08+band04)
             plot_index(NDVI_data,'NDVI_small_'+itemdate,x_field,y_field,fieldcenter) 
+
+        if 'CVI' in kwargs['index_list']: # Chlorophyll vegetation index
+            # NIR*RED/GREEN^2)
+            CVI_data=band09*band05/(band03**2)
+            plot_index(CVI_data,'CVI_small_'+itemdate,x_field,y_field,fieldcenter) 
+
+        if 'SLAVI' in kwargs['index_list']: # Specific Leaf Area Vegetation Index
+            
+            # NIR/(RED+SWIR)
+            SLAVI_data=band09/(band05+band12)
+            plot_index(SLAVI_data,'SLAVI_small_'+itemdate,x_field,y_field,fieldcenter) 
+
+        if 'GVI' in kwargs['index_list']: # Tasselled Cap - vegetation
+            # −0.2848[450:520]−0.2435[520:600]−0.5436[630:690]+0.7243[760:900]+0.0840[1550:1750]−0.1800[2080:2350]
+            GVI_data=-0.2848*band02-0.2435*band03-0.5436*band04+0.7243*band08+0.0840*band11-0.1800*band12
+            plot_index(GVI_data,'GVI_small_'+itemdate,x_field,y_field,fieldcenter) 
     else:
         RGB_data=[data[bandlist.index('B04')],data[bandlist.index('B03')],data[bandlist.index('B02')]]
         RGB_norm_small=[x.values/np.amax(x.values) for x in RGB_data] # send to function instead
@@ -253,7 +291,7 @@ else:
         
         # send for the index function. must send a dataset of all bands, a date string, in the future field ID? 
         # when no index is choosen, it plots and saves only RGB.
-        satellite_index( dataset_small[item.datetime.strftime("%Y_%m_%d")],bandlist,item.datetime.strftime("%Y_%m_%d"),index_list=['RGB','NDVI'], fieldpolygon_utm=polygon_coords_utm,fieldcenter=utm_field_center)
+        satellite_index( dataset_small[item.datetime.strftime("%Y_%m_%d")],bandlist,item.datetime.strftime("%Y_%m_%d"),index_list=['RGB','NDVI','CVI','SLAVI','GVI'], fieldpolygon_utm=polygon_coords_utm,fieldcenter=utm_field_center)
 
         print('\n done with '+item.datetime.strftime("%Y_%m_%d")+' time elapsed: '+str((datetime.datetime.now()-time_start).total_seconds())+' seconds')
     

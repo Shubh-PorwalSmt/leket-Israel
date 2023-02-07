@@ -1,4 +1,4 @@
-import { Box, CardContent, Typography, Grid, IconButton, TextField, InputBase } from "@mui/material"
+import { Box, CardContent, Typography, Grid, IconButton } from "@mui/material"
 import { KeyboardArrowDown, Clear } from '@mui/icons-material';
 import ExpandableMenu from "./ExpandableMenu";
 import { useState } from "react";
@@ -8,7 +8,8 @@ const MoreFilters = ({ cardText, imageStyle, handleClearFilters, optionArea, opt
     const [rotateArrow2, setRotateArrow2] = useState(false);
     const [rotateArrow3, setRotateArrow3] = useState(false);
 
-    const textSize = '14px';
+    const TEST_SIZE = '14px';
+    const MORE_FILTER_IDENTIFIER = 'MoreFilters';
     
     const areaStyle = {
         marginLeft: '45px',
@@ -31,8 +32,8 @@ const MoreFilters = ({ cardText, imageStyle, handleClearFilters, optionArea, opt
         <Box display="flex" position='relative' flexDirection='row'>
             <KeyboardArrowDown style={{ color: "green", alignSelf: 'center', rotate: rotateArrow1 ? '180deg' : '0deg' }} sx={imageStyle} />
             <div>
-                <Typography component="div" variant="h6" fontSize={textSize} sx={areaStyle}>אזור</Typography>
-                <Typography component="div" variant="h6" position='absolute' fontSize={textSize} fontWeight="bold" sx={areaDisplayOptionStyle}>{optionArea}</Typography>
+                <Typography component="div" variant="h6" fontSize={TEST_SIZE} sx={areaStyle}>אזור</Typography>
+                <Typography component="div" variant="h6" position='absolute' fontSize={TEST_SIZE} fontWeight="bold" sx={areaDisplayOptionStyle}>{optionArea}</Typography>
             </div>
         </Box>
     </CardContent>
@@ -67,18 +68,16 @@ const MoreFilters = ({ cardText, imageStyle, handleClearFilters, optionArea, opt
                         <Clear />
                     </IconButton>
                     <Box display="flex" flexDirection='column'>
-                        <ExpandableMenu items={['רמת בשלות', 'מספר חקלאי']} displayTag={displayMoreFiltersTag}
-                            setOption={setOptionMoreFilters} rotateArrow={rotateArrow3} setRotateArrow={setRotateArrow3} />
-                        {/* TODO: need to fix moreFilters option */}
-                        {/* {!!optionMoreFilters ? <TextField /> : ''} */}
+                        <ExpandableMenu isAdvanced="true" displayTag={displayMoreFiltersTag}
+                            setOption={setOptionMoreFilters} option={optionMoreFilters} rotateArrow={rotateArrow3} setRotateArrow={setRotateArrow3} />
                     </Box>
                     <Box display="flex" flexDirection='row'>
-                        <ExpandableMenu items={['הכל', 'בטיפול', 'לא בטיפול', 'לא עדכני', 'בטיפול רכז', 'דורש בדיקה', 'בטיפול מ. אזור']} displayTag={displayCareStatusTag}
-                            setOption={setOptionCareStatus} rotateArrow={rotateArrow2} setRotateArrow={setRotateArrow2} />
+                        <ExpandableMenu identifier={MORE_FILTER_IDENTIFIER} items={['הכל', 'בטיפול', 'לא בטיפול', 'לא עדכני', 'בטיפול רכז', 'דורש בדיקה', 'בטיפול מ. אזור']} displayTag={displayCareStatusTag}
+                            setOption={setOptionCareStatus} option={optionCareStatus} rotateArrow={rotateArrow2} setRotateArrow={setRotateArrow2} />
                     </Box>
                     <Box display="flex" flexDirection='row'>
-                        <ExpandableMenu items={['הכל', 'מרכז', 'צפון', 'דרום']} displayTag={displayAreaTag}
-                            setOption={setOptionArea} rotateArrow={rotateArrow1} setRotateArrow={setRotateArrow1} />
+                        <ExpandableMenu identifier={MORE_FILTER_IDENTIFIER} items={['הכל', 'מרכז', 'צפון', 'דרום']} displayTag={displayAreaTag}
+                            setOption={setOptionArea} option={optionArea} rotateArrow={rotateArrow1} setRotateArrow={setRotateArrow1} />
                     </Box>
                 </Grid>
             </Box>

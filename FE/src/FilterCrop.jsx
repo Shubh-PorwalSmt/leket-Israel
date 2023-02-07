@@ -6,7 +6,7 @@ import { useState } from "react";
 const FilterCrop = ({ cardText, imageStyle, cropKind, moreCropKinds, setCropKind, setMoreCropKinds }) => {
     const [rotateArrow, setRotateArrow] = useState(false);
     
-    const handleCropSelection = (e, crop) => { setCropKind(crop); }
+    const handleCropSelection = (e, crop) => { setCropKind(crop) }
 
     const cropToggleBtn = {
         display: 'flex',
@@ -41,7 +41,7 @@ const FilterCrop = ({ cardText, imageStyle, cropKind, moreCropKinds, setCropKind
             <Grid container direction="row" justifyContent="flex-end" alignItems="center" columnGap={2} marginTop="1%">
                 <Box display="flex" flexDirection='row'>
                     <ExpandableMenu items={['חציל', 'קיווי', 'אבטיח', 'תות', 'אפרסמון']} displayTag={displayTag} cropKind={cropKind}
-                        setCropKind={setCropKind} setOption={setMoreCropKinds} rotateArrow={rotateArrow} setRotateArrow={setRotateArrow} />
+                        setCropKind={setCropKind} setOption={setMoreCropKinds} option={moreCropKinds} rotateArrow={rotateArrow} setRotateArrow={setRotateArrow} />
                 </Box>
                 {/* TODO: Plan is when a crop hs selected from the toggle button group, it will be added to the items which is shown above */}
                 <ToggleButtonGroup sx={{

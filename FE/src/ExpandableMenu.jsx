@@ -1,10 +1,14 @@
-import { Menu, MenuItem, Card } from "@mui/material";
-import { useState } from 'react'
+import { Menu, MenuItem, Card, Checkbox, FormControlLabel, Divider } from "@mui/material";
+import { DeleteOutline } from '@mui/icons-material';
+import React, { useState } from 'react'
+import AdvancedFilters from "./AdvancedFilters";
 
-const ExpandableMenu = ({ items, displayTag, cropKind=null, setCropKind=null, setOption, rotateArrow, setRotateArrow }) => {
+const ExpandableMenu = ({ identifier=null, isAdvanced, items, displayTag, cropKind=null, setCropKind=null, setOption, option, rotateArrow, setRotateArrow }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     
     const open = Boolean(anchorEl);
+
+    const ITEM_HEIGHT = 60;
 
     const handleClick = e => {
         setRotateArrow(!rotateArrow);
@@ -14,13 +18,19 @@ const ExpandableMenu = ({ items, displayTag, cropKind=null, setCropKind=null, se
     const handleMenuItemClick = e => {
         setRotateArrow(!rotateArrow);
         
-        let item = e.currentTarget.firstChild.data;
-        setOption(item);
+        try {
+            var item = e.target.labels[0].innerText;
+            setOption(item);
+        } catch (e) {}
 
         if (cropKind != null)
             setCropKind([...cropKind, item]);
         
         setAnchorEl(null);
+    }
+
+    const handleClearAllClick = e => {
+        setOption(identifier === 'MoreFilters' ? 'הכל' : ['']);
     }
 
     const handleClose = () => {
@@ -35,27 +45,55 @@ const ExpandableMenu = ({ items, displayTag, cropKind=null, setCropKind=null, se
         width: 125,
         height: 80,
         borderRadius: '10px',
+        border: open ? '1px solid green' : ''
     };
 
     return (
         <>
             <Card sx={cropCard} aria-controls={ open ? 'basic-menu' : undefined }
-                aria-haspopup="true" aria-expanded={ open ? 'true' : undefined } onClick={handleClick}>
+                aria-expanded={ open ? 'true' : undefined } onClick={handleClick}>
                 {displayTag}
             </Card>
-            <Menu id="basic-menu" anchorEl={anchorEl} open={open} onClose={handleClose}
+            <Menu id="basic-menu" dir="rtl" anchorEl={anchorEl} open={open} onClose={handleClose}
                 anchorOrigin={{
                     vertical: 'bottom',
-                    horizontal: 'right',
+                    horizontal: 'right'
                 }}
                 transformOrigin={{
                     vertical: 'top',
-                    horizontal: 'right',
+                    horizontal: 'right'
                 }}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button'
+                PaperProps={{
+                    style: {
+                        maxHeight: !isAdvanced ? ITEM_HEIGHT * 4.4 : '',
+                        // width: '5rem',
+                    },
                 }}>
-                {items.map(item => (<MenuItem key={item} onClick={handleMenuItemClick}>{item}</MenuItem>))}
+                {!isAdvanced ? items.map(item => (<MenuItem sx={{
+                        // width: '90%',
+                        background: item === option ? '#d0eacf' : '',
+                        borderRadius: '10px',
+                        '&:hover': {
+                            background: item === option ? '#d0eacf' : ''
+                        }
+                    }}
+                    key={item} onClick={handleMenuItemClick}>
+                    <FormControlLabel sx={{
+                        marginRight: 0,
+                        marginLeft: 0,
+                        '.css-ahj2mt-MuiTypography-root': {
+                            fontWeight: item === option ? 'bold' : ''
+                        }
+                    }} control={
+                        <Checkbox sx={{ borderRadius: '10px' }} checked={ item === option ? true : false } color="success" size="small" />
+                    } label={item} labelPlacement="end" />
+                </MenuItem>)) : <AdvancedFilters />}
+                {!isAdvanced ? <Divider /> : '' }
+                {!isAdvanced ? <MenuItem onClick={handleClearAllClick} sx={{ justifyContent: 'center', fontSize: '14px', color: 'green',
+                    fontFamily: '"Roboto","Helvetica","Arial",sans-serif' }}>
+                    <DeleteOutline fontSize="small" sx={{ marginLeft: 0.5 }} />
+                    ניקוי הכל
+                </MenuItem> : ''}
             </Menu>
         </>
     )

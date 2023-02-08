@@ -7,7 +7,7 @@ const Header = ({ setDensity, setSearchText, CustomSearch }) => {
     const [rightBtnColor, setRightBtnColor] = useState('white');
 
     const currentHours = new Date().getHours();
-    const welcome = 5 < currentHours && currentHours < 12 ? 'בוקר טוב נדב' : 12 < currentHours && currentHours < 17 ? 'צהריים טובים אלירן' : 'ערב טוב אלירן';
+    const welcome = 5 < currentHours && currentHours < 12 ? 'בוקר טוב אלירן' : 12 < currentHours && currentHours < 17 ? 'צהריים טובים אלירן' : 'ערב טוב אלירן';
 
     const rightButtonStyle = {
         backgroundColor: rightBtnColor,

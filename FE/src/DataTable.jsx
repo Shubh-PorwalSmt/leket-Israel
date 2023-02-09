@@ -3,15 +3,26 @@ import { DataGrid, GridActionsCellItem, GridToolbarContainer, useGridApiContext}
 import { Security, FileCopy, Add } from '@mui/icons-material';
 import { createSvgIcon } from '@mui/material/utils';
 import { useEffect, useState } from 'react';
-
 import moment from 'moment/moment';
-import { CsvBuilder } from 'filefy';
 import * as XLSX from 'xlsx/xlsx.mjs';
-
 import RowDetails from './RowDetails';
 
-const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod }) => {
+const dataGridStyle = {
+  '.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar': {
+    direction: 'ltr'
+  },
+  '.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate': {
+    color: '#498758'
+  },
+  '.MuiDataGrid-row': {
+    color: '#4a8758'
+  },
+  '.css-f3jnds-MuiDataGrid-columnHeaders': {
+    color: '#006400'
+  }
+};
 
+const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind, optionArea, optionCareStatus, optionMoreFilters, sortMethod }) => {
   const columns = [
     {
       field: 'id',
@@ -99,21 +110,6 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
     }
   ];
 
-  const dataGridStyle = {
-    '.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar': {
-      direction: 'ltr'
-    },
-    '.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate': {
-      color: '#498758'
-    },
-    '.MuiDataGrid-row': {
-      color: '#4a8758'
-    },
-    '.css-f3jnds-MuiDataGrid-columnHeaders': {
-      color: '#006400'
-    }
-  };
-
   //#region Popup
   const [open, setOpen] = useState([false, null]);
 
@@ -132,21 +128,21 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   };
 
   // TODO: Need to check this again (why is it called filtering? can't filter by last update?) maybe sorting?
-  const checkMoreFilters = (moreFilters, row) => {
-    switch(moreFilters) {
-      case 'רמת בשלות':
+  // const checkMoreFilters = (moreFilters, row) => {
+  //   switch(moreFilters) {
+  //     case 'רמת בשלות':
 
-        break;
-      case 'מדד אטרקטיביות':
+  //       break;
+  //     case 'מדד אטרקטיביות':
 
-        break;
-      case 'מספר חקלאי':
+  //       break;
+  //     case 'מספר חקלאי':
 
-        break;
-      default:
-        return true;
-    }
-  }
+  //       break;
+  //     default:
+  //       return true;
+  //   }
+  // }
 
   const applyFilteringAndSorting = () => {
     // first sort, then from the sorted rows filter...
@@ -294,37 +290,35 @@ const DataTable = ({ rows, setRows, originalRows, density, searchText, cropKind,
   //#endregion
 
   return (
-    <>
-      <Card dir="rtl" elevation={10} sx={{ marginTop: '3%', borderRadius: '14px' }}>
-        <DataGrid
-          rows={rows}
-          sx={dataGridStyle}
-          onRowClick={handleClickRowOpen}
-          columns={columns}
-          pageSize={7}
-          rowsPerPageOptions={[7]}
-          checkboxSelection
-          disableRowSelectionOnClick
-          disableColumnFilter
-          hideFooterSelectedRowCount
-          disableSelectionOnClick
-          autoHeight
-          density={density}
-          rowThreshold={0}
-          components={{
-            Toolbar: CustomExport,
-            Checkbox: CustomCheckBox,
-          }}
-          initialState={{
-            columns: {
-              columnVisibilityModel: {
-                id: false
-              },
-            }
-          }} />
-        <RowDetails onClose={handleClickRowClose} rowSet={open} />
-      </Card>
-    </>
+    <Card dir="rtl" elevation={10} sx={{ marginTop: '3%', borderRadius: '14px' }}>
+      <DataGrid
+        rows={rows}
+        sx={dataGridStyle}
+        onRowClick={handleClickRowOpen}
+        columns={columns}
+        pageSize={7}
+        rowsPerPageOptions={[7]}
+        checkboxSelection
+        disableRowSelectionOnClick
+        disableColumnFilter
+        hideFooterSelectedRowCount
+        disableSelectionOnClick
+        autoHeight
+        density={density}
+        rowThreshold={0}
+        components={{
+          Toolbar: CustomExport,
+          Checkbox: CustomCheckBox,
+        }}
+        initialState={{
+          columns: {
+            columnVisibilityModel: {
+              id: false
+            },
+          }
+        }} />
+      <RowDetails onClose={handleClickRowClose} rowSet={open} />
+    </Card>
   )
 }
 

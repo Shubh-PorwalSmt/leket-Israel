@@ -3,9 +3,9 @@ import { DeleteOutline } from '@mui/icons-material';
 import React, { useState } from 'react'
 import AdvancedFilters from "./AdvancedFilters";
 
-const ExpandableMenu = ({ identifier=null, isAdvanced, items, displayTag, cropKind=null, setCropKind=null, setOption, option, rotateArrow, setRotateArrow }) => {
+const ExpandableMenu = ({ identifier = null, isAdvanced, items, displayTag, cropKind = null, setCropKind = null, setOption, option, rotateArrow, setRotateArrow }) => {
     const [anchorEl, setAnchorEl] = useState(null);
-    
+
     const open = Boolean(anchorEl);
 
     const ITEM_HEIGHT = 60;
@@ -17,15 +17,15 @@ const ExpandableMenu = ({ identifier=null, isAdvanced, items, displayTag, cropKi
 
     const handleMenuItemClick = e => {
         setRotateArrow(!rotateArrow);
-        
+
         try {
             var item = e.target.labels[0].innerText;
             setOption(item);
-        } catch (e) {}
+        } catch (e) { }
 
         if (cropKind != null)
             setCropKind([...cropKind, item]);
-        
+
         setAnchorEl(null);
     }
 
@@ -50,8 +50,8 @@ const ExpandableMenu = ({ identifier=null, isAdvanced, items, displayTag, cropKi
 
     return (
         <>
-            <Card sx={cropCard} aria-controls={ open ? 'basic-menu' : undefined }
-                aria-expanded={ open ? 'true' : undefined } onClick={handleClick}>
+            <Card sx={cropCard} aria-controls={open ? 'basic-menu' : undefined}
+                aria-expanded={open ? 'true' : undefined} onClick={handleClick}>
                 {displayTag}
             </Card>
             <Menu id="basic-menu" dir="rtl" anchorEl={anchorEl} open={open} onClose={handleClose}
@@ -70,13 +70,13 @@ const ExpandableMenu = ({ identifier=null, isAdvanced, items, displayTag, cropKi
                     },
                 }}>
                 {!isAdvanced ? items.map(item => (<MenuItem sx={{
-                        // width: '90%',
-                        background: item === option ? '#d0eacf' : '',
-                        borderRadius: '10px',
-                        '&:hover': {
-                            background: item === option ? '#d0eacf' : ''
-                        }
-                    }}
+                    // width: '90%',
+                    background: item === option ? '#d0eacf' : '',
+                    borderRadius: '10px',
+                    '&:hover': {
+                        background: item === option ? '#d0eacf' : ''
+                    }
+                }}
                     key={item} onClick={handleMenuItemClick}>
                     <FormControlLabel sx={{
                         marginRight: 0,
@@ -85,12 +85,14 @@ const ExpandableMenu = ({ identifier=null, isAdvanced, items, displayTag, cropKi
                             fontWeight: item === option ? 'bold' : ''
                         }
                     }} control={
-                        <Checkbox sx={{ borderRadius: '10px' }} checked={ item === option ? true : false } color="success" size="small" />
+                        <Checkbox sx={{ borderRadius: '10px' }} checked={item === option ? true : false} color="success" size="small" />
                     } label={item} labelPlacement="end" />
                 </MenuItem>)) : <AdvancedFilters />}
-                {!isAdvanced ? <Divider /> : '' }
-                {!isAdvanced ? <MenuItem onClick={handleClearAllClick} sx={{ justifyContent: 'center', fontSize: '14px', color: 'green',
-                    fontFamily: '"Roboto","Helvetica","Arial",sans-serif' }}>
+                {!isAdvanced ? <Divider /> : ''}
+                {!isAdvanced ? <MenuItem onClick={handleClearAllClick} sx={{
+                    justifyContent: 'center', fontSize: '14px', color: 'green',
+                    fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
+                }}>
                     <DeleteOutline fontSize="small" sx={{ marginLeft: 0.5 }} />
                     ניקוי הכל
                 </MenuItem> : ''}

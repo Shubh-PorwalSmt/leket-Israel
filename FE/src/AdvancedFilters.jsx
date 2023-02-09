@@ -3,21 +3,21 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { useState } from "react";
 
+const addCropStyle = {
+    borderRadius: '16px',
+    marginTop: 3,
+    backgroundColor: '#498758',
+    color: 'white',
+    fontWeight: 'bold',
+    '&:hover': {
+        backgroundColor: '#498758'
+    }
+};
+
 const AdvancedFilters = () => {
     const [fromDate, setFromDate] = useState(null);
     const [toDate, setToDate] = useState(null);
     const [attractionRangeSliderValue, setAttractionRangeSliderValue] = useState([5, 15]);
-
-    const addCropStyle = {
-        borderRadius: '16px',
-        marginTop: 3,
-        backgroundColor: '#498758',
-        color: 'white',
-        fontWeight: 'bold',
-        '&:hover': {
-            backgroundColor: '#498758'
-        }
-    };
 
     const handleChange = (event, newRange) => setAttractionRangeSliderValue(newRange);
 

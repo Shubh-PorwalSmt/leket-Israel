@@ -3,6 +3,23 @@ import { KeyboardArrowDown, Clear } from '@mui/icons-material';
 import ExpandableMenu from "./ExpandableMenu";
 import { useState } from "react";
 
+const areaStyle = {
+    marginLeft: '45px',
+    marginBottom: '20%',
+    fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
+}
+
+const areaDisplayOptionStyle = {
+    top: '90%',
+    left: '87%',
+    transform: 'translate(-50%, -50%)'
+}
+
+const careStyle = {
+    marginLeft: '11px',
+    fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
+}
+
 const MoreFilters = ({ cardText, imageStyle, handleClearFilters, optionArea, optionCareStatus, optionMoreFilters, setOptionArea, setOptionCareStatus, setOptionMoreFilters }) => {
     const [rotateArrow1, setRotateArrow1] = useState(false);
     const [rotateArrow2, setRotateArrow2] = useState(false);
@@ -10,23 +27,6 @@ const MoreFilters = ({ cardText, imageStyle, handleClearFilters, optionArea, opt
 
     const TEST_SIZE = '14px';
     const MORE_FILTER_IDENTIFIER = 'MoreFilters';
-    
-    const areaStyle = {
-        marginLeft: '45px',
-        marginBottom: '20%',
-        fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
-    }
-
-    const areaDisplayOptionStyle = {
-        top: '90%',
-        left: '87%',
-        transform: 'translate(-50%, -50%)'
-    }
-
-    const careStyle = {
-        marginLeft: '11px',
-        fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
-    }
 
     const displayAreaTag = <CardContent>
         <Box display="flex" position='relative' flexDirection='row'>
@@ -60,28 +60,26 @@ const MoreFilters = ({ cardText, imageStyle, handleClearFilters, optionArea, opt
     </CardContent>
 
     return (
-        <div>
-            <Box display='flex' flexDirection='column'>
-                <Typography variant="h5" fontWeight="bold" fontSize='20px' sx={cardText}>עוד מסננים</Typography>
-                <Grid container direction="row" justifyContent="flex-end" alignItems="center" columnGap={2} marginTop="3.4%">
-                    <IconButton color="error" size="large" onClick={handleClearFilters}>
-                        <Clear />
-                    </IconButton>
-                    <Box display="flex" flexDirection='column'>
-                        <ExpandableMenu isAdvanced="true" displayTag={displayMoreFiltersTag}
-                            setOption={setOptionMoreFilters} option={optionMoreFilters} rotateArrow={rotateArrow3} setRotateArrow={setRotateArrow3} />
-                    </Box>
-                    <Box display="flex" flexDirection='row'>
-                        <ExpandableMenu identifier={MORE_FILTER_IDENTIFIER} items={['הכל', 'בטיפול', 'לא בטיפול', 'לא עדכני', 'בטיפול רכז', 'דורש בדיקה', 'בטיפול מ. אזור']} displayTag={displayCareStatusTag}
-                            setOption={setOptionCareStatus} option={optionCareStatus} rotateArrow={rotateArrow2} setRotateArrow={setRotateArrow2} />
-                    </Box>
-                    <Box display="flex" flexDirection='row'>
-                        <ExpandableMenu identifier={MORE_FILTER_IDENTIFIER} items={['הכל', 'מרכז', 'צפון', 'דרום']} displayTag={displayAreaTag}
-                            setOption={setOptionArea} option={optionArea} rotateArrow={rotateArrow1} setRotateArrow={setRotateArrow1} />
-                    </Box>
-                </Grid>
-            </Box>
-        </div>
+        <Box display='flex' flexDirection='column'>
+            <Typography variant="h5" fontWeight="bold" fontSize='20px' sx={cardText}>עוד מסננים</Typography>
+            <Grid container direction="row" justifyContent="flex-end" alignItems="center" columnGap={2} marginTop="3.4%">
+                <IconButton color="error" size="large" onClick={handleClearFilters}>
+                    <Clear />
+                </IconButton>
+                <Box display="flex" flexDirection='column'>
+                    <ExpandableMenu isAdvanced="true" displayTag={displayMoreFiltersTag}
+                        setOption={setOptionMoreFilters} option={optionMoreFilters} rotateArrow={rotateArrow3} setRotateArrow={setRotateArrow3} />
+                </Box>
+                <Box display="flex" flexDirection='row'>
+                    <ExpandableMenu identifier={MORE_FILTER_IDENTIFIER} items={['הכל', 'בטיפול', 'לא בטיפול', 'לא עדכני', 'בטיפול רכז', 'דורש בדיקה', 'בטיפול מ. אזור']} displayTag={displayCareStatusTag}
+                        setOption={setOptionCareStatus} option={optionCareStatus} rotateArrow={rotateArrow2} setRotateArrow={setRotateArrow2} />
+                </Box>
+                <Box display="flex" flexDirection='row'>
+                    <ExpandableMenu identifier={MORE_FILTER_IDENTIFIER} items={['הכל', 'מרכז', 'צפון', 'דרום']} displayTag={displayAreaTag}
+                        setOption={setOptionArea} option={optionArea} rotateArrow={rotateArrow1} setRotateArrow={setRotateArrow1} />
+                </Box>
+            </Grid>
+        </Box>
     )
 }
 

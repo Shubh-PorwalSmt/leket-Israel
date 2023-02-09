@@ -3,17 +3,17 @@ import Sort from './Sort'
 import FilterCrop from './FilterCrop'
 import MoreFilters from './MoreFilters'
 
-const SortPanel = ({ sortMethod, setSortMethod, handleClearFilters, cropKind, setCropKind, moreCropKinds, setMoreCropKinds, optionArea, optionCareStatus, optionMoreFilters, setOptionArea, setOptionCareStatus, setOptionMoreFilters }) => {
-  const cardText = {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
-  };
+const cardText = {
+  display: 'flex',
+  justifyContent: 'flex-end',
+  fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
+};
 
-  const imageStyle = {
-    display: 'flex'
-  };
-  
+const imageStyle = {
+  display: 'flex'
+};
+
+const SortPanel = ({ sortMethod, setSortMethod, handleClearFilters, cropKind, setCropKind, moreCropKinds, setMoreCropKinds, optionArea, optionCareStatus, optionMoreFilters, setOptionArea, setOptionCareStatus, setOptionMoreFilters }) => {
   return (
     <>        
       <Grid container direction="row" justifyContent="flex-end" alignItems="flex-start" columnGap={6} marginTop="5%">

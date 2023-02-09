@@ -1,38 +1,38 @@
 import { Card, Box, IconButton, Grid, TextField, Divider, Typography } from "@mui/material";
 import { ArrowBack } from '@mui/icons-material';
 
+const textNameField = {
+    '.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root': {
+        color: '#2B3B1F',
+        fontWeight: 'bold',
+        fontSize: '20px'
+    },
+    '.css-1ptx2yq-MuiInputBase-root-MuiInput-root::after': {
+        borderBottom: '2px solid #6A6A6A'
+    },
+    '.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
+        color: '#6A6A6A',
+        fontWeight: 'bold'
+    }
+};
+
+const textFieldStyle = {
+    direction: 'rtl',
+    '.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root': {
+        // fontFamily: 'Open Sans Hebrew'
+        color: '#6A6A6A',
+        fontWeight: 'bold'
+    },
+    '.css-1ptx2yq-MuiInputBase-root-MuiInput-root::after': {
+        borderBottom: '2px solid #6A6A6A'
+    },
+    '.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
+        color: '#6A6A6A',
+        fontWeight: 'bold'
+    }
+};
+
 const AddField = () => {
-    const textNameField = {
-        '.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root': {
-            color: '#2B3B1F',
-            fontWeight: 'bold',
-            fontSize: '20px'
-        },
-        '.css-1ptx2yq-MuiInputBase-root-MuiInput-root::after': {
-            borderBottom: '2px solid #6A6A6A'
-        },
-        '.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-            color: '#6A6A6A',
-            fontWeight: 'bold'
-        }
-    };
-
-    const textFieldStyle = {
-        direction: 'rtl',
-        '.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root': {
-            // fontFamily: 'Open Sans Hebrew'
-            color: '#6A6A6A',
-            fontWeight: 'bold'
-        },
-        '.css-1ptx2yq-MuiInputBase-root-MuiInput-root::after': {
-            borderBottom: '2px solid #6A6A6A'
-        },
-        '.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused': {
-            color: '#6A6A6A',
-            fontWeight: 'bold'
-        }
-    };
-
     return (
         <Grid container width="90%" marginTop="50px">
             <Card elevation={9} sx={{ borderRadius: '10px' }} dir="rtl">

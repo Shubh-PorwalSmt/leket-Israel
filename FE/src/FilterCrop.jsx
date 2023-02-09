@@ -3,27 +3,27 @@ import { KeyboardArrowDown } from '@mui/icons-material';
 import ExpandableMenu from "./ExpandableMenu";
 import { useState } from "react";
 
+const cropToggleBtn = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 110,
+    height: 80,
+    borderRadius: '100px',
+    // backgroundColor: 'white',
+    boxShadow:'1px 1px 10px 1px #d4d4d4'
+};
+
+const toggleBtnText = {
+    display: 'flex',
+    justifyContent: 'center',
+    fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
+};
+
 const FilterCrop = ({ cardText, imageStyle, cropKind, moreCropKinds, setCropKind, setMoreCropKinds }) => {
     const [rotateArrow, setRotateArrow] = useState(false);
     
-    const handleCropSelection = (e, crop) => { setCropKind(crop) }
-
-    const cropToggleBtn = {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 110,
-        height: 80,
-        borderRadius: '100px',
-        // backgroundColor: 'white',
-        boxShadow:'1px 1px 10px 1px #d4d4d4'
-    };
-
-    const toggleBtnText = {
-        display: 'flex',
-        justifyContent: 'center',
-        fontFamily: '"Roboto","Helvetica","Arial",sans-serif'
-    };
+    const handleCropSelection = (event, crop) => { setCropKind(crop) }
 
     const displayTag = <CardContent>
         <Box display="flex" flexDirection='row'>
@@ -43,7 +43,6 @@ const FilterCrop = ({ cardText, imageStyle, cropKind, moreCropKinds, setCropKind
                     <ExpandableMenu items={['חציל', 'קיווי', 'אבטיח', 'תות', 'אפרסמון']} displayTag={displayTag} cropKind={cropKind}
                         setCropKind={setCropKind} setOption={setMoreCropKinds} option={moreCropKinds} rotateArrow={rotateArrow} setRotateArrow={setRotateArrow} />
                 </Box>
-                {/* TODO: Plan is when a crop hs selected from the toggle button group, it will be added to the items which is shown above */}
                 <ToggleButtonGroup sx={{
                         display: "grid",
                         gridTemplateColumns: "auto auto auto auto",

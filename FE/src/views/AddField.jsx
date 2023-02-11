@@ -71,7 +71,7 @@ const AddField = () => {
                     <Box display='flex' marginRight={5} flexDirection='column'>
                         <TextField variant="standard" label='נ"צ:' sx={textFieldStyle} />
                         <Typography display="ruby" marginTop={5} sx={{ color: '#6A6A6A' }} fontSize="14px" component="span">תמונה מהשטח:</Typography>
-                        <Box component="img" alt="" marginTop={2} width={250} height={220} src="http://localhost:3000/images/addfield/field.png" />
+                        <Box component="img" alt="" marginTop={2} width={250} height={220} src="Images/addfield/field.png" />
                     </Box>
                 </Box>
             </Card>

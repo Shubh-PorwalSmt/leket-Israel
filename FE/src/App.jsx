@@ -1,28 +1,22 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Header from "./Header";
-import CustomSearch from "./CustomSearch";
-import Home from "./Home";
-import AddField from "./AddField";
+import React from "react";
+import { RouterProvider } from "react-router-dom";
+import { Box } from "@mui/material";
+import Header from "./components/Header";
+import router from "./router";
+import CustomSearch from './components/CustomSearch'
+import { ContextProvider } from "./hooks/ContextApi";
+import CssBaseline from "@mui/material/CssBaseline";
 
-function App() {
-  const [searchText, setSearchText] = useState('');
-  const [density, setDensity] = useState('standard');
-
+const App = () => {
   return (
-    <BrowserRouter>
-      <Header setDensity={setDensity} setSearchText={setSearchText} CustomSearch={CustomSearch} />
-      <br />
-      <Routes>
-        <Route path="/"
-          element={<Home density={density} searchText={searchText} />}>
-        </Route>
-        <Route path="/addfield"
-          element={<AddField />}>
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <Box>
+      <CssBaseline />
+      <ContextProvider>
+        <Header CustomSearch={CustomSearch} />
+        <RouterProvider router={router} />
+      </ContextProvider>
+    </Box>
   );
-}
+};
 
 export default App;

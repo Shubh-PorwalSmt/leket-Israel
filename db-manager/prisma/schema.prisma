@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model crop_field {
+  id                  Int       @id @default(autoincrement())
+  leket_framer        farmer    @relation(fields: [leket_farmer_id], references: [id])
+  leket_farmer_id     String    @unique
+  leket_coordinates   Json
+  up_date             DateTime
+  yeshuv_name         String
+  moatza              String
+  geo_district_name   String
+  growth_cat          String
+  anaf_name           String
+  growth_id           String // referenced to attractiveness metrics growth id?
+  growth_name         String
+  dunam               Float
+  growth_type         String
+  parcel_type         String
+  cover_type          String
+  organic             String
+  water_type          String
+  global_id           String
+  anaf_sub            String
+  shape_length        Float
+  shape_area          Float
+  geometry            Json
+}
+
+model ndvi_metrics {
+  id                Int         @id @default(autoincrement())
+  crop_field        crop_field  @relation(fields: [crop_field_id], references: [id])
+  crop_field_id     Int
+  datetime          DateTime
+  max_ndvi          Float
+  mean_ndvi         Float
+  median_ndvi       Float
+  min_ndvi          Float
+  ndvi_like         Boolean
+}
+
+model attractiveness_metrics {
+  id                    Int
+  growth_id             Int
+  datetime              DateTime
+  attractiveness_score  Float
+  attractiveness_like   Boolean
+}
+
+model farmer {
+  id      String
+  name    String
+  active  Boolean
+}
+
+model price {
+  id            Int       @id @default(autoincrement())
+  market        String
+  date          DateTime
+  price_id      Int
+  anaf          String
+  genus         String
+  species       String
+  type          String
+  quality       String
+  average_price Float
+}
+
+model mission {
+  id                  Int       @id
+  status              String
+  date                DateTime
+  type                String
+  leket_framer        farmer    @relation(fields: [leket_farmer_id], references: [id])
+  leket_farmer_id     String
+  product_amount_kg   Float
+  product_type        String
+  source_call_id      Int
+  source_call_desc    String
+  basic_feature_id    Int
+  basic_feature_desc  String
+  ripe                Boolean
+  not_picked_desc     String
+}

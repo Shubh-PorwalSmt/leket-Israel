@@ -1,3 +1,4 @@
+/* This is an old schema, for new one relate to prisma schema */
 CREATE TABLE "crop" (
   "id" int PRIMARY KEY,
   "name" varchar,

@@ -11,9 +11,9 @@ datasource db {
 }
 
 model crop_field {
-  id                Int            @id @default(autoincrement())
-  leket_framer      farmer         @relation(fields: [leket_farmer_id], references: [id])
-  leket_farmer_id   String         @unique
+  id                Int      @id @default(autoincrement())
+  leket_framer      farmer   @relation(fields: [leket_farmer_id], references: [id])
+  leket_farmer_id   String   @unique
   leket_coordinates Json
   up_date           DateTime
   yeshuv_name       String
@@ -34,27 +34,30 @@ model crop_field {
   shape_length      Float
   shape_area        Float
   geometry          Json
-  ndvi_metrics      ndvi_metrics? // one to one relationship ndvi_metrics->field_crop
+  ndvi              ndvi? // one to one relationship ndvi_metrics->field_crop
 }
 
-model ndvi_metrics {
+model ndvi {
   id            Int        @id @default(autoincrement())
   crop_field    crop_field @relation(fields: [crop_field_id], references: [id])
   crop_field_id Int        @unique
   datetime      DateTime
-  max_ndvi      Float
-  mean_ndvi     Float
-  median_ndvi   Float
-  min_ndvi      Float
-  ndvi_like     Boolean
+  max           Float
+  mean          Float
+  median        Float
+  min           Float
+  ndvi          Boolean
 }
 
-model attractiveness_metrics {
-  id                   Int      @id
-  growth_id            Int
-  datetime             DateTime
-  attractiveness_score Float
-  attractiveness_like  Boolean
+model attractiveness {
+  id            Int      @id
+  growth_id     Int
+  growth_name   String
+  datetime      DateTime
+  leket_score   Float
+  prices_score  Float
+  average_score Float
+  like          Boolean
 }
 
 model farmer {

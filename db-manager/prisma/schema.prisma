@@ -1,5 +1,8 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
+// TODO:
+// 1. how to connect price, attractiveness, field and mission
+// 2. remove irrelvant fields
 
 generator client {
   provider = "prisma-client-js"
@@ -10,50 +13,69 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model crop_field {
-  id                Int      @id @default(autoincrement())
-  leket_framer      farmer   @relation(fields: [leket_farmer_id], references: [id])
-  leket_farmer_id   String   @unique
-  leket_coordinates Json
-  up_date           DateTime
-  yeshuv_name       String
-  moatza            String
-  geo_district_name String
-  growth_cat        String
-  anaf_name         String
-  growth_id         String // referenced to attractiveness metrics growth id?
-  growth_name       String
-  dunam             Float
-  growth_type       String
-  parcel_type       String
-  cover_type        String
-  organic           String
-  water_type        String
-  global_id         String
-  anaf_sub          String
-  shape_length      Float
-  shape_area        Float
-  geometry          Json
-  ndvi              ndvi? // one to one relationship ndvi_metrics->field_crop
+enum FieldStatus {
+  IN_PROGRESS
+  NOT_KNOWN
 }
 
-model ndvi {
-  id            Int        @id @default(autoincrement())
-  crop_field    crop_field @relation(fields: [crop_field_id], references: [id])
-  crop_field_id Int        @unique
-  datetime      DateTime
-  max           Float
-  mean          Float
-  median        Float
-  min           Float
-  ndvi          Boolean
+enum Familiarity {
+  KNOWN
+  NOT_KNOWN
+}
+
+enum Product {
+  TOMATO
+  CUCAMBER
+  ONION
+}
+
+enum Region {
+  SOUTH
+  NORTH
+  CENTER
+  JERUSALEM
+}
+
+model Field {
+  id                Int         @id @default(autoincrement())
+  leket_name        String
+  product           Product
+  framer            farmer      @relation(fields: [farmer_id], references: [id])
+  farmer_id         String
+  region            Region
+  familiarity       Familiarity
+  leket_coordinates Json
+  polygon           Json
+  status            FieldStatus
+  status_date       DateTime
+  delay_date        DateTime // what does it mean delay? maybe regarding to mission?
+  growth_cat        String // what are the categories and are they relevant?
+  growth_id         String // referenced to attractiveness metrics growth id?
+  growth_name       String // why relevant?
+  dunam             Float
+  growth_type       String // why relevant?
+  cover_type        String // what are the types?
+  global_id         String // what is that?
+  ndvis             Ndvi[]
+  missions          mission[]
+}
+
+model Ndvi {
+  id       Int      @id @default(autoincrement())
+  field    Field    @relation(fields: [field_id], references: [id])
+  field_id Int      @unique
+  date     DateTime
+  max      Float
+  mean     Float
+  median   Float
+  min      Float
+  like     Boolean
 }
 
 model attractiveness {
   id            Int      @id
-  growth_id     Int
-  growth_name   String
-  datetime      DateTime
+  product       String
+  date          DateTime
   leket_score   Float
   prices_score  Float
   average_score Float
@@ -61,39 +83,32 @@ model attractiveness {
 }
 
 model farmer {
-  id         String      @id
-  name       String
-  active     Boolean
-  crop_field crop_field? // one to one relationship farmer can have one crop_field?
-  mission    mission[] // many to many relationship (farmer can have many missions)?
+  id     String  @id
+  name   String
+  active Boolean
+  fields Field[] // farmer can have many fields?
 }
 
 model price {
   id            Int      @id @default(autoincrement())
   market        String
   date          DateTime
-  price_id      Int
-  anaf          String
-  genus         String
-  species       String
-  type          String
+  product_id    Int
+  branch        String // why needed?
+  product       String
+  species       String // why needed?
+  type          String // why needed?
   quality       String
   average_price Float
 }
 
 model mission {
-  id                 Int      @id
-  status             String
-  date               DateTime
-  type               String
-  leket_framer       farmer   @relation(fields: [leket_farmer_id], references: [id])
-  leket_farmer_id    String
-  product_amount_kg  Float
-  product_type       String
-  source_call_id     Int
-  source_call_desc   String
-  basic_feature_id   Int
-  basic_feature_desc String
-  ripe               Boolean
-  not_picked_desc    String
+  id              Int      @id
+  date            DateTime
+  field           Field    @relation(fields: [field_id], references: [id])
+  field_id        Int
+  amount_kg       Float
+  was_ripe        String
+  was_picked      Boolean
+  not_picked_desc String
 }

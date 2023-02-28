@@ -23,12 +23,6 @@ enum Familiarity {
   NOT_KNOWN
 }
 
-enum Product {
-  TOMATO
-  CUCAMBER
-  ONION
-}
-
 enum Region {
   SOUTH
   NORTH
@@ -37,78 +31,88 @@ enum Region {
 }
 
 model Field {
-  id                Int         @id @default(autoincrement())
-  leket_name        String
-  product           Product
-  framer            farmer      @relation(fields: [farmer_id], references: [id])
-  farmer_id         String
-  region            Region
-  familiarity       Familiarity
-  leket_coordinates Json
-  polygon           Json
-  status            FieldStatus
-  status_date       DateTime
-  delay_date        DateTime // what does it mean delay? maybe regarding to mission?
-  growth_cat        String // what are the categories and are they relevant?
-  growth_id         String // referenced to attractiveness metrics growth id?
-  growth_name       String // why relevant?
-  dunam             Float
-  growth_type       String // why relevant?
-  cover_type        String // what are the types?
-  global_id         String // what is that?
-  ndvis             Ndvi[]
-  missions          mission[]
+  id          Int         @id @default(autoincrement())
+  name        String
+  product     Product     @relation(fields: [product_id], references: [id])
+  product_id  Int     @unique
+  framer      Farmer      @relation(fields: [farmer_id], references: [id])
+  farmer_id   String
+  region      Region
+  familiarity Familiarity
+  latitude    Float
+  longitude   Float
+  polygon     Json
+  status      FieldStatus
+  status_date DateTime
+  delay_date  DateTime // what does it mean delay? maybe regarding to mission?
+  Satelites   Satelite[]
+  Missions    Mission[]
+  Histories   History[]
 }
 
-model Ndvi {
-  id       Int      @id @default(autoincrement())
-  field    Field    @relation(fields: [field_id], references: [id])
-  field_id Int      @unique
-  date     DateTime
-  max      Float
-  mean     Float
-  median   Float
-  min      Float
-  like     Boolean
+model Product {
+  id       Int       @id @default(autoincrement())
+  name     String
+  Field   Field?
+  Missions Mission?
+  History History?
+  Attractiveness Attractiveness?
 }
 
-model attractiveness {
+model Satelite {
+  id         Int      @id @default(autoincrement())
+  field      Field    @relation(fields: [field_id], references: [id])
+  field_id   Int      @unique
+  date       DateTime
+  statistics Json
+  like       Boolean
+}
+
+model Attractiveness {
   id            Int      @id
-  product       String
+  Product       Product @relation(fields: [product_id], references: [id])
+  product_id  Int @unique
   date          DateTime
   leket_score   Float
-  prices_score  Float
+  market_score  Float
   average_score Float
   like          Boolean
 }
 
-model farmer {
+model Farmer {
   id     String  @id
   name   String
-  active Boolean
   fields Field[] // farmer can have many fields?
 }
 
-model price {
-  id            Int      @id @default(autoincrement())
-  market        String
-  date          DateTime
-  product_id    Int
-  branch        String // why needed?
-  product       String
-  species       String // why needed?
-  type          String // why needed?
-  quality       String
-  average_price Float
+model Market {
+  id         Int      @id @default(autoincrement())
+  date       DateTime
+  Product    Product  @relation(fields: [product_id], references: [id])
+  product_id Int
+  price      Float
 }
 
-model mission {
-  id              Int      @id
+model Mission {
+  id              Int      @id @default(autoincrement())
   date            DateTime
   field           Field    @relation(fields: [field_id], references: [id])
   field_id        Int
+  product         Product  @relation(fields: [product_id], references: [id])
+  product_id      Int
   amount_kg       Float
   was_ripe        String
   was_picked      Boolean
   not_picked_desc String
+}
+
+model History {
+  id Int  @id @default(autoincrement())
+  field Field @relation(fields: [field_id], references: [id])
+  field_id  Int
+  date  DateTime
+  Product Product @relation(fields: [product_id], references: [id])
+  product_id  Int
+  Farmer  Farmer @relation(fields: [farmer_id], references: [id])
+  farmer_id Int
 }

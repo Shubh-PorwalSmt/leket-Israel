@@ -62,14 +62,13 @@ model Field {
 }
 
 model Satelite {
-  id         Int      @id @default(autoincrement())
   field      Field    @relation(fields: [field_id], references: [id])
-  field_id   Int      @unique
+  field_id   Int
   date       DateTime
   statistics Json
   like       Boolean
 
-  @@index([field_id, date])
+  @@id([field_id, date])
 }
 
 model Attractiveness {
@@ -111,12 +110,12 @@ model Mission {
 }
 
 model History {
-  id           Int      @id @default(autoincrement())
   field        Field    @relation(fields: [field_id], references: [id])
   field_id     Int
   date         DateTime
   product_name Product
   farmer_id    String
 
+  @@id([date, field_id, product_name])
   @@index([field_id, product_name])
 }

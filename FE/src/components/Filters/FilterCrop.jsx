@@ -9,7 +9,7 @@ import {
 import { KeyboardArrowDown } from "@mui/icons-material";
 import ExpandableMenu from "./ExpandableMenu";
 import { useState, useContext } from "react";
-import ContextProvider from "../hooks/ContextApi";
+import ContextProvider from "../../hooks/ContextApi";
 
 const cropToggleBtn = {
   display: "flex",
@@ -18,8 +18,7 @@ const cropToggleBtn = {
   width: 110,
   height: 80,
   borderRadius: "100px",
-  // backgroundColor: 'white',
-  boxShadow: "1px 1px 10px 1px #d4d4d4",
+  boxShadow: "1px 1px 10px 1px #d4d4d4"
 };
 
 const toggleBtnText = {
@@ -98,7 +97,7 @@ const FilterCrop = ({ cardText, imageStyle }) => {
             display: "grid",
             gridTemplateColumns: "auto auto auto auto",
             gridGap: "15px",
-            padding: "10px",
+            padding: "10px"
           }}
           value={cropKind}
           onChange={handleCropSelection}

@@ -9,10 +9,10 @@ import {
 } from "@mui/material";
 import { Toc, Logout } from "@mui/icons-material";
 import { useState, useContext } from "react";
-import ContextProvider from "../hooks/ContextApi";
+import ContextProvider from "../../hooks/ContextApi";
 
 const Header = ({ CustomSearch }) => {
-  const { setDensity } = useContext(ContextProvider);
+  const { setMode } = useContext(ContextProvider);
   const { setSearchText } = useContext(ContextProvider);
 
   const [leftBtnColor, setLeftBtnColor] = useState("orange");
@@ -47,9 +47,7 @@ const Header = ({ CustomSearch }) => {
     setLeftBtnColor(rightBtnColor);
     setRightBtnColor(leftBtnColor);
 
-    rightBtnColor === "orange"
-      ? setDensity("standard")
-      : setDensity("comfortable");
+    rightBtnColor === "orange" ? setMode("grid") : setMode("map");
   };
 
   return (
@@ -59,7 +57,6 @@ const Header = ({ CustomSearch }) => {
         position="absolute"
         sx={{ backgroundColor: "#488856" }}
       >
-        {/* sx={{ width: `calc(100% - ${drawerWidth}px)`, mr: `${drawerWidth}px`, backgroundColor: "#488856" }}> */}
         <Toolbar>
           <ButtonGroup variant="contained" sx={{ borderRadius: "10%" }}>
             <Button

@@ -32,7 +32,6 @@ const DataTable = ({
   rows,
   setRows,
   originalRows,
-  density,
   searchText,
   cropKind,
   optionArea,
@@ -258,7 +257,6 @@ const DataTable = ({
               : "#ebf2ff",
         }}
       />
-      // #f9ecde #fca9a8 #ebf2ff
     );
   };
 
@@ -364,7 +362,6 @@ const DataTable = ({
         hideFooterSelectedRowCount
         disableSelectionOnClick
         autoHeight
-        density={density}
         rowThreshold={0}
         components={{
           Toolbar: CustomExport,

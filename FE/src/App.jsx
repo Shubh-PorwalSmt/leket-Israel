@@ -1,9 +1,9 @@
 import React from "react";
 import { RouterProvider } from "react-router-dom";
 import { Box } from "@mui/material";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import router from "./router";
-import CustomSearch from './components/CustomSearch'
+import CustomSearch from './components/Header/CustomSearch'
 import { ContextProvider } from "./hooks/ContextApi";
 import CssBaseline from "@mui/material/CssBaseline";
 

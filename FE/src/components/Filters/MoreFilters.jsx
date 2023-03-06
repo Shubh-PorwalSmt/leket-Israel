@@ -2,8 +2,8 @@ import { Box, CardContent, Typography, Grid, IconButton } from "@mui/material";
 import { KeyboardArrowDown, Clear } from "@mui/icons-material";
 import ExpandableMenu from "./ExpandableMenu";
 import { useState, useContext } from "react";
-import ContextProvider from "../hooks/ContextApi";
-import { data as originalRows } from "../constants/mockGridData";
+import ContextProvider from "../../hooks/ContextApi";
+import { data as originalRows } from "../../constants/mockGridData";
 
 const areaStyle = {
   marginLeft: "45px",

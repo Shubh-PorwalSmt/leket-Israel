@@ -92,7 +92,6 @@ const ExpandableMenu = ({
         PaperProps={{
           style: {
             maxHeight: !isAdvanced ? ITEM_HEIGHT * 4.4 : "",
-            // width: '5rem',
           },
         }}
       >
@@ -100,7 +99,6 @@ const ExpandableMenu = ({
           items.map((item) => (
             <MenuItem
               sx={{
-                // width: '90%',
                 background: item === option ? "#d0eacf" : "",
                 borderRadius: "10px",
                 "&:hover": {

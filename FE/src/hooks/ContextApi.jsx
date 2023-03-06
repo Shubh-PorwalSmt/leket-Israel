@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
 import { data as originalRows } from "../constants/mockGridData.json";
 
 const ContextApi = createContext({});
@@ -7,7 +7,7 @@ export default ContextApi;
 
 export const ContextProvider = ({ children }) => {
   const [searchText, setSearchText] = useState("");
-  const [density, setDensity] = useState("standard");
+  const [mode, setMode] = useState("grid");
   const [sortMethod, setSortMethod] = useState("");
   const [cropKind, setCropKind] = useState("");
   const [moreCropKinds, setMoreCropKinds] = useState("");
@@ -22,8 +22,8 @@ export const ContextProvider = ({ children }) => {
         value={{
           searchText,
           setSearchText,
-          density,
-          setDensity,
+          mode,
+          setMode,
           sortMethod,
           setSortMethod,
           cropKind,

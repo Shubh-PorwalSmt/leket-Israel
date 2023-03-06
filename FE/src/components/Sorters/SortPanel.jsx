@@ -1,7 +1,7 @@
 import { Grid, Divider } from "@mui/material";
 import Sort from "./Sort";
-import FilterCrop from "./FilterCrop";
-import MoreFilters from "./MoreFilters";
+import FilterCrop from "../Filters/FilterCrop";
+import MoreFilters from "../Filters/MoreFilters";
 
 const cardText = {
   display: "flex",

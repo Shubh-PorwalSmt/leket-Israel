@@ -1,8 +1,8 @@
 import { Box, Typography, CardContent } from "@mui/material";
 import { KeyboardArrowDown } from "@mui/icons-material";
-import ExpandableMenu from "./ExpandableMenu";
+import ExpandableMenu from "../Filters/ExpandableMenu";
 import { useState, useContext } from "react";
-import ContextProvider from "../hooks/ContextApi";
+import ContextProvider from "../../hooks/ContextApi";
 
 const Sort = ({ cardText }) => {
   const { sortMethod, setSortMethod } = useContext(ContextProvider);

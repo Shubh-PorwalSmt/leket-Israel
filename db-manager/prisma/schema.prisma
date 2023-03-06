@@ -30,7 +30,7 @@ enum Region {
 }
 
 enum Product {
-  CUCAMBER
+  CUCUMBER
   ONION
   TOMATO
 }

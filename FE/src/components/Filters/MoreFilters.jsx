@@ -4,6 +4,8 @@ import ExpandableMenu from "./ExpandableMenu";
 import { useState, useContext } from "react";
 import ContextProvider from "../../hooks/ContextApi";
 import { data as originalRows } from "../../constants/mockGridData";
+import { areaOptions } from "../../constants/filterSelection";
+import { careStatusOptions } from "../../constants/filterSelection";
 
 const areaStyle = {
   marginLeft: "45px",
@@ -36,9 +38,9 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 
   const handleClearFilters = () => {
     setRows(originalRows);
-    setOptionArea("הכל");
-    setOptionCareStatus("הכל");
-    setCropKind("");
+    setOptionArea(["הכל"]);
+    setOptionCareStatus(["הכל"]);
+    setCropKind([""]);
     setOptionMoreFilters("");
     setMoreCropKinds("");
   };
@@ -180,15 +182,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
         <Box display="flex" flexDirection="row">
           <ExpandableMenu
             identifier={MORE_FILTER_IDENTIFIER}
-            items={[
-              "הכל",
-              "בטיפול",
-              "לא בטיפול",
-              "לא עדכני",
-              "בטיפול רכז",
-              "דורש בדיקה",
-              "בטיפול מ. אזור",
-            ]}
+            items={careStatusOptions}
             displayTag={displayCareStatusTag}
             setOption={setOptionCareStatus}
             option={optionCareStatus}
@@ -199,7 +193,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
         <Box display="flex" flexDirection="row">
           <ExpandableMenu
             identifier={MORE_FILTER_IDENTIFIER}
-            items={["הכל", "מרכז", "צפון", "דרום"]}
+            items={areaOptions}
             displayTag={displayAreaTag}
             setOption={setOptionArea}
             option={optionArea}

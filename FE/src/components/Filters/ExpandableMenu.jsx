@@ -38,7 +38,11 @@ const ExpandableMenu = ({
 
     try {
       var item = e.target.labels[0].innerText;
-      setOption(item);
+      setOption((prevItem) => ({
+        ...prevItem,
+        item
+      }));
+      console.log(option);
     } catch (e) {}
 
     if (cropKind != null) setCropKind([...cropKind, item]);

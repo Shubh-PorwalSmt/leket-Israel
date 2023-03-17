@@ -3,6 +3,7 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 import ExpandableMenu from "../Filters/ExpandableMenu";
 import { useState, useContext } from "react";
 import ContextProvider from "../../hooks/ContextApi";
+import { sortOptions } from "../../constants/sortSelection";
 
 const Sort = ({ cardText }) => {
   const { sortMethod, setSortMethod } = useContext(ContextProvider);
@@ -55,7 +56,7 @@ const Sort = ({ cardText }) => {
         מיון
       </Typography>
       <ExpandableMenu
-        items={["אטרקטביות", "מיקום", "דירוג", "עדכון אחרון"]}
+        items={sortOptions}
         displayTag={displayTag}
         setOption={setSortMethod}
         option={sortMethod}

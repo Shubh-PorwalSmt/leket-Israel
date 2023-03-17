@@ -204,11 +204,13 @@ const DataTable = ({
         (cropKind.length > 0
           ? cropKind.includes(row.cropKind.toLowerCase())
           : true) &&
-        (optionArea !== "הכל"
-          ? optionArea.toLowerCase() === row.area.toLowerCase()
+        (optionArea.length > 0
+          ? // ? optionArea.toLowerCase() === row.area.toLowerCase()
+            optionArea.includes(row.area.toLowerCase())
           : true) &&
-        (optionCareStatus !== "הכל"
-          ? optionCareStatus.toLowerCase() === row.status.toLowerCase()
+        (optionCareStatus.length > 0
+          ? // ? optionCareStatus.toLowerCase() === row.status.toLowerCase()
+            optionCareStatus.includes(row.status.toLowerCase())
           : true)
       );
       // && (checkMoreFilters(optionMoreFilters, row));
@@ -282,14 +284,6 @@ const DataTable = ({
       const cRows = apiRef.current.getSelectedRows();
       const sRows =
         cRows.size > 0 ? Array.from(cRows, (entry) => entry[1]) : rows;
-
-      /* TODO: need to add an option in Settings page to select in which file type we want to download the data
-      (currently it exports into excel file, but it can also be exported as csv file as well) */
-
-      // for CSV
-      // new CsvBuilder("fields.csv")
-      //   .addRows(sRows.map(rowData => columns.map(col => rowData[col.field])))
-      //   .exportFile();
 
       // for EXCEL
       const worksheet = XLSX.utils.json_to_sheet(sRows);

@@ -10,6 +10,7 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 import ExpandableMenu from "./ExpandableMenu";
 import { useState, useContext } from "react";
 import ContextProvider from "../../hooks/ContextApi";
+import { cropKindOptions } from "../../constants/filterSelection";
 
 const cropToggleBtn = {
   display: "flex",
@@ -82,7 +83,7 @@ const FilterCrop = ({ cardText, imageStyle }) => {
       >
         <Box display="flex" flexDirection="row">
           <ExpandableMenu
-            items={["חציל", "קיווי", "אבטיח", "תות", "אפרסמון"]}
+            items={cropKindOptions}
             displayTag={displayTag}
             cropKind={cropKind}
             setCropKind={setCropKind}

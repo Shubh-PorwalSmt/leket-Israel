@@ -87,8 +87,8 @@ const FilterCrop = ({ cardText, imageStyle }) => {
             displayTag={displayTag}
             cropKind={cropKind}
             setCropKind={setCropKind}
-            setOption={setMoreCropKinds}
-            option={moreCropKinds}
+            setOptions={setMoreCropKinds}
+            options={moreCropKinds}
             rotateArrow={rotateArrow}
             setRotateArrow={setRotateArrow}
           />

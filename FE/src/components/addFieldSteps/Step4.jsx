@@ -14,6 +14,7 @@ const Step4 = (textFieldStyle) => {
         name="xaxis"
         label="ציר X"
         sx={textFieldStyle}
+        required
       />
       <TextField
         variant="standard"
@@ -21,6 +22,7 @@ const Step4 = (textFieldStyle) => {
         name="yaxis"
         label="ציר Y"
         sx={textFieldStyle}
+        required
       />
       <TextField
         variant="standard"
@@ -28,6 +30,7 @@ const Step4 = (textFieldStyle) => {
         name="fieldNumber"
         label="מספר חלקה"
         sx={textFieldStyle}
+        required
       />
     </Grid>
   );

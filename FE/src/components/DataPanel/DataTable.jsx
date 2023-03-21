@@ -7,6 +7,7 @@ import {
 } from "@mui/x-data-grid";
 import { Security, FileCopy, Add } from "@mui/icons-material";
 import { createSvgIcon } from "@mui/material/utils";
+import CustomStatus from "./CustomStatus";
 import { useEffect, useState } from "react";
 import moment from "moment/moment";
 import * as XLSX from "xlsx/xlsx.mjs";
@@ -44,18 +45,15 @@ const DataTable = ({
     {
       field: "id",
       headerName: "ID",
-      // width: 35
     },
     {
       field: "fieldName",
       headerName: "שם השדה",
-      // width: 80,
       editable: false,
     },
     {
       field: "cropKind",
       headerName: "סוג יבול",
-      // width: 65,
       editable: false,
     },
     {
@@ -65,49 +63,42 @@ const DataTable = ({
       editable: false,
     },
     {
-      field: "maturityLevel",
-      headerName: "רמת בשלות",
-      // description: 'This column has a value getter and is not sortable.',
-      // width: 85,
-      // valueGetter: (params) =>
-      //   `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    },
-    {
       field: "NSVIScale",
       headerName: "NDVI",
-      // width: 52,
       editable: false,
       renderCell: (params) => <NDVI label={params.value} />,
     },
     {
       field: "area",
       headerName: "אזור",
-      // width: 45,
       editable: false,
     },
     {
       field: "agriculturalNumber",
       headerName: "מספר חקלאי",
-      // width: 90,
+      editable: false,
+    },
+    {
+      field: "aquaintanceMode",
+      headerName: "מצב היכרות",
+      editable: false,
+      // renderCell: (params) => <NDVI label={params.value} />,
+    },
+    {
+      field: "lastUpdate",
+      headerName: "עדכון אחרון",
       editable: false,
     },
     {
       field: "status",
       headerName: "סטטוס",
       width: 140,
-      editable: false,
-      renderCell: (params) => <Status label={params.value} />,
-    },
-    {
-      field: "lastUpdate",
-      headerName: "עדכון אחרון",
-      // width: 90,
-      editable: false,
+      editable: true,
+      renderCell: (params) => <CustomStatus label={params.value} />,
     },
     {
       field: "actions",
       type: "actions",
-      // width: 80,
       getActions: (params) => [
         <GridActionsCellItem
           icon={<Security />}
@@ -164,15 +155,19 @@ const DataTable = ({
 
   const applyFilteringAndSorting = () => {
     // first sort, then from the sorted rows filter...
-    var R = originalRows.slice();
+    var slicedOriginalRows = originalRows.slice();
     var sortedRows = null;
 
     switch (sortMethod) {
       case "אטרקטביות":
-        sortedRows = R.sort((a, b) => b.attractionScale - a.attractionScale);
+        sortedRows = slicedOriginalRows.sort(
+          (a, b) => b.attractionScale - a.attractionScale
+        );
         break;
       case "דירוג":
-        sortedRows = R.sort((a, b) => b.NSVIScale - a.NSVIScale);
+        sortedRows = slicedOriginalRows.sort(
+          (a, b) => b.NSVIScale - a.NSVIScale
+        );
         break;
       case "מיקום":
         const order = ["צפון", "דרום", "מרכז"];
@@ -183,38 +178,51 @@ const DataTable = ({
           };
         }, {});
 
-        sortedRows = R.sort(
+        sortedRows = slicedOriginalRows.sort(
           (a, b) => sortByOrder[a.area] - sortByOrder[b.area]
         );
         break;
       case "עדכון אחרון":
-        sortedRows = R.sort((a, b) =>
+        sortedRows = slicedOriginalRows.sort((a, b) =>
           new moment(b.lastUpdate.replaceAll(".", "/"), "DD/MM/YYYY").diff(
             new moment(a.lastUpdate.replaceAll(".", "/"), "DD/MM/YYYY")
           )
         );
         break;
       default:
-        sortedRows = R;
+        sortedRows = slicedOriginalRows;
         break;
     }
 
     const filteredRows = sortedRows.filter((row) => {
-      return (
-        (cropKind.length > 0
-          ? cropKind.includes(row.cropKind.toLowerCase())
-          : true) &&
-        (optionArea.length > 0
-          ? // ? optionArea.toLowerCase() === row.area.toLowerCase()
-            optionArea.includes(row.area.toLowerCase())
-          : true) &&
-        (optionCareStatus.length > 0
-          ? // ? optionCareStatus.toLowerCase() === row.status.toLowerCase()
-            optionCareStatus.includes(row.status.toLowerCase())
-          : true)
-      );
-      // && (checkMoreFilters(optionMoreFilters, row));
+      // console.log(row.status);
+      // console.log(row.area);
+      return optionCareStatus.includes("הכל")
+        ? optionArea.includes(row.area)
+        : optionArea.includes("הכל")
+        ? optionArea.includes(row.area)
+        : true;
+      // optionArea.length > 0 ? optionArea.includes(row.area.toLowerCase()) : true;
     });
+
+    // console.log(filteredRows);
+
+    // const filteredRows = sortedRows.filter((row) => {
+    //   console.log(cropKind);
+    //   // optionArea.toLowerCase() === row.area.toLowerCase()
+    //   // optionCareStatus.toLowerCase() === row.status.toLowerCase()
+    //   console.log(optionArea.includes(row.area.toLowerCase()));
+    //   return cropKind.length > 0
+    //     ? cropKind.includes(row.cropKind.toLowerCase())
+    //     : true
+    //     && optionArea.length > 0
+    //     ? optionArea.includes(row.area.toLowerCase())
+    //     : true
+    //     && optionCareStatus.length > 0
+    //     ? optionCareStatus.includes(row.status.toLowerCase())
+    //     : true;
+    //   // && (checkMoreFilters(optionMoreFilters, row));
+    // });
 
     setRows(filteredRows);
   };
@@ -258,7 +266,40 @@ const DataTable = ({
               ? "#fca9a8"
               : "#ebf2ff",
         }}
-      />
+      >
+        <Menu
+          id="basic-menu"
+          dir="rtl"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          PaperProps={{
+            style: {
+              maxHeight: !isAdvanced ? ITEM_HEIGHT * 4.4 : "",
+            },
+          }}
+        >
+          <MenuItem
+            sx={{
+              background: options.includes(item) ? "#d0eacf" : "",
+              borderRadius: "10px",
+              "&:hover": {
+                background: options.includes(item) ? "#d0eacf" : "",
+              },
+            }}
+            key={item}
+            onClick={handleMenuItemClick}
+          ></MenuItem>
+        </Menu>
+      </Chip>
     );
   };
 
@@ -336,7 +377,7 @@ const DataTable = ({
     return <Checkbox color="success" />;
   };
   //#endregion
-
+  // console.log(rows);
   return (
     <Card
       dir="rtl"

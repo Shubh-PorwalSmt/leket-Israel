@@ -1,0 +1,13 @@
+{
+    "fields": [
+        "fieldName",
+        "cropKind",
+        "fieldKind",
+        "agriculturalNumber",
+        "area",
+        "acquaintanceMode",
+        "xaxis",
+        "yaxis",
+        "fieldNumber"
+    ]
+}

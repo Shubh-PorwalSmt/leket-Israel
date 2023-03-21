@@ -1,4 +1,8 @@
 import { TextField, Grid } from "@mui/material";
+import CustomDropdown from "./CustomDropdown";
+import { cropKindOptions } from "../../constants/filterSelection";
+import { areaOptions } from "../../constants/filterSelection";
+import { acquaintanceModeOptions } from "../../constants/filterSelection";
 
 const Step2 = (textFieldStyle) => {
   return (
@@ -6,42 +10,30 @@ const Step2 = (textFieldStyle) => {
       container
       direction="column"
       justifyContent="center"
-      alignContent="center"
     >
-      <TextField
-        variant="standard"
+      <CustomDropdown
         id="cropKind"
-        name="cropKind"
         label="סוג יבול"
-        sx={textFieldStyle}
+        options={cropKindOptions}
       />
-      <TextField
-        variant="standard"
+      <CustomDropdown
         id="fieldKind"
-        name="fieldKind"
         label="סוג שטח"
-        sx={textFieldStyle}
+        options={cropKindOptions}
       />
       <TextField
         variant="standard"
+        required
         id="agriculturalNumber"
         name="agriculturalNumber"
         label="מספר חקלאי"
         sx={textFieldStyle}
       />
-      <TextField
-        variant="standard"
-        id="area"
-        name="area"
-        label="איזור"
-        sx={textFieldStyle}
-      />
-      <TextField
-        variant="standard"
+      <CustomDropdown id="area" label="איזור" options={areaOptions} />
+      <CustomDropdown
         id="acquaintanceMode"
-        name="acquaintanceMode"
         label="מצב היכרות"
-        sx={textFieldStyle}
+        options={acquaintanceModeOptions}
       />
     </Grid>
   );

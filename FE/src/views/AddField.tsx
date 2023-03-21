@@ -18,6 +18,7 @@ import Step1 from "../components/addFieldSteps/Step1";
 import Step2 from "../components/addFieldSteps/Step2";
 import Step3 from "../components/addFieldSteps/Step3";
 import Step4 from "../components/addFieldSteps/Step4";
+import { fields } from "../constants/fields.json"
 
 const stepperStyle = {
   ".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active, .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed":
@@ -84,7 +85,9 @@ const AddField = () => {
 
     for (var field of Object.entries(target)) {
       // TODO: need fix that all values will be added to the dataState
-      if (field[1].tagName === "INPUT") {
+      if (fields.includes(field[1].name)) {
+        console.log(field[1].name);
+        console.log(field[1].value);
         setData((prevStep) => ({
           ...prevStep,
           [field[1].name]: field[1].value,

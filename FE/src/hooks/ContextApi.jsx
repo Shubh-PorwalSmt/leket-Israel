@@ -10,12 +10,12 @@ export const ContextProvider = ({ children }) => {
   const [mode, setMode] = useState("grid");
   const [sortMethod, setSortMethod] = useState("");
   const [cropKind, setCropKind] = useState([""]);
-  const [moreCropKinds, setMoreCropKinds] = useState("");
+  const [moreCropKinds, setMoreCropKinds] = useState([""]);
   const [optionArea, setOptionArea] = useState(["הכל"]);
   const [optionCareStatus, setOptionCareStatus] = useState(["הכל"]);
   const [optionMoreFilters, setOptionMoreFilters] = useState("");
   const [rows, setRows] = useState(originalRows);
-
+  
   return (
     <>
       <ContextApi.Provider

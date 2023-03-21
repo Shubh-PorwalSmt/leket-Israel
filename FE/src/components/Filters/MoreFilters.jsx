@@ -76,7 +76,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
             fontWeight="bold"
             sx={areaDisplayOptionStyle}
           >
-            {optionArea}
+            {optionArea.join(', ')}
           </Typography>
         </div>
       </Box>
@@ -111,7 +111,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
             fontWeight="bold"
             sx={cardText}
           >
-            {optionCareStatus}
+            {optionCareStatus.join(', ')}
           </Typography>
         </div>
       </Box>
@@ -173,8 +173,8 @@ const MoreFilters = ({ cardText, imageStyle }) => {
           <ExpandableMenu
             isAdvanced="true"
             displayTag={displayMoreFiltersTag}
-            setOption={setOptionMoreFilters}
-            option={optionMoreFilters}
+            setOptions={setOptionMoreFilters}
+            options={optionMoreFilters}
             rotateArrow={rotateArrow3}
             setRotateArrow={setRotateArrow3}
           />
@@ -184,8 +184,8 @@ const MoreFilters = ({ cardText, imageStyle }) => {
             identifier={MORE_FILTER_IDENTIFIER}
             items={careStatusOptions}
             displayTag={displayCareStatusTag}
-            setOption={setOptionCareStatus}
-            option={optionCareStatus}
+            setOptions={setOptionCareStatus}
+            options={optionCareStatus}
             rotateArrow={rotateArrow2}
             setRotateArrow={setRotateArrow2}
           />
@@ -195,8 +195,8 @@ const MoreFilters = ({ cardText, imageStyle }) => {
             identifier={MORE_FILTER_IDENTIFIER}
             items={areaOptions}
             displayTag={displayAreaTag}
-            setOption={setOptionArea}
-            option={optionArea}
+            setOptions={setOptionArea}
+            options={optionArea}
             rotateArrow={rotateArrow1}
             setRotateArrow={setRotateArrow1}
           />

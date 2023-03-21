@@ -7,25 +7,23 @@ import {
   Divider,
 } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
-import React, { useState } from "react";
+import { useState } from "react";
 import AdvancedFilters from "./AdvancedFilters";
 
 const ExpandableMenu = ({
-  identifier = null,
   isAdvanced,
   items,
   displayTag,
   cropKind = null,
   setCropKind = null,
-  setOption,
-  option,
+  setOptions,
+  options,
   rotateArrow,
   setRotateArrow,
 }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
-
   const ITEM_HEIGHT = 60;
 
   const handleClick = (e) => {
@@ -34,24 +32,28 @@ const ExpandableMenu = ({
   };
 
   const handleMenuItemClick = (e) => {
-    setRotateArrow(!rotateArrow);
-
     try {
-      var item = e.target.labels[0].innerText;
-      setOption((prevItem) => ({
-        ...prevItem,
-        item
-      }));
-      console.log(option);
+      const item = e.target.labels[0].innerText;
+
+      if (options.includes(item)) {
+        const newOptions = options.filter(option => option !== item);
+        setOptions(newOptions);
+      }
+      else if (item === "הכל")
+        setOptions(["הכל"]);
+      else if (!options.includes("הכל"))
+        setOptions(prev => [...prev, item]);
+      else
+        setOptions([item]);
+      
     } catch (e) {}
 
-    if (cropKind != null) setCropKind([...cropKind, item]);
-
-    setAnchorEl(null);
+    if (cropKind != null)
+      setCropKind([...cropKind, item]);
   };
 
   const handleClearAllClick = (e) => {
-    setOption(identifier === "MoreFilters" ? "הכל" : [""]);
+    setOptions(["הכל"]);
   };
 
   const handleClose = () => {
@@ -103,10 +105,10 @@ const ExpandableMenu = ({
           items.map((item) => (
             <MenuItem
               sx={{
-                background: item === option ? "#d0eacf" : "",
+                background: options.includes(item) ? "#d0eacf" : "",
                 borderRadius: "10px",
                 "&:hover": {
-                  background: item === option ? "#d0eacf" : "",
+                  background: options.includes(item) ? "#d0eacf" : "",
                 },
               }}
               key={item}
@@ -117,13 +119,13 @@ const ExpandableMenu = ({
                   marginRight: 0,
                   marginLeft: 0,
                   ".css-ahj2mt-MuiTypography-root": {
-                    fontWeight: item === option ? "bold" : "",
+                    fontWeight: options.includes(item) ? "bold" : "",
                   },
                 }}
                 control={
                   <Checkbox
                     sx={{ borderRadius: "10px" }}
-                    checked={item === option ? true : false}
+                    checked={options.includes(item) ? true : false}
                     color="success"
                     size="small"
                   />

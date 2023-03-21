@@ -8,6 +8,7 @@ const Step1 = (textFieldStyle) => {
       id="fieldName"
       name="fieldName"
       sx={textFieldStyle}
+      required
     />
   );
 };

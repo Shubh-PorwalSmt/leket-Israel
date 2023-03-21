@@ -58,8 +58,8 @@ const Sort = ({ cardText }) => {
       <ExpandableMenu
         items={sortOptions}
         displayTag={displayTag}
-        setOption={setSortMethod}
-        option={sortMethod}
+        setOptions={setSortMethod}
+        options={sortMethod}
         rotateArrow={rotateArrow}
         setRotateArrow={setRotateArrow}
       />

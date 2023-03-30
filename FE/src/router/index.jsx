@@ -12,7 +12,7 @@ const router = createBrowserRouter([
   {
     path: "/addfield",
     element: <AddField />,
-  },
+  }
 ]);
 
 export default router;

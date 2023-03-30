@@ -194,16 +194,18 @@ const DataTable = ({
         break;
     }
 
-    const filteredRows = sortedRows.filter((row) => {
-      // console.log(row.status);
-      // console.log(row.area);
-      return optionCareStatus.includes("הכל")
-        ? optionArea.includes(row.area)
-        : optionArea.includes("הכל")
-        ? optionArea.includes(row.area)
-        : true;
-      // optionArea.length > 0 ? optionArea.includes(row.area.toLowerCase()) : true;
-    });
+    const filteredRows = sortedRows;
+    
+    // const filteredRows = sortedRows.filter((row) => {
+    //   // console.log(row.status);
+    //   // console.log(row.area);
+    //   return optionCareStatus.includes("הכל")
+    //     ? optionArea.includes(row.area)
+    //     : optionArea.includes("הכל")
+    //     ? optionArea.includes(row.area)
+    //     : true;
+    //   // optionArea.length > 0 ? optionArea.includes(row.area.toLowerCase()) : true;
+    // });
 
     // console.log(filteredRows);
 

@@ -9,14 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.0",
     "@mui/lab": "^5.0.0-alpha.119",
     "@mui/material": "^5.11.8",
     "@mui/x-data-grid": "^5.17.17",
     "@mui/x-date-pickers": "^5.0.15",
-    "@react-google-maps/api": "^2.18.1",
     "axios": "^1.2.2",
     "dayjs": "^1.11.7",
     "moment": "^2.29.4",

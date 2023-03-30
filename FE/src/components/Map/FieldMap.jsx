@@ -1,4 +1,4 @@
-// import { GoogleMap, useLoadScriptm, Marker } from "@react-google-maps/api";
+// import { Map, Marker } from "react-mapkit";
 
 const FieldMap = (
   searchText,
@@ -9,8 +9,12 @@ const FieldMap = (
   optionMoreFilters,
   sortMethod
 ) => {
-  return <div></div>;
-//   TODO: need to talk with product about this (costs money$$$)
+  return (
+    <></>
+    // <Map tokenOrCallback={<div>golo...</div>} center={[37.415, -122.048333]}>
+    //   <Marker latitude={47.6754} longitude={-122.2084} />
+    // </Map>
+  )
 };
 
 export default FieldMap;

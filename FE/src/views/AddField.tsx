@@ -86,8 +86,8 @@ const AddField = () => {
     for (var field of Object.entries(target)) {
       // TODO: need fix that all values will be added to the dataState
       if (fields.includes(field[1].name)) {
-        console.log(field[1].name);
-        console.log(field[1].value);
+        // console.log(field[1].name);
+        // console.log(field[1].value);
         setData((prevStep) => ({
           ...prevStep,
           [field[1].name]: field[1].value,

@@ -10,6 +10,7 @@ import {
 import { Toc, Logout } from "@mui/icons-material";
 import { useState, useContext } from "react";
 import ContextProvider from "../../hooks/ContextApi";
+import useApi from "../../hooks/useApi";
 
 const Header = ({ CustomSearch }) => {
   const { setMode } = useContext(ContextProvider);
@@ -49,6 +50,10 @@ const Header = ({ CustomSearch }) => {
 
     rightBtnColor === "orange" ? setMode("grid") : setMode("map");
   };
+
+  const handleLogout = () => {
+    
+  }
 
   return (
     <>
@@ -90,6 +95,7 @@ const Header = ({ CustomSearch }) => {
           <Button
             variant="text"
             startIcon={<Logout />}
+            onClick={handleLogout}
             sx={{
               color: "#b4dbbe",
               marginLeft: "auto",

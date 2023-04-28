@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import ContextProvider from "../../hooks/ContextApi";
 import DataTable from "./DataTable";
 import FieldMap from "../Map/FieldMap";
+import useApi from "../../hooks/useApi";
 import { data as originalRows } from "../../constants/mockGridData";
 
 const DataPanel = () => {
@@ -14,6 +15,13 @@ const DataPanel = () => {
   const { optionCareStatus } = useContext(ContextProvider);
   const { optionMoreFilters } = useContext(ContextProvider);
   const { rows, setRows } = useContext(ContextProvider);
+
+  const { data, error } = useApi({
+    method: 'get',
+    url: "/fields?limit=3&offset=0"
+  });
+
+  console.log(data);
 
   return (
     <>

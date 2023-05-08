@@ -74,7 +74,7 @@ const AddField = () => {
     acquaintanceMode: "",
     xaxis: "",
     yaxis: "",
-    fieldNumber: "",
+    // fieldNumber: "",
   });
 
   const navigate = useNavigate();

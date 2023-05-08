@@ -15,6 +15,7 @@ import {
 import { ArrowBack, Edit } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import CustomStatus from "./CustomStatus";
+import useApi from "../../hooks/useApi";
 import CustomTextPresentation from "./CustomTextPresentation";
 
 const stepperStyle = {
@@ -27,9 +28,17 @@ const stepperStyle = {
 const RowDetails = ({ onClose, rowSet }) => {
   const [open, id] = rowSet;
 
+  const { data, error } = useApi({
+    method: 'get',
+    url: `/fields/${id}`
+  });
+
+  console.log(data);
+
   // console.log(rowSet);
   // make get request to get extra information about the field by it's id
   
+  const name = "משק גידולים";
   const dateUpdateStatus = "12.12.22";
   const cropKind = "מלפפון";
   const fieldKind = 'גד"ש';
@@ -75,7 +84,7 @@ const RowDetails = ({ onClose, rowSet }) => {
                     fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
                   }}
                 >
-                  משק גידולים
+                  {name}
                 </Typography>
                 <Box display="flex" flexDirection="row" gap={1}>
                   <Box display="flex" flexDirection="column" gap={-1}>

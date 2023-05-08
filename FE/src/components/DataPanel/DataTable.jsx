@@ -47,39 +47,39 @@ const DataTable = ({
       headerName: "ID",
     },
     {
-      field: "fieldName",
+      field: "name",
       headerName: "שם השדה",
       editable: false,
     },
     {
-      field: "cropKind",
+      field: "product_name",
       headerName: "סוג יבול",
       editable: false,
     },
     {
-      field: "attractionScale",
+      field: "attractivness",
       headerName: "מדד אטרקטיביות",
       width: 115,
       editable: false,
     },
     {
-      field: "NSVIScale",
+      field: "NDVI",
       headerName: "NDVI",
       editable: false,
       renderCell: (params) => <NDVI label={params.value} />,
     },
     {
-      field: "area",
+      field: "region",
       headerName: "אזור",
       editable: false,
     },
     {
-      field: "agriculturalNumber",
+      field: "farmer_id",
       headerName: "מספר חקלאי",
       editable: false,
     },
     {
-      field: "aquaintanceMode",
+      field: "familiarity",
       headerName: "מצב היכרות",
       editable: false,
       // renderCell: (params) => <NDVI label={params.value} />,
@@ -130,7 +130,7 @@ const DataTable = ({
   //#region Filters
   const applyFilterSearch = () => {
     const filteredRows = originalRows.filter((row) => {
-      return row.fieldName.toLowerCase().includes(searchText.toLowerCase());
+      return row.name.toLowerCase().includes(searchText.toLowerCase());
     });
 
     setRows(filteredRows);

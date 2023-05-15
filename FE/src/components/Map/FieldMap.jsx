@@ -1,20 +1,17 @@
-// import { Map, Marker } from "react-mapkit";
+import React from 'react';
 
 const FieldMap = (
-  searchText,
-  cropKind,
-  optionArea,
-  optionCareStatus,
-  moreCropKinds,
-  optionMoreFilters,
-  sortMethod
+	searchText,
+	cropKind,
+	optionArea,
+	optionCareStatus,
+	moreCropKinds,
+	optionMoreFilters,
+	sortMethod
 ) => {
-  return (
-    <></>
-    // <Map tokenOrCallback={<div>golo...</div>} center={[37.415, -122.048333]}>
-    //   <Marker latitude={47.6754} longitude={-122.2084} />
-    // </Map>
-  )
+	return (
+		<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '200px'}}>map area - TBD</div>
+	)
 };
 
 export default FieldMap;

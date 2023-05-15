@@ -1,39 +1,49 @@
+import React from 'react';
 import { TextField, Grid } from "@mui/material";
+import ErrorMessage from "./ErrorMessage";
 
-const Step4 = (textFieldStyle) => {
-  return (
-    <Grid
-      container
-      direction="column"
-      justifyContent="center"
-      alignContent="center"
-    >
-      <TextField
-        variant="standard"
-        id="xaxis"
-        name="xaxis"
-        label="ציר X"
-        sx={textFieldStyle}
-        required
-      />
-      <TextField
-        variant="standard"
-        id="yaxis"
-        name="yaxis"
-        label="ציר Y"
-        sx={textFieldStyle}
-        required
-      />
-      <TextField
-        variant="standard"
-        id="fieldNumber"
-        name="fieldNumber"
-        label="מספר חלקה"
-        sx={textFieldStyle}
-        required
-      />
-    </Grid>
-  );
+const Step4 = (props) => {
+	const {xAxis, yAxis, fieldNumber, onChangeField, error} = props;
+
+	return (
+		<Grid
+			container
+			direction="column"
+			justifyContent="center"
+			alignContent="center"
+		>
+			<TextField
+				variant="standard"
+				required
+				error={error != null && error.name === 'xAxis'}
+				label="ציר X"
+				value={xAxis}
+				onChange={e => onChangeField('xAxis', e.target.value)}
+			/>
+			{ error && error.name === 'xAxis' && <ErrorMessage text={error.text} /> }
+
+			<TextField
+				variant="standard"
+				required
+				error={error != null && error.name === 'yAxis'}
+				label="ציר Y"
+				value={yAxis}
+				onChange={e => onChangeField('yAxis', e.target.value)}
+			/>
+			{ error && error.name === 'yAxis' && <ErrorMessage text={error.text} /> }
+
+			<TextField
+				variant="standard"
+				required
+				error={error != null && error.name === 'fieldNumber'}
+				label="מספר חלקה"
+				value={fieldNumber}
+				onChange={e => onChangeField('fieldNumber', e.target.value)}
+			/>
+			{ error && error.name === 'fieldNumber' && <ErrorMessage text={error.text} /> }
+
+		</Grid>
+	);
 };
 
 export default Step4;

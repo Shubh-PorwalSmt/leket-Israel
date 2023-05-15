@@ -1,8 +1,8 @@
-{
-    "sortOptions": [
-        "אטרקטביות",
-        "מיקום",
-        "דירוג",
-        "עדכון אחרון"
-    ]
-}
+[
+  { "key": "attr-desc", "label": "אטרקטביות", "dir": "desc" },
+  { "key": "attr-asc", "label": "אטרקטביות", "dir": "asc" },
+  { "key": "ndvi-desc", "label": "NDVI", "dir": "desc" },
+  { "key": "ndvi-asc", "label": "NDVI", "dir": "asc" },
+  { "key": "a2z", "label": "א' - ת'" },
+  { "key": "z2a", "label": "ת' - א'" }
+]

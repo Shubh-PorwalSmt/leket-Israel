@@ -13,5 +13,7 @@ RUN npm run build
 
 WORKDIR dist
 
+EXPOSE 8080
+
 # Start the app
 CMD npm run preview --host

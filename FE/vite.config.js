@@ -10,4 +10,9 @@ export default defineConfig({
     }
   },
   plugins: [react()],
+  server: {
+    host: true,
+    staticPort: true,
+    port: 8080
+  }
 })

@@ -6,7 +6,7 @@ COPY package.json .
 RUN npm install
 
 # Copy app files
-COPY src .
+COPY . .
 
 # Build the app
 RUN npm run build

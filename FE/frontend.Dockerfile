@@ -16,4 +16,4 @@ WORKDIR dist
 EXPOSE 3000
 
 # Start the app
-CMD npm run preview
+CMD npm run preview --host

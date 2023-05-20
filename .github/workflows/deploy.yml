@@ -33,7 +33,7 @@ jobs:
       working-directory: ./FE
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: leket-israel-backend
+        ECR_REPOSITORY: leket-israel-frontend
         IMAGE_TAG: leket-israel-frontend-${{ github.run_id }}
       run: |
         docker build -t $ECR_REGISTRY_FRONTEND/$ECR_REPOSITORY_FRONTEND:$IMAGE_TAG -f frontend.Dockerfile .

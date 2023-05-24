@@ -14,14 +14,16 @@
         "דורש בדיקה",
         "בטיפול מ. אזור"
     ],
-    "product_nameOptions": [
+    "cropKindOptions": [
         "חציל",
         "קיווי",
         "אבטיח",
         "תות",
-        "אפרסמון"
+        "אפרסמון",
+        "עגבניה",
+        "גמבה"
     ],
-    "familiarityOptions": [
+    "acquaintanceModeOptions": [
         "לא מוכר",
         "מוכר ונקטף",
         "לא רלוונטי",

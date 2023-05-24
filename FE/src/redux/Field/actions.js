@@ -5,3 +5,9 @@ export const saveNewField = (field) => {
 		await fieldService.saveNewField(field);
 	};
 };
+
+export const saveExistingField = (field) => {
+	return async (dispatch) => {
+		await fieldService.saveExistingField(field);
+	};
+};

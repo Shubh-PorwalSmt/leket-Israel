@@ -11,7 +11,7 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 import ExpandableMenu from "./ExpandableMenu";
 import { useState, useContext } from "react";
 import ContextProvider from "../../hooks/ContextApi";
-import { product_nameOptions } from "../../constants/filterSelection";
+import { cropKindOptions as product_nameOptions} from "../../constants/filterSelection";
 import ToggleFilter from "../ToggleFilter";
 
 import TomatoIcon from '../../assets/Vegetables/TomatoIcon.png';

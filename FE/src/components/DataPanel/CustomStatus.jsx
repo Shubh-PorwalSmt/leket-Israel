@@ -18,24 +18,30 @@ const getStatusColor = (status) => {
 						: "#ebf2ff";
 };
 
-const CustomStatus = ({ label }) => {
+const CustomStatus = ({ label, disable = false }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [rotateArrow, setRotateArrow] = useState(false);
 
 	const open = Boolean(anchorEl);
 
 	const handleClick = (e) => {
-		setRotateArrow(!rotateArrow);
-		setAnchorEl(e.currentTarget);
+		if (!disable) {
+			setRotateArrow(!rotateArrow);
+			setAnchorEl(e.currentTarget);
+		}
 	};
 
 	const handleClose = () => {
-		setRotateArrow(!rotateArrow);
-		setAnchorEl(null);
+		if (!disable) {
+			setRotateArrow(!rotateArrow);
+			setAnchorEl(null);
+		}
 	};
 
 	const handleMenuItemClick = (e) => {
 		const status = e.target.innerText;
+		console.log(status);
+		// save...
 	};
 
 	return (
@@ -46,60 +52,63 @@ const CustomStatus = ({ label }) => {
 				sx={{
 					direction: "ltr",
 					width: '130px',
-					backgroundColor: getStatusColor(label),
+					backgroundColor: disable ? 'grey' : getStatusColor(label),
 					'&:hover': {
-						backgroundColor: getStatusColor(label),
+						backgroundColor: disable ? 'grey' : getStatusColor(label),
 					}
 				}}
 				icon={
 					<KeyboardArrowDown
-						style={{ color: getStatusColor(label), filter: "brightness(85%)", rotate: rotateArrow ? "180deg" : "0deg" }}
+						style={{ color: disable ? 'grey' : getStatusColor(label), filter: "brightness(85%)", rotate: rotateArrow ? "180deg" : "0deg" }}
 						sx={{ display: "flex" }}
 					/>
 				}
 			/>
-			<Menu
-				id="basic-menu"
-				dir="rtl"
-				sx={{
-					'.css-6hp17o-MuiList-root-MuiMenu-list': {
-						paddingBottom: 0
-					},
-				}}
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				anchorOrigin={{
-					vertical: "bottom",
-					horizontal: "right",
-				}}
-				transformOrigin={{
-					vertical: "top",
-					horizontal: "right",
-				}}
-				PaperProps={{
-					style: {
-						padding: '0 8px'
-					},
-				}}
-			>
-				{careStatusOptions.map((status) => (
-					<MenuItem
-						sx={{
-							marginBottom: 1,
-							background: getStatusColor(status),
-							borderRadius: "4px",
-							"&:hover": {
+			{!disable ?
+				<Menu
+					id="basic-menu"
+					dir="rtl"
+					sx={{
+						'.css-6hp17o-MuiList-root-MuiMenu-list': {
+							paddingBottom: 0
+						},
+					}}
+					anchorEl={anchorEl}
+					open={open}
+					onClose={handleClose}
+					anchorOrigin={{
+						vertical: "bottom",
+						horizontal: "right",
+					}}
+					transformOrigin={{
+						vertical: "top",
+						horizontal: "right",
+					}}
+					PaperProps={{
+						style: {
+							padding: '0 8px'
+						},
+					}}
+				>
+					{careStatusOptions.map((status) => (
+						<MenuItem
+							sx={{
+								marginBottom: 1,
 								background: getStatusColor(status),
-							},
-						}}
-						key={status}
-						onClick={handleMenuItemClick}
-					>
-						<div>{status}</div>
-					</MenuItem>
-				))}
-			</Menu>
+								borderRadius: "4px",
+								"&:hover": {
+									background: getStatusColor(status),
+								},
+							}}
+							key={status}
+							onClick={handleMenuItemClick}
+						>
+							<div>{status}</div>
+						</MenuItem>
+					))}
+				</Menu> :
+				<></>
+			}
 		</div>
 	);
 };

@@ -1,13 +1,13 @@
 {
     "fields": [
-        "fieldName",
-        "cropKind",
-        "fieldKind",
-        "agriculturalNumber",
-        "area",
-        "acquaintanceMode",
+        "name",
+        "product_name",
+        "product_kind",
+        "farmer_id",
+        "region",
+        "familiarity",
         "xaxis",
         "yaxis",
-        "fieldNumber"
+        "field_number"
     ]
 }

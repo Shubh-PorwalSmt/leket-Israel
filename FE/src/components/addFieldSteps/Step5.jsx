@@ -12,15 +12,15 @@ const Step5 = (props) => {
 			justifyContent="center"
 			alignContent="center"
 		>
-			<FieldTextValue title="שם השדה" value={field.fieldName} />
-			<FieldTextValue title="סוג היבול" value={field.cropKind} />
-			<FieldTextValue title="סוג שטח" value={field.fieldKind} />
-			<FieldTextValue title="מספר חקלאי" value={field.agriculturalNumber} />
-			<FieldTextValue title="איזור" value={field.area} />
-			<FieldTextValue title="מצב היכרות" value={field.acquaintanceMode} />
+			<FieldTextValue title="שם השדה" value={field.name} />
+			<FieldTextValue title="סוג היבול" value={field.product_name} />
+			<FieldTextValue title="סוג שטח" value={field.product_kind} />
+			<FieldTextValue title="מספר חקלאי" value={field.farmer_id} />
+			<FieldTextValue title="איזור" value={field.region} />
+			<FieldTextValue title="מצב היכרות" value={field.familiarity} />
 			<FieldTextValue title="ציר X" value={field.xAxis} />
 			<FieldTextValue title="ציר Y" value={field.yAxis} />
-			<FieldTextValue title="מספר חלקה" value={field.fieldNumber} />
+			<FieldTextValue title="מספר חלקה" value={field.field_number} />
 		</Grid>
 	);
 };

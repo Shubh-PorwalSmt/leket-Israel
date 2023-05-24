@@ -2,15 +2,15 @@ import React from 'react';
 
 const FieldMap = (
 	searchText,
-	cropKind,
-	optionArea,
+	product_name,
+	optionRegion,
 	optionCareStatus,
-	moreCropKinds,
+	moreproduct_names,
 	optionMoreFilters,
 	sortMethod
 ) => {
 	return (
-		<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '200px'}}>map area - TBD</div>
+		<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '200px'}}>map region - TBD</div>
 	)
 };
 

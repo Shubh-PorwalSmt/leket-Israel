@@ -8,8 +8,8 @@ const ExpandableMenu = ({
 	                        isAdvanced,
 	                        items,
 	                        displayTag,
-	                        cropKind = null,
-	                        setCropKind = null,
+	                        product_name = null,
+	                        setProductName = null,
 	                        setOptions,
 	                        options,
 	                        rotateArrow,
@@ -41,8 +41,8 @@ const ExpandableMenu = ({
 			setOptions([item]);
 		}
 
-		if (cropKind != null) {
-			setCropKind([...cropKind, item]);
+		if (product_name != null) {
+			setProductName([...product_name, item]);
 		}
 	};
 

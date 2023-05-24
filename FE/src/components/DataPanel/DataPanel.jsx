@@ -10,9 +10,9 @@ const DataPanel = () => {
 	const { searchText } = useContext(ContextProvider);
 	const { mode } = useContext(ContextProvider);
 	const { sortMethod } = useContext(ContextProvider);
-	const { cropKind } = useContext(ContextProvider);
-	const { moreCropKinds } = useContext(ContextProvider);
-	const { optionArea } = useContext(ContextProvider);
+	const { product_name } = useContext(ContextProvider);
+	const { moreproduct_names } = useContext(ContextProvider);
+	const { optionRegion } = useContext(ContextProvider);
 	const { optionCareStatus } = useContext(ContextProvider);
 	const { optionMoreFilters } = useContext(ContextProvider);
 	const { rows, setRows } = useContext(ContextProvider);
@@ -32,20 +32,20 @@ const DataPanel = () => {
 					setRows={setRows}
 					originalRows={originalRows}
 					searchText={searchText}
-					cropKind={cropKind}
-					optionArea={optionArea}
+					product_name={product_name}
+					optionRegion={optionRegion}
 					optionCareStatus={optionCareStatus}
-					moreCropKinds={moreCropKinds}
+					moreproduct_names={moreproduct_names}
 					optionMoreFilters={optionMoreFilters}
 					sortMethod={sortMethod}
 				/>
 			) : (
 				<FieldMap
 					searchText={searchText}
-					cropKind={cropKind}
-					optionArea={optionArea}
+					product_name={product_name}
+					optionRegion={optionRegion}
 					optionCareStatus={optionCareStatus}
-					moreCropKinds={moreCropKinds}
+					moreproduct_names={moreproduct_names}
 					optionMoreFilters={optionMoreFilters}
 					sortMethod={sortMethod}
 				/>

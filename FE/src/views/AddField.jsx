@@ -43,15 +43,15 @@ const AddField = ({onClose}) => {
 	const [step2Error, setStep2Error] = useState(null);
 	const [step4Error, setStep4Error] = useState(null);
 	const [field, setField] = useState({
-		fieldName: "",
-		cropKind: "",
-		fieldKind: "",
-		area: "",
-		agriculturalNumber: "",
-		acquaintanceMode: "לא מוכר",
+		name: "",
+		product_name: "",
+		product_kind: "",
+		region: "",
+		farmer_id: "",
+		familiarity: "לא מוכר",
 		xAxis: "",
 		yAxis: "",
-		fieldNumber: "",
+		field_number: "",
 	});
 
 	const dispatch = useDispatch();
@@ -83,24 +83,24 @@ const AddField = ({onClose}) => {
 
 		switch(activeStep) {
 			case 0:
-				if(field.fieldName == null || field.fieldName === "") {
+				if(field.name == null || field.name === "") {
 					setStep1Error("יש להזין שם שדה");
 					return;
 				}
 				break;
 			case 1:
-				if(field.cropKind == null || field.cropKind === "") {
-					setStep2Error({name: 'cropKind', text: "יש להזין סוג יבול"});
+				if(field.product_name == null || field.product_name === "") {
+					setStep2Error({name: 'product_name', text: "יש להזין סוג יבול"});
 					return;
-				} else if(field.fieldKind == null || field.fieldKind === "") {
-					setStep2Error({name: 'fieldKind', text: "יש להזין סוג שטח"});
+				} else if(field.product_kind == null || field.product_kind === "") {
+					setStep2Error({name: 'product_kind', text: "יש להזין סוג שטח"});
 					return;
-				} else if(field.agriculturalNumber == null || field.agriculturalNumber === "") {
-					setStep2Error({name: 'agriculturalNumber', text: "יש להזין מספר חקלאי"});
+				} else if(field.farmer_id == null || field.farmer_id === "") {
+					setStep2Error({name: 'farmer_id', text: "יש להזין מספר חקלאי"});
 					return;
 				}
-				else if(field.area == null || field.area === "") {
-					setStep2Error({name: 'area', text: "יש להזין איזור"});
+				else if(field.region == null || field.region === "") {
+					setStep2Error({name: 'region', text: "יש להזין איזור"});
 					return;
 				}
 				break;
@@ -111,8 +111,8 @@ const AddField = ({onClose}) => {
 				} else if(field.yAxis == null || field.yAxis === "") {
 					setStep4Error({name: 'yAxis', text: "יש להזין את ציר הY"});
 					return;
-				} else if(field.fieldNumber == null || field.fieldNumber === "") {
-					setStep4Error({name: 'fieldNumber', text: "יש להזין מספר חלקה"});
+				} else if(field.field_number == null || field.field_number === "") {
+					setStep4Error({name: 'field_number', text: "יש להזין מספר חלקה"});
 					return;
 				}
 				break;
@@ -173,13 +173,13 @@ const AddField = ({onClose}) => {
 						</Grid>
 						<Grid item>
 							{activeStep === 0 ? (
-								<Step1 fieldName={field.fieldName} onChange={value => updateField('fieldName', value)} error={step1Error} />
+								<Step1 name={field.name} onChange={value => updateField('name', value)} error={step1Error} />
 							) : activeStep === 1 ? (
-								<Step2 cropKind={field.cropKind}
-								       fieldKind={field.fieldKind}
-								       agriculturalNumber={field.agriculturalNumber}
-								       area={field.area}
-								       acquaintanceMode={field.acquaintanceMode}
+								<Step2 product_name={field.product_name}
+								       product_kind={field.product_kind}
+								       farmer_id={field.farmer_id}
+								       region={field.region}
+								       familiarity={field.familiarity}
 								       error={step2Error}
 								       onChangeField={updateField} />
 							) : activeStep === 2 ? (
@@ -187,7 +187,7 @@ const AddField = ({onClose}) => {
 							) : activeStep === 3 ? (
 								<Step4 xAxis={field.xAxis}
 								       yAxis={field.yAxis}
-								       fieldNumber={field.fieldNumber}
+								       field_number={field.field_number}
 								       error={step4Error}
 								       onChangeField={updateField} />
 							) : (

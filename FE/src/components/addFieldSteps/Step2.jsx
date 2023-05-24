@@ -5,7 +5,7 @@ import ErrorMessage from './ErrorMessage';
 import * as data from "../../constants/filterSelection";
 
 const Step2 = (props) => {
-	const {cropKind, fieldKind, agriculturalNumber, area, acquaintanceMode, onChangeField, error} = props;
+	const {product_name, product_kind, farmer_id, region, familiarity, onChangeField, error} = props;
 
 	return (
 		<Grid
@@ -15,43 +15,43 @@ const Step2 = (props) => {
 		>
 			<CustomDropdown
 				label="סוג יבול"
-				value={cropKind}
-				options={data.cropKindOptions}
-				onChange={value => onChangeField('cropKind', value)}
+				value={product_name}
+				options={data.product_nameOptions}
+				onChange={value => onChangeField('product_name', value)}
 			/>
-			{ error && error.name === 'cropKind' && <ErrorMessage text={error.text} /> }
+			{ error && error.name === 'product_name' && <ErrorMessage text={error.text} /> }
 
 			<CustomDropdown
 				label="סוג שטח"
-				value={fieldKind}
-				options={data.cropKindOptions}
-				onChange={value => onChangeField('fieldKind', value)}
+				value={product_kind}
+				options={data.product_nameOptions}
+				onChange={value => onChangeField('product_kind', value)}
 			/>
-			{ error && error.name === 'fieldKind' && <ErrorMessage text={error.text} /> }
+			{ error && error.name === 'product_kind' && <ErrorMessage text={error.text} /> }
 
 			<TextField
 				variant="standard"
 				required
-				error={error != null && error.name === 'agriculturalNumber'}
+				error={error != null && error.name === 'farmer_id'}
 				label="מספר חקלאי"
-				value={agriculturalNumber}
-				onChange={e => onChangeField('agriculturalNumber', e.target.value)}
+				value={farmer_id}
+				onChange={e => onChangeField('farmer_id', e.target.value)}
 			/>
-			{ error && error.name === 'agriculturalNumber' && <ErrorMessage text={error.text} /> }
+			{ error && error.name === 'farmer_id' && <ErrorMessage text={error.text} /> }
 
 			<CustomDropdown
 				label="איזור"
-				value={area}
+				value={region}
 				options={data.areaOptions}
-				onChange={value => onChangeField('area', value)}
+				onChange={value => onChangeField('region', value)}
 			/>
-			{ error && error.name === 'area' && <ErrorMessage text={error.text} /> }
+			{ error && error.name === 'region' && <ErrorMessage text={error.text} /> }
 
 			<CustomDropdown
 				label="מצב היכרות"
-				value={acquaintanceMode}
-				options={data.acquaintanceModeOptions}
-				onChange={value => onChangeField('acquaintanceMode', value)}
+				value={familiarity}
+				options={data.familiarityOptions}
+				onChange={value => onChangeField('familiarity', value)}
 			/>
 		</Grid>
 	);

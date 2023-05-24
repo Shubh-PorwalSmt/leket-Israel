@@ -39,10 +39,10 @@ const DataTable = ({
 	                   setRows,
 	                   originalRows,
 	                   searchText,
-	                   cropKind,
-	                   optionArea,
+	                   product_name,
+	                   optionRegion,
 	                   optionCareStatus,
-	                   moreCropKinds,
+	                   moreproduct_names,
 	                   optionMoreFilters,
 	                   sortMethod,
                    }) => {
@@ -67,44 +67,44 @@ const DataTable = ({
 			headerName: "ID",
 		},
 		{
-			field: "fieldName",
+			field: "name",
 			headerName: "שם השדה",
 			editable: false,
 			flex: 2,
 		},
 		{
-			field: "cropKind",
+			field: "product_name",
 			headerName: "סוג יבול",
 			editable: false,
 			flex: 1,
 		},
 		{
-			field: "attractionScale",
+			field: "attractivness",
 			headerName: "מדד אטרקטיביות",
 			flex: 1,
 			editable: false,
 		},
 		{
-			field: "NSVIScale",
+			field: "NDVI",
 			headerName: "NDVI",
 			editable: false,
 			flex: 1,
 			renderCell: (params) => <NDVI label={params.value} />,
 		},
 		{
-			field: "area",
+			field: "region",
 			headerName: "אזור",
 			editable: false,
 			flex: 1,
 		},
 		{
-			field: "agriculturalNumber",
+			field: "farmer_id",
 			headerName: "מספר חקלאי",
 			editable: false,
 			flex: 1,
 		},
 		{
-			field: "aquaintanceMode",
+			field: "familiarity",
 			headerName: "מצב היכרות",
 			editable: false,
 			flex: 1,
@@ -171,7 +171,7 @@ const DataTable = ({
 	//#region Filters
 	const applyFilterSearch = () => {
 		const filteredRows = originalRows.filter((row) => {
-			return row.fieldName.toLowerCase().includes(searchText.toLowerCase());
+			return row.name.toLowerCase().includes(searchText.toLowerCase());
 		});
 
 		setRows(filteredRows);
@@ -202,12 +202,12 @@ const DataTable = ({
 		switch (sortMethod) {
 			case "אטרקטביות":
 				sortedRows = slicedOriginalRows.sort(
-					(a, b) => b.attractionScale - a.attractionScale
+					(a, b) => b.attractivness - a.attractivness
 				);
 				break;
 			case "דירוג":
 				sortedRows = slicedOriginalRows.sort(
-					(a, b) => b.NSVIScale - a.NSVIScale
+					(a, b) => b.NDVI - a.NDVI
 				);
 				break;
 			case "מיקום":
@@ -220,7 +220,7 @@ const DataTable = ({
 				}, {});
 
 				sortedRows = slicedOriginalRows.sort(
-					(a, b) => sortByOrder[a.area] - sortByOrder[b.area]
+					(a, b) => sortByOrder[a.region] - sortByOrder[b.region]
 				);
 				break;
 			case "עדכון אחרון":
@@ -239,27 +239,27 @@ const DataTable = ({
 
 		// const filteredRows = sortedRows.filter((row) => {
 		//   // console.log(row.status);
-		//   // console.log(row.area);
+		//   // console.log(row.region);
 		//   return optionCareStatus.includes("הכל")
-		//     ? optionArea.includes(row.area)
-		//     : optionArea.includes("הכל")
-		//     ? optionArea.includes(row.area)
+		//     ? optionRegion.includes(row.region)
+		//     : optionRegion.includes("הכל")
+		//     ? optionRegion.includes(row.region)
 		//     : true;
-		//   // optionArea.length > 0 ? optionArea.includes(row.area.toLowerCase()) : true;
+		//   // optionRegion.length > 0 ? optionRegion.includes(row.region.toLowerCase()) : true;
 		// });
 
 		// console.log(filteredRows);
 
 		// const filteredRows = sortedRows.filter((row) => {
-		//   console.log(cropKind);
-		//   // optionArea.toLowerCase() === row.area.toLowerCase()
+		//   console.log(product_name);
+		//   // optionRegion.toLowerCase() === row.region.toLowerCase()
 		//   // optionCareStatus.toLowerCase() === row.status.toLowerCase()
-		//   console.log(optionArea.includes(row.area.toLowerCase()));
-		//   return cropKind.length > 0
-		//     ? cropKind.includes(row.cropKind.toLowerCase())
+		//   console.log(optionRegion.includes(row.region.toLowerCase()));
+		//   return product_name.length > 0
+		//     ? product_name.includes(row.product_name.toLowerCase())
 		//     : true
-		//     && optionArea.length > 0
-		//     ? optionArea.includes(row.area.toLowerCase())
+		//     && optionRegion.length > 0
+		//     ? optionRegion.includes(row.region.toLowerCase())
 		//     : true
 		//     && optionCareStatus.length > 0
 		//     ? optionCareStatus.includes(row.status.toLowerCase())
@@ -274,8 +274,8 @@ const DataTable = ({
 	useEffect(applyFilteringAndSorting, [
 		originalRows,
 		setRows,
-		cropKind,
-		optionArea,
+		product_name,
+		optionRegion,
 		optionCareStatus,
 		optionMoreFilters,
 		sortMethod,
@@ -375,7 +375,7 @@ const DataTable = ({
 		)
 	};
 
-	const onAddArea = () => {
+	const onAddRegion = () => {
 		setShowAddField(true);
 	};
 
@@ -437,7 +437,7 @@ const DataTable = ({
 					ייצא
 					<ExportIcon sx={{ paddingRight: "10%" }} />
 				</Button>
-				<Button onClick={onAddArea} variant="text" elevation={9} sx={addCropStyle}>
+				<Button onClick={onAddRegion} variant="text" elevation={9} sx={addCropStyle}>
 					<Add />
 					הוספת שטח
 				</Button>

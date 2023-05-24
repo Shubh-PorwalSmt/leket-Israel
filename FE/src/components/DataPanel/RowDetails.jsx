@@ -30,16 +30,16 @@ const RowDetails = ({ onClose, rowSet }) => {
 	console.log(rowSet);
 
 	// const dateUpdateStatus = rowSet.lastUpdate;
-	// const cropKind = r;
-	// const fieldKind = 'גד"ש';
-	const agriculturalNumber = 987345;
-	const area = 'דרום';
+	// const product_name = r;
+	// const product_kind = 'גד"ש';
+	const farmer_id = 987345;
+	const region = 'דרום';
 	const attractivness = 0.6;
 	const NDVIness = 0.8;
 	const fieldDateEstablishment = '05.11.2007';
-	const aquaintanceMode = 'מוכר ולא נקטף';
-	const agriculturalNumbers = [123456, 987654, 456987];
-	const aquaintanceModes = ["כרוב לבן", "מלפפון", "בצל"];
+	const familiarity = 'מוכר ולא נקטף';
+	const farmer_ids = [123456, 987654, 456987];
+	const familiarities = ["כרוב לבן", "מלפפון", "בצל"];
 
 	const xaxis = 31.23568446;
 	const yaxis = 36.56467586;
@@ -188,14 +188,14 @@ const RowDetails = ({ onClose, rowSet }) => {
 									<Grid item>
 										<CustomTextPresentation
 											header="מספר חקלאי"
-											value={rowSet.agriculturalNumber}
+											value={rowSet.farmer_id}
 										/>
 									</Grid>
 									<Grid item>
-										<CustomTextPresentation header="סוג השטח" value={rowSet.fieldKind} />
+										<CustomTextPresentation header="סוג השטח" value={rowSet.product_kind} />
 									</Grid>
 									<Grid item>
-										<CustomTextPresentation header="סוג יבול" value={rowSet.cropKind} />
+										<CustomTextPresentation header="סוג יבול" value={rowSet.product_name} />
 									</Grid>
 								</Grid>
 								<Grid
@@ -217,7 +217,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 											NDVI
 										</Typography>
 										<Chip
-											label={rowSet.NSVIScale}
+											label={rowSet.NDVI}
 											sx={{ display: "flex", justifyContent: "flex-start" }}
 											size="small"
 										/>
@@ -235,13 +235,13 @@ const RowDetails = ({ onClose, rowSet }) => {
 											מדד אטרקטיביות
 										</Typography>
 										<Chip
-											label={rowSet.attractionScale}
+											label={rowSet.attractivness}
 											sx={{ display: "flex", width: 'fit-content' }}
 											size="small"
 										/>
 									</Grid>
 									<Grid item>
-										<CustomTextPresentation header="אזור" value={rowSet.area} />
+										<CustomTextPresentation header="אזור" value={rowSet.region} />
 									</Grid>
 								</Grid>
 							</Box>
@@ -257,7 +257,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 										<Grid item>
 											<CustomTextPresentation
 												header="מצב היכרות"
-												value={aquaintanceMode}
+												value={familiarity}
 											/>
 										</Grid>
 										<Grid item>
@@ -300,7 +300,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 													>
 														מספר חקלאי
 													</Typography>
-													{agriculturalNumbers.map((agriculturalNum) => (
+													{farmer_ids.map((agriculturalNum) => (
 														<Typography
 															variant="div"
 															component="h5"
@@ -331,9 +331,9 @@ const RowDetails = ({ onClose, rowSet }) => {
 														מצב היכרות
 													</Typography>
 													<Stepper sx={stepperStyle} activeStep={10} orientation="vertical">
-														{aquaintanceModes.map((aquaintanceMode, index) => (
+														{familiarities.map((familiarity, index) => (
 															<Step key={index}>
-																<StepLabel>{aquaintanceMode}</StepLabel>
+																<StepLabel>{familiarity}</StepLabel>
 															</Step>
 														))}
 													</Stepper>

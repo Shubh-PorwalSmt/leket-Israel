@@ -28,9 +28,9 @@ const careStyle = {
 
 const MoreFilters = ({ cardText, imageStyle }) => {
 	const { setRows } = useContext(ContextProvider);
-	const { setCropKind } = useContext(ContextProvider);
-	const { setMoreCropKinds } = useContext(ContextProvider);
-	const { optionArea, setOptionArea } = useContext(ContextProvider);
+	const { setProductName } = useContext(ContextProvider);
+	const { setMoreproduct_names } = useContext(ContextProvider);
+	const { optionRegion, setOptionRegion } = useContext(ContextProvider);
 	const { optionCareStatus, setOptionCareStatus } = useContext(ContextProvider);
 	const { optionMoreFilters, setOptionMoreFilters } = useContext(ContextProvider);
 
@@ -40,17 +40,17 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 
 	const handleClearFilters = () => {
 		setRows(originalRows);
-		setOptionArea(["הכל"]);
+		setOptionRegion(["הכל"]);
 		setOptionCareStatus(["הכל"]);
-		setCropKind([""]);
+		setProductName([""]);
 		setOptionMoreFilters({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: new Date(), dateTo: new Date()});
-		setMoreCropKinds("");
+		setMoreproduct_names("");
 	};
 	console.log(optionMoreFilters);
 	const TEST_SIZE = "14px";
 	const MORE_FILTER_IDENTIFIER = "MoreFilters";
 
-	const displayAreaTag = (
+	const displayRegionTag = (
 		<CardContent>
 			<Box display="flex" position="relative" flexDirection="row">
 				<KeyboardArrowDown
@@ -78,7 +78,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 						fontWeight="bold"
 						sx={areaDisplayOptionStyle}
 					>
-						{optionArea.length === 1 ? optionArea[0] : `נבחרו ${optionArea.length}`}
+						{optionRegion.length === 1 ? optionRegion[0] : `נבחרו ${optionRegion.length}`}
 					</Typography>
 				</div>
 			</Box>
@@ -201,9 +201,9 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 					<ExpandableMenu
 						identifier={MORE_FILTER_IDENTIFIER}
 						items={areaOptions}
-						displayTag={displayAreaTag}
-						setOptions={setOptionArea}
-						options={optionArea}
+						displayTag={displayRegionTag}
+						setOptions={setOptionRegion}
+						options={optionRegion}
 						rotateArrow={rotateArrow1}
 						setRotateArrow={setRotateArrow1}
 					/>

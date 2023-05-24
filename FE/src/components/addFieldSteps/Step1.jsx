@@ -2,14 +2,14 @@ import React from 'react';
 import {TextField} from "@mui/material";
 import ErrorMessage from "./ErrorMessage";
 
-const Step1 = ({fieldName, onChange, error}) => {
+const Step1 = ({name, onChange, error}) => {
 	return (
 		<>
 			<TextField
 				variant="standard"
 				label="שם שטח"
 				error={error != null}
-				value={fieldName}
+				value={name}
 				onChange={e => onChange(e.target.value)}
 				required
 			/>

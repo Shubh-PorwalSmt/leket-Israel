@@ -10,9 +10,9 @@ export const ContextProvider = ({ children }) => {
 	const [searchText, setSearchText] = useState("");
 	const [mode, setMode] = useState("grid");
 	const [sortMethod, setSortMethod] = useState("");
-	const [cropKind, setCropKind] = useState([""]);
-	const [moreCropKinds, setMoreCropKinds] = useState([]);
-	const [optionArea, setOptionArea] = useState(["הכל"]);
+	const [product_name, setProductName] = useState([""]);
+	const [moreproduct_names, setMoreproduct_names] = useState([]);
+	const [optionRegion, setOptionRegion] = useState(["הכל"]);
 	const [optionCareStatus, setOptionCareStatus] = useState(["הכל"]);
 	const [optionMoreFilters, setOptionMoreFilters] = useState({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: new Date(), dateTo: new Date()});
 	const [rows, setRows] = useState(originalRows);
@@ -27,12 +27,12 @@ export const ContextProvider = ({ children }) => {
 					setMode,
 					sortMethod,
 					setSortMethod,
-					cropKind,
-					setCropKind,
-					moreCropKinds,
-					setMoreCropKinds,
-					optionArea,
-					setOptionArea,
+					product_name,
+					setProductName,
+					moreproduct_names,
+					setMoreproduct_names,
+					optionRegion,
+					setOptionRegion,
 					optionCareStatus,
 					setOptionCareStatus,
 					optionMoreFilters,

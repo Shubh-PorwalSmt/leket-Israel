@@ -1,4 +1,14 @@
 {
     "id": 1,
-    "familiarity": "מוכר ולא נקטף"
+    "name": "משק גידולים",
+    "product_name": "מלפפון",
+    "farmer_id": "987345",
+    "familiarity": "לא רלוונטי",
+    "latitude": 123.546,
+    "longitude": 234.444,
+    "region": "דרום",
+    "lastUpdate": "12.12.22",
+    "fieldDateEstablishment": "12.12.22",
+    "familarityCause": "אי שיתוף פעולה",
+    "CheckedAttractivness": true
 }

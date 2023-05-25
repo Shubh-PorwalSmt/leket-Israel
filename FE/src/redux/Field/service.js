@@ -24,3 +24,16 @@ export const saveExistingField = async (field) => {
 	// 		return null;
 	// 	})
 };
+
+export const saveFieldStatus = async (status) => {
+	console.log(status);
+	return { status: "Status saved!" };
+
+	// return axios.post(`${process.env.REACT_APP_HOST_URL}/field/detailsave`, {field})
+	// 	.then(async response => {
+	// 		return response.data;
+	// 	})
+	// 	.catch(response => {
+	// 		return null;
+	// 	})
+};

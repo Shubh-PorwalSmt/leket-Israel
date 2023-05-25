@@ -11,3 +11,9 @@ export const saveExistingField = (field) => {
 		await fieldService.saveExistingField(field);
 	};
 };
+
+export const saveFieldStatus = (status) => {
+	return async (dispatch) => {
+		await fieldService.saveFieldStatus(status);
+	};
+};

@@ -59,8 +59,8 @@ const RowDetails = ({ onClose, rowSet }) => {
 	const farmer_ids = [123456, 987654, 456987];
 	const aquaintanceModes = ["כרוב לבן", "מלפפון", "בצל"];
 
-	const xaxis = 31.23568446;
-	const yaxis = 36.56467586;
+	const longitude = 31.23568446;
+	const latitude = 36.56467586;
 	const fieldId = 123456789;
 
 	const [editMode, setEditMode] = useState(false);
@@ -74,8 +74,8 @@ const RowDetails = ({ onClose, rowSet }) => {
 		region: rowSet.region,
 		familiarity: rowSet.familiarity,
 		fieldDateEstablishment: fieldDateEstablishment, // query: rowSet.fieldDateEstablishment
-		xaxis: xaxis, // query: rowSet.xaxis
-		yaxis: yaxis, // query: rowSet.yaxis
+		longitude: longitude, // query: rowSet.longitude
+		latitude: latitude, // query: rowSet.latitude
 		familarityCause: "", //familarityCause
 		CheckedAttractivness: ""
 	});
@@ -215,22 +215,22 @@ const RowDetails = ({ onClose, rowSet }) => {
 											<CustomTextPresentation
 												editMode={editMode}
 												header="Y"
-												value={yaxis}
+												value={latitude}
 												typeField={TypeField.FLOAT}
 												setEditableData={setEditableData}
 												editableData={editableData}
-												saveDataKey="yaxis"
+												saveDataKey="latitude"
 											/>
 										</Grid>
 										<Grid item xs>
 											<CustomTextPresentation
 												editMode={editMode}
 												header="X"
-												value={xaxis}
+												value={longitude}
 												typeField={TypeField.FLOAT}
 												setEditableData={setEditableData}
 												editableData={editableData}
-												saveDataKey="xaxis"
+												saveDataKey="longitude"
 											/>
 										</Grid>
 									</Grid>

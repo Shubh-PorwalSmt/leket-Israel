@@ -2,6 +2,8 @@ import React from 'react';
 import {Chip, Menu, MenuItem} from "@mui/material";
 import {KeyboardArrowDown} from "@mui/icons-material";
 import {careStatusOptions} from "../../constants/filterSelection";
+import {useDispatch} from "react-redux";
+import * as fieldActions from '../../redux/Field/actions';
 import {useState} from "react";
 
 const getStatusColor = (status) => {
@@ -22,6 +24,8 @@ const CustomStatus = ({ label, disable = false }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [rotateArrow, setRotateArrow] = useState(false);
 
+	const dispatch = useDispatch();
+
 	const open = Boolean(anchorEl);
 
 	const handleClick = (e) => {
@@ -40,8 +44,8 @@ const CustomStatus = ({ label, disable = false }) => {
 
 	const handleMenuItemClick = (e) => {
 		const status = e.target.innerText;
-		console.log(status);
-		// save...
+		// console.log(status);
+		dispatch(fieldActions.saveFieldStatus(status));
 	};
 
 	return (

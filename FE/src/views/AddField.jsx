@@ -21,6 +21,7 @@ import Step4 from "../components/addFieldSteps/Step4";
 import Step5 from "../components/addFieldSteps/Step5";
 import { Check } from "@mui/icons-material";
 import * as fieldActions from '../redux/Field/actions';
+import {showToast} from "../Utils/general";
 
 const cardStyle = {
 	display: "flex",
@@ -45,13 +46,11 @@ const AddField = ({onClose}) => {
 	const [field, setField] = useState({
 		name: "",
 		product_name: "",
-		product_kind: "",
 		region: "",
 		farmer_id: "",
-		familiarity: "לא מוכר",
+		familiarity: "NOT_KNOWN",
 		xAxis: "",
-		yAxis: "",
-		field_number: "",
+		yAxis: ""
 	});
 
 	const dispatch = useDispatch();
@@ -90,10 +89,7 @@ const AddField = ({onClose}) => {
 				break;
 			case 1:
 				if(field.product_name == null || field.product_name === "") {
-					setStep2Error({name: 'product_name', text: "יש להזין סוג יבול"});
-					return;
-				} else if(field.product_kind == null || field.product_kind === "") {
-					setStep2Error({name: 'product_kind', text: "יש להזין סוג שטח"});
+					setStep2Error({name: 'product_name', text: "יש להזין סוג שטח"});
 					return;
 				} else if(field.farmer_id == null || field.farmer_id === "") {
 					setStep2Error({name: 'farmer_id', text: "יש להזין מספר חקלאי"});
@@ -101,6 +97,10 @@ const AddField = ({onClose}) => {
 				}
 				else if(field.region == null || field.region === "") {
 					setStep2Error({name: 'region', text: "יש להזין איזור"});
+					return;
+				}
+				else if(field.familiarity == null || field.familiarity === "") {
+					setStep2Error({name: 'familiarity', text: "יש להזין מצב היכרות"});
 					return;
 				}
 				break;
@@ -111,9 +111,6 @@ const AddField = ({onClose}) => {
 				} else if(field.yAxis == null || field.yAxis === "") {
 					setStep4Error({name: 'yAxis', text: "יש להזין את ציר הY"});
 					return;
-				} else if(field.field_number == null || field.field_number === "") {
-					setStep4Error({name: 'field_number', text: "יש להזין מספר חלקה"});
-					return;
 				}
 				break;
 		}
@@ -121,8 +118,10 @@ const AddField = ({onClose}) => {
 			setActiveStep((prevActiveStep) => prevActiveStep + 1);
 		}
 		else {
+			console.log(field);
 			dispatch(fieldActions.saveNewField(field));
 			console.log("saved!");
+			showToast("השדה החדש נשמר בהצלחה.");
 			onClose();
 		}
 	};
@@ -176,7 +175,6 @@ const AddField = ({onClose}) => {
 								<Step1 name={field.name} onChange={value => updateField('name', value)} error={step1Error} />
 							) : activeStep === 1 ? (
 								<Step2 product_name={field.product_name}
-								       product_kind={field.product_kind}
 								       farmer_id={field.farmer_id}
 								       region={field.region}
 								       familiarity={field.familiarity}
@@ -187,7 +185,6 @@ const AddField = ({onClose}) => {
 							) : activeStep === 3 ? (
 								<Step4 xAxis={field.xAxis}
 								       yAxis={field.yAxis}
-								       field_number={field.field_number}
 								       error={step4Error}
 								       onChangeField={updateField} />
 							) : (

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Grid} from "@mui/material";
 import FieldTextValue from "./FieldTextValue";
+import translator from "../../Utils/translations/translator";
 
 const Step5 = (props) => {
 	const {field} = props;
@@ -12,15 +13,13 @@ const Step5 = (props) => {
 			justifyContent="center"
 			alignContent="center"
 		>
-			<FieldTextValue title="שם השדה" value={field.name} />
-			<FieldTextValue title="סוג היבול" value={field.product_name} />
-			<FieldTextValue title="סוג שטח" value={field.product_kind} />
-			<FieldTextValue title="מספר חקלאי" value={field.farmer_id} />
-			<FieldTextValue title="איזור" value={field.region} />
-			<FieldTextValue title="מצב היכרות" value={field.familiarity} />
-			<FieldTextValue title="ציר X" value={field.xAxis} />
-			<FieldTextValue title="ציר Y" value={field.yAxis} />
-			<FieldTextValue title="מספר חלקה" value={field.field_number} />
+			<FieldTextValue title="שם השדה" value={field.name} width={90} />
+			<FieldTextValue title="סוג שטח" value={translator(field.product_name)} width={90} />
+			<FieldTextValue title="מספר חקלאי" value={field.farmer_id} width={90} />
+			<FieldTextValue title="איזור" value={translator(field.region)} width={90} />
+			<FieldTextValue title="מצב היכרות" value={translator(field.familiarity)} width={90} />
+			<FieldTextValue title="ציר X" value={field.xAxis} width={90} />
+			<FieldTextValue title="ציר Y" value={field.yAxis} width={90} />
 		</Grid>
 	);
 };

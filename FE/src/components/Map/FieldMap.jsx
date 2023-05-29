@@ -5,7 +5,7 @@ const FieldMap = (
 	product_name,
 	optionRegion,
 	optionCareStatus,
-	moreproduct_names,
+	additionalProductNames,
 	optionMoreFilters,
 	sortMethod
 ) => {

@@ -20,7 +20,7 @@ const CustomTextPresentation = ({
 	value,
 	typeField,
 	setEditableData,
-	editableData, 
+	editableData,
 	saveDataKey,
 	textOptionsDropdown,
 	fireOpenfamilarityPopup
@@ -49,7 +49,7 @@ const CustomTextPresentation = ({
 						size="small"
 						onKeyPress={(event) => {
 							const pattern = /^\d+$/;
-							
+
 							if (!pattern.test(event.key) && event.key !== '.' && event.key !== '-') {
 								event.preventDefault();
 							}
@@ -67,7 +67,7 @@ const CustomTextPresentation = ({
 						size="small"
 						onKeyPress={(event) => {
 							const pattern = /^\d+$/;
-							
+
 							if (!pattern.test(event.key)) {
 								event.preventDefault();
 							}
@@ -146,15 +146,15 @@ const CustomTextPresentation = ({
 						alt=""
 						src={value}
 					/> :
-					<Typography
-						variant="div"
-						component="h5"
-						dir="rtl"
-						sx={{
-							fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+			<Typography
+				variant="div"
+				component="h5"
+				dir="rtl"
+				sx={{
+					fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
 							fontSize: "16px"
-						}}
-					>
+				}}
+			>
 						{ typeField === TypeField.TEXT && !!saveDataKey ? editableData[saveDataKey] : value }
 					</Typography> :
 				determainComponentForFieldType()

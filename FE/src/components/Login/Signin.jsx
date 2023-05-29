@@ -16,7 +16,7 @@ const Signin = ({ textFieldStyle, checkboxStyle, handleSignMethodChange }) => {
 		handleSignMethodChange("forgotpass");
 
 	const [username, setUsername] = useState("user");
-	const [password, setPassword] = useState("pass");
+	const [password, setPassword] = useState("fGF#$@gB#%GHG324%H23");
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

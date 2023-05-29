@@ -1,32 +1,33 @@
 {
-    "areaOptions": [
-        "הכל",
-        "מרכז",
-        "צפון",
-        "דרום"
-    ],
-    "careStatusOptions": [
-        "הכל",
-        "בטיפול",
-        "לא בטיפול",
-        "לא עדכני",
-        "בטיפול רכז",
-        "דורש בדיקה",
-        "בטיפול מ. אזור"
-    ],
-    "cropKindOptions": [
-        "חציל",
-        "קיווי",
-        "אבטיח",
-        "תות",
-        "אפרסמון",
-        "עגבניה",
-        "גמבה"
-    ],
-    "acquaintanceModeOptions": [
-        "לא מוכר",
-        "מוכר ונקטף",
-        "לא רלוונטי",
-        "מוכר ולא נקטף"
-    ]
+  "areaOptions": [
+	"ALL",
+	"CENTER",
+	"NORTH",
+	"SOUTH"
+  ],
+  "careStatusOptions": [
+	"ALL",
+	"TAKEN_CARE_OF",
+	"NOT_IN_TREATMENT",
+	"IN_FOCAL_CARE",
+	"UNDER_THE_CARE_OF_A_COORDINATOR",
+	"UNDER_THE_CARE_OF_AN_AREA_MANAGER",
+	"IRRELEVANT",
+	"ON_HOLD",
+	"REQUIRES_CARE"
+  ],
+  "product_nameOptions": [
+	"TOMATO",
+	"EGGPLANT",
+	"KIWI",
+	"WATERMELON",
+	"STRAWBERRIES",
+	"PERSIMMON"
+  ],
+  "familiarityOptions": [
+	"NOT_KNOWN",
+	"KNOWN_PICKED",
+	"IRRELEVANT",
+	"KNOWN_NOT_PICKED"
+  ]
 }

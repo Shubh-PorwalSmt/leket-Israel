@@ -2,12 +2,10 @@
     "fields": [
         "name",
         "product_name",
-        "product_kind",
         "farmer_id",
         "region",
         "familiarity",
         "xaxis",
-        "yaxis",
-        "field_number"
+        "yaxis"
     ]
 }

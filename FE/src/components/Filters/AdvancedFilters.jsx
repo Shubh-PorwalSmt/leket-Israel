@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Box, Button, Divider, Slider, TextField, Typography,} from "@mui/material";
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DeleteOutline} from "@mui/icons-material";
+import moment from 'moment';
 
 const addCropStyle = {
 	borderRadius: "16px",
@@ -110,7 +111,9 @@ const AdvancedFilters = props => {
 	}, [options]);
 
 	const onUpdateOptions = () => {
-		setOptions({attractionFrom: attractionRange[0], attractionTo: attractionRange[1], ndviFrom: ndviRange[0], ndviTo: ndviRange[1], dateFrom: fromDate, dateTo: toDate});
+		const from = moment(fromDate).format("DD-MM-yyyy");
+		const to = moment(toDate).format("DD-MM-yyyy");
+		setOptions({attractionFrom: attractionRange[0], attractionTo: attractionRange[1], ndviFrom: ndviRange[0], ndviTo: ndviRange[1], dateFrom: from, dateTo: to});
 	};
 
 	const onResetOptions = () => {

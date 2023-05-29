@@ -1,39 +1,45 @@
 import axios from 'axios';
 
+export const loadFields = async (filters) => {
+	console.log("call server");
+	console.log("filters: ", filters);
+
+	return axios.post(`${import.meta.env.VITE_BASE_API_URL}/fields/get`, filters)
+		.then(async response => {
+			return response.data;
+		})
+		.catch(response => {
+			return null;
+		})
+};
+
 export const saveNewField = async (field) => {
-	return { status: "Field created" };
+	const data = {
+		"name": field.name,
+		"product_name": field.product_name,
+		"region": field.region,
+		"farmer_id": field.farmer_id,
+		"familiarity": field.familiarity,
+		"latitude": parseFloat(field.xAxis),
+		"longitude": parseFloat(field.yAxis),
+		"status": 'NOT_IN_TREATMENT'
+	};
 
-	// return axios.post(`${process.env.REACT_APP_HOST_URL}/field/save`, {field})
-	// 	.then(async response => {
-	// 		return response.data;
-	// 	})
-	// 	.catch(response => {
-	// 		return null;
-	// 	})
+	return axios.post(`${import.meta.env.VITE_BASE_API_URL}/fields`, data)
+		.then(async response => {
+			return response.data;
+		})
+		.catch(response => {
+			return null;
+		})
 };
 
-export const saveExistingField = async (field) => {
-	console.log(field);
-	return { status: "Existing field saved!" };
-
-	// return axios.post(`${process.env.REACT_APP_HOST_URL}/field/detailsave`, {field})
-	// 	.then(async response => {
-	// 		return response.data;
-	// 	})
-	// 	.catch(response => {
-	// 		return null;
-	// 	})
-};
-
-export const saveFieldStatus = async (status) => {
-	console.log(status);
-	return { status: "Status saved!" };
-
-	// return axios.post(`${process.env.REACT_APP_HOST_URL}/field/detailsave`, {field})
-	// 	.then(async response => {
-	// 		return response.data;
-	// 	})
-	// 	.catch(response => {
-	// 		return null;
-	// 	})
+export const deleteField = async (id) => {
+	return axios.delete(`${import.meta.env.VITE_BASE_API_URL}/fields/${id}`)
+		.then(async response => {
+			return response.data;
+		})
+		.catch(response => {
+			return null;
+		})
 };

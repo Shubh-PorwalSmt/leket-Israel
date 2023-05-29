@@ -11,13 +11,14 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 import ExpandableMenu from "./ExpandableMenu";
 import { useState, useContext } from "react";
 import ContextProvider from "../../hooks/ContextApi";
-import { cropKindOptions as product_nameOptions} from "../../constants/filterSelection";
+import * as data from "../../constants/filterSelection";
 import ToggleFilter from "../ToggleFilter";
 
 import TomatoIcon from '../../assets/Vegetables/TomatoIcon.png';
 import CucumberIcon from '../../assets/Vegetables/CucumberIcon.png';
 import PapperIcon from '../../assets/Vegetables/PapperIcon.png';
 import CarrotIcon from '../../assets/Vegetables/CarrotIcon.png';
+import translator from "../../Utils/translations/translator";
 
 const cropToggleBtn = {
 	display: "flex",
@@ -37,13 +38,9 @@ const toggleBtnText = {
 
 const FilterCrop = ({ cardText, imageStyle }) => {
 	const { product_name, setProductName } = useContext(ContextProvider);
-	const { moreproduct_names, setMoreproduct_names } = useContext(ContextProvider);
+	const { additionalProductNames, setAdditionalProductNames } = useContext(ContextProvider);
 
 	const [rotateArrow, setRotateArrow] = useState(false);
-
-	const handleCropSelection = (event, crop) => {
-		setProductName(crop);
-	};
 
 	const onToggle = (item) => {
 		if(product_name.indexOf(item) > -1) {
@@ -77,7 +74,7 @@ const FilterCrop = ({ cardText, imageStyle }) => {
 						fontWeight="bold"
 						sx={cardText}
 					>
-						{moreproduct_names.length === 1 ? moreproduct_names[0] : `נבחרו ${moreproduct_names.length}`}
+						{translator(additionalProductNames.length === 1 ? additionalProductNames[0] : `נבחרו ${additionalProductNames.length}`)}
 					</Typography>
 				</div>
 			</Box>
@@ -98,20 +95,20 @@ const FilterCrop = ({ cardText, imageStyle }) => {
 				marginTop="20px"
 			>
 				<ExpandableMenu
-					items={product_nameOptions}
+					items={data.product_nameOptions}
 					displayTag={displayTag}
 					product_name={product_name}
 					setProductName={setProductName}
-					setOptions={setMoreproduct_names}
-					options={moreproduct_names}
+					setOptions={setAdditionalProductNames}
+					options={additionalProductNames}
 					rotateArrow={rotateArrow}
 					setRotateArrow={setRotateArrow}
 				/>
 
-				<ToggleFilter checked={product_name && product_name.indexOf('עגבניה') > -1} onToggle={onToggle} icon={TomatoIcon}>עגבניה</ToggleFilter>
-				<ToggleFilter checked={product_name && product_name.indexOf('מלפפון') > -1} onToggle={onToggle} icon={CucumberIcon}>מלפפון</ToggleFilter>
-				<ToggleFilter checked={product_name && product_name.indexOf('גמבה') > -1} onToggle={onToggle} icon={PapperIcon}>גמבה</ToggleFilter>
-				<ToggleFilter checked={product_name && product_name.indexOf('גזר') > -1} onToggle={onToggle} icon={CarrotIcon}>גזר</ToggleFilter>
+				<ToggleFilter checked={product_name && product_name.indexOf('TOMATO') > -1} onToggle={() => onToggle('TOMATO')} icon={TomatoIcon}>{translator('TOMATO')}</ToggleFilter>
+				<ToggleFilter checked={product_name && product_name.indexOf('CUCUMBER') > -1} onToggle={() => onToggle('CUCUMBER')} icon={CucumberIcon}>{translator('CUCUMBER')}</ToggleFilter>
+				<ToggleFilter checked={product_name && product_name.indexOf('GAMBA') > -1} onToggle={() => onToggle('GAMBA')} icon={PapperIcon}>{translator('GAMBA')}</ToggleFilter>
+				<ToggleFilter checked={product_name && product_name.indexOf('CARROT') > -1} onToggle={() => onToggle('CARROT')} icon={CarrotIcon}>{translator('CARROT')}</ToggleFilter>
 			</Grid>
 		</Box>
 	);

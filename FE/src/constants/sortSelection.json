@@ -1,8 +1,8 @@
 [
-  { "key": "attr-desc", "label": "אטרקטביות", "dir": "desc" },
-  { "key": "attr-asc", "label": "אטרקטביות", "dir": "asc" },
-  { "key": "ndvi-desc", "label": "NDVI", "dir": "desc" },
-  { "key": "ndvi-asc", "label": "NDVI", "dir": "asc" },
-  { "key": "a2z", "label": "א' - ת'" },
-  { "key": "z2a", "label": "ת' - א'" }
+  { "key": "attr-asc", "label": "אטרקטביות", "field": "Attractivenesses", "dir": "asc" },
+  { "key": "attr-desc", "label": "אטרקטביות", "field": "Attractivenesses", "dir": "desc" },
+  { "key": "ndvi-asc", "label": "NDVI", "field": "ndvi", "dir": "asc" },
+  { "key": "ndvi-desc", "label": "NDVI", "field": "ndvi", "dir": "desc" },
+  { "key": "a2z", "label": "א' - ת'", "field": "name", "dir": "asc" },
+  { "key": "z2a", "label": "ת' - א'", "field": "name", "dir": "desc" }
 ]

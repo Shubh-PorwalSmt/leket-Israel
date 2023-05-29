@@ -5,22 +5,30 @@ import {careStatusOptions} from "../../constants/filterSelection";
 import {useDispatch} from "react-redux";
 import * as fieldActions from '../../redux/Field/actions';
 import {useState} from "react";
+import translator from "../../Utils/translations/translator";
 
 const getStatusColor = (status) => {
-	return status === "בטיפול"
-		? "#def9e0"
-		: status === "לא בטיפול"
-			? "#FFDADA"
-			: status === "לא עדכני"
-				? "#a2c0fa"
-				: status === "בטיפול רכז"
-					? "#f9ecde"
-					: status === "דורש בדיקה"
-						? "#fca9a8"
-						: "#ebf2ff";
+	switch(status) {
+		case "NOT_IN_TREATMENT":
+			return "#FFDADA";
+		case "IN_FOCAL_CARE":
+			return "#def9e0";
+		case "UNDER_THE_CARE_OF_A_COORDINATOR":
+			return "#def9e0";
+		case "UNDER_THE_CARE_OF_AN_AREA_MANAGER":
+			return "#f9ecde";
+		case "IRRELEVANT":
+			return "#a2c0fa";
+		case "ON_HOLD":
+			return "#fca9a8";
+		case "REQUIRES_CARE":
+			return "#fca9a8";
+		default:
+			return "#ebf2ff";
+	}
 };
 
-const CustomStatus = ({ label, disable = false }) => {
+const CustomStatus = ({ status, label, disable = false }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [rotateArrow, setRotateArrow] = useState(false);
 
@@ -56,14 +64,14 @@ const CustomStatus = ({ label, disable = false }) => {
 				sx={{
 					direction: "ltr",
 					width: '130px',
-					backgroundColor: disable ? 'grey' : getStatusColor(label),
+					backgroundColor: disable ? 'grey' : getStatusColor(status),
 					'&:hover': {
-						backgroundColor: disable ? 'grey' : getStatusColor(label),
+						backgroundColor: disable ? 'grey' : getStatusColor(status),
 					}
 				}}
 				icon={
 					<KeyboardArrowDown
-						style={{ color: disable ? 'grey' : getStatusColor(label), filter: "brightness(85%)", rotate: rotateArrow ? "180deg" : "0deg" }}
+						style={{ color: disable ? 'grey' : getStatusColor(status), filter: "brightness(85%)", rotate: rotateArrow ? "180deg" : "0deg" }}
 						sx={{ display: "flex" }}
 					/>
 				}
@@ -107,7 +115,7 @@ const CustomStatus = ({ label, disable = false }) => {
 							key={status}
 							onClick={handleMenuItemClick}
 						>
-							<div>{status}</div>
+							<div>{translator(status)}</div>
 						</MenuItem>
 					))}
 				</Menu> :

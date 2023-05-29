@@ -42,11 +42,11 @@ export const TypeField = {
 
 const RowDetails = ({ onClose, rowSet }) => {
 	// console.log(rowSet);
-	
+
 	if (!rowSet) {
 		return <div />
 	}
-	
+
 	// const dateUpdateStatus = rowSet.lastUpdate;
 	// const product_name = r;
 	// const fieldKind = 'גד"ש';
@@ -57,7 +57,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 	// const aquaintanceMode = 'מוכר ולא נקטף';
 	const fieldDateEstablishment = '05.11.2007';
 	const farmer_ids = [123456, 987654, 456987];
-	const aquaintanceModes = ["כרוב לבן", "מלפפון", "בצל"];
+	const aquaintanceModes = ["כרוב לבן", "CUCUMBER", "בצל"];
 
 	const longitude = 31.23568446;
 	const latitude = 36.56467586;
@@ -110,7 +110,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 	const handleEdit = () => {
 		if (editMode)
 			handleSave();
-		
+
 		setEditMode(!editMode);
 	};
 
@@ -171,7 +171,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 										/>
 									</Box>
 									<Divider orientation="vertical" flexItem />
-									<CustomStatus label={rowSet.status} disable={!editMode} />
+									<CustomStatus status={rowSet.status} label={rowSet.status} disable={!editMode} />
 								</Box>
 							</Box>
 						</Grid>
@@ -313,23 +313,23 @@ const RowDetails = ({ onClose, rowSet }) => {
 									<Grid item>
 										<Box display="flex" flexDirection="row" gap={8}>
 											<Grid item>
-												<Typography
-													variant="div"
-													component="div"
-													dir="rtl"
-													sx={{
-														fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-														fontSize: "10px",
-													}}
-												>
-													NDVI
-												</Typography>
-												<Chip
+										<Typography
+											variant="div"
+											component="div"
+											dir="rtl"
+											sx={{
+												fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+												fontSize: "10px",
+											}}
+										>
+											NDVI
+										</Typography>
+										<Chip
 													label={rowSet.NDVI}
-													sx={{ display: "flex", justifyContent: "flex-start" }}
-													size="small"
-												/>
-											</Grid>
+											sx={{ display: "flex", justifyContent: "flex-start" }}
+											size="small"
+										/>
+									</Grid>
 											<Grid item>
 												<ValidAttractivness
 													editableData={editableData}
@@ -338,22 +338,22 @@ const RowDetails = ({ onClose, rowSet }) => {
 												/>
 											</Grid>
 											<Grid item dir="rtl">
-												<Typography
-													variant="div"
-													component="div"
-													dir="rtl"
-													sx={{
-														fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-														fontSize: "10px",
-													}}
-												>
-													מדד אטרקטיביות
-												</Typography>
-												<Chip
+										<Typography
+											variant="div"
+											component="div"
+											dir="rtl"
+											sx={{
+												fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+												fontSize: "10px",
+											}}
+										>
+											מדד אטרקטיביות
+										</Typography>
+										<Chip
 													label={rowSet.attractivness}
-													sx={{ display: "flex", width: 'fit-content' }}
-													size="small"
-												/>
+											sx={{ display: "flex", width: 'fit-content' }}
+											size="small"
+										/>
 											</Grid>
 										</Box>
 									</Grid>
@@ -394,7 +394,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 												header="מצב היכרות"
 												fireOpenfamilarityPopup={() => setOpenFamilarityCause(true)}
 												typeField={TypeField.TEXT}
-												textOptionsDropdown={data.acquaintanceModeOptions}
+												textOptionsDropdown={data.familiarityOptions}
 												editableData={editableData}
 												saveDataKey="familiarity"
 											/>
@@ -438,7 +438,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 															<Step key={index}>
 																<StepLabel>{agriculturalNum}</StepLabel>
 															</Step>
-														))}
+													))}
 													</Stepper>
 												</Box>
 											</Grid>

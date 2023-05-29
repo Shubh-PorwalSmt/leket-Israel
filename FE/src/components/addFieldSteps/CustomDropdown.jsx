@@ -1,5 +1,6 @@
 import React from 'react';
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import translator from "../../Utils/translations/translator";
 
 const CustomDropdown = ({ label, options, value, onChange }) => {
 
@@ -24,7 +25,7 @@ const CustomDropdown = ({ label, options, value, onChange }) => {
 				{
 					options.map((option, i) => (
 						<MenuItem key={i} value={option}>
-							{option}
+							{translator(option)}
 						</MenuItem>
 					))
 				}

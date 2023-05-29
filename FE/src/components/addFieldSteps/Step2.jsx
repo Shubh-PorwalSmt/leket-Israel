@@ -5,7 +5,7 @@ import ErrorMessage from './ErrorMessage';
 import * as data from "../../constants/filterSelection";
 
 const Step2 = (props) => {
-	const {product_name, product_kind, farmer_id, region, familiarity, onChangeField, error} = props;
+	const {product_name, farmer_id, region, familiarity, onChangeField, error} = props;
 
 	return (
 		<Grid
@@ -20,14 +20,6 @@ const Step2 = (props) => {
 				onChange={value => onChangeField('product_name', value)}
 			/>
 			{ error && error.name === 'product_name' && <ErrorMessage text={error.text} /> }
-
-			<CustomDropdown
-				label="סוג שטח"
-				value={product_kind}
-				options={data.product_nameOptions}
-				onChange={value => onChangeField('product_kind', value)}
-			/>
-			{ error && error.name === 'product_kind' && <ErrorMessage text={error.text} /> }
 
 			<TextField
 				variant="standard"

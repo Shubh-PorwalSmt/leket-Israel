@@ -7,6 +7,7 @@ import ContextProvider from "../../hooks/ContextApi";
 import { data as originalRows } from "../../constants/mockGridData";
 import { areaOptions } from "../../constants/filterSelection";
 import { careStatusOptions } from "../../constants/filterSelection";
+import translator from "../../Utils/translations/translator";
 
 const areaStyle = {
 	marginLeft: "45px",
@@ -27,9 +28,8 @@ const careStyle = {
 };
 
 const MoreFilters = ({ cardText, imageStyle }) => {
-	const { setRows } = useContext(ContextProvider);
 	const { setProductName } = useContext(ContextProvider);
-	const { setMoreproduct_names } = useContext(ContextProvider);
+	const { setAdditionalProductNames } = useContext(ContextProvider);
 	const { optionRegion, setOptionRegion } = useContext(ContextProvider);
 	const { optionCareStatus, setOptionCareStatus } = useContext(ContextProvider);
 	const { optionMoreFilters, setOptionMoreFilters } = useContext(ContextProvider);
@@ -39,14 +39,13 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 	const [rotateArrow3, setRotateArrow3] = useState(false);
 
 	const handleClearFilters = () => {
-		setRows(originalRows);
-		setOptionRegion(["הכל"]);
-		setOptionCareStatus(["הכל"]);
-		setProductName([""]);
+		setOptionRegion(["ALL"]);
+		setOptionCareStatus(["ALL"]);
+		setProductName([]);
 		setOptionMoreFilters({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: new Date(), dateTo: new Date()});
-		setMoreproduct_names("");
+		setAdditionalProductNames([]);
 	};
-	console.log(optionMoreFilters);
+
 	const TEST_SIZE = "14px";
 	const MORE_FILTER_IDENTIFIER = "MoreFilters";
 
@@ -78,7 +77,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 						fontWeight="bold"
 						sx={areaDisplayOptionStyle}
 					>
-						{optionRegion.length === 1 ? optionRegion[0] : `נבחרו ${optionRegion.length}`}
+						{translator(optionRegion.length === 1 ? optionRegion[0] : `נבחרו ${optionRegion.length}`)}
 					</Typography>
 				</div>
 			</Box>
@@ -113,7 +112,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 						fontWeight="bold"
 						sx={cardText}
 					>
-						{optionCareStatus.length === 1 ? optionCareStatus[0] : `נבחרו ${optionCareStatus.length}`}
+						{translator(optionCareStatus.length === 1 ? optionCareStatus[0] : `נבחרו ${optionCareStatus.length}`)}
 					</Typography>
 				</div>
 			</Box>

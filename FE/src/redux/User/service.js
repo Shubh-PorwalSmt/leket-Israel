@@ -1,4 +1,7 @@
 import axios from 'axios';
+import log from 'loglevel';
+
+log.setLevel("error");
 
 axios.interceptors.request.use(request => {
 	log.info('Starting Request', request.url);
@@ -11,14 +14,14 @@ axios.interceptors.response.use(response => {
 });
 
 export const signIn = async (user, pass) => {
-	if(user === 'user' && pass === 'pass') {
+	if(user === 'user' && pass === 'fGF#$@gB#%GHG324%H23') {
 		return { name: 'אלירן'};
 	}
 	else {
 		return null;
 	}
 
-	// return axios.post(`${process.env.REACT_APP_HOST_URL}/user/login`, {user, pass})
+	// return axios.post(`${import.meta.env.VITE_BASE_API_URL}/user/login`, {user, pass})
 	// 	.then(async response => {
 	// 		return response.data.user;
 	// 	})
@@ -29,7 +32,7 @@ export const signIn = async (user, pass) => {
 
 export const signOut = async () => {
 	return { status: 'ok' };
-	// return axios.get(`${process.env.REACT_APP_HOST_URL}/user/logout`)
+	// return axios.get(`${import.meta.env.VITE_BASE_API_URL}/user/logout`)
 	// 	.then(async response => {
 	// 		return response.data;
 	// 	})

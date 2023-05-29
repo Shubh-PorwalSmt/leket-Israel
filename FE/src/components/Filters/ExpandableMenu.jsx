@@ -3,6 +3,7 @@ import {Card, Checkbox, Divider, FormControlLabel, Menu, MenuItem} from "@mui/ma
 import {DeleteOutline} from "@mui/icons-material";
 import {useState} from "react";
 import AdvancedFilters from "./AdvancedFilters";
+import translator from "../../Utils/translations/translator";
 
 const ExpandableMenu = ({
 	                        isAdvanced,
@@ -19,6 +20,16 @@ const ExpandableMenu = ({
 
 	const open = Boolean(anchorEl);
 
+	const doClose = () => {
+		setRotateArrow(!rotateArrow);
+		setAnchorEl(null);
+	};
+
+	const updateOptions = (values) => {
+		setOptions(values);
+		doClose();
+	};
+
 	const handleClick = (e) => {
 		setRotateArrow(!rotateArrow);
 		setAnchorEl(e.currentTarget);
@@ -31,36 +42,31 @@ const ExpandableMenu = ({
 			const newOptions = options.filter(option => option !== item);
 			setOptions(newOptions);
 		}
-		else if (item === "הכל") {
-			setOptions(["הכל"]);
+		else if (item === "ALL") {
+			setOptions(["ALL"]);
 		}
-		else if (!options.includes("הכל")) {
+		else if (!options.includes("ALL")) {
 			setOptions(prev => [...prev, item]);
 		}
 		else {
 			setOptions([item]);
-		}
-
-		if (product_name != null) {
-			setProductName([...product_name, item]);
 		}
 	};
 
 	const handleClearAllClick = event => {
 		event.preventDefault();
 
-		if(items != null && items.indexOf("הכל") > -1) {
-			setOptions(["הכל"]);
+		if(items != null && items.indexOf("ALL") > -1) {
+			setOptions(["ALL"]);
 		}
 		setOptions([]);
 	};
 
 	const handleClose = () => {
-		if(items != null && options.length < 1 && items.indexOf("הכל") > -1) {
-			setOptions(["הכל"]);
+		if(items != null && options.length < 1 && items.indexOf("ALL") > -1) {
+			setOptions(["ALL"]);
 		}
-		setRotateArrow(!rotateArrow);
-		setAnchorEl(null);
+		doClose();
 	};
 
 	const cropCard = {
@@ -137,13 +143,13 @@ const ExpandableMenu = ({
 										size="small"
 									/>
 								}
-								label={item}
+								label={translator(item)}
 								labelPlacement="end"
 							/>
 						</MenuItem>
 					))
 				) : (
-					<AdvancedFilters options={options} setOptions={setOptions} />
+					<AdvancedFilters options={options} setOptions={updateOptions} />
 				)}
 				{!isAdvanced ? <Divider /> : ""}
 				{!isAdvanced ? (

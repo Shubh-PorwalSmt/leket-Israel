@@ -1,7 +1,7 @@
 {
     "id": 1,
     "name": "משק גידולים",
-    "product_name": "מלפפון",
+    "product_name": "CUCUMBER",
     "status_date": "12.12.22",
     "created_date": "05.11.2007",
     "farmer_id": "987345s",
@@ -12,10 +12,8 @@
     "polygon": [ 1, 2, 3, 4, 5],
     "attractivness": 0.6,
     "NDVI": 0.8,
-    "product_kind": "גדש",
-    "field_number": 123456,
     "history": {
         "farmer_ids": [123456, 987654, 456987],
-        "familiarities": ["כרוב לבן", "מלפפון", "בצל"]
+        "familiarities": ["כרוב לבן", "CUCUMBER", "בצל"]
     }
 }

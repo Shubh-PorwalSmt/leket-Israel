@@ -3,7 +3,7 @@ import { TextField, Grid } from "@mui/material";
 import ErrorMessage from "./ErrorMessage";
 
 const Step4 = (props) => {
-	const {xAxis, yAxis, field_number, onChangeField, error} = props;
+	const {xAxis, yAxis, onChangeField, error} = props;
 
 	return (
 		<Grid
@@ -31,16 +31,6 @@ const Step4 = (props) => {
 				onChange={e => onChangeField('yAxis', e.target.value)}
 			/>
 			{ error && error.name === 'yAxis' && <ErrorMessage text={error.text} /> }
-
-			<TextField
-				variant="standard"
-				required
-				error={error != null && error.name === 'field_number'}
-				label="מספר חלקה"
-				value={field_number}
-				onChange={e => onChangeField('field_number', e.target.value)}
-			/>
-			{ error && error.name === 'field_number' && <ErrorMessage text={error.text} /> }
 
 		</Grid>
 	);

@@ -109,7 +109,8 @@ const ExpandableMenu = ({
 						borderRadius: '10px',
 						marginTop: '5px',
 						minWidth: '155px',
-						padding: '0 10px'
+						padding: '0 10px',
+						maxHeight: '70vh'
 					},
 				}}
 			>

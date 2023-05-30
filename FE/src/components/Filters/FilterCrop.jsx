@@ -95,7 +95,7 @@ const FilterCrop = ({ cardText, imageStyle }) => {
 				marginTop="20px"
 			>
 				<ExpandableMenu
-					items={data.product_nameOptions}
+					items={data.product_nameOptions.sort((a, b) => translator(a).localeCompare(translator(b)))}
 					displayTag={displayTag}
 					product_name={product_name}
 					setProductName={setProductName}

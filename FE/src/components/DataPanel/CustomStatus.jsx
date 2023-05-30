@@ -1,7 +1,7 @@
 import React from 'react';
 import {Chip, Menu, MenuItem} from "@mui/material";
 import {KeyboardArrowDown} from "@mui/icons-material";
-import {careStatusOptions} from "../../constants/filterSelection";
+import * as data from "../../constants/filterSelection";
 import {useDispatch} from "react-redux";
 import * as fieldActions from '../../redux/Field/actions';
 import {useState} from "react";
@@ -29,7 +29,7 @@ const getStatusColor = (status) => {
 	}
 };
 
-const CustomStatus = ({ fieldId, status, label, disable = false }) => {
+const CustomStatus = ({ fieldId, status, label, removeAllOption, disable = false }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [rotateArrow, setRotateArrow] = useState(false);
 
@@ -56,6 +56,12 @@ const CustomStatus = ({ fieldId, status, label, disable = false }) => {
 		handleClose();
 		showToast("השדה עודכן.");
 	};
+
+	let options = data.careStatusOptions;
+
+	if(removeAllOption) {
+		options = options.filter(o => o !== 'ALL');
+	}
 
 	return (
 		<div status-column="true">
@@ -103,7 +109,7 @@ const CustomStatus = ({ fieldId, status, label, disable = false }) => {
 						},
 					}}
 				>
-					{careStatusOptions.map((status) => (
+					{options.map((status) => (
 						<MenuItem
 							sx={{
 								marginBottom: 1,

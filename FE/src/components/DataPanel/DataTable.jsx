@@ -146,7 +146,7 @@ const DataTable = ({rows}) => {
 			width: 140,
 			editable: true,
 			sortable: false,
-			renderCell: (params) => <CustomStatus fieldId={params.id} status={params.value} label={translator(params.value)} />,
+			renderCell: (params) => <CustomStatus fieldId={params.id} removeAllOption status={params.value} label={translator(params.value)} />,
 		},
 		{
 			field: "actions",

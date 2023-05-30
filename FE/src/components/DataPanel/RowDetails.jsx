@@ -171,7 +171,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 										/>
 									</Box>
 									<Divider orientation="vertical" flexItem />
-									<CustomStatus status={rowSet.status} label={rowSet.status} disable={!editMode} />
+									<CustomStatus removeAllOption status={rowSet.status} label={rowSet.status} disable={!editMode} />
 								</Box>
 							</Box>
 						</Grid>

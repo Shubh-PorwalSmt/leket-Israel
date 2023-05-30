@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import * as fieldActions from '../../redux/Field/actions';
 import {useState} from "react";
 import translator from "../../Utils/translations/translator";
+import {showToast} from "../../Utils/general";
 
 const getStatusColor = (status) => {
 	switch(status) {
@@ -28,7 +29,7 @@ const getStatusColor = (status) => {
 	}
 };
 
-const CustomStatus = ({ status, label, disable = false }) => {
+const CustomStatus = ({ fieldId, status, label, disable = false }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [rotateArrow, setRotateArrow] = useState(false);
 
@@ -50,10 +51,10 @@ const CustomStatus = ({ status, label, disable = false }) => {
 		}
 	};
 
-	const handleMenuItemClick = (e) => {
-		const status = e.target.innerText;
-		// console.log(status);
-		dispatch(fieldActions.saveFieldStatus(status));
+	const handleMenuItemClick = status => {
+		dispatch(fieldActions.updateFieldStatus(fieldId, status));
+		handleClose();
+		showToast("השדה עודכן.");
 	};
 
 	return (
@@ -113,7 +114,7 @@ const CustomStatus = ({ status, label, disable = false }) => {
 								},
 							}}
 							key={status}
-							onClick={handleMenuItemClick}
+							onClick={() => handleMenuItemClick(status)}
 						>
 							<div>{translator(status)}</div>
 						</MenuItem>

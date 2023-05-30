@@ -30,6 +30,20 @@ function fieldReducer(state = JSON.parse(initialState), action) {
 				fieldCount: state.fieldCount - 1,
 			}
 		}
+		case actionTypes.UPDATE_FIELD: {
+			const allFields = [...state.fields];
+			const updatedField = action.data;
+			const index = allFields.findIndex(f => f.id === updatedField.id);
+
+			if(index > -1) {
+				allFields[index] = updatedField;
+			}
+
+			return {
+				...state,
+				fields: allFields
+			}
+		}
 		default:
 			return state;
 	}

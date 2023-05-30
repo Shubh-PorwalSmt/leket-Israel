@@ -37,6 +37,18 @@ export const deleteField = (id) => {
 	};
 };
 
+
+export const updateFieldStatus = (fieldId, status) => {
+	return async (dispatch) => {
+		const updatedField = await fieldService.updateFieldStatus(fieldId, status);
+
+		await dispatch({
+			type: actionTypes.UPDATE_FIELD,
+			data: updatedField
+		});
+	};
+};
+
 export const saveExistingField = (field) => {
 	return async (dispatch) => {
 		await fieldService.saveExistingField(field);

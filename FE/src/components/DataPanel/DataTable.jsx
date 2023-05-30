@@ -83,12 +83,14 @@ const DataTable = ({rows}) => {
 			field: "name",
 			headerName: "שם השדה",
 			editable: false,
+			sortable: false,
 			flex: 2,
 		},
 		{
 			field: "product_name",
 			headerName: "סוג יבול",
 			editable: false,
+			sortable: false,
 			flex: 1,
 			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
@@ -97,11 +99,13 @@ const DataTable = ({rows}) => {
 			headerName: "מדד אטרקטיביות",
 			flex: 1,
 			editable: false,
+			sortable: false,
 		},
 		{
 			field: "latest_satelite_metric",
 			headerName: "NDVI",
 			editable: false,
+			sortable: false,
 			flex: 1,
 			renderCell: (params) => <NDVI label={params.value} />,
 		},
@@ -109,6 +113,7 @@ const DataTable = ({rows}) => {
 			field: "region",
 			headerName: "אזור",
 			editable: false,
+			sortable: false,
 			flex: 1,
 			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
@@ -116,12 +121,14 @@ const DataTable = ({rows}) => {
 			field: "farmer_id",
 			headerName: "מספר חקלאי",
 			editable: false,
+			sortable: false,
 			flex: 1,
 		},
 		{
 			field: "familiarity",
 			headerName: "מצב היכרות",
 			editable: false,
+			sortable: false,
 			flex: 1,
 			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
@@ -129,6 +136,7 @@ const DataTable = ({rows}) => {
 			field: "created_date",
 			headerName: "עדכון אחרון",
 			editable: false,
+			sortable: false,
 			flex: 1,
 			renderCell: (params) => (<div>{moment(params.value).format("DD-MM-yyyy")}</div>),
 		},
@@ -137,7 +145,8 @@ const DataTable = ({rows}) => {
 			headerName: "סטטוס",
 			width: 140,
 			editable: true,
-			renderCell: (params) => <CustomStatus status={params.value} label={translator(params.value)} />,
+			sortable: false,
+			renderCell: (params) => <CustomStatus fieldId={params.id} status={params.value} label={translator(params.value)} />,
 		},
 		{
 			field: "actions",
@@ -301,6 +310,7 @@ const DataTable = ({rows}) => {
 				paginationModel={{ page: page, pageSize: pageSize }}
 				checkboxSelection
 				disableRowSelectionOnClick
+				disableColumnMenu
 				disableColumnFilter
 				hideFooterSelectedRowCount
 				hideFooterPagination

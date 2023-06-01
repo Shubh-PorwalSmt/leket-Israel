@@ -38,6 +38,7 @@ const toggleBtnText = {
 
 const FilterCrop = ({ cardText, imageStyle }) => {
 	const { product_name, setProductName } = useContext(ContextProvider);
+	const { setPage } = useContext(ContextProvider);
 	const { additionalProductNames, setAdditionalProductNames } = useContext(ContextProvider);
 
 	const [rotateArrow, setRotateArrow] = useState(false);
@@ -49,6 +50,12 @@ const FilterCrop = ({ cardText, imageStyle }) => {
 		else {
 			setProductName([...product_name, item])
 		}
+		setPage(0);
+	};
+
+	const updateAdditionalProductNames = (productNames) => {
+		setAdditionalProductNames(productNames);
+		setPage(0);
 	};
 
 	const displayTag = (
@@ -99,7 +106,7 @@ const FilterCrop = ({ cardText, imageStyle }) => {
 					displayTag={displayTag}
 					product_name={product_name}
 					setProductName={setProductName}
-					setOptions={setAdditionalProductNames}
+					setOptions={updateAdditionalProductNames}
 					options={additionalProductNames}
 					rotateArrow={rotateArrow}
 					setRotateArrow={setRotateArrow}

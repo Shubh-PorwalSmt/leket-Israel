@@ -30,6 +30,7 @@ const careStyle = {
 const MoreFilters = ({ cardText, imageStyle }) => {
 	const { setProductName } = useContext(ContextProvider);
 	const { setAdditionalProductNames } = useContext(ContextProvider);
+	const { setPage } = useContext(ContextProvider);
 	const { optionRegion, setOptionRegion } = useContext(ContextProvider);
 	const { optionCareStatus, setOptionCareStatus } = useContext(ContextProvider);
 	const { optionMoreFilters, setOptionMoreFilters } = useContext(ContextProvider);
@@ -44,6 +45,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 		setProductName([]);
 		setOptionMoreFilters({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: new Date(), dateTo: new Date()});
 		setAdditionalProductNames([]);
+		setPage(0);
 	};
 
 	const TEST_SIZE = "14px";
@@ -154,6 +156,21 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 		</CardContent>
 	);
 
+	const updateRegions = (regions) => {
+		setOptionRegion(regions);
+		setPage(0);
+	};
+
+	const updateCareStatus = (statuses) => {
+		setOptionCareStatus(statuses);
+		setPage(0);
+	};
+
+	const updateMoreFilters = (filters) => {
+		setOptionMoreFilters(filters);
+		setPage(0);
+	};
+
 	return (
 		<Box display="flex" flexDirection="column">
 			<Typography variant="h5" fontWeight="bold" fontSize="20px" sx={cardText}>
@@ -179,7 +196,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 					<ExpandableMenu
 						isAdvanced="true"
 						displayTag={displayMoreFiltersTag}
-						setOptions={setOptionMoreFilters}
+						setOptions={updateMoreFilters}
 						options={optionMoreFilters}
 						rotateArrow={rotateArrow3}
 						setRotateArrow={setRotateArrow3}
@@ -190,7 +207,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 						identifier={MORE_FILTER_IDENTIFIER}
 						items={careStatusOptions}
 						displayTag={displayCareStatusTag}
-						setOptions={setOptionCareStatus}
+						setOptions={updateCareStatus}
 						options={optionCareStatus}
 						rotateArrow={rotateArrow2}
 						setRotateArrow={setRotateArrow2}
@@ -201,7 +218,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 						identifier={MORE_FILTER_IDENTIFIER}
 						items={areaOptions}
 						displayTag={displayRegionTag}
-						setOptions={setOptionRegion}
+						setOptions={updateRegions}
 						options={optionRegion}
 						rotateArrow={rotateArrow1}
 						setRotateArrow={setRotateArrow1}

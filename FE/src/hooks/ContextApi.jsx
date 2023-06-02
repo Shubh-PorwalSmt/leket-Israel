@@ -1,11 +1,12 @@
 import React, {createContext, useState} from 'react';
-import sortOptions from "../constants/sortSelection";
+// import sortOptions from "../constants/sortSelection";
 const ContextApi = createContext({});
 
 export default ContextApi;
 
 export const ContextProvider = ({ children }) => {
 	const [searchText, setSearchText] = useState("");
+	const [debouncedSearchText, setDebouncedSearchText] = useState("");
 	const [mode, setMode] = useState("grid");
 	const [sortMethod, setSortMethod] = useState([{ "key": "attr-asc", "label": "אטרקטביות", "field": "name", "dir": "asc" }]);
 	const [product_name, setProductName] = useState([]);
@@ -22,6 +23,8 @@ export const ContextProvider = ({ children }) => {
 				value={{
 					searchText,
 					setSearchText,
+					debouncedSearchText,
+					setDebouncedSearchText,
 					mode,
 					setMode,
 					sortMethod,

@@ -16,6 +16,7 @@ const Home = () => {
 	const { optionRegion } = useContext(ContextProvider);
 	const { optionCareStatus } = useContext(ContextProvider);
 	const { optionMoreFilters } = useContext(ContextProvider);
+	const { debouncedSearchText } = useContext(ContextProvider);
 	const { page } = useContext(ContextProvider);
 	const { pageSize } = useContext(ContextProvider);
 
@@ -31,7 +32,7 @@ const Home = () => {
 	useEffect(() => {
 		const load = async () => {
 			const filters = {
-				searchText,
+				searchText: debouncedSearchText,
 				products: [...product_name, ...additionalProductNames],
 				regions: optionRegion && optionRegion[0] === 'ALL' ? [] : optionRegion,
 				careStatuses: optionCareStatus && optionCareStatus[0] === 'ALL' ? [] : optionCareStatus,
@@ -44,7 +45,7 @@ const Home = () => {
 			await dispatch(fieldActions.loadFields(filters))
 		};
 		load();
-	}, [product_name, optionRegion, optionCareStatus, additionalProductNames, optionMoreFilters, sortMethod, page, pageSize]);
+	}, [debouncedSearchText, product_name, optionRegion, optionCareStatus, additionalProductNames, optionMoreFilters, sortMethod, page, pageSize]);
 
 	return (
 		<Grid container display="grid" marginTop="3%" sx={{ paddingLeft: 7, paddingRight: 7 }}>

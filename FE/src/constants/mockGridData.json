@@ -14,7 +14,7 @@
         { "id": 12, "name": "dsf", "product_name": "setAdditionalProductNamesY", "attractivness": 2, "NDVI": 0.4, "region": "מרכז", "farmer_id": "123456","familiarity": "לא מוכר", "status": "לא עדכני", "lastUpdate": "10.02.2022" },
         { "id": 13, "name": "dfvve", "product_name": "GAMBA", "attractivness": 2, "NDVI": 0.4, "region": "מרכז", "farmer_id": "123456","familiarity": "לא מוכר", "status": "דורש בדיקה", "lastUpdate": "07.08.2019" },
         { "id": 14, "name": "bbb", "product_name": "EGGPLANT", "attractivness": 2, "NDVI": 0.4, "region": "צפון", "farmer_id": "123456","familiarity": "לא מוכר", "status": "בטיפול רכז", "lastUpdate": "17.07.2018" },
-        { "id": 15, "name": "mgjme", "product_name": "STRAWBERRIES", "attractivness": 2, "NDVI": 0.4, "region": "מרכז", "farmer_id": "123456","familiarity": "לא מוכר", "status": "בטיפול מ. אזור", "lastUpdate": "10.02.2022" },
+        { "id": 15, "name": "mgjme", "product_name": "STRAWBERRY", "attractivness": 2, "NDVI": 0.4, "region": "מרכז", "farmer_id": "123456","familiarity": "לא מוכר", "status": "בטיפול מ. אזור", "lastUpdate": "10.02.2022" },
         { "id": 16, "name": "asde", "product_name": "WATERMELON", "attractivness": 2, "NDVI": 9.5, "region": "צפון", "farmer_id": "123456","familiarity": "לא מוכר", "status": "לא עדכני", "lastUpdate": "15.08.2017" },
         { "id": 17, "name": "zz", "product_name": "KIWI", "attractivness": 2, "NDVI": 0.4, "region": "דרום", "farmer_id": "123456","familiarity": "לא מוכר", "status": "בטיפול מ. אזור", "lastUpdate": "21.03.2014" },
         { "id": 18, "name": "vfv", "product_name": "WATERMELON", "attractivness": 2, "NDVI": 8.5, "region": "מרכז", "farmer_id": "123456","familiarity": "לא מוכר", "status": "לא עדכני", "lastUpdate": "10.02.2022" },

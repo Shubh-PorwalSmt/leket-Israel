@@ -32,7 +32,7 @@ const Home = () => {
 	useEffect(() => {
 		const load = async () => {
 			const filters = {
-				searchText: debouncedSearchText,
+				name: debouncedSearchText,
 				products: [...product_name, ...additionalProductNames],
 				regions: optionRegion && optionRegion[0] === 'ALL' ? [] : optionRegion,
 				careStatuses: optionCareStatus && optionCareStatus[0] === 'ALL' ? [] : optionCareStatus,

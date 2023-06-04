@@ -9,8 +9,13 @@ import sortOptions from "../../constants/sortSelection";
 
 const Sort = ({ cardText }) => {
 	const { sortMethod, setSortMethod } = useContext(ContextProvider);
-
+	const { setPage } = useContext(ContextProvider);
 	const [rotateArrow, setRotateArrow] = useState(false);
+
+	const updateSortMethod = (sort) => {
+		setSortMethod(sort);
+		setPage(0);
+	};
 
 	const displayTag = (
 		<CardContent>
@@ -63,7 +68,7 @@ const Sort = ({ cardText }) => {
 			<SortMenu
 				items={sortOptions}
 				displayTag={displayTag}
-				setOptions={setSortMethod}
+				setOptions={updateSortMethod}
 				options={sortMethod}
 				rotateArrow={rotateArrow}
 				setRotateArrow={setRotateArrow}

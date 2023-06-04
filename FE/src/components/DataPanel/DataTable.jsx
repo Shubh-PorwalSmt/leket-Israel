@@ -95,11 +95,12 @@ const DataTable = ({rows}) => {
 			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
 		{
-			field: "attractivness",
+			field: "latest_attractiveness_metric",
 			headerName: "מדד אטרקטיביות",
 			flex: 1,
 			editable: false,
 			sortable: false,
+			renderCell: (params) => <div>{params.value}</div>
 		},
 		{
 			field: "latest_satelite_metric",
@@ -107,7 +108,7 @@ const DataTable = ({rows}) => {
 			editable: false,
 			sortable: false,
 			flex: 1,
-			renderCell: (params) => <NDVI label={params.value} />,
+			renderCell: (params) => <div>{params.value}</div>
 		},
 		{
 			field: "region",
@@ -183,10 +184,6 @@ const DataTable = ({rows}) => {
 
 	const handleClickRowClose = () => {
 		setEditedRow(null);
-	};
-
-	const NDVI = ({ label }) => {
-		return <div>{label}</div>;
 	};
 
 	const pagingLabel = ({ from, to, count }) => {

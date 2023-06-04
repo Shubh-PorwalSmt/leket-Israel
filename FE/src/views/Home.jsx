@@ -5,6 +5,7 @@ import ContextProvider from "../hooks/ContextApi";
 import { Grid } from "@mui/material";
 import SortPanel from '../components/Sorters/SortPanel'
 import DataPanel from "../components/DataPanel/DataPanel";
+import moment from 'moment';
 
 const Home = () => {
 	const [loading, setLoading] = useState(true);
@@ -31,6 +32,11 @@ const Home = () => {
 
 	useEffect(() => {
 		const load = async () => {
+			const dateFrom = moment(optionMoreFilters.dateFrom, 'DD-MM-yyyy').toDate();
+			const dateTo = moment(optionMoreFilters.dateTo, 'DD-MM-yyyy').toDate();
+			optionMoreFilters.dateFrom = dateFrom;
+			optionMoreFilters.dateTo = dateTo;
+
 			const filters = {
 				name: debouncedSearchText,
 				products: [...product_name, ...additionalProductNames],

@@ -1,8 +1,8 @@
 [
-  { "key": "attr-asc", "label": "אטרקטביות", "field": "Attractivenesses", "dir": "asc" },
-  { "key": "attr-desc", "label": "אטרקטביות", "field": "Attractivenesses", "dir": "desc" },
-  { "key": "ndvi-asc", "label": "NDVI", "field": "ndvi", "dir": "asc" },
-  { "key": "ndvi-desc", "label": "NDVI", "field": "ndvi", "dir": "desc" },
+  { "key": "attr-asc", "label": "אטרקטביות", "field": "latest_attractiveness_metric", "dir": "asc" },
+  { "key": "attr-desc", "label": "אטרקטביות", "field": "latest_attractiveness_metric", "dir": "desc" },
+  { "key": "ndvi-asc", "label": "NDVI", "field": "latest_satelite_metric", "dir": "asc" },
+  { "key": "ndvi-desc", "label": "NDVI", "field": "latest_satelite_metric", "dir": "desc" },
   { "key": "a2z", "label": "א' - ת'", "field": "name", "dir": "asc" },
   { "key": "z2a", "label": "ת' - א'", "field": "name", "dir": "desc" }
 ]

@@ -1,4 +1,5 @@
 import React, {createContext, useState} from 'react';
+import {getDefaultDateFrom, getDefaultDateTo} from "../Utils/general";
 // import sortOptions from "../constants/sortSelection";
 const ContextApi = createContext({});
 
@@ -13,7 +14,7 @@ export const ContextProvider = ({ children }) => {
 	const [additionalProductNames, setAdditionalProductNames] = useState([]);
 	const [optionRegion, setOptionRegion] = useState(["ALL"]);
 	const [optionCareStatus, setOptionCareStatus] = useState(["ALL"]);
-	const [optionMoreFilters, setOptionMoreFilters] = useState({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: new Date(), dateTo: new Date()});
+	const [optionMoreFilters, setOptionMoreFilters] = useState({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: getDefaultDateFrom(), dateTo: getDefaultDateTo()});
 	const [page, setPage] = useState(0);
 	const [pageSize, setPageSize] = useState(5);
 

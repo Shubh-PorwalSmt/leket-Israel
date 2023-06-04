@@ -1,4 +1,5 @@
 import {toast} from 'react-toastify';
+import moment from 'moment';
 
 export const validateEmail = (email) => {
 	// Regular expression pattern for email validation
@@ -19,4 +20,12 @@ export const showToast = (msg) => {
 		progress: undefined,
 		theme: "colored",
 	});
+};
+
+export const getDefaultDateFrom = () => {
+	return new Date(2018, 0, 1)
+};
+
+export const getDefaultDateTo = () => {
+	return new Date()
 };

@@ -8,6 +8,7 @@ import { data as originalRows } from "../../constants/mockGridData";
 import { areaOptions } from "../../constants/filterSelection";
 import { careStatusOptions } from "../../constants/filterSelection";
 import translator from "../../Utils/translations/translator";
+import {getDefaultDateFrom, getDefaultDateTo} from "../../Utils/general";
 
 const areaStyle = {
 	marginLeft: "45px",
@@ -43,7 +44,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 		setOptionRegion(["ALL"]);
 		setOptionCareStatus(["ALL"]);
 		setProductName([]);
-		setOptionMoreFilters({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: new Date(), dateTo: new Date()});
+		setOptionMoreFilters({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: getDefaultDateFrom(), dateTo: getDefaultDateTo()});
 		setAdditionalProductNames([]);
 		setPage(0);
 	};

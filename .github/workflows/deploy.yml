@@ -10,7 +10,7 @@ env:
   ECR_REPOSITORY: leket-israel-frontend
   ECS_SERVICE: leket-israel-frontend                 # set this to your Amazon ECS service name
   ECS_CLUSTER: leket-israel-frontend                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: leket-israel-frontend
+  ECS_TASK_DEFINITION: ecs-task-definition.json
   IMAGE_TAG: leket-israel-frontend-${{ github.run_id }}
   CONTAINER_NAME: frontend
 

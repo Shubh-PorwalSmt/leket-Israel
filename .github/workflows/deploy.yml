@@ -3,7 +3,7 @@ name: Deploy to ECR
 on:
 
   push:
-    branches: [ git-actions ]
+    branches: [ FE ]
 
 env:
   AWS_REGION: us-east-1

@@ -1,0 +1,28 @@
+{
+    "fields": [
+        {
+            "id": 1,
+            "name": "field1",
+            "product_name": "TOMATO",
+            "attractivness": "0.6",
+            "NDVI": "0.8",
+            "region": "מרכז",
+            "farmer_id": "123s",
+            "familiarity": "מוכר",
+            "lastUpdate": "10.02.2020",
+            "status": "בטיפול"
+        },
+        {
+            "id": 2,
+            "name": "field2",
+            "product_name": "TOMATO",
+            "attractivness": "0.8",
+            "NDVI": "0.1",
+            "region": "מרכז",
+            "farmer_id": "133s",
+            "familiarity": "מוכר",
+            "lastUpdate": "10.12.2020",
+            "status": "בטיפול"
+        }
+    ]
+}

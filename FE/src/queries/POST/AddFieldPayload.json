@@ -1,0 +1,9 @@
+{
+    "name": "field1",
+    "product_name": "TOMATO",
+    "farmer_id": "987345s",
+    "region": "דרום",
+    "familiarity": "מוכר ולא נקטף",
+    "latitude": 123.546,
+    "longitude": 234.444
+}

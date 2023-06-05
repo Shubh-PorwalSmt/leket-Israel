@@ -1,16 +1,33 @@
 import React, {lazy} from "react";
 import {useSelector} from 'react-redux';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import * as he from './Utils/translations/he';
 import {BrowserRouter as Router, Navigate, Route, Routes} from 'react-router-dom';
-import { Box, GlobalStyles } from "@mui/material";
+import {Box, GlobalStyles} from "@mui/material";
 import Header from "./components/Header/Header";
+import {ContextProvider} from "./hooks/ContextApi";
+import CssBaseline from "@mui/material/CssBaseline";
 const Home = lazy(() => import("./views/Home"));
 const LoginPanel = lazy(() => import("./views/LoginPanel"));
-import { ContextProvider } from "./hooks/ContextApi";
-import CssBaseline from "@mui/material/CssBaseline";
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-confirm-alert/src/react-confirm-alert.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 	const user = useSelector(state => state.user.user);
-console.log("user = ", user);
+
+	i18n
+		.use(initReactI18next)
+		.init({
+			resources: {
+				he: { translation: he }
+			},
+			lng: 'he', // Set the default language
+			fallbackLng: 'he' // Set the fallback language
+		});
+
 	if(user == null) {
 		return (
 			<Router>
@@ -24,6 +41,7 @@ console.log("user = ", user);
 
 	return (
 		<Box>
+			<ToastContainer />
 			<CssBaseline />
 			<GlobalStyles
 				styles={{

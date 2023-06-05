@@ -1,0 +1,19 @@
+{
+    "id": 1,
+    "name": "משק גידולים",
+    "product_name": "CUCUMBER",
+    "status_date": "12.12.22",
+    "created_date": "05.11.2007",
+    "farmer_id": "987345s",
+    "region": "דרום",
+    "familiarity": "מוכר ולא נקטף",
+    "latitude": 123.546,
+    "longitude": 234.444,
+    "polygon": [ 1, 2, 3, 4, 5],
+    "attractivness": 0.6,
+    "NDVI": 0.8,
+    "history": {
+        "farmer_ids": [123456, 987654, 456987],
+        "familiarities": ["כרוב לבן", "CUCUMBER", "בצל"]
+    }
+}

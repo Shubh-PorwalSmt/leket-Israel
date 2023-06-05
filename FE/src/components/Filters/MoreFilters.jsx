@@ -7,6 +7,8 @@ import ContextProvider from "../../hooks/ContextApi";
 import { data as originalRows } from "../../constants/mockGridData";
 import { areaOptions } from "../../constants/filterSelection";
 import { careStatusOptions } from "../../constants/filterSelection";
+import translator from "../../Utils/translations/translator";
+import {getDefaultDateFrom, getDefaultDateTo} from "../../Utils/general";
 
 const areaStyle = {
 	marginLeft: "45px",
@@ -27,10 +29,10 @@ const careStyle = {
 };
 
 const MoreFilters = ({ cardText, imageStyle }) => {
-	const { setRows } = useContext(ContextProvider);
-	const { setCropKind } = useContext(ContextProvider);
-	const { setMoreCropKinds } = useContext(ContextProvider);
-	const { optionArea, setOptionArea } = useContext(ContextProvider);
+	const { setProductName } = useContext(ContextProvider);
+	const { setAdditionalProductNames } = useContext(ContextProvider);
+	const { setPage } = useContext(ContextProvider);
+	const { optionRegion, setOptionRegion } = useContext(ContextProvider);
 	const { optionCareStatus, setOptionCareStatus } = useContext(ContextProvider);
 	const { optionMoreFilters, setOptionMoreFilters } = useContext(ContextProvider);
 
@@ -39,18 +41,18 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 	const [rotateArrow3, setRotateArrow3] = useState(false);
 
 	const handleClearFilters = () => {
-		setRows(originalRows);
-		setOptionArea(["הכל"]);
-		setOptionCareStatus(["הכל"]);
-		setCropKind([""]);
-		setOptionMoreFilters({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: new Date(), dateTo: new Date()});
-		setMoreCropKinds("");
+		setOptionRegion(["ALL"]);
+		setOptionCareStatus(["ALL"]);
+		setProductName([]);
+		setOptionMoreFilters({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: getDefaultDateFrom(), dateTo: getDefaultDateTo()});
+		setAdditionalProductNames([]);
+		setPage(0);
 	};
-	console.log(optionMoreFilters);
+
 	const TEST_SIZE = "14px";
 	const MORE_FILTER_IDENTIFIER = "MoreFilters";
 
-	const displayAreaTag = (
+	const displayRegionTag = (
 		<CardContent>
 			<Box display="flex" position="relative" flexDirection="row">
 				<KeyboardArrowDown
@@ -78,7 +80,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 						fontWeight="bold"
 						sx={areaDisplayOptionStyle}
 					>
-						{optionArea.length === 1 ? optionArea[0] : `נבחרו ${optionArea.length}`}
+						{translator(optionRegion.length === 1 ? optionRegion[0] : `נבחרו ${optionRegion.length}`)}
 					</Typography>
 				</div>
 			</Box>
@@ -113,7 +115,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 						fontWeight="bold"
 						sx={cardText}
 					>
-						{optionCareStatus.length === 1 ? optionCareStatus[0] : `נבחרו ${optionCareStatus.length}`}
+						{translator(optionCareStatus.length === 1 ? optionCareStatus[0] : `נבחרו ${optionCareStatus.length}`)}
 					</Typography>
 				</div>
 			</Box>
@@ -155,6 +157,21 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 		</CardContent>
 	);
 
+	const updateRegions = (regions) => {
+		setOptionRegion(regions);
+		setPage(0);
+	};
+
+	const updateCareStatus = (statuses) => {
+		setOptionCareStatus(statuses);
+		setPage(0);
+	};
+
+	const updateMoreFilters = (filters) => {
+		setOptionMoreFilters(filters);
+		setPage(0);
+	};
+
 	return (
 		<Box display="flex" flexDirection="column">
 			<Typography variant="h5" fontWeight="bold" fontSize="20px" sx={cardText}>
@@ -180,7 +197,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 					<ExpandableMenu
 						isAdvanced="true"
 						displayTag={displayMoreFiltersTag}
-						setOptions={setOptionMoreFilters}
+						setOptions={updateMoreFilters}
 						options={optionMoreFilters}
 						rotateArrow={rotateArrow3}
 						setRotateArrow={setRotateArrow3}
@@ -191,7 +208,7 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 						identifier={MORE_FILTER_IDENTIFIER}
 						items={careStatusOptions}
 						displayTag={displayCareStatusTag}
-						setOptions={setOptionCareStatus}
+						setOptions={updateCareStatus}
 						options={optionCareStatus}
 						rotateArrow={rotateArrow2}
 						setRotateArrow={setRotateArrow2}
@@ -201,9 +218,9 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 					<ExpandableMenu
 						identifier={MORE_FILTER_IDENTIFIER}
 						items={areaOptions}
-						displayTag={displayAreaTag}
-						setOptions={setOptionArea}
-						options={optionArea}
+						displayTag={displayRegionTag}
+						setOptions={updateRegions}
+						options={optionRegion}
 						rotateArrow={rotateArrow1}
 						setRotateArrow={setRotateArrow1}
 					/>

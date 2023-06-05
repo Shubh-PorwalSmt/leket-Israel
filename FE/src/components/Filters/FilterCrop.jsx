@@ -11,13 +11,14 @@ import { KeyboardArrowDown } from "@mui/icons-material";
 import ExpandableMenu from "./ExpandableMenu";
 import { useState, useContext } from "react";
 import ContextProvider from "../../hooks/ContextApi";
-import { cropKindOptions } from "../../constants/filterSelection";
+import * as data from "../../constants/filterSelection";
 import ToggleFilter from "../ToggleFilter";
 
 import TomatoIcon from '../../assets/Vegetables/TomatoIcon.png';
 import CucumberIcon from '../../assets/Vegetables/CucumberIcon.png';
 import PapperIcon from '../../assets/Vegetables/PapperIcon.png';
 import CarrotIcon from '../../assets/Vegetables/CarrotIcon.png';
+import translator from "../../Utils/translations/translator";
 
 const cropToggleBtn = {
 	display: "flex",
@@ -36,22 +37,25 @@ const toggleBtnText = {
 };
 
 const FilterCrop = ({ cardText, imageStyle }) => {
-	const { cropKind, setCropKind } = useContext(ContextProvider);
-	const { moreCropKinds, setMoreCropKinds } = useContext(ContextProvider);
+	const { product_name, setProductName } = useContext(ContextProvider);
+	const { setPage } = useContext(ContextProvider);
+	const { additionalProductNames, setAdditionalProductNames } = useContext(ContextProvider);
 
 	const [rotateArrow, setRotateArrow] = useState(false);
 
-	const handleCropSelection = (event, crop) => {
-		setCropKind(crop);
-	};
-
 	const onToggle = (item) => {
-		if(cropKind.indexOf(item) > -1) {
-			setCropKind(cropKind.filter(c => c !== item));
+		if(product_name.indexOf(item) > -1) {
+			setProductName(product_name.filter(c => c !== item));
 		}
 		else {
-			setCropKind([...cropKind, item])
+			setProductName([...product_name, item])
 		}
+		setPage(0);
+	};
+
+	const updateAdditionalProductNames = (productNames) => {
+		setAdditionalProductNames(productNames);
+		setPage(0);
 	};
 
 	const displayTag = (
@@ -77,7 +81,7 @@ const FilterCrop = ({ cardText, imageStyle }) => {
 						fontWeight="bold"
 						sx={cardText}
 					>
-						{moreCropKinds.length === 1 ? moreCropKinds[0] : `נבחרו ${moreCropKinds.length}`}
+						{translator(additionalProductNames.length === 1 ? additionalProductNames[0] : `נבחרו ${additionalProductNames.length}`)}
 					</Typography>
 				</div>
 			</Box>
@@ -98,20 +102,20 @@ const FilterCrop = ({ cardText, imageStyle }) => {
 				marginTop="20px"
 			>
 				<ExpandableMenu
-					items={cropKindOptions}
+					items={data.product_nameOptions.sort((a, b) => translator(a).localeCompare(translator(b)))}
 					displayTag={displayTag}
-					cropKind={cropKind}
-					setCropKind={setCropKind}
-					setOptions={setMoreCropKinds}
-					options={moreCropKinds}
+					product_name={product_name}
+					setProductName={setProductName}
+					setOptions={updateAdditionalProductNames}
+					options={additionalProductNames}
 					rotateArrow={rotateArrow}
 					setRotateArrow={setRotateArrow}
 				/>
 
-				<ToggleFilter checked={cropKind && cropKind.indexOf('עגבניה') > -1} onToggle={onToggle} icon={TomatoIcon}>עגבניה</ToggleFilter>
-				<ToggleFilter checked={cropKind && cropKind.indexOf('מלפפון') > -1} onToggle={onToggle} icon={CucumberIcon}>מלפפון</ToggleFilter>
-				<ToggleFilter checked={cropKind && cropKind.indexOf('גמבה') > -1} onToggle={onToggle} icon={PapperIcon}>גמבה</ToggleFilter>
-				<ToggleFilter checked={cropKind && cropKind.indexOf('גזר') > -1} onToggle={onToggle} icon={CarrotIcon}>גזר</ToggleFilter>
+				<ToggleFilter checked={product_name && product_name.indexOf('TOMATO') > -1} onToggle={() => onToggle('TOMATO')} icon={TomatoIcon}>{translator('TOMATO')}</ToggleFilter>
+				<ToggleFilter checked={product_name && product_name.indexOf('CUCUMBER') > -1} onToggle={() => onToggle('CUCUMBER')} icon={CucumberIcon}>{translator('CUCUMBER')}</ToggleFilter>
+				<ToggleFilter checked={product_name && product_name.indexOf('GAMBA') > -1} onToggle={() => onToggle('GAMBA')} icon={PapperIcon}>{translator('GAMBA')}</ToggleFilter>
+				<ToggleFilter checked={product_name && product_name.indexOf('CARROT') > -1} onToggle={() => onToggle('CARROT')} icon={CarrotIcon}>{translator('CARROT')}</ToggleFilter>
 			</Grid>
 		</Box>
 	);

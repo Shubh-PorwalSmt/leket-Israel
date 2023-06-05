@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {useDispatch} from "react-redux";
 import * as userActions from '../../redux/User/actions';
 import {AppBar, Box, Button, Divider, Toolbar, Typography} from "@mui/material";
@@ -7,12 +7,22 @@ import gridView from '../../assets/header/grid-view.png';
 import mapView from '../../assets/header/map-view.png';
 import ContextProvider from "../../hooks/ContextApi";
 import CustomSearch from "../../components/Header/CustomSearch";
+import useDebounce from '../../hooks/useDebounce';
+
+const DEBOUNCED_DELAY = 1000;
 
 const Header = ({  }) => {
 	const { setMode, mode } = useContext(ContextProvider);
-	const { setSearchText } = useContext(ContextProvider);
+	const { searchText, setSearchText } = useContext(ContextProvider);
+	const { setDebouncedSearchText } = useContext(ContextProvider);
 
 	const dispatch = useDispatch();
+	
+	const debouncedSearchText = useDebounce(searchText, DEBOUNCED_DELAY);
+
+	useEffect(() => {
+		setDebouncedSearchText(debouncedSearchText);
+	}, [debouncedSearchText]);
 
 	const currentHour = new Date().getHours();
 	let timeOfDay;

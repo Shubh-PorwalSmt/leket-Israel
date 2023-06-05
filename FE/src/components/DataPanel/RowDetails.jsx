@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import {useDispatch} from "react-redux";
 import {
 	Card,
 	CardContent,
@@ -13,10 +14,15 @@ import {
 	Stepper,
 	Typography,
 } from "@mui/material";
-import {ArrowBack, Edit} from "@mui/icons-material";
+import {ArrowBack, Edit, Save} from "@mui/icons-material";
 import {Box} from "@mui/system";
 import CustomStatus from "./CustomStatus";
+import CheckSave from './CheckSave';
+import ValidAttractivness from './ValidAttractivness';
+import FamilarityCause from './FamilarityCause';
 import CustomTextPresentation from "./CustomTextPresentation";
+import * as data from "../../constants/filterSelection.json";
+import * as fieldActions from '../../redux/Field/actions';
 
 const stepperStyle = {
 	".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active, .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed":
@@ -26,32 +32,104 @@ const stepperStyle = {
 		},
 };
 
+export const TypeField = {
+	TEXT: Symbol("text"),
+	NUMBER: Symbol("number"),
+	FLOAT: Symbol("float"),
+	DATE: Symbol("date"),
+	IMAGE: Symbol("image")
+}
+
 const RowDetails = ({ onClose, rowSet }) => {
-	console.log(rowSet);
+	// console.log(rowSet);
+
+	if (!rowSet) {
+		return <div />
+	}
 
 	// const dateUpdateStatus = rowSet.lastUpdate;
-	// const cropKind = r;
+	// const product_name = r;
 	// const fieldKind = 'גד"ש';
-	const agriculturalNumber = 987345;
-	const area = 'דרום';
-	const attractivness = 0.6;
-	const NDVIness = 0.8;
+	// const farmer_id = 987345;
+	// const region = 'דרום';
+	// const attractivness = 0.6;
+	// const NDVI = 0.8;
+	// const aquaintanceMode = 'מוכר ולא נקטף';
 	const fieldDateEstablishment = '05.11.2007';
-	const aquaintanceMode = 'מוכר ולא נקטף';
-	const agriculturalNumbers = [123456, 987654, 456987];
-	const aquaintanceModes = ["כרוב לבן", "מלפפון", "בצל"];
+	const farmer_ids = [123456, 987654, 456987];
+	const aquaintanceModes = ["כרוב לבן", "CUCUMBER", "בצל"];
 
-	const xaxis = 31.23568446;
-	const yaxis = 36.56467586;
+	const longitude = 31.23568446;
+	const latitude = 36.56467586;
 	const fieldId = 123456789;
 
-	if(!rowSet) {
-		return <div/>
+	const [editMode, setEditMode] = useState(false);
+	const [openCheckSave, setOpenCheckSave] = useState(false);
+	const [openFamilarityCause, setOpenFamilarityCause] = useState(false);
+	const [decision, setDecision] = useState(null);
+	const [editableData, setEditableData] = useState({
+		lastUpdate: new Date().toLocaleDateString('en-GB'),
+		product_name: rowSet.product_name,
+		farmer_id: rowSet.farmer_id,
+		region: rowSet.region,
+		familiarity: rowSet.familiarity,
+		fieldDateEstablishment: fieldDateEstablishment, // query: rowSet.fieldDateEstablishment
+		longitude: longitude, // query: rowSet.longitude
+		latitude: latitude, // query: rowSet.latitude
+		familarityCause: "", //familarityCause
+		CheckedAttractivness: ""
+	});
+
+	const dispatch = useDispatch();
+
+	const updateEditableData = (key, value) => {
+		const saveData = {...editableData};
+		saveData[key] = value;
+		setEditableData(saveData);
+	}
+
+	const handleSave =  () => {
+		dispatch(fieldActions.saveExistingField(editableData));
+	}
+
+	const handleCloseCheckSave = () => {
+		setOpenCheckSave(false);
+	}
+
+	const handleCloseFamilarityCause = () => {
+		setOpenFamilarityCause(false);
+	}
+
+	useEffect(() => {
+		if (decision) {
+			handleSave();
+			handleClose();
+		}
+	}, [decision]);
+
+	const handleEdit = () => {
+		if (editMode)
+			handleSave();
+
+		setEditMode(!editMode);
+	};
+
+	const handleClose = () => {
+		if (editMode) {
+			setOpenCheckSave(true);
+			setEditMode(false);
+			return;
+		}
+
+		setOpenCheckSave(false);
+		setEditMode(false);
+		onClose();
 	}
 
 	return (
-		<Dialog onClose={onClose} open={rowSet != null} fullWidth maxWidth="lg">
+		<Dialog onClose={handleClose} open={rowSet != null} fullWidth maxWidth={window.innerWidth > 1700 ? "xl" : "lg"}>
 			<Card
+				elevation={10}
 				sx={{
 					width: "100%",
 					height: "100%",
@@ -61,11 +139,11 @@ const RowDetails = ({ onClose, rowSet }) => {
 					{/* Header Grid */}
 					<Grid container direction="row" justifyContent="space-between">
 						<Grid item>
-							<IconButton color="success" onClick={onClose}>
+							<IconButton color="success" onClick={handleClose}>
 								<ArrowBack />
 							</IconButton>
-							<IconButton color="success">
-								<Edit />
+							<IconButton color="success" onClick={handleEdit}>
+								{ editMode ? <Save /> : <Edit /> }
 							</IconButton>
 						</Grid>
 						<Grid item>
@@ -83,17 +161,22 @@ const RowDetails = ({ onClose, rowSet }) => {
 								<Box display="flex" flexDirection="row" gap={1}>
 									<Box display="flex" flexDirection="column" gap={-1}>
 										<CustomTextPresentation
-											header="תאריך עדכון סטטוס:"
+											editMode={editMode}
+											header="תאריך עדכון סטטוס"
 											value={rowSet.lastUpdate}
+											setEditableData={setEditableData}
+											editableData={editableData}
+											saveDataKey="lastUpdate"
+											typeField={TypeField.DATE}
 										/>
 									</Box>
 									<Divider orientation="vertical" flexItem />
-									<CustomStatus label={rowSet.status} />
+									<CustomStatus removeAllOption status={rowSet.status} label={rowSet.status} disable={!editMode} />
 								</Box>
 							</Box>
 						</Grid>
 					</Grid>
-					{/* Content Grid */}
+					{/* // Content Grid */}
 					<Grid
 						container
 						direction="row"
@@ -119,6 +202,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 								justifyContent="space-around"
 								gap={3}
 								marginTop={1.5}
+								dir="rtl"
 							>
 								<Grid item>
 									<Grid
@@ -129,54 +213,49 @@ const RowDetails = ({ onClose, rowSet }) => {
 									>
 										<Grid item xs>
 											<CustomTextPresentation
-												header="ציר Y"
-												value={yaxis}
+												editMode={editMode}
+												header="Y"
+												value={latitude}
+												typeField={TypeField.FLOAT}
+												setEditableData={setEditableData}
+												editableData={editableData}
+												saveDataKey="latitude"
 											/>
 										</Grid>
 										<Grid item xs>
 											<CustomTextPresentation
-												header="ציר X"
-												value={xaxis}
+												editMode={editMode}
+												header="X"
+												value={longitude}
+												typeField={TypeField.FLOAT}
+												setEditableData={setEditableData}
+												editableData={editableData}
+												saveDataKey="longitude"
 											/>
 										</Grid>
 									</Grid>
 								</Grid>
 								<Grid item>
 									<CustomTextPresentation
+										editMode={false}
 										header="מספר חלקה"
 										value={fieldId}
 									/>
 								</Grid>
 							</Grid>
-							<Grid container direction="column" gap={1} marginTop={3}>
-								<Grid item>
-									<Typography
-										variant="div"
-										component="h5"
-										dir="rtl"
-										sx={{
-											fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-										}}
-									>
-										תמונה מהשטח:
-									</Typography>
-								</Grid>
-								<Grid item>
-									<Box
-										component="img"
-										sx={{
-											display: "flex",
-											maxHeight: { xs: "70%" },
-											maxWidth: { xs: "80%" },
-										}}
-										dir="rtl"
-										alt=""
-										src="Images/RowDetails/FieldShot.png"
+							<Grid container dir="rtl" direction="column" gap={1} marginTop={3}>
+								<Grid item dir="rtl">
+									<CustomTextPresentation
+										editMode={editMode}
+										header="תמונה מהשטח"
+										value="Images/RowDetails/FieldShot.png"
+										typeField={TypeField.IMAGE}
 									/>
 								</Grid>
 							</Grid>
 						</Grid>
 						<Divider orientation="vertical" flexItem />
+						{/* Right Side Content */}
 						<Grid item>
 							<Box display="flex" flexDirection="column" gap={6}>
 								<Grid
@@ -187,15 +266,42 @@ const RowDetails = ({ onClose, rowSet }) => {
 								>
 									<Grid item>
 										<CustomTextPresentation
+											editMode={editMode}
 											header="מספר חקלאי"
-											value={rowSet.agriculturalNumber}
+											typeField={TypeField.NUMBER}
+											value={rowSet.farmer_id}
+											setEditableData={setEditableData}
+											editableData={editableData}
+											saveDataKey="farmer_id"
 										/>
 									</Grid>
 									<Grid item>
-										<CustomTextPresentation header="סוג השטח" value={rowSet.fieldKind} />
+										{/* <ValidAttractivness
+											editableData={editableData}
+											updateEditableData={updateEditableData}
+											disable={!editMode}
+										/> */}
+										<CustomTextPresentation
+											header="סוג השטח"
+											editMode={editMode}
+											typeField={TypeField.TEXT}
+											textOptionsDropdown=""
+											setEditableData={setEditableData}
+											value={rowSet.fieldKind}
+											// editableData={editableData}
+											// saveDataKey="fieldId"
+										/>
 									</Grid>
 									<Grid item>
-										<CustomTextPresentation header="סוג יבול" value={rowSet.cropKind} />
+										<CustomTextPresentation
+										  	header="סוג יבול"
+											editMode={editMode}
+											setEditableData={setEditableData}
+											typeField={TypeField.TEXT}
+											textOptionsDropdown={data.cropKindOptions}
+											editableData={editableData}
+											saveDataKey="product_name"
+										/>
 									</Grid>
 								</Grid>
 								<Grid
@@ -205,6 +311,8 @@ const RowDetails = ({ onClose, rowSet }) => {
 									justifyContent="flex-end"
 								>
 									<Grid item>
+										<Box display="flex" flexDirection="row" gap={8}>
+											<Grid item>
 										<Typography
 											variant="div"
 											component="div"
@@ -217,12 +325,19 @@ const RowDetails = ({ onClose, rowSet }) => {
 											NDVI
 										</Typography>
 										<Chip
-											label={rowSet.NSVIScale}
+													label={rowSet.NDVI}
 											sx={{ display: "flex", justifyContent: "flex-start" }}
 											size="small"
 										/>
 									</Grid>
-									<Grid item sx={{direction: 'rtl'}}>
+											<Grid item>
+												<ValidAttractivness
+													editableData={editableData}
+													updateEditableData={updateEditableData}
+													disable={!editMode}
+												/>
+											</Grid>
+											<Grid item dir="rtl">
 										<Typography
 											variant="div"
 											component="div"
@@ -235,13 +350,23 @@ const RowDetails = ({ onClose, rowSet }) => {
 											מדד אטרקטיביות
 										</Typography>
 										<Chip
-											label={rowSet.attractionScale}
+													label={rowSet.attractivness}
 											sx={{ display: "flex", width: 'fit-content' }}
 											size="small"
 										/>
+											</Grid>
+										</Box>
 									</Grid>
 									<Grid item>
-										<CustomTextPresentation header="אזור" value={rowSet.area} />
+										<CustomTextPresentation
+											header="אזור"
+											setEditableData={setEditableData}
+											editMode={editMode}
+											typeField={TypeField.TEXT}
+											textOptionsDropdown={data.areaOptions}
+											editableData={editableData}
+											saveDataKey="region"
+										/>
 									</Grid>
 								</Grid>
 							</Box>
@@ -256,14 +381,22 @@ const RowDetails = ({ onClose, rowSet }) => {
 									>
 										<Grid item>
 											<CustomTextPresentation
-												header="מצב היכרות"
-												value={aquaintanceMode}
+												setEditableData={setEditableData}
+												editMode={false}
+												header="תאריך הקמת שטח"
+												value={fieldDateEstablishment}
 											/>
 										</Grid>
 										<Grid item>
 											<CustomTextPresentation
-												header="תאריך הקמת שטח"
-												value={fieldDateEstablishment}
+												setEditableData={setEditableData}
+											    editMode={editMode}
+												header="מצב היכרות"
+												fireOpenfamilarityPopup={() => setOpenFamilarityCause(true)}
+												typeField={TypeField.TEXT}
+												textOptionsDropdown={data.familiarityOptions}
+												editableData={editableData}
+												saveDataKey="familiarity"
 											/>
 										</Grid>
 									</Grid>
@@ -283,11 +416,11 @@ const RowDetails = ({ onClose, rowSet }) => {
 										<Grid
 											container
 											direction="row"
-											gap={5}
+											gap={15}
 											justifyContent="flex-end"
 										>
 											<Grid item>
-												<Box display="flex" flexDirection="column" gap={3.5}>
+												<Box display="flex" flexDirection="column" gap={1.5}>
 													<Typography
 														variant="div"
 														component="h5"
@@ -300,20 +433,13 @@ const RowDetails = ({ onClose, rowSet }) => {
 													>
 														מספר חקלאי
 													</Typography>
-													{agriculturalNumbers.map((agriculturalNum) => (
-														<Typography
-															variant="div"
-															component="h5"
-															dir="rtl"
-															sx={{
-																fontFamily:
-																	'"Roboto","Helvetica","Arial",sans-serif',
-																fontSize: "14px",
-															}}
-														>
-															{agriculturalNum}
-														</Typography>
+													<Stepper sx={stepperStyle} activeStep={10} orientation="vertical">
+														{farmer_ids.map((agriculturalNum, index) => (
+															<Step key={index}>
+																<StepLabel>{agriculturalNum}</StepLabel>
+															</Step>
 													))}
+													</Stepper>
 												</Box>
 											</Grid>
 											<Grid item>
@@ -347,6 +473,17 @@ const RowDetails = ({ onClose, rowSet }) => {
 					</Grid>
 				</DialogTitle>
 				<CardContent></CardContent>
+				<CheckSave
+					onClose={handleCloseCheckSave}
+					open={openCheckSave}
+					setDecision={setDecision}
+				/>
+				<FamilarityCause
+					onClose={handleCloseFamilarityCause}
+					open={openFamilarityCause}
+					editableData={editableData}
+					updateEditableData={updateEditableData}
+				/>
 			</Card>
 		</Dialog>
 	);

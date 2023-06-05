@@ -1,16 +1,20 @@
-import React from 'react';
-import {Button, Card, Checkbox, Chip, TablePagination} from "@mui/material";
+import React, {useContext, useState} from 'react';
+import {Button, Card, Checkbox, TablePagination} from "@mui/material";
+import {useDispatch, useSelector} from "react-redux";
+import * as fieldActions from '../../redux/Field/actions';
 import {DataGrid, GridActionsCellItem, GridToolbarContainer, useGridApiContext} from "@mui/x-data-grid";
-import {Add, FileCopy, Security} from "@mui/icons-material";
+import {Add, Delete} from "@mui/icons-material";
 import {createSvgIcon} from "@mui/material/utils";
 import CustomStatus from "./CustomStatus";
-import {useEffect, useState} from "react";
 import AddField from '../../views/AddField';
-import moment from "moment/moment";
+import {confirmAlert} from 'react-confirm-alert';
 import * as XLSX from "xlsx/xlsx.mjs";
 import RowDetails from "./RowDetails";
+import moment from 'moment';
 
 import './DataPanel.scss';
+import translator from "../../Utils/translations/translator";
+import ContextProvider from "../../hooks/ContextApi";
 
 const dataGridStyle = {
 	".css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate":
@@ -34,26 +38,35 @@ const dataGridStyle = {
 	},
 };
 
-const DataTable = ({
-	                   rows,
-	                   setRows,
-	                   originalRows,
-	                   searchText,
-	                   cropKind,
-	                   optionArea,
-	                   optionCareStatus,
-	                   moreCropKinds,
-	                   optionMoreFilters,
-	                   sortMethod,
-                   }) => {
-
-	const [page, setPage] = useState(0);
-	const [pageSize, setPageSize] = useState(5);
+const DataTable = ({rows}) => {
+	const { page } = useContext(ContextProvider);
+	const { setPage } = useContext(ContextProvider);
+	const { pageSize } = useContext(ContextProvider);
+	const { setPageSize } = useContext(ContextProvider);
 	const [showAddField, setShowAddField] = useState(false);
 	const [editedRow, setEditedRow] = useState(null);
+	const dispatch = useDispatch();
+	const totalFields = useSelector(state => state.field.fieldCount);
 
 	const handlePageChange = (event, newPage) => {
 		setPage(newPage);
+	};
+
+	const confirmDelete = (field) => {
+		confirmAlert({
+			title: 'מחיקת שדה',
+			message: `השדה "${field.row.name}" ימחק. האם להמשיך?`,
+			buttons: [
+				{
+					label: 'כן',
+					onClick: () => dispatch(fieldActions.deleteField(field.id))
+				},
+				{
+					label: 'לא',
+					onClick: () => {}
+				}
+			]
+		});
 	};
 
 	const handlePageSizeChange = (event) => {
@@ -64,64 +77,77 @@ const DataTable = ({
 	const columns = [
 		{
 			field: "id",
-			headerName: "ID",
+			headerName: "ID"
 		},
 		{
-			field: "fieldName",
+			field: "name",
 			headerName: "שם השדה",
 			editable: false,
+			sortable: false,
 			flex: 2,
 		},
 		{
-			field: "cropKind",
+			field: "product_name",
 			headerName: "סוג יבול",
 			editable: false,
+			sortable: false,
 			flex: 1,
+			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
 		{
-			field: "attractionScale",
+			field: "latest_attractiveness_metric",
 			headerName: "מדד אטרקטיביות",
 			flex: 1,
 			editable: false,
+			sortable: false,
+			renderCell: (params) => <div>{params.value}</div>
 		},
 		{
-			field: "NSVIScale",
+			field: "latest_satelite_metric",
 			headerName: "NDVI",
 			editable: false,
+			sortable: false,
 			flex: 1,
-			renderCell: (params) => <NDVI label={params.value} />,
+			renderCell: (params) => <div>{params.value}</div>
 		},
 		{
-			field: "area",
+			field: "region",
 			headerName: "אזור",
 			editable: false,
+			sortable: false,
 			flex: 1,
+			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
 		{
-			field: "agriculturalNumber",
+			field: "farmer_id",
 			headerName: "מספר חקלאי",
 			editable: false,
+			sortable: false,
 			flex: 1,
 		},
 		{
-			field: "aquaintanceMode",
+			field: "familiarity",
 			headerName: "מצב היכרות",
 			editable: false,
+			sortable: false,
 			flex: 1,
-			// renderCell: (params) => <NDVI label={params.value} />,
+			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
 		{
-			field: "lastUpdate",
+			field: "created_date",
 			headerName: "עדכון אחרון",
 			editable: false,
-			flex: 1
+			sortable: false,
+			flex: 1,
+			renderCell: (params) => (<div>{moment(params.value).format("DD-MM-yyyy")}</div>),
 		},
 		{
 			field: "status",
 			headerName: "סטטוס",
 			width: 140,
 			editable: true,
-			renderCell: (params) => <CustomStatus label={params.value} />,
+			sortable: false,
+			renderCell: (params) => <CustomStatus fieldId={params.id} removeAllOption status={params.value} label={translator(params.value)} />,
 		},
 		{
 			field: "actions",
@@ -129,23 +155,15 @@ const DataTable = ({
 			width: 50,
 			getActions: (params) => [
 				<GridActionsCellItem
-					icon={<Security />}
-					label="Action 1"
-					// form of actions
-					// onClick={toggleAdmin(params.id)}
+					icon={<Delete />}
+					label="מחק שדה"
+					onClick={() => confirmDelete(params)}
 					showInMenu
-				/>,
-				<GridActionsCellItem
-					icon={<FileCopy />}
-					label="Action 2"
-					// form of actions
-					// onClick={duplicateUser(params.id)}
-					showInMenu
-				/>,
+				/>
 			],
 		},
 	];
-	
+
 	const isStatusColumn = target => {
 		let node = target;
 		while (node && node.tagName && node.tagName.toLowerCase() !== "body") {
@@ -168,192 +186,10 @@ const DataTable = ({
 		setEditedRow(null);
 	};
 
-	//#region Filters
-	const applyFilterSearch = () => {
-		const filteredRows = originalRows.filter((row) => {
-			return row.fieldName.toLowerCase().includes(searchText.toLowerCase());
-		});
-
-		setRows(filteredRows);
-	};
-
-	// TODO: Need to check this again (why is it called filtering? can't filter by last update?) maybe sorting?
-	// const checkMoreFilters = (moreFilters, row) => {
-	//   switch(moreFilters) {
-	//     case 'רמת בשלות':
-
-	//       break;
-	//     case 'מדד אטרקטיביות':
-
-	//       break;
-	//     case 'מספר חקלאי':
-
-	//       break;
-	//     default:
-	//       return true;
-	//   }
-	// }
-
-	const applyFilteringAndSorting = () => {
-		// first sort, then from the sorted rows filter...
-		var slicedOriginalRows = originalRows.slice();
-		var sortedRows = null;
-
-		switch (sortMethod) {
-			case "אטרקטביות":
-				sortedRows = slicedOriginalRows.sort(
-					(a, b) => b.attractionScale - a.attractionScale
-				);
-				break;
-			case "דירוג":
-				sortedRows = slicedOriginalRows.sort(
-					(a, b) => b.NSVIScale - a.NSVIScale
-				);
-				break;
-			case "מיקום":
-				const order = ["צפון", "דרום", "מרכז"];
-				const sortByOrder = order.reduce((obj, item, index) => {
-					return {
-						...obj,
-						[item]: index,
-					};
-				}, {});
-
-				sortedRows = slicedOriginalRows.sort(
-					(a, b) => sortByOrder[a.area] - sortByOrder[b.area]
-				);
-				break;
-			case "עדכון אחרון":
-				sortedRows = slicedOriginalRows.sort((a, b) =>
-					new moment(b.lastUpdate.replaceAll(".", "/"), "DD/MM/YYYY").diff(
-						new moment(a.lastUpdate.replaceAll(".", "/"), "DD/MM/YYYY")
-					)
-				);
-				break;
-			default:
-				sortedRows = slicedOriginalRows;
-				break;
-		}
-
-		const filteredRows = sortedRows;
-
-		// const filteredRows = sortedRows.filter((row) => {
-		//   // console.log(row.status);
-		//   // console.log(row.area);
-		//   return optionCareStatus.includes("הכל")
-		//     ? optionArea.includes(row.area)
-		//     : optionArea.includes("הכל")
-		//     ? optionArea.includes(row.area)
-		//     : true;
-		//   // optionArea.length > 0 ? optionArea.includes(row.area.toLowerCase()) : true;
-		// });
-
-		// console.log(filteredRows);
-
-		// const filteredRows = sortedRows.filter((row) => {
-		//   console.log(cropKind);
-		//   // optionArea.toLowerCase() === row.area.toLowerCase()
-		//   // optionCareStatus.toLowerCase() === row.status.toLowerCase()
-		//   console.log(optionArea.includes(row.area.toLowerCase()));
-		//   return cropKind.length > 0
-		//     ? cropKind.includes(row.cropKind.toLowerCase())
-		//     : true
-		//     && optionArea.length > 0
-		//     ? optionArea.includes(row.area.toLowerCase())
-		//     : true
-		//     && optionCareStatus.length > 0
-		//     ? optionCareStatus.includes(row.status.toLowerCase())
-		//     : true;
-		//   // && (checkMoreFilters(optionMoreFilters, row));
-		// });
-
-		setRows(filteredRows);
-	};
-
-	useEffect(applyFilterSearch, [originalRows, searchText, setRows]);
-	useEffect(applyFilteringAndSorting, [
-		originalRows,
-		setRows,
-		cropKind,
-		optionArea,
-		optionCareStatus,
-		optionMoreFilters,
-		sortMethod,
-	]);
-	//#endregion
-
-	// TODO: Form of actions
-	// const deleteUser = useCallback(id => () => {
-	//     setTimeout(() => {
-	//       setRows((prevRows) => prevRows.filter((row) => row.id !== id));
-	//     });
-	//   },
-	// [],);
-
-	//#region CustomComponents
-	/*const Status = ({ label }) => {
-		return (
-			<Chip
-				label={label}
-				sx={{
-					backgroundColor:
-						label === "בטיפול"
-							? "#def9e0"
-							: label === "לא בטיפול"
-							? "#FFDADA"
-							: label === "לא עדכני"
-								? "#a2c0fa"
-								: label === "בטיפול רכז"
-									? "#f9ecde"
-									: label === "דורש בדיקה"
-										? "#fca9a8"
-										: "#ebf2ff",
-				}}
-			>
-				<Menu
-					id="basic-menu"
-					dir="rtl"
-					anchorEl={anchorEl}
-					open={open}
-					onClose={handleClose}
-					anchorOrigin={{
-						vertical: "bottom",
-						horizontal: "right",
-					}}
-					transformOrigin={{
-						vertical: "top",
-						horizontal: "right",
-					}}
-					PaperProps={{
-						style: {
-							maxHeight: !isAdvanced ? ITEM_HEIGHT * 4.4 : "",
-						},
-					}}
-				>
-					<MenuItem
-						sx={{
-							background: options.includes(item) ? "#d0eacf" : "",
-							borderRadius: "10px",
-							"&:hover": {
-								background: options.includes(item) ? "#d0eacf" : "",
-							},
-						}}
-						key={item}
-						onClick={handleMenuItemClick}
-					></MenuItem>
-				</Menu>
-			</Chip>
-		);
-	};*/
-
-	const NDVI = ({ label }) => {
-		return <div>{label}</div>;
-	};
-
 	const pagingLabel = ({ from, to, count }) => {
-		 return (
-			 <div style={{padding: '0 20px'}}> שדות {from}–{to}</div>
-		 )
+		return (
+			<span style={{padding: '0 20px'}}> שדות {from}–{to} מתוך {count} </span>
+		)
 	};
 
 	const Toolbar = () => {
@@ -361,21 +197,20 @@ const DataTable = ({
 			<div style={{display: 'flex', width: '100%', justifyContent: 'space-between', borderBottom: '1px solid rgba(224, 224, 224, 1)'}}>
 				<CustomExport />
 
-				<div>
-					<TablePagination page={page}
-					                 labelDisplayedRows={pagingLabel}
-					                 count={rows.length}
-					                 rowsPerPage={pageSize}
-					                 labelRowsPerPage="מספר רשומות בדף:"
-					                 rowsPerPageOptions={[5,10,20]}
-					                 onPageChange={handlePageChange}
-					                 onRowsPerPageChange={handlePageSizeChange} />
-				</div>
+				<TablePagination page={page}
+				                 component="div"
+				                 labelDisplayedRows={pagingLabel}
+				                 count={totalFields}
+				                 rowsPerPage={pageSize}
+				                 labelRowsPerPage="מספר רשומות בדף:"
+				                 rowsPerPageOptions={[5,10,20]}
+				                 onPageChange={handlePageChange}
+				                 onRowsPerPageChange={handlePageSizeChange} />
 			</div>
 		)
 	};
 
-	const onAddArea = () => {
+	const onAddRegion = () => {
 		setShowAddField(true);
 	};
 
@@ -437,13 +272,19 @@ const DataTable = ({
 					ייצא
 					<ExportIcon sx={{ paddingRight: "10%" }} />
 				</Button>
-				<Button onClick={onAddArea} variant="text" elevation={9} sx={addCropStyle}>
+				<Button onClick={onAddRegion} variant="text" elevation={9} sx={addCropStyle}>
 					<Add />
 					הוספת שטח
 				</Button>
 			</GridToolbarContainer>
 		);
 	};
+
+	const CustomNoRowsOverlay = () => (
+		<div style={{ textAlign: 'center', padding: '40px', fontSize: '20px' }}>
+			אין תוצאות
+		</div>
+	);
 
 	const CustomCheckBox = () => {
 		return <Checkbox color="success" />;
@@ -466,6 +307,7 @@ const DataTable = ({
 				paginationModel={{ page: page, pageSize: pageSize }}
 				checkboxSelection
 				disableRowSelectionOnClick
+				disableColumnMenu
 				disableColumnFilter
 				hideFooterSelectedRowCount
 				hideFooterPagination
@@ -475,6 +317,7 @@ const DataTable = ({
 				components={{
 					Toolbar: Toolbar,
 					Checkbox: CustomCheckBox,
+					NoRowsOverlay: CustomNoRowsOverlay
 				}}
 				initialState={{
 					columns: {

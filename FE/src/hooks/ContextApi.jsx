@@ -1,21 +1,22 @@
-import React from 'react';
-import { createContext, useState } from "react";
-import { data as originalRows } from "../constants/mockGridData.json";
-
+import React, {createContext, useState} from 'react';
+import {getDefaultDateFrom, getDefaultDateTo} from "../Utils/general";
+// import sortOptions from "../constants/sortSelection";
 const ContextApi = createContext({});
 
 export default ContextApi;
 
 export const ContextProvider = ({ children }) => {
 	const [searchText, setSearchText] = useState("");
+	const [debouncedSearchText, setDebouncedSearchText] = useState("");
 	const [mode, setMode] = useState("grid");
-	const [sortMethod, setSortMethod] = useState("");
-	const [cropKind, setCropKind] = useState([""]);
-	const [moreCropKinds, setMoreCropKinds] = useState([]);
-	const [optionArea, setOptionArea] = useState(["הכל"]);
-	const [optionCareStatus, setOptionCareStatus] = useState(["הכל"]);
-	const [optionMoreFilters, setOptionMoreFilters] = useState({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: new Date(), dateTo: new Date()});
-	const [rows, setRows] = useState(originalRows);
+	const [sortMethod, setSortMethod] = useState([{ "key": "attr-asc", "label": "אטרקטביות", "field": "name", "dir": "asc" }]);
+	const [product_name, setProductName] = useState([]);
+	const [additionalProductNames, setAdditionalProductNames] = useState([]);
+	const [optionRegion, setOptionRegion] = useState(["ALL"]);
+	const [optionCareStatus, setOptionCareStatus] = useState(["ALL"]);
+	const [optionMoreFilters, setOptionMoreFilters] = useState({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: getDefaultDateFrom(), dateTo: getDefaultDateTo()});
+	const [page, setPage] = useState(0);
+	const [pageSize, setPageSize] = useState(5);
 
 	return (
 		<>
@@ -23,22 +24,26 @@ export const ContextProvider = ({ children }) => {
 				value={{
 					searchText,
 					setSearchText,
+					debouncedSearchText,
+					setDebouncedSearchText,
 					mode,
 					setMode,
 					sortMethod,
 					setSortMethod,
-					cropKind,
-					setCropKind,
-					moreCropKinds,
-					setMoreCropKinds,
-					optionArea,
-					setOptionArea,
+					product_name,
+					setProductName,
+					additionalProductNames,
+					setAdditionalProductNames,
+					optionRegion,
+					setOptionRegion,
 					optionCareStatus,
 					setOptionCareStatus,
 					optionMoreFilters,
 					setOptionMoreFilters,
-					rows,
-					setRows,
+					page,
+					setPage,
+					pageSize,
+					setPageSize
 				}}
 			>
 				{children}

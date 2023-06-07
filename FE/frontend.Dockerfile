@@ -8,8 +8,10 @@ RUN npm install
 # Copy app files
 COPY . .
 
-# Install pm2
-RUN npm install pm2 -g
+# Build the app
+RUN npm run build
+
+WORKDIR dist
 
 # Start the app
-CMD pm2 start --name frontend npm -- start
+CMD npm run dev

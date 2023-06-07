@@ -8,6 +8,7 @@ RUN npm install
 # Copy app files
 COPY . .
 RUN ls -la
+
 # Build the app
 RUN npm run build
 

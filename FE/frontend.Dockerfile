@@ -14,4 +14,4 @@ RUN npm run build
 #WORKDIR dist
 
 # Start the app
-CMD npm start
+CMD npm run start

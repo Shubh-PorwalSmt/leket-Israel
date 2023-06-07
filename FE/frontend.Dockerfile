@@ -1,4 +1,5 @@
-FROM node:16-alpine
+# Stage 1
+FROM node:16-alpine as builder
 
 WORKDIR /usr/src/app
 
@@ -11,7 +12,13 @@ COPY . .
 # Build the app
 RUN npm run build
 
-WORKDIR dist
+# Stage 2
+FROM nginx:1.19-alpine
 
-# Start the app
-CMD npm run dev
+WORKDIR /usr/share/nginx/html
+
+RUN rm -rf ./*
+
+COPY --from=builder /usr/src/app/build .
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]

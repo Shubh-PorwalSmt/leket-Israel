@@ -10,7 +10,7 @@ RUN npm install
 COPY . .
 
 # Build the app
-RUN npm run build
+RUN npm run build --base="http://leket-israel-backend-lb-180912419.us-east-1.elb.amazonaws.com:3000"
 
 # Stage 2
 FROM nginx:1.19-alpine

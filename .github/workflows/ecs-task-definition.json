@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "frontend",
-            "image": "152203247831.dkr.ecr.us-east-1.amazonaws.com/leket-israel-frontend:leket-israel-frontend-5236726562",
+            "image": "152203247831.dkr.ecr.us-east-1.amazonaws.com/leket-israel-frontend:leket-israel-frontend-5241536703",
             "cpu": 0,
             "portMappings": [
                 {
@@ -15,10 +15,11 @@
                 }
             ],
             "essential": true,
-            "environment": [
+            "environment": [],
+            "environmentFiles": [
                 {
-                    "name": "VITE_BASE_API_URL",
-                    "value": "http://leket-israel-backend-lb-180912419.us-east-1.elb.amazonaws.com:3000"
+                    "value": "arn:aws:s3:::leket-israel/leket-israel-frontend/.env",
+                    "type": "s3"
                 }
             ],
             "mountPoints": [],

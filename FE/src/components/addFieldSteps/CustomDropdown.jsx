@@ -13,7 +13,7 @@ const CustomDropdown = ({ label, options, value, onChange }) => {
 			required
 			variant="standard"
 			size="small"
-			sx={{ m: 0.5, minWidth: 80, direction: "rtl" }}
+			sx={{ m: 0, minWidth: 80, direction: "rtl" }}
 		>
 			{!!label ? <InputLabel>{label}</InputLabel> : <></>}
 			<Select

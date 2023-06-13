@@ -1,12 +1,17 @@
 import * as fieldService from './service'
 import * as actionTypes from './actionTypes';
-import {showToast} from "../../Utils/general";
+import {fixFieldsGeo, showToast} from "../../Utils/general";
 
-export const loadFields = (filters) => {
+export const loadFields = (filters, mode) => {
 	return async (dispatch) => {
-		const data = await fieldService.loadFields(filters);
+		// await dispatch({
+		// 	type: actionTypes.LOADING_FIELDS
+		// });
 
-		dispatch({
+		const data = await fieldService.loadFields(filters, mode);
+		data.fields = fixFieldsGeo(data.fields);
+
+		await dispatch({
 			type: actionTypes.FIELDS_LOADED,
 			data
 		})
@@ -18,8 +23,15 @@ export const saveNewField = (field) => {
 		const newField = await fieldService.saveNewField(field);
 		dispatch({
 			type: actionTypes.ADD_NEW_FIELD,
-			data: newField
+			data: fixFieldsGeo([newField])[0]
 		})
+	};
+};
+
+export const findFieldByPoint = (point, callback) => {
+	return async (dispatch) => {
+		const field = await fieldService.findFieldByPoint(point);
+		callback(field);
 	};
 };
 
@@ -41,22 +53,33 @@ export const deleteField = (id) => {
 export const updateFieldStatus = (fieldId, status) => {
 	return async (dispatch) => {
 		const updatedField = await fieldService.updateFieldStatus(fieldId, status);
-
 		await dispatch({
 			type: actionTypes.UPDATE_FIELD,
-			data: updatedField
+			data: fixFieldsGeo([updatedField])[0]
 		});
 	};
 };
 
-export const saveExistingField = (field) => {
+export const updateLike = (fieldId, value) => {
 	return async (dispatch) => {
-		await fieldService.saveExistingField(field);
+		const updatedField = await fieldService.updateLike(fieldId, value);
+
+		// await dispatch({
+		// 	type: actionTypes.UPDATE_FIELD,
+		// 	data: fixFieldsGeo([updatedField])[0]
+		// });
 	};
 };
 
-export const saveFieldStatus = (status) => {
+export const updateField = (field, callback) => {
 	return async (dispatch) => {
-		await fieldService.saveFieldStatus(status);
+		const updatedField = await fieldService.updateField(field);
+
+		await dispatch({
+			type: actionTypes.UPDATE_FIELD,
+			data: fixFieldsGeo([updatedField])[0]
+		});
+
+		callback();
 	};
 };

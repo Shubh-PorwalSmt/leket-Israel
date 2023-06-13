@@ -1,39 +1,45 @@
 import React from 'react';
-import { Typography, Box } from "@mui/material";
+import { Typography, TextField, Grid } from "@mui/material";
+import ErrorMessage from "./ErrorMessage";
 
-const Step3 = () => {
-  return (
-    <Box
-	    sx={{
-		    display: "flex",
-		    flexDirection: "column"
-	    }}
-    >
-      <Typography
-        variant="h5"
-        component="div"
-        fontSize={16}
-        sx={{ color: "#6A6A6A", fontWeight: "bold" }}
-      >
-        תמונה מהשטח:
-      </Typography>
-      {/* Choose select polygon from the map */}
+const Step3 = (props) => {
+	const {xAxis, yAxis, onChangeField, error} = props;
 
-	    <Box
-		    component="img"
-		    sx={{
-			    display: "flex",
-			    marginTop: { xs: 2},
-			    alignSelf: { xs: "center" },
-			    maxHeight: { xs: "70%" },
-			    maxWidth: { xs: "80%" },
-		    }}
-		    dir="rtl"
-		    alt=""
-		    src="Images/RowDetails/FieldShot.png"
-	    />
-    </Box>
-  );
+	return (
+		<Grid
+			container
+			direction="column"
+			justifyContent="center"
+			alignContent="center"
+		>
+			<Typography
+				variant="h5"
+				component="div"
+				fontSize={16}
+				sx={{ color: "#6A6A6A", fontWeight: "bold" }}
+			>
+				מיקום השדה:
+			</Typography>
+			<TextField
+				variant="standard"
+				error={error != null && error.name === 'xAxis'}
+				label="ציר X"
+				value={xAxis}
+				onChange={e => onChangeField('xAxis', e.target.value)}
+			/>
+			{ error && error.name === 'xAxis' && <ErrorMessage text={error.text} /> }
+
+			<TextField
+				variant="standard"
+				error={error != null && error.name === 'yAxis'}
+				label="ציר Y"
+				value={yAxis}
+				onChange={e => onChangeField('yAxis', e.target.value)}
+			/>
+			{ error && error.name === 'yAxis' && <ErrorMessage text={error.text} /> }
+
+		</Grid>
+	);
 };
 
 export default Step3;

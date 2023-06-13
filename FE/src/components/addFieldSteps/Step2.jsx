@@ -34,7 +34,7 @@ const Step2 = (props) => {
 			<CustomDropdown
 				label="איזור"
 				value={region}
-				options={data.areaOptions}
+				options={data.areaOptions.filter(a => a !== "ALL")}
 				onChange={value => onChangeField('region', value)}
 			/>
 			{ error && error.name === 'region' && <ErrorMessage text={error.text} /> }
@@ -45,6 +45,8 @@ const Step2 = (props) => {
 				options={data.familiarityOptions}
 				onChange={value => onChangeField('familiarity', value)}
 			/>
+			{ error && error.name === 'familiarity' && <ErrorMessage text={error.text} /> }
+
 		</Grid>
 	);
 };

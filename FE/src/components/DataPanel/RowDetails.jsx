@@ -1,84 +1,66 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState, Fragment} from 'react';
 import {useDispatch} from "react-redux";
-import {
-	Card,
-	CardContent,
-	Chip,
-	Dialog,
-	DialogTitle,
-	Divider,
-	Grid,
-	IconButton,
-	Step,
-	StepLabel,
-	Stepper,
-	Typography,
-} from "@mui/material";
-import {ArrowBack, Edit, Save} from "@mui/icons-material";
+import {Card, Dialog, DialogTitle, Divider, Grid, IconButton, Typography} from "@mui/material";
+import {Close, Edit, Save, Undo} from "@mui/icons-material";
 import {Box} from "@mui/system";
+import historyRowMarker from '../../assets/history-row-marker.png';
+import thumbsUp from '../../assets/likeIcons/up.svg';
+import thumbsUpOn from '../../assets/likeIcons/up-on.svg';
+import thumbsDown from '../../assets/likeIcons/down.svg';
+import thumbsDownOn from '../../assets/likeIcons/down-on.svg';
+import pipe from '../../assets/likeIcons/pipe.png';
 import CustomStatus from "./CustomStatus";
-import CheckSave from './CheckSave';
-import ValidAttractivness from './ValidAttractivness';
-import FamilarityCause from './FamilarityCause';
 import CustomTextPresentation from "./CustomTextPresentation";
-import * as data from "../../constants/filterSelection.json";
 import * as fieldActions from '../../redux/Field/actions';
+import * as data from "../../constants/filterSelection.json";
+import translator from "../../Utils/translations/translator";
+import {getFieldLastUpdated, showToast} from "../../Utils/general";
+import {DATE_FORMAT} from "../../Utils/constants";
+import moment from 'moment';
+import TextWithHeader from "./TextWithHeader";
+import FieldMapArea from "../FieldMapArea";
 
-const stepperStyle = {
-	".css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active, .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed":
-		{
-			color: "orange",
-			direction: 'ltr'
-		},
-};
+import './RowDetails.scss';
 
 export const TypeField = {
-	TEXT: Symbol("text"),
-	NUMBER: Symbol("number"),
-	FLOAT: Symbol("float"),
-	DATE: Symbol("date"),
-	IMAGE: Symbol("image")
-}
+	DROPDOWN: "dropdown",
+	TEXT: "text",
+	FLOAT: "float"
+};
 
 const RowDetails = ({ onClose, rowSet }) => {
-	// console.log(rowSet);
+	let [index, setIndex] = useState(1);
 
-	if (!rowSet) {
-		return <div />
-	}
-
-	// const dateUpdateStatus = rowSet.lastUpdate;
-	// const product_name = r;
-	// const fieldKind = 'גד"ש';
-	// const farmer_id = 987345;
-	// const region = 'דרום';
-	// const attractivness = 0.6;
-	// const NDVI = 0.8;
-	// const aquaintanceMode = 'מוכר ולא נקטף';
-	const fieldDateEstablishment = '05.11.2007';
-	const farmer_ids = [123456, 987654, 456987];
-	const aquaintanceModes = ["כרוב לבן", "CUCUMBER", "בצל"];
-
-	const longitude = 31.23568446;
-	const latitude = 36.56467586;
-	const fieldId = 123456789;
-
-	const [editMode, setEditMode] = useState(false);
-	const [openCheckSave, setOpenCheckSave] = useState(false);
-	const [openFamilarityCause, setOpenFamilarityCause] = useState(false);
-	const [decision, setDecision] = useState(null);
 	const [editableData, setEditableData] = useState({
-		lastUpdate: new Date().toLocaleDateString('en-GB'),
+		id: rowSet.id,
 		product_name: rowSet.product_name,
 		farmer_id: rowSet.farmer_id,
 		region: rowSet.region,
+		status: rowSet.status,
 		familiarity: rowSet.familiarity,
-		fieldDateEstablishment: fieldDateEstablishment, // query: rowSet.fieldDateEstablishment
-		longitude: longitude, // query: rowSet.longitude
-		latitude: latitude, // query: rowSet.latitude
-		familarityCause: "", //familarityCause
-		CheckedAttractivness: ""
+		familiarity_desc: rowSet.familiarity_desc,
+		point: rowSet.point,
+		xAxis: rowSet.point ? rowSet.point.coordinates[0] : null,
+		yAxis: rowSet.point ? rowSet.point.coordinates[1] : null,
+		polygon: rowSet.polygon,
+		delay_date: rowSet.delay_date,
+		created_date: rowSet.created_date,
+		status_date: rowSet.status_date
 	});
+
+	const fieldHistory = [
+		{ product_name: "AVOCADO", farmer_id: 123 },
+		{ product_name: "PEAR", farmer_id: 123 },
+		{ product_name: "APPLE", farmer_id: 883 },
+		{ product_name: "ORANGE", farmer_id: 123 },
+		{ product_name: "ARUM", farmer_id: 71163 },
+		{ product_name: "LEMON", farmer_id: 17345 },
+		{ product_name: "RADISHES", farmer_id: 22363 },
+		{ product_name: "LOQUAT", farmer_id: 73 },
+		{ product_name: "GRAPE", farmer_id: 12345 }
+	];
+
+	const [editMode, setEditMode] = useState(false);
 
 	const dispatch = useDispatch();
 
@@ -86,407 +68,320 @@ const RowDetails = ({ onClose, rowSet }) => {
 		const saveData = {...editableData};
 		saveData[key] = value;
 		setEditableData(saveData);
-	}
+	};
 
 	const handleSave =  () => {
-		dispatch(fieldActions.saveExistingField(editableData));
-	}
+		const fieldToUpdate = {};
+		fieldToUpdate.id = rowSet.id;
+		fieldToUpdate.point = editableData.point;
+		fieldToUpdate.polygon = editableData.polygon;
+		fieldToUpdate.product_name = editableData.product_name;
+		fieldToUpdate.farmer_id = editableData.farmer_id;
+		fieldToUpdate.region = editableData.region;
+		fieldToUpdate.familiarity = editableData.familiarity;
+		fieldToUpdate.familiarity_desc = editableData.familiarity_desc;
 
-	const handleCloseCheckSave = () => {
-		setOpenCheckSave(false);
-	}
-
-	const handleCloseFamilarityCause = () => {
-		setOpenFamilarityCause(false);
-	}
-
-	useEffect(() => {
-		if (decision) {
-			handleSave();
-			handleClose();
+		if(editableData.status !== rowSet.status) {
+			fieldToUpdate.status = editableData.status;
 		}
-	}, [decision]);
 
-	const handleEdit = () => {
-		if (editMode)
-			handleSave();
+		dispatch(fieldActions.updateField(fieldToUpdate, () => {
+			showToast("השדה עודכן.");
+			onClose();
+		}));
+	};
 
-		setEditMode(!editMode);
+	const updateLike = (value) => {
+		dispatch(fieldActions.updateLike(rowSet.id, value));
+	};
+
+	const handleUndo = () => {
+		setEditableData({
+			id: rowSet.id,
+			product_name: rowSet.product_name,
+			farmer_id: rowSet.farmer_id,
+			region: rowSet.region,
+			status: rowSet.status,
+			familiarity: rowSet.familiarity,
+			familiarity_desc: rowSet.familiarity_desc,
+			point: rowSet.point,
+			xAxis: rowSet.point ? rowSet.point.coordinates[0] : null,
+			yAxis: rowSet.point ? rowSet.point.coordinates[1] : null,
+			polygon: rowSet.polygon,
+			delay_date: rowSet.delay_date,
+			created_date: rowSet.created_date,
+			status_date: rowSet.status_date
+		});
+		setEditMode(false);
+	};
+
+	const resetLocation = () => {
+		console.log("resetLocation");
+		const fld = {...editableData};
+		fld.xAxis = rowSet.point ? rowSet.point.coordinates[0] : null;
+		fld.yAxis = rowSet.point ? rowSet.point.coordinates[1] : null;
+		fld.polygon = rowSet.polygon;
+		setEditableData(fld);
+
+		setIndex(Math.random());
+	};
+
+	const updateLocation = (newPolygon, newPoint) => {
+		const fld = {...editableData};
+		fld.point = newPoint;
+		fld.xAxis = newPoint && newPoint.coordinates[0];
+		fld.yAxis = newPoint && newPoint.coordinates[1];
+		fld.polygon = newPolygon;
+		setEditableData(fld);
+	};
+
+	const renderFieldMap = (row) => {
+		const x = row.xAxis;
+		const y = row.yAxis;
+		const p = row.polygon ? row.polygon.coordinates : null;
+
+		return (
+			<FieldMapArea
+				editable={editMode}
+				width="100%"
+				height={350}
+				onReset={resetLocation}
+				onUpdate={updateLocation}
+				key={index}
+				xAxis={x} yAxis={y}
+				polygonCoordinates={p} />
+		)
+	};
+
+	const renderAttractivenessField = (row) => {
+		return (
+			<div>
+				<div style={{fontSize: '14px', direction: 'rtl'}}>
+					<div>מדד אטרקטיביות</div>
+					<div className="row-content-highlight-value">{row.latest_attractiveness_metric || '-'}</div>
+				</div>
+				<div style={{fontSize: '14px', direction: 'rtl', display: 'flex', alignItems: 'center'}}>
+					<div>תואם את השטח?</div>
+					<div style={{display: 'flex', paddingRight: '10px', alignItems: 'center'}}>
+						<img src={thumbsUp} alt="" style={{cursor: 'pointer'}} onClick={() => updateLike(true)} />
+						<img src={pipe} alt="" style={{height: '14px', padding: '0 12px'}} />
+						<img src={thumbsDown} alt="" style={{cursor: 'pointer'}} onClick={() => updateLike(false)} />
+					</div>
+				</div>
+			</div>
+		)
+	};
+
+	const renderNDVIField = (row) => {
+		return (
+			<div style={{fontSize: '14px', direction: 'rtl'}}>
+				<div>NDVI</div>
+				<div className="row-content-highlight-value">{row.latest_satelite_metric || '-'}</div>
+			</div>
+		)
 	};
 
 	const handleClose = () => {
-		if (editMode) {
-			setOpenCheckSave(true);
-			setEditMode(false);
-			return;
-		}
-
-		setOpenCheckSave(false);
 		setEditMode(false);
 		onClose();
-	}
+	};
 
 	return (
-		<Dialog onClose={handleClose} open={rowSet != null} fullWidth maxWidth={window.innerWidth > 1700 ? "xl" : "lg"}>
-			<Card
-				elevation={10}
-				sx={{
-					width: "100%",
-					height: "100%",
-					overflow: "scroll"
-				}}
-			>
-				<DialogTitle>
-					{/* Header Grid */}
-					<Grid container direction="row" justifyContent="space-between">
-						<Grid item>
-							<IconButton color="success" onClick={handleClose}>
-								<ArrowBack />
-							</IconButton>
-							<IconButton color="success" onClick={handleEdit}>
-								{ editMode ? <Save /> : <Edit /> }
-							</IconButton>
-						</Grid>
-						<Grid item>
-							<Box display="flex" flexDirection="column" gap={1}>
-								<Typography
-									variant="div"
-									component="h4"
-									dir="rtl"
-									sx={{
-										fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-									}}
-								>
-									משק גידולים
-								</Typography>
-								<Box display="flex" flexDirection="row" gap={1}>
-									<Box display="flex" flexDirection="column" gap={-1}>
-										<CustomTextPresentation
-											editMode={editMode}
-											header="תאריך עדכון סטטוס"
-											value={rowSet.lastUpdate}
-											setEditableData={setEditableData}
-											editableData={editableData}
-											saveDataKey="lastUpdate"
-											typeField={TypeField.DATE}
-										/>
-									</Box>
-									<Divider orientation="vertical" flexItem />
-									<CustomStatus removeAllOption status={rowSet.status} label={rowSet.status} disable={!editMode} />
-								</Box>
-							</Box>
-						</Grid>
-					</Grid>
-					{/* // Content Grid */}
-					<Grid
-						container
-						direction="row"
-						justifyContent="space-between"
-						marginTop={3}
-					>
-						{/* Left Side Content */}
-						<Grid item>
-							<Typography
-								variant="div"
-								component="h5"
-								dir="rtl"
-								sx={{
-									fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-									fontSize: "14px",
-								}}
-							>
-								נ"צ
-							</Typography>
-							<Grid
-								container
-								direction="column"
-								justifyContent="space-around"
-								gap={3}
-								marginTop={1.5}
-								dir="rtl"
-							>
-								<Grid item>
-									<Grid
-										container
-										direction="row"
-										justifyContent="flex-end"
-										spacing={3}
-									>
-										<Grid item xs>
-											<CustomTextPresentation
-												editMode={editMode}
-												header="Y"
-												value={latitude}
-												typeField={TypeField.FLOAT}
-												setEditableData={setEditableData}
-												editableData={editableData}
-												saveDataKey="latitude"
-											/>
-										</Grid>
-										<Grid item xs>
-											<CustomTextPresentation
-												editMode={editMode}
-												header="X"
-												value={longitude}
-												typeField={TypeField.FLOAT}
-												setEditableData={setEditableData}
-												editableData={editableData}
-												saveDataKey="longitude"
-											/>
-										</Grid>
-									</Grid>
-								</Grid>
-								<Grid item>
-									<CustomTextPresentation
-										editMode={false}
-										header="מספר חלקה"
-										value={fieldId}
-									/>
-								</Grid>
+		<div className="row-content-wrapper">
+			<Dialog open fullWidth maxWidth="xl">
+				<Card
+					elevation={10}
+					sx={{
+						width: "100%",
+						height: "100%",
+						overflow: "auto"
+					}}
+				>
+					<DialogTitle>
+						{/* Header Grid */}
+						<Grid container direction="row" justifyContent="space-between">
+							<Grid item>
+								{
+									editMode ?
+										<IconButton color="success" onClick={handleSave}>
+											<Save />
+										</IconButton>
+										:
+										<IconButton color="success" onClick={handleClose}>
+											<Close />
+										</IconButton>
+								}
+								{
+									editMode ?
+										<IconButton color="success" onClick={handleUndo}>
+											<Undo />
+										</IconButton>
+										:
+										<IconButton color="success" onClick={() => setEditMode(true)}>
+											<Edit />
+										</IconButton>
+								}
 							</Grid>
-							<Grid container dir="rtl" direction="column" gap={1} marginTop={3}>
-								<Grid item dir="rtl">
+							<Grid item>
+								<Box display="flex" flexDirection="column" gap={1}>
+									<Typography
+										variant="div"
+										component="h4"
+										dir="rtl"
+										sx={{
+											fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+										}}
+									>
+										{rowSet.name}
+									</Typography>
+									<Box display="flex" flexDirection="row" gap={1}>
+										{
+											editableData.delay_date &&
+											<>
+												<TextWithHeader
+													editMode={false}
+													header="*בהשהייה עד לתאריך"
+													value={moment(editableData.delay_date).format(DATE_FORMAT)}
+												/>
+												<Divider sx={{paddingLeft: '6px', marginRight: '6px'}} orientation="vertical" flexItem />
+											</>
+										}
+										<Box display="flex" flexDirection="column" gap={-1}>
+											<TextWithHeader
+												editMode={false}
+												header="*תאריך עדכון סטטוס"
+												value={getFieldLastUpdated(editableData)}
+											/>
+										</Box>
+										<Divider sx={{paddingLeft: '6px', marginRight: '6px'}} orientation="vertical" flexItem />
+										<CustomStatus onChange={(value) => updateEditableData('status', value)} removeAllOption status={editableData.status} label={translator(editableData.status)} disable={!editMode} />
+									</Box>
+								</Box>
+							</Grid>
+						</Grid>
+						{/* // Content Grid */}
+						<div className="row-content-container">
+							{/* // Right Side */}
+							<div className="row-content-right">
+								{/* // empty spacer: */}
+								<div className="row-content-subtitle">&nbsp;</div>
+								<div className="row-content-right-fields">
+									<CustomTextPresentation
+										header="סוג יבול"
+										editMode={editMode}
+										value={editableData.product_name}
+										typeField={TypeField.DROPDOWN}
+										options={data.product_nameOptions.sort((a, b) => translator(a).localeCompare(translator(b)))}
+										onChange={(value) => updateEditableData('product_name', value)}
+									/>
+									<CustomTextPresentation
+										header="מספר חקלאי"
+										editMode={editMode}
+										value={editableData.farmer_id}
+										typeField={TypeField.TEXT}
+										onChange={(value) => updateEditableData('farmer_id', value)}
+									/>
+									<CustomTextPresentation
+										header="איזור"
+										editMode={editMode}
+										value={editableData.region}
+										typeField={TypeField.DROPDOWN}
+										options={data.areaOptions.filter(op => op !== "ALL")}
+										onChange={(value) => updateEditableData('region', value)}
+									/>
+									{ renderNDVIField(rowSet) }
+									{ renderAttractivenessField(rowSet) }
+									<TextWithHeader
+										editMode={false}
+										header="תאריך הקמת השטח"
+										value={moment(editableData.created_date).format(DATE_FORMAT)}
+									/>
+									<CustomTextPresentation
+										header="מצב היכרות"
+										editMode={editMode}
+										value={editableData.familiarity}
+										typeField={TypeField.DROPDOWN}
+										options={data.familiarityOptions}
+										onChange={(value) => updateEditableData('familiarity', value)}
+									/>
+									{
+										editableData.familiarity === "IRRELEVANT" &&
+										<CustomTextPresentation
+											header="סיבה שלא רלוונטי"
+											editMode={editMode}
+											style={{gridColumn: '2/4', width: '320px'}}
+											inputWidth={300}
+											value={editableData.familiarity_desc}
+											typeField={TypeField.TEXT}
+											onChange={(value) => updateEditableData('familiarity_desc', value)}
+										/>
+									}
+								</div>
+								<div className="row-content-right-history">
+									<div className="row-content-right-history-title">היסטורית שדה</div>
+									{
+										fieldHistory !== null && fieldHistory.length > 0 &&
+										<div className="row-content-history-content">
+											<div/>
+											<div style={{gridColumn: '2/4', fontWeight: 'bold', color: '#616161', paddingBottom: '10px'}}>סוג גידול</div>
+											<div style={{fontWeight: 'bold', color: '#616161'}}>מספר חקלאי</div>
+											{
+												fieldHistory.map((row, i, arr) => {
+													return (
+														<Fragment key={i}>
+															<div className="row-content-history-marker"><img src={historyRowMarker} alt="" style={{width: '18px'}} /></div>
+															<div>{translator(row.product_name)}</div>
+															<div />
+															<div>{row.farmer_id}</div>
+															{ i === arr.length-1 ? <div /> : <div className="row-content-history-marker-separator" /> }
+															<div style={{gridColumn: '2/5'}} />
+														</Fragment>
+													)
+												})
+											}
+										</div>
+									}
+								</div>
+							</div>
+							{/* // Left Side */}
+
+							<div className="row-content-left">
+								<div className="row-content-subtitle">נ"צ</div>
+								<div className="row-content-left-fields">
 									<CustomTextPresentation
 										editMode={editMode}
-										header="תמונה מהשטח"
-										value="Images/RowDetails/FieldShot.png"
-										typeField={TypeField.IMAGE}
+										header="X"
+										value={editableData.xAxis}
+										typeField={TypeField.FLOAT}
+										onChange={(value) => updateEditableData('xAxis', parseFloat(value))}
 									/>
-								</Grid>
-							</Grid>
-						</Grid>
-						<Divider orientation="vertical" flexItem />
-						{/* Right Side Content */}
-						<Grid item>
-							<Box display="flex" flexDirection="column" gap={6}>
-								<Grid
-									container
-									direction="row"
-									gap={15}
-									justifyContent="flex-end"
-								>
-									<Grid item>
-										<CustomTextPresentation
-											editMode={editMode}
-											header="מספר חקלאי"
-											typeField={TypeField.NUMBER}
-											value={rowSet.farmer_id}
-											setEditableData={setEditableData}
-											editableData={editableData}
-											saveDataKey="farmer_id"
-										/>
-									</Grid>
-									<Grid item>
-										{/* <ValidAttractivness
-											editableData={editableData}
-											updateEditableData={updateEditableData}
-											disable={!editMode}
-										/> */}
-										<CustomTextPresentation
-											header="סוג השטח"
-											editMode={editMode}
-											typeField={TypeField.TEXT}
-											textOptionsDropdown=""
-											setEditableData={setEditableData}
-											value={rowSet.fieldKind}
-											// editableData={editableData}
-											// saveDataKey="fieldId"
-										/>
-									</Grid>
-									<Grid item>
-										<CustomTextPresentation
-										  	header="סוג יבול"
-											editMode={editMode}
-											setEditableData={setEditableData}
-											typeField={TypeField.TEXT}
-											textOptionsDropdown={data.cropKindOptions}
-											editableData={editableData}
-											saveDataKey="product_name"
-										/>
-									</Grid>
-								</Grid>
-								<Grid
-									container
-									direction="row"
-									gap={15}
-									justifyContent="flex-end"
-								>
-									<Grid item>
-										<Box display="flex" flexDirection="row" gap={8}>
-											<Grid item>
-										<Typography
-											variant="div"
-											component="div"
-											dir="rtl"
-											sx={{
-												fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-												fontSize: "10px",
-											}}
-										>
-											NDVI
-										</Typography>
-										<Chip
-													label={rowSet.NDVI}
-											sx={{ display: "flex", justifyContent: "flex-start" }}
-											size="small"
-										/>
-									</Grid>
-											<Grid item>
-												<ValidAttractivness
-													editableData={editableData}
-													updateEditableData={updateEditableData}
-													disable={!editMode}
-												/>
-											</Grid>
-											<Grid item dir="rtl">
-										<Typography
-											variant="div"
-											component="div"
-											dir="rtl"
-											sx={{
-												fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-												fontSize: "10px",
-											}}
-										>
-											מדד אטרקטיביות
-										</Typography>
-										<Chip
-													label={rowSet.attractivness}
-											sx={{ display: "flex", width: 'fit-content' }}
-											size="small"
-										/>
-											</Grid>
-										</Box>
-									</Grid>
-									<Grid item>
-										<CustomTextPresentation
-											header="אזור"
-											setEditableData={setEditableData}
-											editMode={editMode}
-											typeField={TypeField.TEXT}
-											textOptionsDropdown={data.areaOptions}
-											editableData={editableData}
-											saveDataKey="region"
-										/>
-									</Grid>
-								</Grid>
-							</Box>
-							<Grid container direction="column" gap={4}>
-								<Grid item>
-									<Grid
-										container
-										direction="row"
-										marginTop={7}
-										gap={10}
-										justifyContent="flex-end"
-									>
-										<Grid item>
-											<CustomTextPresentation
-												setEditableData={setEditableData}
-												editMode={false}
-												header="תאריך הקמת שטח"
-												value={fieldDateEstablishment}
-											/>
-										</Grid>
-										<Grid item>
-											<CustomTextPresentation
-												setEditableData={setEditableData}
-											    editMode={editMode}
-												header="מצב היכרות"
-												fireOpenfamilarityPopup={() => setOpenFamilarityCause(true)}
-												typeField={TypeField.TEXT}
-												textOptionsDropdown={data.familiarityOptions}
-												editableData={editableData}
-												saveDataKey="familiarity"
-											/>
-										</Grid>
-									</Grid>
-								</Grid>
-								<Grid item>
-									<Box display="flex" flexDirection="column" gap={1}>
-										<Typography
-											variant="div"
-											component="h4"
-											dir="rtl"
-											sx={{
-												fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-											}}
-										>
-											היסטורית שדה
-										</Typography>
-										<Grid
-											container
-											direction="row"
-											gap={15}
-											justifyContent="flex-end"
-										>
-											<Grid item>
-												<Box display="flex" flexDirection="column" gap={1.5}>
-													<Typography
-														variant="div"
-														component="h5"
-														dir="rtl"
-														sx={{
-															fontFamily:
-																'"Roboto","Helvetica","Arial",sans-serif',
-															fontSize: "12px",
-														}}
-													>
-														מספר חקלאי
-													</Typography>
-													<Stepper sx={stepperStyle} activeStep={10} orientation="vertical">
-														{farmer_ids.map((agriculturalNum, index) => (
-															<Step key={index}>
-																<StepLabel>{agriculturalNum}</StepLabel>
-															</Step>
-													))}
-													</Stepper>
-												</Box>
-											</Grid>
-											<Grid item>
-												<Box display="flex" flexDirection="column" gap={1.5}>
-													<Typography
-														variant="div"
-														component="h5"
-														dir="rtl"
-														sx={{
-															fontFamily:
-																'"Roboto","Helvetica","Arial",sans-serif',
-															fontSize: "12px",
-														}}
-													>
-														מצב היכרות
-													</Typography>
-													<Stepper sx={stepperStyle} activeStep={10} orientation="vertical">
-														{aquaintanceModes.map((aquaintanceMode, index) => (
-															<Step key={index}>
-																<StepLabel>{aquaintanceMode}</StepLabel>
-															</Step>
-														))}
-													</Stepper>
-												</Box>
-											</Grid>
-										</Grid>
-									</Box>
-								</Grid>
-							</Grid>
-						</Grid>
-					</Grid>
-				</DialogTitle>
-				<CardContent></CardContent>
-				<CheckSave
-					onClose={handleCloseCheckSave}
-					open={openCheckSave}
-					setDecision={setDecision}
-				/>
-				<FamilarityCause
-					onClose={handleCloseFamilarityCause}
-					open={openFamilarityCause}
-					editableData={editableData}
-					updateEditableData={updateEditableData}
-				/>
-			</Card>
-		</Dialog>
+									<CustomTextPresentation
+										editMode={editMode}
+										header="Y"
+										value={editableData.yAxis}
+										typeField={TypeField.FLOAT}
+										onChange={(value) => updateEditableData('yAxis', parseFloat(value))}
+									/>
+									<TextWithHeader
+										editMode={false}
+										header="מספר חלקה"
+										value={translator(editableData.id)}
+									/>
+									<div />
+								</div>
+								<div style={{paddingTop: '20px'}}>
+									<div className="row-content-subtitle">השטח:</div>
+									<div>
+										{ renderFieldMap(editableData) }
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</DialogTitle>
+				</Card>
+			</Dialog>
+		</div>
 	);
 };
 

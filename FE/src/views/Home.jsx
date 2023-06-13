@@ -6,12 +6,14 @@ import { Grid } from "@mui/material";
 import SortPanel from '../components/Sorters/SortPanel'
 import DataPanel from "../components/DataPanel/DataPanel";
 import moment from 'moment';
+import {DATE_FORMAT} from "../Utils/constants";
 
 const Home = () => {
 	const [loading, setLoading] = useState(true);
-	const { searchText } = useContext(ContextProvider);
 	const { mode } = useContext(ContextProvider);
 	const { sortMethod } = useContext(ContextProvider);
+	const { mapZoom } = useContext(ContextProvider);
+	const { polygonFilter } = useContext(ContextProvider);
 	const { product_name } = useContext(ContextProvider);
 	const { additionalProductNames } = useContext(ContextProvider);
 	const { optionRegion } = useContext(ContextProvider);
@@ -32,26 +34,28 @@ const Home = () => {
 
 	useEffect(() => {
 		const load = async () => {
-			const dateFrom = moment(optionMoreFilters.dateFrom, 'DD-MM-yyyy').toDate();
-			const dateTo = moment(optionMoreFilters.dateTo, 'DD-MM-yyyy').toDate();
+			const dateFrom = moment(optionMoreFilters.dateFrom, DATE_FORMAT).toDate();
+			const dateTo = moment(optionMoreFilters.dateTo, DATE_FORMAT).toDate();
 			optionMoreFilters.dateFrom = dateFrom;
 			optionMoreFilters.dateTo = dateTo;
 
 			const filters = {
-				name: debouncedSearchText,
+				prefixName: debouncedSearchText,
 				products: [...product_name, ...additionalProductNames],
 				regions: optionRegion && optionRegion[0] === 'ALL' ? [] : optionRegion,
 				careStatuses: optionCareStatus && optionCareStatus[0] === 'ALL' ? [] : optionCareStatus,
 				optionMoreFilters,
+				polygonFilter,
+				mapZoom,
 				sortBy: sortMethod[0].field,
 				sortDir: sortMethod[0].dir,
 				page,
 				pageSize
 			};
-			await dispatch(fieldActions.loadFields(filters))
+			await dispatch(fieldActions.loadFields(filters, mode))
 		};
 		load();
-	}, [debouncedSearchText, product_name, optionRegion, optionCareStatus, additionalProductNames, optionMoreFilters, sortMethod, page, pageSize]);
+	}, [debouncedSearchText, product_name, polygonFilter, mapZoom, optionRegion, optionCareStatus, additionalProductNames, optionMoreFilters, sortMethod, page, pageSize, mode]);
 
 	return (
 		<Grid container display="grid" marginTop="3%" sx={{ paddingLeft: 7, paddingRight: 7 }}>

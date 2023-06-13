@@ -14,6 +14,8 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import 'react-toastify/dist/ReactToastify.css';
+import 'leaflet-draw/dist/leaflet.draw.css';
+import 'leaflet/dist/leaflet.css';
 
 const App = () => {
 	const user = useSelector(state => state.user.user);

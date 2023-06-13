@@ -15,8 +15,8 @@ const Signin = ({ textFieldStyle, checkboxStyle, handleSignMethodChange }) => {
 	const handleChangeToForgotpassword = () =>
 		handleSignMethodChange("forgotpass");
 
-	const [username, setUsername] = useState("user");
-	const [password, setPassword] = useState("fGF#$@gB#%GHG324%H23");
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -87,14 +87,15 @@ const Signin = ({ textFieldStyle, checkboxStyle, handleSignMethodChange }) => {
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<Link
-						href="#"
-						onClick={handleChangeToForgotpassword}
-						fontSize="12px"
-						sx={{ color: "green" }}
-					>
-						?שכחת סיסמא
-					</Link>
+					{/*<Link*/}
+						{/*href="#"*/}
+						{/*onClick={handleChangeToForgotpassword}*/}
+						{/*fontSize="12px"*/}
+						{/*sx={{ color: "green" }}*/}
+					{/*>*/}
+						{/*?שכחת סיסמא*/}
+					{/*</Link>*/}
+					<div />
 					<FormControlLabel
 						control={<Checkbox size="small" color="success" />}
 						sx={checkboxStyle}
@@ -103,24 +104,24 @@ const Signin = ({ textFieldStyle, checkboxStyle, handleSignMethodChange }) => {
 					/>
 				</Box>
 			</Grid>
-			<Grid item>
-				<Typography
-					textAlign="center"
-					component="div"
-					variant="h6"
-					fontSize="12px"
-				>
-					עוד לא נרשמת? להרשמה{" "}
-					<Link
-						href="#"
-						onClick={handleChangeToSignup}
-						fontSize="12px"
-						sx={{ color: "green" }}
-					>
-						לחץ כאן
-					</Link>
-				</Typography>
-			</Grid>
+			{/*<Grid item>*/}
+				{/*<Typography*/}
+					{/*textAlign="center"*/}
+					{/*component="div"*/}
+					{/*variant="h6"*/}
+					{/*fontSize="12px"*/}
+				{/*>*/}
+					{/*עוד לא נרשמת? להרשמה{" "}*/}
+					{/*<Link*/}
+						{/*href="#"*/}
+						{/*onClick={handleChangeToSignup}*/}
+						{/*fontSize="12px"*/}
+						{/*sx={{ color: "green" }}*/}
+					{/*>*/}
+						{/*לחץ כאן*/}
+					{/*</Link>*/}
+				{/*</Typography>*/}
+			{/*</Grid>*/}
 		</Grid>
 	);
 };

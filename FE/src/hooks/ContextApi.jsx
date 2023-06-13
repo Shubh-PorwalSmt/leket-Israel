@@ -1,5 +1,6 @@
 import React, {createContext, useState} from 'react';
 import {getDefaultDateFrom, getDefaultDateTo} from "../Utils/general";
+import {DEFAULT_MAP_ZOOM} from "../Utils/constants";
 // import sortOptions from "../constants/sortSelection";
 const ContextApi = createContext({});
 
@@ -9,6 +10,8 @@ export const ContextProvider = ({ children }) => {
 	const [searchText, setSearchText] = useState("");
 	const [debouncedSearchText, setDebouncedSearchText] = useState("");
 	const [mode, setMode] = useState("grid");
+	const [polygonFilter, setPolygonFilter] = useState(null);
+	const [mapZoom, setMapZoom] = useState(DEFAULT_MAP_ZOOM);
 	const [sortMethod, setSortMethod] = useState([{ "key": "attr-asc", "label": "אטרקטביות", "field": "name", "dir": "asc" }]);
 	const [product_name, setProductName] = useState([]);
 	const [additionalProductNames, setAdditionalProductNames] = useState([]);
@@ -28,6 +31,10 @@ export const ContextProvider = ({ children }) => {
 					setDebouncedSearchText,
 					mode,
 					setMode,
+					polygonFilter,
+					setPolygonFilter,
+					mapZoom,
+					setMapZoom,
 					sortMethod,
 					setSortMethod,
 					product_name,

@@ -18,8 +18,6 @@ const Step5 = (props) => {
 			<FieldTextValue title="מספר חקלאי" value={field.farmer_id} width={90} />
 			<FieldTextValue title="איזור" value={translator(field.region)} width={90} />
 			<FieldTextValue title="מצב היכרות" value={translator(field.familiarity)} width={90} />
-			<FieldTextValue title="ציר X" value={field.xAxis} width={90} />
-			<FieldTextValue title="ציר Y" value={field.yAxis} width={90} />
 		</Grid>
 	);
 };

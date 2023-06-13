@@ -13,21 +13,20 @@ import {
 	Stepper,
 	Typography
 } from "@mui/material";
-import {Close} from "@mui/icons-material";
+import {Check, Close} from "@mui/icons-material";
 import Step1 from "../components/addFieldSteps/Step1";
 import Step2 from "../components/addFieldSteps/Step2";
 import Step3 from "../components/addFieldSteps/Step3";
 import Step4 from "../components/addFieldSteps/Step4";
 import Step5 from "../components/addFieldSteps/Step5";
-import { Check } from "@mui/icons-material";
 import * as fieldActions from '../redux/Field/actions';
 import {showToast} from "../Utils/general";
 
 const cardStyle = {
 	display: "flex",
 	justifyContent: "center",
-	width: "500px",
-	height: "550px"
+	width: "900px",
+	height: "700px"
 };
 
 const closeIconStyle = {
@@ -42,15 +41,15 @@ const AddField = ({onClose}) => {
 	const [activeStep, setActiveStep] = useState(0);
 	const [step1Error, setStep1Error] = useState(null);
 	const [step2Error, setStep2Error] = useState(null);
-	const [step4Error, setStep4Error] = useState(null);
+	const [step3Error, setStep3Error] = useState(null);
 	const [field, setField] = useState({
 		name: "",
 		product_name: "",
 		region: "",
 		farmer_id: "",
-		familiarity: "NOT_KNOWN",
-		xAxis: "",
-		yAxis: ""
+		familiarity: "",
+		xAxis: "", //32.447583195
+		yAxis: "" //35.053553581
 	});
 
 	const dispatch = useDispatch();
@@ -78,7 +77,7 @@ const AddField = ({onClose}) => {
 	const handleNextSubmit = () => {
 		setStep1Error(null);
 		setStep2Error(null);
-		setStep4Error(null);
+		setStep3Error(null);
 
 		switch(activeStep) {
 			case 0:
@@ -104,21 +103,12 @@ const AddField = ({onClose}) => {
 					return;
 				}
 				break;
-			case 3:
-				if(field.xAxis == null || field.xAxis === "") {
-					setStep4Error({name: 'xAxis', text: "יש להזין את ציר הX"});
-					return;
-				} else if(field.yAxis == null || field.yAxis === "") {
-					setStep4Error({name: 'yAxis', text: "יש להזין את ציר הY"});
-					return;
-				}
-				break;
 		}
 		if (activeStep !== 4) {
 			setActiveStep((prevActiveStep) => prevActiveStep + 1);
 		}
 		else {
-			console.log(field);
+			// console.log(field);
 			dispatch(fieldActions.saveNewField(field));
 			console.log("saved!");
 			showToast("השדה החדש נשמר בהצלחה.");
@@ -131,13 +121,21 @@ const AddField = ({onClose}) => {
 	};
 
 	const updateField = (key, value) => {
-		const fld = {...field};
-		fld[key] = value;
-		setField(fld);
+		if(key === 'geo') {
+			const fld = {...field};
+			fld.point = value.point;
+			fld.polygon = value.polygon;
+			setField(fld);
+		}
+		else {
+			const fld = {...field};
+			fld[key] = value;
+			setField(fld);
+		}
 	};
 
 	return (
-		<Dialog open={true} >
+		<Dialog maxWidth={false} open={true}>
 			<Card elevation={10} dir="rtl" sx={cardStyle}>
 				<CardContent>
 					<div style={closeIconStyle}>
@@ -181,17 +179,20 @@ const AddField = ({onClose}) => {
 								       error={step2Error}
 								       onChangeField={updateField} />
 							) : activeStep === 2 ? (
-								<Step3 />
+								<Step3 xAxis={field.xAxis}
+								       yAxis={field.yAxis}
+								       error={step3Error}
+								       onChangeField={updateField} />
 							) : activeStep === 3 ? (
 								<Step4 xAxis={field.xAxis}
 								       yAxis={field.yAxis}
-								       error={step4Error}
+								       polygon={field.polygon}
 								       onChangeField={updateField} />
 							) : (
 								<Step5 field={field} />
 							)}
 						</Grid>
-						<Grid item position="absolute" top="75%">
+						<Grid item position="absolute" bottom="30px">
 							<CardActions>
 								<Button
 									variant="outlined"

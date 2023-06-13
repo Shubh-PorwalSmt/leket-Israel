@@ -36,7 +36,7 @@ const Header = ({  }) => {
 		timeOfDay = 'לילה טוב';
 	}
 
-	const welcome = `${timeOfDay} אלירן`;
+	const welcome = `${timeOfDay} `;
 
 	const handleLogout = () => {
 		dispatch(userActions.signOut());

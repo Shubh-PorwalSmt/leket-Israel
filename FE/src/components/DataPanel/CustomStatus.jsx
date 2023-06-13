@@ -1,10 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Chip, Menu, MenuItem} from "@mui/material";
 import {KeyboardArrowDown} from "@mui/icons-material";
 import * as data from "../../constants/filterSelection";
 import {useDispatch} from "react-redux";
 import * as fieldActions from '../../redux/Field/actions';
-import {useState} from "react";
 import translator from "../../Utils/translations/translator";
 import {showToast} from "../../Utils/general";
 
@@ -29,7 +28,7 @@ const getStatusColor = (status) => {
 	}
 };
 
-const CustomStatus = ({ fieldId, status, label, removeAllOption, disable = false }) => {
+const CustomStatus = ({ fieldId, onChange, status, label, removeAllOption, disable = false }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [rotateArrow, setRotateArrow] = useState(false);
 
@@ -52,9 +51,15 @@ const CustomStatus = ({ fieldId, status, label, removeAllOption, disable = false
 	};
 
 	const handleMenuItemClick = status => {
-		dispatch(fieldActions.updateFieldStatus(fieldId, status));
-		handleClose();
-		showToast("השדה עודכן.");
+		if(onChange) {
+			onChange(status);
+			handleClose();
+		}
+		else {
+			dispatch(fieldActions.updateFieldStatus(fieldId, status));
+			showToast("השדה עודכן.");
+			handleClose();
+		}
 	};
 
 	let options = data.careStatusOptions;
@@ -69,65 +74,63 @@ const CustomStatus = ({ fieldId, status, label, removeAllOption, disable = false
 				label={label}
 				onClick={handleClick}
 				sx={{
+					cursor: disable ? 'not-allowed' : 'hand',
 					direction: "ltr",
 					width: '130px',
-					backgroundColor: disable ? 'grey' : getStatusColor(status),
+					backgroundColor: disable ? '#f5f5f5' : getStatusColor(status),
 					'&:hover': {
-						backgroundColor: disable ? 'grey' : getStatusColor(status),
+						backgroundColor: disable ? '#f5f5f5' : getStatusColor(status),
 					}
 				}}
 				icon={
 					<KeyboardArrowDown
-						style={{ color: disable ? 'grey' : getStatusColor(status), filter: "brightness(85%)", rotate: rotateArrow ? "180deg" : "0deg" }}
+						style={{ color: disable ? '#f5f5f5' : getStatusColor(status), filter: "brightness(85%)", rotate: rotateArrow ? "180deg" : "0deg" }}
 						sx={{ display: "flex" }}
 					/>
 				}
 			/>
-			{!disable ?
-				<Menu
-					id="basic-menu"
-					dir="rtl"
-					sx={{
-						'.css-6hp17o-MuiList-root-MuiMenu-list': {
-							paddingBottom: 0
-						},
-					}}
-					anchorEl={anchorEl}
-					open={open}
-					onClose={handleClose}
-					anchorOrigin={{
-						vertical: "bottom",
-						horizontal: "right",
-					}}
-					transformOrigin={{
-						vertical: "top",
-						horizontal: "right",
-					}}
-					PaperProps={{
-						style: {
-							padding: '0 8px'
-						},
-					}}
-				>
-					{options.map((status) => (
-						<MenuItem
-							sx={{
-								marginBottom: 1,
+			<Menu
+				id="basic-menu"
+				dir="rtl"
+				sx={{
+					'.css-6hp17o-MuiList-root-MuiMenu-list': {
+						paddingBottom: 0
+					},
+				}}
+				anchorEl={anchorEl}
+				open={open}
+				onClose={handleClose}
+				anchorOrigin={{
+					vertical: "bottom",
+					horizontal: "right",
+				}}
+				transformOrigin={{
+					vertical: "top",
+					horizontal: "right",
+				}}
+				PaperProps={{
+					style: {
+						padding: '0 8px'
+					},
+				}}
+			>
+				{options.map((status) => (
+					<MenuItem
+						sx={{
+							marginBottom: 1,
+							background: getStatusColor(status),
+							borderRadius: "4px",
+							"&:hover": {
 								background: getStatusColor(status),
-								borderRadius: "4px",
-								"&:hover": {
-									background: getStatusColor(status),
-								},
-							}}
-							key={status}
-							onClick={() => handleMenuItemClick(status)}
-						>
-							<div>{translator(status)}</div>
-						</MenuItem>
-					))}
-				</Menu> :
-				<></>
-			}
+							},
+						}}
+						key={status}
+						onClick={() => handleMenuItemClick(status)}
+					>
+						<div>{translator(status)}</div>
+					</MenuItem>
+				))}
+			</Menu>
 		</div>
 	);
 };

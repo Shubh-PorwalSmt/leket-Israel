@@ -1,10 +1,10 @@
 import {useTranslation} from 'react-i18next';
 
 const translator = (key) => {
-	try {
+	// try {
 		const { t } = useTranslation();
 		return t(key) || key;
-	} catch (e) {}
+	// } catch (e) {}
 };
 
 export default translator;

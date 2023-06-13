@@ -1,0 +1,4 @@
+export const DATE_FORMAT = "DD-MM-yyyy";
+export const DEFAULT_MAP_ZOOM = 11;
+export const DEFAULT_LONG_POS = 32.449655245966085;
+export const DEFAULT_LAT_POS = 35.047931671142585;

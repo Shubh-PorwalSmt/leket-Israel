@@ -13,21 +13,14 @@ axios.interceptors.response.use(response => {
 	return response;
 });
 
-export const signIn = async (user, pass) => {
-	if(user === 'user' && pass === 'fGF#$@gB#%GHG324%H23') {
-		return { name: 'אלירן'};
-	}
-	else {
-		return null;
-	}
-
-	// return axios.post(`${import.meta.env.VITE_BASE_API_URL}/user/login`, {user, pass})
-	// 	.then(async response => {
-	// 		return response.data.user;
-	// 	})
-	// 	.catch(response => {
-	// 		return null;
-	// 	})
+export const signIn = async (username, password) => {
+	return axios.post(`${import.meta.env.VITE_BASE_API_URL}/auth/login`, {username, password})
+		.then(async response => {
+			return response.data.accessToken;
+		})
+		.catch(response => {
+			return null;
+		})
 };
 
 export const signOut = async () => {

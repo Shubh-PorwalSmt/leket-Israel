@@ -1,5 +1,7 @@
 import * as actionTypes from './actionTypes';
 import * as userService from './service'
+import axios from "axios";
+
 // import UserPool from "../../cognito/UserPool";
 
 export const signIn = (user, pass) => {
@@ -13,17 +15,19 @@ export const signIn = (user, pass) => {
 			return;
 		}
 
-		const userData = await userService.signIn(user, pass);
+		const token = await userService.signIn(user, pass);
+
+		axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 		await dispatch({
 			type: actionTypes.USER_SIGNED_IN_FAILED,
 			data: ''
 		});
 
-		if(userData) {
+		if(token) {
 			await dispatch({
 				type: actionTypes.USER_SIGNED_IN,
-				data: userData
+				data: user
 			});
 		}
 		else {
@@ -35,17 +39,13 @@ export const signIn = (user, pass) => {
 	}
 };
 
-export const signUp = (email, username, password) => {
-	// UserPool.signUp(email, username, password, [], null, (err, data) => {
-	// 	if (err) console.log(err);
-	// 	else console.log(data);
-	return async (dispatch) => {
-		const userData = { name: 'אלירן'};
-		await dispatch({
-			type: actionTypes.USER_SIGNED_IN,
-			data: userData
-		});
-	};
+export const signUp = (username, password) => {
+	// return async (dispatch) => {
+	// 	await dispatch({
+	// 		type: actionTypes.USER_SIGNED_IN,
+	// 		data: {username, password}
+	// 	});
+	// };
 };
 
 export const signOut = () => {

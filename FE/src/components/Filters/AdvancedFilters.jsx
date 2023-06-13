@@ -5,6 +5,7 @@ import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DeleteOutline} from "@mui/icons-material";
 import moment from 'moment';
 import {getDefaultDateFrom, getDefaultDateTo} from "../../Utils/general";
+import {DATE_FORMAT} from "../../Utils/constants";
 
 const addCropStyle = {
 	borderRadius: "16px",
@@ -112,8 +113,8 @@ const AdvancedFilters = props => {
 	}, [options]);
 
 	const onUpdateOptions = () => {
-		const from = moment(fromDate).format("DD-MM-yyyy");
-		const to = moment(toDate).format("DD-MM-yyyy");
+		const from = moment(fromDate).format(DATE_FORMAT);
+		const to = moment(toDate).format(DATE_FORMAT);
 		setOptions({attractionFrom: attractionRange[0], attractionTo: attractionRange[1], ndviFrom: ndviRange[0], ndviTo: ndviRange[1], dateFrom: from, dateTo: to});
 	};
 
@@ -186,7 +187,7 @@ const AdvancedFilters = props => {
 							מתאריך
 						</Typography>
 						<DatePicker
-							format="DD-MM-YYYY"
+							format={DATE_FORMAT}
 							value={fromDate}
 							disableOpenOnEnter
 							InputProps={{ onKeyDown: e => e.preventDefault() }}
@@ -208,7 +209,7 @@ const AdvancedFilters = props => {
 							עד תאריך
 						</Typography>
 						<DatePicker
-							format="DD-MM-YYYY"
+							format={DATE_FORMAT}
 							value={toDate}
 							InputProps={{ onKeyDown: e => e.preventDefault() }}
 							onChange={(newToDate) => updateToDate(newToDate)}

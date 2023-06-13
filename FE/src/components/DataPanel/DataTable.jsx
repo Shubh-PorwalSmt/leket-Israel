@@ -10,11 +10,11 @@ import AddField from '../../views/AddField';
 import {confirmAlert} from 'react-confirm-alert';
 import * as XLSX from "xlsx/xlsx.mjs";
 import RowDetails from "./RowDetails";
-import moment from 'moment';
 
 import './DataPanel.scss';
 import translator from "../../Utils/translations/translator";
 import ContextProvider from "../../hooks/ContextApi";
+import {getFieldLastUpdated} from "../../Utils/general";
 
 const dataGridStyle = {
 	".css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate":
@@ -134,12 +134,12 @@ const DataTable = ({rows}) => {
 			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
 		{
-			field: "created_date",
+			field: "status_date",
 			headerName: "עדכון אחרון",
 			editable: false,
 			sortable: false,
 			flex: 1,
-			renderCell: (params) => (<div>{moment(params.value).format("DD-MM-yyyy")}</div>),
+			renderCell: (params) => getFieldLastUpdated(params.row),
 		},
 		{
 			field: "status",
@@ -299,6 +299,8 @@ const DataTable = ({rows}) => {
 
 			{ showAddField && <AddField onClose={() => setShowAddField(false)} /> }
 
+			{ editedRow && <RowDetails onClose={handleClickRowClose} rowSet={editedRow} /> }
+
 			<DataGrid
 				rows={rows}
 				sx={dataGridStyle}
@@ -327,7 +329,7 @@ const DataTable = ({rows}) => {
 					},
 				}}
 			/>
-			<RowDetails onClose={handleClickRowClose} rowSet={editedRow} />
+
 		</Card>
 	);
 };

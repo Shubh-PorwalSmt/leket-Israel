@@ -8,6 +8,12 @@ const initialState = JSON.stringify({
 
 function fieldReducer(state = JSON.parse(initialState), action) {
 	switch (action.type) {
+		case actionTypes.LOADING_FIELDS: {
+			return {
+				...state,
+				fieldsLoaded: false
+			};
+		}
 		case actionTypes.FIELDS_LOADED: {
 			return {
 				...state,
@@ -17,9 +23,10 @@ function fieldReducer(state = JSON.parse(initialState), action) {
 			};
 		}
 		case actionTypes.ADD_NEW_FIELD: {
+			const f = [...state.fields, action.data];
 			return {
 				...state,
-				fields: [...state.fields, action.data],
+				fields: f,
 				fieldCount: state.fieldCount + 1,
 			};
 		}

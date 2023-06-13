@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "frontend",
-            "image": "152203247831.dkr.ecr.us-east-1.amazonaws.com/leket-israel-frontend:leket-israel-frontend-5122698197",
+            "image": "152203247831.dkr.ecr.us-east-1.amazonaws.com/leket-israel-frontend:leket-israel-frontend-5241536703",
             "cpu": 0,
             "portMappings": [
                 {
@@ -16,10 +16,14 @@
             ],
             "essential": true,
             "environment": [],
-            "environmentFiles": [],
+            "environmentFiles": [
+                {
+                    "value": "arn:aws:s3:::leket-israel/leket-israel-frontend/.env",
+                    "type": "s3"
+                }
+            ],
             "mountPoints": [],
             "volumesFrom": [],
-            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {

@@ -44,7 +44,7 @@ const Signin = ({ textFieldStyle, checkboxStyle, handleSignMethodChange }) => {
 		// 	},
 		// });
 	};
-
+	console.log(import.meta.env.VITE_BASE_API_URL);
 	return (
 		<Grid container direction="column" justifyContent="space-between">
 			<Grid item>

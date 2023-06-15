@@ -9,6 +9,9 @@ RUN npm install
 # Copy app files
 COPY . .
 
+# Set the environment variable
+ENV VITE_BASE_API_URL=http://leket-israel-backend-lb-180912419.us-east-1.elb.amazonaws.com:3000
+
 # Build the app
 RUN npm run build
 

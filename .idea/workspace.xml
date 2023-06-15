@@ -2,7 +2,124 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b74499b-56e1-4993-9197-968bf0bfbb4e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ecs-task-definition.json" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ecs-task-definition.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/.nginx/nginx.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/frontend.Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/Login/LeketIsraelLogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/Login/LoginPoligonField.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/RowDetails/FieldShot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/addfield/field.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/header/LeketIsraelLogos.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/header/gridForm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/vegetables/CarrotIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/vegetables/CucumberIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/vegetables/PapperIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/public/Images/vegetables/TomatoIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/App.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/Utils/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/Utils/general.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/Utils/translations/en.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/Utils/translations/he.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/Utils/translations/translator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/Vegetables/CarrotIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/Vegetables/CucumberIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/Vegetables/PapperIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/Vegetables/TomatoIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/filters/sort-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/filters/toggle-box-off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/filters/toggle-box-on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/filters/toggle-like-box-on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/header/LeketIsraelLogos.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/header/grid-view.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/header/gridForm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/header/map-view.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/history-row-marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/likeIcons/down-on.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/likeIcons/down.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/likeIcons/pipe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/likeIcons/up-on.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/likeIcons/up.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/map/map_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/assets/map/marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/cognito/UserPool.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/CheckSave.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/CustomStatus.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/CustomTextPresentation.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/DataPanel.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/DataPanel.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/DataTable.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/FamilarityCause.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/RowDetails.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/RowDetails.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/TextWithHeader.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/DataPanel/ValidAttractivness.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/FieldMapArea/FieldMapArea.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/FieldMapArea/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Filters/AdvancedFilters.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Filters/ExpandableMenu.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Filters/FilterCrop.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Filters/MoreFilters.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Filters/SortMenu.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Header/CustomSearch.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Header/Header.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Input/Input.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Input/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Login/ForgotPassword.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Login/Forgotpassowrd.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Login/Signin.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Login/Signup.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Map/FieldMap.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Map/FieldMap.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Sorters/Sort.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/Sorters/SortPanel.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/ToggleFilter/ToggleFilter.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/ToggleFilter/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/ToggleLike/ToggleLike.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/ToggleLike/index.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/addFieldSteps/CustomDropdown.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/addFieldSteps/ErrorMessage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/addFieldSteps/FieldTextValue.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/addFieldSteps/Step1.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/addFieldSteps/Step2.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/addFieldSteps/Step3.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/addFieldSteps/Step4.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/components/addFieldSteps/Step5.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/constants/fields.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/constants/filterSelection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/constants/mockGridData.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/constants/sortSelection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/hooks/ContextApi.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/hooks/useApi.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/hooks/useDebounce.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/main.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/queries/GET/DataGrid/GetAllFieldsDataGrid.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/queries/GET/GetRowDetails.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/queries/GET/Login/Forgetpassword.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/queries/GET/Login/Signin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/queries/POST/AddFieldPayload.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/queries/POST/DataGrid/ChangeFamiliarity.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/queries/POST/DataGrid/ChangeFieldStatus.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/queries/POST/Login/Signup.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/Field/actionTypes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/Field/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/Field/reducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/Field/service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/User/actionTypes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/User/actions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/User/reducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/User/service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/reducers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/redux/store.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/views/AddField.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/views/Home.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/src/views/LoginPanel.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FE/vite.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,52 +133,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="App.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FE/src/App.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FE/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run.bat" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FE/run.bat">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FE/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FE/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="frontend.Dockerfile" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FE/frontend.Dockerfile">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file leaf-file-name="deploy.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.github/workflows/deploy.yml">
           <provider selected="true" editor-type-id="text-editor" />
@@ -70,29 +141,8 @@
       <file leaf-file-name="ecs-task-definition.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.github/workflows/ecs-task-definition.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="20" column="100" selection-start-line="20" selection-start-column="100" selection-end-line="20" selection-end-column="100" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Signin.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FE/src/components/Login/Signin.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FE/src/main.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="343">
+              <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -101,7 +151,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>xax</find>
       <find>save</find>
       <find>UPDATE_FIELD</find>
       <find>היסטו</find>
@@ -131,6 +180,7 @@
       <find>אלירן</find>
       <find>efrat</find>
       <find>localhost</find>
+      <find>gith</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -165,7 +215,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FE/src/components/Sorters/SortPanel.jsx" />
         <option value="$PROJECT_DIR$/FE/src/components/DataPanel/DataPanel.scss" />
         <option value="$PROJECT_DIR$/FE/src/components/Filters/ExpandableMenu.jsx" />
         <option value="$PROJECT_DIR$/FE/src/constants/filterSelection.json" />
@@ -216,6 +265,7 @@
         <option value="$PROJECT_DIR$/FE/src/components/Header/Header.jsx" />
         <option value="$PROJECT_DIR$/FE/.env" />
         <option value="$PROJECT_DIR$/.github/workflows/ecs-task-definition.json" />
+        <option value="$PROJECT_DIR$/FE/.gitignore" />
       </list>
     </option>
   </component>
@@ -232,11 +282,11 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/FE/node_modules" />
+    <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/FE/package.json" />
+      <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -258,22 +308,6 @@
             <path>
               <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
               <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name=".github" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name=".github" type="462c0819:PsiDirectoryNode" />
-              <item name="workflows" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name="FE" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -298,6 +332,7 @@
       <recent name="C:\Development\leket-Israel\FE\src\assets\map" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Development\leket-Israel" />
       <recent name="C:\Development\leket-Israel\FE\src\Utils\translations" />
       <recent name="C:\Development\leket-Israel\FE\src\Utils" />
     </key>
@@ -369,12 +404,12 @@
       <updated>1684663705724</updated>
       <workItem from="1684663707056" duration="67739000" />
       <workItem from="1685439366204" duration="31699000" />
-      <workItem from="1685907848556" duration="155257000" />
+      <workItem from="1685907848556" duration="156533000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="254695000" />
+    <option name="totallyTimeSpent" value="255971000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1048" extended-state="6" />
@@ -788,13 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FE/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FE/frontend.Dockerfile">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -808,10 +836,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FE/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.github/workflows/ecs-task-definition.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="20" column="100" selection-start-line="20" selection-start-column="100" selection-end-line="20" selection-end-column="100" />
+        <state relative-caret-position="343">
+          <caret line="20" column="52" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
         </state>
       </provider>
     </entry>

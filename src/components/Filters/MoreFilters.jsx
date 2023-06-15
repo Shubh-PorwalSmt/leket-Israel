@@ -1,12 +1,9 @@
-import React from 'react';
-import { Box, CardContent, Typography, Grid, IconButton, Link } from "@mui/material";
-import { KeyboardArrowDown, Clear } from "@mui/icons-material";
+import React, {useContext, useState} from 'react';
+import {Box, CardContent, Grid, Link, Typography} from "@mui/material";
+import {KeyboardArrowDown} from "@mui/icons-material";
 import ExpandableMenu from "./ExpandableMenu";
-import { useState, useContext } from "react";
 import ContextProvider from "../../hooks/ContextApi";
-import { data as originalRows } from "../../constants/mockGridData";
-import { areaOptions } from "../../constants/filterSelection";
-import { careStatusOptions } from "../../constants/filterSelection";
+import {areaOptions, careStatusOptions} from "../../constants/filterSelection";
 import translator from "../../Utils/translations/translator";
 import {getDefaultDateFrom, getDefaultDateTo} from "../../Utils/general";
 

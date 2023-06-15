@@ -1,15 +1,7 @@
-import React from 'react';
-import {
-	Box,
-	CardContent,
-	Typography,
-	Grid,
-	ToggleButton,
-	ToggleButtonGroup,
-} from "@mui/material";
-import { KeyboardArrowDown } from "@mui/icons-material";
+import React, {useContext, useState} from 'react';
+import {Box, CardContent, Grid, Typography,} from "@mui/material";
+import {KeyboardArrowDown} from "@mui/icons-material";
 import ExpandableMenu from "./ExpandableMenu";
-import { useState, useContext } from "react";
 import ContextProvider from "../../hooks/ContextApi";
 import * as data from "../../constants/filterSelection";
 import ToggleFilter from "../ToggleFilter";
@@ -19,22 +11,6 @@ import CucumberIcon from '../../assets/Vegetables/CucumberIcon.png';
 import PapperIcon from '../../assets/Vegetables/PapperIcon.png';
 import CarrotIcon from '../../assets/Vegetables/CarrotIcon.png';
 import translator from "../../Utils/translations/translator";
-
-const cropToggleBtn = {
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-	width: 110,
-	height: 80,
-	borderRadius: "100px",
-	boxShadow: "1px 1px 10px 1px #d4d4d4"
-};
-
-const toggleBtnText = {
-	display: "flex",
-	justifyContent: "center",
-	fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-};
 
 const FilterCrop = ({ cardText, imageStyle }) => {
 	const { product_name, setProductName } = useContext(ContextProvider);
@@ -102,7 +78,7 @@ const FilterCrop = ({ cardText, imageStyle }) => {
 				marginTop="20px"
 			>
 				<ExpandableMenu
-					items={data.product_nameOptions.sort((a, b) => translator(a).localeCompare(translator(b)))}
+					items={data.product_nameOptions}
 					displayTag={displayTag}
 					product_name={product_name}
 					setProductName={setProductName}

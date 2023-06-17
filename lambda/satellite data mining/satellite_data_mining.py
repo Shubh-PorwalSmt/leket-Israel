@@ -1,7 +1,7 @@
 import logging
 import sys
 
-import satsearch
+import pystac_client
 
 import rasterio as rio
 from rasterio import mask
@@ -103,14 +103,14 @@ def SCL(scl):
 
 
 def field_info(geometry, date):
-    sentinel = satsearch.Search.search(
-        url="https://earth-search.aws.element84.com/v0",
+    sentinel_stac_client = pystac_client.Client.open("https://earth-search.aws.element84.com/v1")
+    items = sentinel_stac_client.search(
         intersects=geometry,
         datetime=date,
-        collections=['sentinel-s2-l2a-cogs'])
+        collections=["sentinel-2-l2a"]).item_collection()
 
-    items = sentinel.items()
-    print(items.summary(['date', 'id', 'eo:cloud_cover']))
+    for item in items.to_dict()['features']:
+        print('id:', item['id'], 'eo:cloud_cover:', item['properties']['eo:cloud_cover'])
     return items
 
 
@@ -142,9 +142,9 @@ def setup(dataframe, time_range):
     for key in sentinel_dict.keys():
         if sentinel_dict[key] is not None:
             bands_s3[key] = {
-                'red': rio.open(sentinel_dict[key].assets['B04']['href']),
-                'nir': rio.open(sentinel_dict[key].assets['B08']['href']),
-                'scl': rio.open(sentinel_dict[key].assets['SCL']['href'])
+                'red': rio.open(sentinel_dict[key].assets['red'].href),
+                'nir': rio.open(sentinel_dict[key].assets['nir'].href),
+                'scl': rio.open(sentinel_dict[key].assets['scl'].href)
             }
 
     if len(bands_s3) == 0:
@@ -317,14 +317,15 @@ def main(date=datetime.today().strftime('%Y-%m-%d')):
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' Saving to database')
     logger.info('Saving to database')
     save_to_csv('satellite.csv')
-    save_to_rds(conn_string)
+    # save_to_rds(conn_string)
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' Finished')
     logger.info('Finished')
 
 
 if __name__ == '__main__':
-    today = datetime.today().strftime('%Y-%m-%d')
-    # today = '2023-04-25'
-    main(today)
+    time_range = datetime.today().strftime('%Y-%m-%d')
+    # time_range = '2023-04-25/' + datetime.today().strftime('%Y-%m-%d')
+    # time_range = '2023-06-14'
+    main(time_range)
 
 

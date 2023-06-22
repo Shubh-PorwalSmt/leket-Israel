@@ -317,6 +317,10 @@ def read_fields_from_api(url, token):
     # Uncomment if you want to filter 'IRRELEVANT' fields for data mining
     df = df[df['familiarity'] != 'IRRELEVANT']
     df = df[['id', 'polygon', 'sentinel_id']].rename(columns={'id': 'field_id', 'polygon': 'geometry'})
+    # Reverse polygon for data mining
+    for index, row in df.iterrows():
+        reverse_coordinates = [[[coords[1], coords[0]] for coords in json.loads(row['geometry'])['coordinates'][0]]]
+        df.loc[index, 'geometry'] = str({"type": "Polygon", "coordinates": reverse_coordinates})
     return df
 
 

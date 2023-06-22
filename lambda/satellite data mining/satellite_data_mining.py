@@ -12,9 +12,13 @@ import numpy as np
 
 from datetime import datetime
 from ast import literal_eval
+import requests
 import json
 
 conn_string = 'postgresql://user:password@host/dbname'
+
+api = ''
+creds = {"username": "", "password": ""}
 
 scl_threshold = {'cloud_high_thresh': 0.1, 'cloud_medium_thresh': 0.2, 'other_scl_thresh': 0.5}
 
@@ -126,11 +130,11 @@ def setup(dataframe, time_range):
 
     for key in sentinel_dict.keys():
         if len(list(sentinel_dict[key])) == 0:
-            print('Missing tiles for ' + time_range)
-            logger.critical('Missing tiles for ' + time_range)
-            exit(0)
-            # sentinel_dict[key] = None
-            # date = None
+            print('Missing tile for ' + key)
+            logger.critical('Missing tile for ' + key)
+            # exit(0)
+            sentinel_dict[key] = None
+            date = None
         else:
             sentinel_dict[key] = sentinel_dict[key][0]
             date = sentinel_dict[key].properties['datetime'][0:10]
@@ -148,8 +152,8 @@ def setup(dataframe, time_range):
             }
 
     if len(bands_s3) == 0:
-        print('No tiles for', time_range)
-        logger.critical('No tiles for', time_range)
+        print('No tiles for ' + time_range)
+        logger.critical('No tiles for ' + time_range)
         exit(0)
     else:
         print('Done!')
@@ -199,10 +203,11 @@ def insert_data(index, length, date, field_id, stats, warning=''):
             summary['data']['Invalid']['Count']['Total'] += 1
 
 
-def satellite(dataframe, bands_s3, date):
+def satellite(dataframe, bands_s3):
     for index, row in dataframe.iterrows():
         field_id, geometry, sentinel_id = row['field_id'], row['geometry'], row['sentinel_id']
         if sentinel_id in bands_s3.keys():
+            date = summary['satellite'][sentinel_id]['created']
             try:
                 geometry = literal_eval(geometry.replace("\'", "\""))
                 sentinel_bands = bands_s3[sentinel_id]
@@ -289,13 +294,97 @@ def save_to_rds(conn):
         sys.exit(1)
 
 
-def main(date=datetime.today().strftime('%Y-%m-%d')):
+def get_api_token(url, obj):
+    return requests.post(url + 'auth/login', json=obj).json()
+
+
+def read_fields_from_api(url, token):
+    # read first 100 fields
+    resp = requests.post(url + 'fields/get-field-by-filter',
+                         headers={'Authorization': 'token {}'.format(token['accessToken'])},
+                         json={"page": 0, "pageSize": 100}).json()
+    df = pd.DataFrame.from_dict(resp['fields'], orient='columns')
+    field_count = resp['fieldCount']
+
+    # read all other fields (from 101 and higher)
+    for i in range(int(field_count / 100)):
+        resp = requests.post(url + 'fields/get-field-by-filter',
+                             headers={'Authorization': 'token {}'.format(token['accessToken'])},
+                             json={"page": i+1, "pageSize": 100}).json()
+
+        df = pd.concat([df, pd.DataFrame.from_dict(resp['fields'], orient='columns')], ignore_index=True)
+
+    # Uncomment if you want to filter 'IRRELEVANT' fields for data mining
+    df = df[df['familiarity'] != 'IRRELEVANT']
+    df = df[['id', 'polygon', 'sentinel_id']].rename(columns={'id': 'field_id', 'polygon': 'geometry'})
+    return df
+
+
+def update_fields_sentinel_ids_to_api(df, date, url, token):
+    sentinel_search_url = "https://earth-search.aws.element84.com/v1"
+    sentinel_stac_client = pystac_client.Client.open(sentinel_search_url)
+    count = 0
+    for index, row in df.iterrows():
+        if row['sentinel_id'] is not None:
+            continue
+        items = sentinel_stac_client.search(
+            intersects=row['geometry'],
+            datetime=date,
+            collections=["sentinel-2-l2a"]).item_collection()
+        try:
+            sentinel_id = items[0].id.split('_')[1]
+            url = url + 'fields/update-field/' + str(row['field_id'])
+            requests.patch(url,
+                           headers={'Authorization': 'token {}'.format(token['accessToken'])},
+                           json={"sentinel_id": sentinel_id})
+            df.at[index, 'sentinel_id'] = sentinel_id
+            print(str(count+1) + '/' + str(df['sentinel_id'].isna().sum()) + ' ' + str(row['field_id']) + ' updated')
+        except:
+            print('Check tile availability for field id ' + str(row['field_id']) + ' at ' + date)
+            continue
+    return df
+
+
+def post_satellite_data_to_api(url, token):
+    for date, field_id, statistics in zip(satellite_dict['date'],
+                                          satellite_dict['field_id'],
+                                          satellite_dict['statistics']):
+        requests.post(url + 'satellites',
+                      headers={'Authorization': 'token {}'.format(token['accessToken'])},
+                      json={"date": date,
+                            "field_id": field_id,
+                            "statistics": json.loads(statistics),
+                            "like": False})
+
+        requests.patch(url + 'fields/update-field/' + str(field_id),
+                       headers={'Authorization': 'token {}'.format(token['accessToken'])},
+                       json={"latest_satelite_metric": round(json.loads(statistics)["NDVI"]["mean"], 2),
+                             "latest_satelite_date": date})
+
+
+def main(date):
     print('Reading from database')
     logger.info('Reading from database')
-    df = read_from_csv('field_sentinel_id.csv')
+    # df = read_from_csv('field_sentinel_id.csv')
     # df = read_from_rds(conn_string)
+    token = get_api_token(api, creds)
+    df = read_fields_from_api(api, token)
     print('Finished reading from database')
     logger.info('Finished reading from database')
+
+    print('Checking for missing sentinel ids')
+    logger.info('Checking for missing sentinel ids')
+    n_missing_sentinel_id = df['sentinel_id'].isna().sum()
+
+    if n_missing_sentinel_id > 0:
+        print('There are ' + str(n_missing_sentinel_id) + ' fields with missing sentinel ids')
+        logger.info('There are ' + str(n_missing_sentinel_id) + ' fields with missing sentinel ids')
+        df = update_fields_sentinel_ids_to_api(df, date, api, token)
+        print('Finished updating sentinel ids')
+        logger.info('Finished updating sentinel ids')
+    else:
+        print('There are no fields with missing sentinel ids')
+        logger.info('There are no fields with missing sentinel ids')
 
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' Starting satellite setup')
     logger.info('Starting satellite setup')
@@ -306,7 +395,7 @@ def main(date=datetime.today().strftime('%Y-%m-%d')):
     time_started = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(time_started + ' Starting data mining for ' + str(len(df)) + ' fields')
     logger.info('Starting data mining for ' + str(len(df)) + ' fields')
-    satellite(df, bands, date)
+    satellite(df, bands)
     print(time_started + ' Started data mining')
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' Finished data mining')
     logger.info('Finished data mining')
@@ -316,16 +405,16 @@ def main(date=datetime.today().strftime('%Y-%m-%d')):
 
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' Saving to database')
     logger.info('Saving to database')
-    save_to_csv('satellite.csv')
+    # save_to_csv('satellite.csv')
     # save_to_rds(conn_string)
+    post_satellite_data_to_api(api, token)
     print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + ' Finished')
     logger.info('Finished')
 
 
 if __name__ == '__main__':
     time_range = datetime.today().strftime('%Y-%m-%d')
-    # time_range = '2023-04-25/' + datetime.today().strftime('%Y-%m-%d')
-    # time_range = '2023-06-14'
+    # time_range = '2023-06-19'
     main(time_range)
 
 

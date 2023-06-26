@@ -1,5 +1,5 @@
-import React, {useState, Fragment} from 'react';
-import {useDispatch} from "react-redux";
+import React, {useState, useEffect, Fragment} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import {Card, Dialog, DialogTitle, Divider, Grid, IconButton, Typography} from "@mui/material";
 import {Close, Edit, Save, Undo} from "@mui/icons-material";
 import {Box} from "@mui/system";
@@ -30,6 +30,9 @@ export const TypeField = {
 
 const RowDetails = ({ onClose, rowSet }) => {
 	let [index, setIndex] = useState(1);
+	const [editMode, setEditMode] = useState(false);
+	const dispatch = useDispatch();
+	const fieldHistory = useSelector(state => state.field.fieldsHistory)[rowSet.id];
 
 	const [editableData, setEditableData] = useState({
 		id: rowSet.id,
@@ -48,23 +51,20 @@ const RowDetails = ({ onClose, rowSet }) => {
 		status_date: rowSet.status_date
 	});
 
-	const fieldHistory = [
-		{ product_name: "AVOCADO", farmer_id: 123 },
-		{ product_name: "PEAR", farmer_id: 123 },
-		{ product_name: "APPLE", farmer_id: 883 },
-		{ product_name: "ORANGE", farmer_id: 123 },
-		{ product_name: "ARUM", farmer_id: 71163 },
-		{ product_name: "LEMON", farmer_id: 17345 },
-		{ product_name: "RADISHES", farmer_id: 22363 },
-		{ product_name: "LOQUAT", farmer_id: 73 },
-		{ product_name: "GRAPE", farmer_id: 12345 }
-	];
-
-	const [editMode, setEditMode] = useState(false);
-
-	const dispatch = useDispatch();
+	const updateStatus = (value) => {
+		if(value !== "ON_HOLD") {
+			const saveData = {...editableData};
+			saveData.status = value;
+			saveData.delay_date = null;
+			setEditableData(saveData);
+		}
+		else {
+			updateEditableData('status', value);
+		}
+	};
 
 	const updateEditableData = (key, value) => {
+		console.log(key,value);
 		const saveData = {...editableData};
 		saveData[key] = value;
 		setEditableData(saveData);
@@ -83,6 +83,13 @@ const RowDetails = ({ onClose, rowSet }) => {
 
 		if(editableData.status !== rowSet.status) {
 			fieldToUpdate.status = editableData.status;
+		}
+
+		if(editableData.status !== "ON_HOLD") {
+			fieldToUpdate.delay_date = null;
+		}
+		else {
+			fieldToUpdate.delay_date = editableData.delay_date;
 		}
 
 		dispatch(fieldActions.updateField(fieldToUpdate, () => {
@@ -125,6 +132,30 @@ const RowDetails = ({ onClose, rowSet }) => {
 
 		setIndex(Math.random());
 	};
+	
+	const onMapClick = (location) => {
+		if(editMode) {
+			const fld = {...editableData};
+			if(fld.polygon == null) {
+				fld.xAxis = Math.round(location.lat * 1000000) / 1000000;
+				fld.yAxis = Math.round(location.lng * 1000000) / 1000000;
+				setEditableData(fld);
+			}
+		}
+	};
+
+	const copyDoordinates = () => {
+		copyToClipboard(`[${editableData.xAxis}, ${editableData.yAxis}]`);
+		showToast("המיקום הועתק.");
+	};
+
+	const copyToClipboard = (text) => {
+		navigator.clipboard.writeText(text)
+			.then(() => {
+			})
+			.catch(err => {
+			});
+	};
 
 	const updateLocation = (newPolygon, newPoint) => {
 		const fld = {...editableData};
@@ -147,6 +178,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 				height={350}
 				onReset={resetLocation}
 				onUpdate={updateLocation}
+				onClick={onMapClick}
 				key={index}
 				xAxis={x} yAxis={y}
 				polygonCoordinates={p} />
@@ -160,7 +192,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 					<div>מדד אטרקטיביות</div>
 					<div className="row-content-highlight-value">{row.latest_attractiveness_metric || '-'}</div>
 				</div>
-				<div style={{fontSize: '14px', direction: 'rtl', display: 'flex', alignItems: 'center'}}>
+				<div style={{fontSize: '14px', direction: 'rtl', display: 'flex', alignItems: 'center', opacity: 0.0}}>
 					<div>תואם את השטח?</div>
 					<div style={{display: 'flex', paddingRight: '10px', alignItems: 'center'}}>
 						<img src={thumbsUp} alt="" style={{cursor: 'pointer'}} onClick={() => updateLike(true)} />
@@ -197,6 +229,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 						overflow: "auto"
 					}}
 				>
+
 					<DialogTitle>
 						{/* Header Grid */}
 						<Grid container direction="row" justifyContent="space-between">
@@ -254,7 +287,11 @@ const RowDetails = ({ onClose, rowSet }) => {
 											/>
 										</Box>
 										<Divider sx={{paddingLeft: '6px', marginRight: '6px'}} orientation="vertical" flexItem />
-										<CustomStatus onChange={(value) => updateEditableData('status', value)} removeAllOption status={editableData.status} label={translator(editableData.status)} disable={!editMode} />
+										<CustomStatus onChange={(value) => updateStatus(value)}
+										              onChangeDelayDate={date => updateEditableData('delay_date', date)}
+										              removeAllOption
+										              status={editableData.status}
+										              label={translator(editableData.status)} disable={!editMode} />
 									</Box>
 								</Box>
 							</Grid>
@@ -327,7 +364,14 @@ const RowDetails = ({ onClose, rowSet }) => {
 											<div style={{fontWeight: 'bold', color: '#616161'}}>מספר חקלאי</div>
 											{
 												fieldHistory.map((row, i, arr) => {
-													return (
+													return arr.length === 1 ? (
+														<Fragment key={i}>
+															<div><img src={historyRowMarker} alt="" style={{width: '18px'}} /></div>
+															<div>{translator(row.product_name)}</div>
+															<div />
+															<div>{row.farmer_id}</div>
+														</Fragment>
+													) : (
 														<Fragment key={i}>
 															<div className="row-content-history-marker"><img src={historyRowMarker} alt="" style={{width: '18px'}} /></div>
 															<div>{translator(row.product_name)}</div>
@@ -346,7 +390,9 @@ const RowDetails = ({ onClose, rowSet }) => {
 							{/* // Left Side */}
 
 							<div className="row-content-left">
-								<div className="row-content-subtitle">נ"צ</div>
+								<div className="row-content-subtitle">נ"צ
+									{ editableData.xAxis && editableData.yAxis && <span className="row-content-copy" onClick={copyDoordinates}>העתק</span> }
+								</div>
 								<div className="row-content-left-fields">
 									<CustomTextPresentation
 										editMode={editMode}

@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 
 const initialState = JSON.stringify({
 	fields: [],
+	fieldsHistory: [],
 	fieldCount: 0,
 	fieldsLoaded: false
 });
@@ -20,6 +21,20 @@ function fieldReducer(state = JSON.parse(initialState), action) {
 				fields: action.data.fields,
 				fieldCount: action.data.fieldCount,
 				fieldsLoaded: true
+			};
+		}
+		case actionTypes.FIELD_HISTORY_LOADED: {
+			const {fieldsHistory} = state;
+
+			if(action.data.fieldHistory && action.data.fieldHistory.length > 0) {
+				let his = action.data.fieldHistory;
+				his = his.sort((a, b) => new Date(b.date) - new Date(a.date));
+				fieldsHistory[action.data.fieldId] = his;
+			}
+
+			return {
+				...state,
+				fieldsHistory
 			};
 		}
 		case actionTypes.ADD_NEW_FIELD: {

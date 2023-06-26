@@ -3,48 +3,19 @@ import {useDispatch, useSelector} from "react-redux";
 import {Box, Button, Checkbox, FormControlLabel, Grid, Link, Typography,} from "@mui/material";
 import * as userActions from '../../redux/User/actions';
 import Input from "../Input";
-// import UserPool from "../../cognito/UserPool";
-// import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 
-const Signin = ({ textFieldStyle, checkboxStyle, handleSignMethodChange }) => {
-	const dispatch = useDispatch();
+const Signin = ({ textFieldStyle, checkboxStyle }) => {
 	const userLoginStatus = useSelector(state => state.user.userLoginStatus);
-
-	const handleChangeToSignup = () => handleSignMethodChange("signup");
-
-	const handleChangeToForgotpassword = () =>
-		handleSignMethodChange("forgotpass");
-
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [rememberPassword, setRememberPassword] = useState(false);
+	const dispatch = useDispatch();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(userActions.signIn(username, password));
-
-		// const user = new CognitoUser({
-		// 	Username: username,
-		// 	Pool: UserPool,
-		// });
-		//
-		// const authDetails = new AuthenticationDetails({
-		// 	Username: username,
-		// 	Password: password,
-		// });
-		//
-		// user.authenticateUser(authDetails, {
-		// 	onSuccess: (data) => {
-		// 		console.log("Success!: " + data);
-		// 	},
-		// 	onFailure: (err) => {
-		// 		console.error("Error!: " + err);
-		// 	},
-		// 	newPasswordRequired: (data) => {
-		// 		console.log("Password Required!: " + data);
-		// 	},
-		// });
+		dispatch(userActions.signIn(username, password, rememberPassword));
 	};
-	
+
 	return (
 		<Grid container direction="column" justifyContent="space-between">
 			<Grid item>
@@ -87,41 +58,15 @@ const Signin = ({ textFieldStyle, checkboxStyle, handleSignMethodChange }) => {
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					{/*<Link*/}
-						{/*href="#"*/}
-						{/*onClick={handleChangeToForgotpassword}*/}
-						{/*fontSize="12px"*/}
-						{/*sx={{ color: "green" }}*/}
-					{/*>*/}
-						{/*?שכחת סיסמא*/}
-					{/*</Link>*/}
 					<div />
 					<FormControlLabel
-						control={<Checkbox size="small" color="success" />}
+						control={<Checkbox value={rememberPassword} onChange={(event) => {setRememberPassword(event.target.checked)}} size="small" color="success" />}
 						sx={checkboxStyle}
 						label="זכור אותי"
 						labelPlacement="start"
 					/>
 				</Box>
 			</Grid>
-			{/*<Grid item>*/}
-				{/*<Typography*/}
-					{/*textAlign="center"*/}
-					{/*component="div"*/}
-					{/*variant="h6"*/}
-					{/*fontSize="12px"*/}
-				{/*>*/}
-					{/*עוד לא נרשמת? להרשמה{" "}*/}
-					{/*<Link*/}
-						{/*href="#"*/}
-						{/*onClick={handleChangeToSignup}*/}
-						{/*fontSize="12px"*/}
-						{/*sx={{ color: "green" }}*/}
-					{/*>*/}
-						{/*לחץ כאן*/}
-					{/*</Link>*/}
-				{/*</Typography>*/}
-			{/*</Grid>*/}
 		</Grid>
 	);
 };

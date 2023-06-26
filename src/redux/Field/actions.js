@@ -28,6 +28,20 @@ export const saveNewField = (field) => {
 	};
 };
 
+export const loadFieldHistory = (fieldId) => {
+	return async (dispatch) => {
+		const fieldHistory = await fieldService.loadFieldHistory(fieldId);
+
+		dispatch({
+			type: actionTypes.FIELD_HISTORY_LOADED,
+			data: {
+				fieldId,
+				fieldHistory
+			}
+		})
+	};
+};
+
 export const findFieldByPoint = (point, callback) => {
 	return async (dispatch) => {
 		const field = await fieldService.findFieldByPoint(point);
@@ -80,6 +94,6 @@ export const updateField = (field, callback) => {
 			data: fixFieldsGeo([updatedField])[0]
 		});
 
-		callback();
+		callback && callback();
 	};
 };

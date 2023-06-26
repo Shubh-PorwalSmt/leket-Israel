@@ -8,7 +8,7 @@ import L from "leaflet";
 import './FieldMapArea.scss';
 
 const FieldMapArea = props => {
-	const {xAxis, yAxis, polygonCoordinates, width, height, onReset, onUpdate, editable} = props;
+	const {xAxis, yAxis, polygonCoordinates, width, height, onClick, onReset, onUpdate, editable} = props;
 	const [changed, setChanged] = useState(false);
 	// const [originalPolygonLayer, setOriginalPolygonLayer] = useState(null);
 	const [zoom, setZoom] = useState((polygonCoordinates != null || (xAxis !== "" && yAxis !== "")) ? 15 : 7);
@@ -164,7 +164,7 @@ const FieldMapArea = props => {
 
 	const MapEvents = (e) => {
 		map = useMapEvents({
-			// click: (event) => console.log(event.latlng),
+			click: (event) => onClick(event.latlng),
 			zoomend: (event) => setZoom(event.target.zoom)
 		});
 		return null;

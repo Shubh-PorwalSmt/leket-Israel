@@ -1,0 +1,12 @@
+.delay-reason-container {
+	padding: 30px;
+	direction: rtl;
+	height: 300px;
+
+	.delay-reason-buttons {
+		padding-top: 60px;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+}

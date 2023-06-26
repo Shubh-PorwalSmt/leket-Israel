@@ -1,5 +1,5 @@
 import React from "react";
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
 import * as he from './Utils/translations/he';
@@ -16,9 +16,19 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'leaflet-draw/dist/leaflet.draw.css';
 import 'leaflet/dist/leaflet.css';
+import * as userActions from "./redux/User/actions";
 
 const App = () => {
 	const user = useSelector(state => state.user.user);
+	const dispatch = useDispatch();
+
+	if(!user) {
+		const userData = localStorage.getItem("USER");
+
+		if(userData) {
+			dispatch(userActions.setSignedInUSer(JSON.parse(userData)));
+		}
+	}
 
 	i18n
 		.use(initReactI18next)

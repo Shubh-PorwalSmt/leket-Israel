@@ -10,11 +10,12 @@ import AddField from '../../views/AddField';
 import {confirmAlert} from 'react-confirm-alert';
 import * as XLSX from "xlsx/xlsx.mjs";
 import RowDetails from "./RowDetails";
-
-import './DataPanel.scss';
+import DelayReason from "../DelayReason";
 import translator from "../../Utils/translations/translator";
 import ContextProvider from "../../hooks/ContextApi";
 import {getFieldLastUpdated} from "../../Utils/general";
+
+import './DataPanel.scss';
 
 const dataGridStyle = {
 	".css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate":
@@ -38,12 +39,11 @@ const dataGridStyle = {
 	},
 };
 
-const DataTable = ({rows}) => {
+const DataTable = ({rows, onAddField}) => {
 	const { page } = useContext(ContextProvider);
 	const { setPage } = useContext(ContextProvider);
 	const { pageSize } = useContext(ContextProvider);
 	const { setPageSize } = useContext(ContextProvider);
-	const [showAddField, setShowAddField] = useState(false);
 	const [editedRow, setEditedRow] = useState(null);
 	const dispatch = useDispatch();
 	const totalFields = useSelector(state => state.field.fieldCount);
@@ -100,7 +100,7 @@ const DataTable = ({rows}) => {
 			flex: 1,
 			editable: false,
 			sortable: false,
-			renderCell: (params) => <div>{params.value}</div>
+			renderCell: (params) => <div>{params.value || '-'}</div>
 		},
 		{
 			field: "latest_satelite_metric",
@@ -108,7 +108,7 @@ const DataTable = ({rows}) => {
 			editable: false,
 			sortable: false,
 			flex: 1,
-			renderCell: (params) => <div>{params.value}</div>
+			renderCell: (params) => <div>{params.value || '-'}</div>
 		},
 		{
 			field: "region",
@@ -175,9 +175,10 @@ const DataTable = ({rows}) => {
 		return false;
 	};
 
-	const handleRowClick = (params) => {
+	const handleRowClick = async (params) => {
 		const statusColumn = isStatusColumn(event.target);
 		if(!statusColumn) {
+			await dispatch(fieldActions.loadFieldHistory(params.row.id));
 			setEditedRow(params.row);
 		}
 	};
@@ -195,7 +196,7 @@ const DataTable = ({rows}) => {
 	const Toolbar = () => {
 		return (
 			<div style={{display: 'flex', width: '100%', justifyContent: 'space-between', borderBottom: '1px solid rgba(224, 224, 224, 1)'}}>
-				<CustomExport />
+				<GridHeaderButtons />
 
 				<TablePagination page={page}
 				                 component="div"
@@ -210,19 +211,26 @@ const DataTable = ({rows}) => {
 		)
 	};
 
-	const onAddRegion = () => {
-		setShowAddField(true);
-	};
-
-	const CustomExport = () => {
+	const GridHeaderButtons = () => {
 		const apiRef = useGridApiContext();
 
-		const addCropStyle = {
+		const addFieldStyle = {
 			borderRadius: "12px",
 			marginRight: "12px",
 			backgroundColor: "white",
 			color: "#3A6E47",
 			fontWeight: "700",
+			"&:hover": {
+				backgroundColor: "#eaf0ee",
+			},
+		};
+
+		const exportFieldsStyle = {
+			direction: "ltr",
+			color: "#5cb85c",
+			borderRadius: "10px",
+			fontWeight: "bold",
+			fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
 			"&:hover": {
 				backgroundColor: "#eaf0ee",
 			},
@@ -257,22 +265,13 @@ const DataTable = ({rows}) => {
 			<GridToolbarContainer>
 				<Button
 					variant="text"
-					sx={{
-						direction: "ltr",
-						color: "#5cb85c",
-						borderRadius: "10px",
-						fontWeight: "bold",
-						fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-						"&:hover": {
-							backgroundColor: "#eaf0ee",
-						},
-					}}
+					sx={exportFieldsStyle}
 					onClick={() => handleExport({ getRowsToExport: getFilteredRows })}
 				>
 					ייצא
 					<ExportIcon sx={{ paddingRight: "10%" }} />
 				</Button>
-				<Button onClick={onAddRegion} variant="text" elevation={9} sx={addCropStyle}>
+				<Button onClick={onAddField} variant="text" elevation={9} sx={addFieldStyle}>
 					<Add />
 					הוספת שטח
 				</Button>
@@ -296,8 +295,6 @@ const DataTable = ({rows}) => {
 			elevation={10}
 			sx={{ marginTop: "3%", borderRadius: "14px" }}
 		>
-
-			{ showAddField && <AddField onClose={() => setShowAddField(false)} /> }
 
 			{ editedRow && <RowDetails onClose={handleClickRowClose} rowSet={editedRow} /> }
 

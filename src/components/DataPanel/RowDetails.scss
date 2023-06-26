@@ -9,6 +9,15 @@
 		font-size: 14px;
 	}
 
+	.row-content-copy {
+		font-weight: normal;
+		color: darkblue;
+		margin-right: 10px;
+		font-size: 12px;
+		user-select: none;
+		cursor: pointer;
+	}
+
 	.row-content-right {
 	}
 
@@ -36,9 +45,9 @@
 
 		.row-content-history-content {
 			display: inline-grid;
-			grid-template-columns: 30px 150px 30px 140px;
+			grid-template-columns: 30px 120px 30px 100px;
 			overflow: auto;
-			height: 250px;
+			max-height: 250px;
 			font-size: 14px;
 
 			.row-content-history-marker {

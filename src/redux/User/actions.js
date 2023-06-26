@@ -2,9 +2,7 @@ import * as actionTypes from './actionTypes';
 import * as userService from './service'
 import axios from "axios";
 
-// import UserPool from "../../cognito/UserPool";
-
-export const signIn = (user, pass) => {
+export const signIn = (user, pass, rememberPassword) => {
 	return async (dispatch) => {
 
 		if(user == null || user.length < 1 || pass == null || pass.length < 1) {
@@ -16,6 +14,15 @@ export const signIn = (user, pass) => {
 		}
 
 		const token = await userService.signIn(user, pass);
+
+		if(rememberPassword) {
+			const userData = {
+				user,
+				token
+			};
+
+			localStorage.setItem("USER", JSON.stringify(userData));
+		}
 
 		axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
@@ -39,6 +46,15 @@ export const signIn = (user, pass) => {
 	}
 };
 
+export const setSignedInUSer = (userData) => {
+	axios.defaults.headers.common['Authorization'] = `Bearer ${userData.token}`;
+
+	return {
+		type: actionTypes.USER_SIGNED_IN,
+		data: userData.user
+	};
+};
+
 export const signUp = (username, password) => {
 	// return async (dispatch) => {
 	// 	await dispatch({
@@ -49,16 +65,11 @@ export const signUp = (username, password) => {
 };
 
 export const signOut = () => {
+	localStorage.removeItem("USER");
 	return async (dispatch) => {
 		await userService.signOut();
 		await dispatch({
 			type: actionTypes.USER_SIGNED_OUT
 		});
-	};
-};
-
-export const forgotPassword = email => {
-	return async (dispatch) => {
-		await userService.forgotPassword(email);
 	};
 };

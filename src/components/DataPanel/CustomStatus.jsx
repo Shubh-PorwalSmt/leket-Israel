@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import * as fieldActions from '../../redux/Field/actions';
 import translator from "../../Utils/translations/translator";
 import {showToast} from "../../Utils/general";
+import DelayReason from "../DelayReason";
 
 const getStatusColor = (status) => {
 	switch(status) {
@@ -28,9 +29,10 @@ const getStatusColor = (status) => {
 	}
 };
 
-const CustomStatus = ({ fieldId, onChange, status, label, removeAllOption, disable = false }) => {
+const CustomStatus = ({ fieldId, onChange, onChangeDelayDate, status, label, removeAllOption, disable = false }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [rotateArrow, setRotateArrow] = useState(false);
+	const [showDelayDatePicker, setShowDelayDatePicker] = useState(false);
 
 	const dispatch = useDispatch();
 
@@ -53,11 +55,17 @@ const CustomStatus = ({ fieldId, onChange, status, label, removeAllOption, disab
 	const handleMenuItemClick = status => {
 		if(onChange) {
 			onChange(status);
+			if(status === "ON_HOLD") {
+				setShowDelayDatePicker(true);
+			}
 			handleClose();
 		}
 		else {
+			console.log(status);
 			dispatch(fieldActions.updateFieldStatus(fieldId, status));
-			showToast("השדה עודכן.");
+			if(status === "ON_HOLD") {
+				setShowDelayDatePicker(true);
+			}
 			handleClose();
 		}
 	};
@@ -70,6 +78,11 @@ const CustomStatus = ({ fieldId, onChange, status, label, removeAllOption, disab
 
 	return (
 		<div status-column="true">
+			
+			{ showDelayDatePicker && <DelayReason fieldId={fieldId}
+			                                      onChange={delayDate => onChangeDelayDate(new Date(delayDate))}
+			                                      onClose={() => setShowDelayDatePicker(false)} /> }
+
 			<Chip
 				label={label}
 				onClick={handleClick}

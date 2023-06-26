@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Box, Button, Divider, Slider, TextField, Typography,} from "@mui/material";
+import {Box, Button, Divider, Slider, TextField, Typography} from "@mui/material";
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DeleteOutline} from "@mui/icons-material";

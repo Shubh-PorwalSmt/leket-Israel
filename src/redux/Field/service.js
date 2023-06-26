@@ -5,8 +5,21 @@ export const loadFields = async (filters, mode) => {
 		filters.page = 0;
 		filters.pageSize = 50;
 	}
+	else {
+		filters.polygonFilter = null;
+	}
 
 	return axios.post(`${import.meta.env.VITE_BASE_API_URL}/fields/get-field-by-filter`, filters)
+		.then(async response => {
+			return response.data;
+		})
+		.catch(response => {
+			return null;
+		})
+};
+
+export const loadFieldHistory = async (fieldId) => {
+	return axios.get(`${import.meta.env.VITE_BASE_API_URL}/histories/get-recent-20-histories-per-field/${fieldId}`)
 		.then(async response => {
 			return response.data;
 		})

@@ -76,11 +76,15 @@ export const findFieldByPoint = async (pt) => {
 		})
 };
 
-export const updateFieldStatus = async (fieldId, status) => {
+export const updateFieldStatus = async (fieldId, status, delayDate) => {
 	const field = {
 		id: fieldId,
 		status
 	};
+
+	if(delayDate) {
+		field.delay_date = delayDate;
+	}
 
 	return axios.patch(`${import.meta.env.VITE_BASE_API_URL}/fields/update-field/${fieldId}`, field)
 		.then(async response => {

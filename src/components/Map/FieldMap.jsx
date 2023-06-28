@@ -35,7 +35,7 @@ const FieldMap = ({rows, onAddField}) => {
 
 		const geojsonPolygon = {
 			"type": "Polygon",
-			"coordinates": [latLngs.map(latLng => [latLng.lng, latLng.lat])]
+			"coordinates": [latLngs.map(latLng => [latLng.lat, latLng.lng])]
 		};
 
 		setPolygonFilter(geojsonPolygon);
@@ -69,7 +69,7 @@ const FieldMap = ({rows, onAddField}) => {
 				<div className="map-tooltip-body">
 					<div>
 						<FieldInfo field={field.latest_attractiveness_metric} label="אטרקטיביות" highlightValue />
-						<FieldInfo field={translator(field.latest_satelite_metric)} label="NDVI" highlightValue />
+						<FieldInfo field={field.latest_satellite_metric ? parseInt(field.latest_satellite_metric * 100) / 100 : '-'} label="NDVI" highlightValue />
 					</div>
 					<div className="map-tooltip-body-center" />
 					<div>
@@ -88,10 +88,10 @@ const FieldMap = ({rows, onAddField}) => {
 		return `
 			<div style="position: relative;">
 				<div style="position: absolute; width: 52px; display: flex; align-items: center; justify-content: center; height: 48px;">
-					<div style="font-weight: bold; background: white; padding: 8px; border-radius: 50%;">${field.latest_satelite_metric || 'N/A'}</div>
+					<div style="font-weight: bold; background: white; padding: 8px; border-radius: 50%;">${field.latest_satellite_metric ? parseInt(field.latest_satellite_metric * 100) / 100 : 'N/A'}</div>
 				</div>
 				<svg width="54" height="65" viewBox="0 0 54 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<path d="M27 0C41.175 0 54 10.465 54 26.65C54 37.44 44.9888 50.2125 27 65C9.01125 50.2125 0 37.44 0 26.65C0 10.465 12.825 0 27 0Z" fill="${getColor(field.latest_satelite_metric || 0)}" />
+					<path d="M27 0C41.175 0 54 10.465 54 26.65C54 37.44 44.9888 50.2125 27 65C9.01125 50.2125 0 37.44 0 26.65C0 10.465 12.825 0 27 0Z" fill="${getColor(field.latest_satellite_metric || 0)}" />
 				</svg>
 		</div>
 		`;

@@ -100,15 +100,15 @@ const DataTable = ({rows, onAddField}) => {
 			flex: 1,
 			editable: false,
 			sortable: false,
-			renderCell: (params) => <div>{params.value || '-'}</div>
+			renderCell: (params) => <div>{params.value ? (parseInt(params.value * 100) / 100) : '-'}</div>
 		},
 		{
-			field: "latest_satelite_metric",
+			field: "latest_satellite_metric",
 			headerName: "NDVI",
 			editable: false,
 			sortable: false,
 			flex: 1,
-			renderCell: (params) => <div>{params.value || '-'}</div>
+			renderCell: (params) => <div>{params.value ? (parseInt(params.value * 100) / 100) : '-'}</div>
 		},
 		{
 			field: "region",

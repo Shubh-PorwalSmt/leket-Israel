@@ -64,9 +64,9 @@ export const deleteField = (id) => {
 };
 
 
-export const updateFieldStatus = (fieldId, status) => {
+export const updateFieldStatus = (fieldId, status, delayDate) => {
 	return async (dispatch) => {
-		const updatedField = await fieldService.updateFieldStatus(fieldId, status);
+		const updatedField = await fieldService.updateFieldStatus(fieldId, status, delayDate);
 		await dispatch({
 			type: actionTypes.UPDATE_FIELD,
 			data: fixFieldsGeo([updatedField])[0]

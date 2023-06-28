@@ -208,7 +208,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 		return (
 			<div style={{fontSize: '14px', direction: 'rtl'}}>
 				<div>NDVI</div>
-				<div className="row-content-highlight-value">{row.latest_satelite_metric || '-'}</div>
+				<div className="row-content-highlight-value">{row.latest_satellite_metric ? parseInt(row.latest_satellite_metric * 100) / 100 : '-'}</div>
 			</div>
 		)
 	};

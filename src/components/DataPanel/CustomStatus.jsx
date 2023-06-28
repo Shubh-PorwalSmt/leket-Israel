@@ -33,6 +33,7 @@ const CustomStatus = ({ fieldId, onChange, onChangeDelayDate, status, label, rem
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [rotateArrow, setRotateArrow] = useState(false);
 	const [showDelayDatePicker, setShowDelayDatePicker] = useState(false);
+	const [selectedStatus, setSelectedStatus] = useState(status);
 
 	const dispatch = useDispatch();
 
@@ -53,6 +54,8 @@ const CustomStatus = ({ fieldId, onChange, onChangeDelayDate, status, label, rem
 	};
 
 	const handleMenuItemClick = status => {
+		// onChange means that we change but we don't save yet. save will happen later.
+		setSelectedStatus(status);
 		if(onChange) {
 			onChange(status);
 			if(status === "ON_HOLD") {
@@ -60,11 +63,15 @@ const CustomStatus = ({ fieldId, onChange, onChangeDelayDate, status, label, rem
 			}
 			handleClose();
 		}
+		// change and have to save
 		else {
-			console.log(status);
-			dispatch(fieldActions.updateFieldStatus(fieldId, status));
+			// need to save but changed to ON_HOLD - first get the hold date and only then save
 			if(status === "ON_HOLD") {
 				setShowDelayDatePicker(true);
+			}
+			// not ON_HOLD so we can save immediately
+			else {
+				dispatch(fieldActions.updateFieldStatus(fieldId, status));
 			}
 			handleClose();
 		}
@@ -76,12 +83,31 @@ const CustomStatus = ({ fieldId, onChange, onChangeDelayDate, status, label, rem
 		options = options.filter(o => o !== 'ALL');
 	}
 
+	const onCloseDelay = (date) => {
+		setShowDelayDatePicker(false);
+		// if onChange - just update the container
+		if(onChange) {
+			if(date) {
+				onChangeDelayDate(date);
+			}
+		}
+		// no onChange - need to save the selected status and the selected delay date
+		else {
+			if(date) {
+				dispatch(fieldActions.updateFieldStatus(fieldId, selectedStatus, date));
+			}
+			else {
+				dispatch(fieldActions.updateFieldStatus(fieldId, selectedStatus));
+			}
+		}
+	};
+
 	return (
 		<div status-column="true">
 			
 			{ showDelayDatePicker && <DelayReason fieldId={fieldId}
-			                                      onChange={delayDate => onChangeDelayDate(new Date(delayDate))}
-			                                      onClose={() => setShowDelayDatePicker(false)} /> }
+			                                      onChange={delayDate => onCloseDelay(new Date(delayDate))}
+			                                      onClose={() => onCloseDelay(null)} /> }
 
 			<Chip
 				label={label}

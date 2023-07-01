@@ -17,8 +17,8 @@ import requests
 import json
 
 conn_string = 'postgresql://user:password@host/dbname'
-leket_username = os.environ['LEKET_USERNAME']
-leket_password = os.environ['LEKET_PASSWORD']
+leket_username = os.environ['SATELLITE_DATA_MINING_USER']
+leket_password = os.environ['SATELLITE_DATA_MINING_PASSWORD']
 
 api = os.environ['BACKEND_API']
 creds = {"username": leket_username, "password": leket_password}

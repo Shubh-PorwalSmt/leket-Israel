@@ -21,6 +21,9 @@ leket_username = os.environ['SATELLITE_DATA_MINING_USER']
 leket_password = os.environ['SATELLITE_DATA_MINING_PASSWORD']
 
 api = os.environ['BACKEND_API']
+print(leket_username)
+print(leket_password)
+print(api)
 creds = {"username": leket_username, "password": leket_password}
 
 scl_threshold = {'cloud_high_thresh': 0.1, 'cloud_medium_thresh': 0.2, 'other_scl_thresh': 0.5}

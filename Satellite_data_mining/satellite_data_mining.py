@@ -17,8 +17,8 @@ import json
 
 conn_string = 'postgresql://user:password@host/dbname'
 
-api = ''
-creds = {"username": "", "password": ""}
+api = 'http://leket-israel-backend-lb-180912419.us-east-1.elb.amazonaws.com:3000/'
+creds = {"username": "leket", "password": "israel128502"}
 
 scl_threshold = {'cloud_high_thresh': 0.1, 'cloud_medium_thresh': 0.2, 'other_scl_thresh': 0.5}
 

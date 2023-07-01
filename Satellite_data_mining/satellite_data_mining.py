@@ -1,5 +1,6 @@
 import logging
 import sys
+import os
 
 import pystac_client
 
@@ -16,9 +17,11 @@ import requests
 import json
 
 conn_string = 'postgresql://user:password@host/dbname'
+leket_username = os.environ['LEKET_USERNAME']
+leket_password = os.environ['LEKET_PASSWORD']
 
-api = 'http://leket-israel-backend-lb-180912419.us-east-1.elb.amazonaws.com:3000/'
-creds = {"username": "leket", "password": "israel128502"}
+api = os.environ['BACKEND_API']
+creds = {"username": leket_username, "password": leket_password}
 
 scl_threshold = {'cloud_high_thresh': 0.1, 'cloud_medium_thresh': 0.2, 'other_scl_thresh': 0.5}
 

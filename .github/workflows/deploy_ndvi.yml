@@ -35,5 +35,7 @@ jobs:
         ECR_REPOSITORY: leket-israel-ndvi
         IMAGE_TAG: leket-israel-ndvi-${{ github.run_id }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Satellite_data_mining/ndvi.Dockerfile .
+        docker build --build-arg "SATELLITE_DATA_MINING_PASSWORD=${{ secrets.SATELLITE_DATA_MINING_PASSWORD }}" \
+        --build-arg "SATELLITE_DATA_MINING_USER=${{ secrets.SATELLITE_DATA_MINING_USER }}" \
+        --build-arg "BACKEND_API=${{ secrets.BACKEND_API }}" \-t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Satellite_data_mining/ndvi.Dockerfile .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG

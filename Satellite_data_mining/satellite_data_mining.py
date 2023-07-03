@@ -16,6 +16,7 @@ from ast import literal_eval
 import requests
 import json
 
+print(os.environ)
 conn_string = 'postgresql://user:password@host/dbname'
 leket_username = os.environ['SATELLITE_DATA_MINING_USER']
 leket_password = os.environ['SATELLITE_DATA_MINING_PASSWORD']

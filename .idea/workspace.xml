@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b74499b-56e1-4993-9197-968bf0bfbb4e" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/header/Logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/CustomStatus.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/CustomStatus.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Map/FieldMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/FieldMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/Field/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Field/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/Field/service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/Field/service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,8 +21,8 @@
       <file leaf-file-name="RowDetails.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="316" column="47" lean-forward="true" selection-start-line="316" selection-start-column="47" selection-end-line="316" selection-end-column="47" />
+            <state relative-caret-position="5880">
+              <caret line="316" column="47" selection-start-line="316" selection-start-column="47" selection-end-line="316" selection-end-column="47" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -37,7 +33,7 @@
       <file leaf-file-name="FieldMap.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Map/FieldMap.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
+            <state relative-caret-position="1020">
               <caret line="64" column="32" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
@@ -46,20 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="filterSelection.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/constants/filterSelection.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataTable.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DataTable.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="320">
-              <caret line="125" column="20" lean-forward="true" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
+              <caret line="125" column="20" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -67,11 +54,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="he.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Utils/translations/he.json">
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="40">
-              <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+            <state relative-caret-position="20">
+              <caret line="1" column="93" lean-forward="true" selection-start-line="1" selection-start-column="93" selection-end-line="1" selection-end-column="93" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomSearch.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Header/CustomSearch.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Header.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Header/Header.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="107" column="30" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,7 +87,7 @@
       <file leaf-file-name="CustomStatus.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/DataPanel/CustomStatus.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
+            <state relative-caret-position="1760">
               <caret line="96" column="38" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
@@ -91,8 +99,8 @@
       <file leaf-file-name="actions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/redux/Field/actions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="68" column="65" lean-forward="true" selection-start-line="68" selection-start-column="65" selection-end-line="68" selection-end-column="65" />
+            <state relative-caret-position="1320">
+              <caret line="68" column="65" selection-start-line="68" selection-start-column="65" selection-end-line="68" selection-end-column="65" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -103,8 +111,8 @@
       <file leaf-file-name="service.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/redux/Field/service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+            <state relative-caret-position="1740">
+              <caret line="87" selection-start-line="87" selection-end-line="87" />
             </state>
           </provider>
         </entry>
@@ -118,26 +126,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/DelayReason/index.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#49#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>STRAWBERR</find>
-      <find>SOUR</find>
-      <find>const columns</find>
-      <find>latest_satelite</find>
       <find>&lt;fieldmap</find>
       <find>latest_satellite_metric</find>
       <find>polygonFilter</find>
@@ -164,6 +156,10 @@
       <find>onCloseDelay</find>
       <find>מספר חקלאי</find>
       <find>מספר ח</find>
+      <find>MuiToolbar-root</find>
+      <find>MuiToolbar</find>
+      <find>MuiButtonBase</find>
+      <find>&lt;CustomSearch</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -203,7 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FE/src/components/DataPanel/CustomTextPresentation.jsx" />
         <option value="$PROJECT_DIR$/FE/src/redux/Field/reducer.js" />
         <option value="$PROJECT_DIR$/FE/src/components/DataPanel/DataTable.jsx" />
         <option value="$PROJECT_DIR$/FE/src/components/DataPanel/RowDetails.scss" />
@@ -224,7 +219,6 @@
         <option value="$PROJECT_DIR$/frontend.Dockerfile" />
         <option value="$PROJECT_DIR$/src/main.jsx" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/components/Filters/MoreFilters.jsx" />
         <option value="$PROJECT_DIR$/src/views/Home.jsx" />
         <option value="$PROJECT_DIR$/src/Utils/translations/translator.js" />
@@ -254,6 +248,8 @@
         <option value="$PROJECT_DIR$/src/redux/Field/actions.js" />
         <option value="$PROJECT_DIR$/src/redux/Field/service.js" />
         <option value="$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/src/components/Header/Header.jsx" />
       </list>
     </option>
   </component>
@@ -278,7 +274,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1039" />
   </component>
@@ -288,8 +284,8 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -306,70 +302,14 @@
               <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
               <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
               <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="addFieldSteps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="DataPanel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="DelayReason" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="FieldMapArea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Filters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Login" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Map" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Sorters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="ToggleFilter" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="header" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
@@ -426,6 +366,7 @@
     <property name="SearchEverywhereHistoryKey" value="signin&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Login/Signin.jsx&#10;home&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/Home.jsx&#10;sort&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Sorters/SortPanel.jsx&#10;row&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;map&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Map/FieldMap.jsx&#10;addfield&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;addfie&#9;FILE&#9;file://C:/Development/leket-Israel/dist/Images/addfield&#10;rowde&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;datatab&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/DataTable.jsx&#10;custom&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/CustomStatus.jsx&#10;login&#9;null&#9;null&#10;datatable&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;addf&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;step4&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step4.jsx&#10;datata&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;gener&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/general.js&#10;en.&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/en.json&#10;transl&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/translator.js&#10;step5&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step5.jsx&#10;ad&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;דאקפ3&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step3.jsx&#10;step2&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step2.jsx&#10;he.j&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;context&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/hooks/ContextApi.jsx&#10;header&#9;null&#9;null&#10;app&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/App.jsx&#10;he&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;step1&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step1.jsx&#10;add&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;gridrowutils&#9;FILE&#9;file://C:/Development/leket-Israel/FE/node_modules/@mui/x-data-grid/hooks/features/rows/gridRowsUtils.d.ts&#10;datap&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx&#10;i18&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/i18n/i18n.js&#10;MORE&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;moref&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;data&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;datapa&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../gutsy-web" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -433,16 +374,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JSPX" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Development\leket-Israel\FE\src\assets\likeIcons" />
-      <recent name="C:\Development\leket-Israel\FE\src\assets" />
-      <recent name="C:\Development\leket-Israel\FE\src\components\DataPanel" />
-      <recent name="C:\Development\leket-Israel\FE\src\assets\map" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Development\leket-Israel" />
       <recent name="C:\Development\leket-Israel\FE\src\Utils\translations" />
       <recent name="C:\Development\leket-Israel\FE\src\Utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Development\leket-Israel\src\assets\header" />
+      <recent name="C:\Development\leket-Israel\FE\src\assets\likeIcons" />
+      <recent name="C:\Development\leket-Israel\FE\src\assets" />
+      <recent name="C:\Development\leket-Israel\FE\src\components\DataPanel" />
+      <recent name="C:\Development\leket-Israel\FE\src\assets\map" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -512,44 +454,47 @@
       <updated>1684663705724</updated>
       <workItem from="1684663707056" duration="67739000" />
       <workItem from="1685439366204" duration="31699000" />
-      <workItem from="1685907848556" duration="211134000" />
+      <workItem from="1685907848556" duration="212115000" />
+      <workItem from="1688152624188" duration="418000" />
+      <workItem from="1688153152647" duration="11000" />
+      <workItem from="1689079364913" duration="776000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310572000" />
+    <option name="totallyTimeSpent" value="312758000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info id="Designer" order="2" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32967034" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32747254" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49814814" visible="true" weight="0.2260128" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32417583" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49814814" visible="true" weight="0.117803834" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32967034" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" sideWeight="0.50185186" side_tool="true" weight="0.2553305" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TypeScript" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -612,9 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -625,29 +567,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/assets/Home-b965bea9.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#1943#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/assets/index-2ae0f281.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/assets/index-4c5ee1f7.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/assets/Home-b965bea9.js" />
+    <entry file="file://$PROJECT_DIR$/dist/assets/index-4c5ee1f7.css" />
     <entry file="file://$PROJECT_DIR$/node_modules/@mui/material/Grid/Grid.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
@@ -687,9 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -704,9 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4040">
           <caret line="202" column="56" selection-start-line="202" selection-start-column="56" selection-end-line="202" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -714,9 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
           <caret line="99" column="26" lean-forward="true" selection-start-line="99" selection-start-column="26" selection-end-line="99" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -766,9 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -799,9 +708,6 @@
           <caret line="190" column="20" selection-start-line="190" selection-start-column="20" selection-end-line="190" selection-end-column="20" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants/fields.json">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/DelayReason/DelayReason.scss">
       <provider selected="true" editor-type-id="text-editor">
@@ -835,9 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -859,9 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="47" column="16" lean-forward="true" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -869,9 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -879,9 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="133" column="18" lean-forward="true" selection-start-line="133" selection-start-column="18" selection-end-line="133" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -889,9 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -899,9 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="72" column="11" lean-forward="true" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -916,15 +804,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/filterSelection.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
+        <state relative-caret-position="1760">
           <caret line="88" column="14" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="14" />
         </state>
       </provider>
@@ -932,13 +817,13 @@
     <entry file="file://$PROJECT_DIR$/src/Utils/translations/he.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
-          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/DelayReason/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
+        <state relative-caret-position="620">
           <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
@@ -948,7 +833,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Map/FieldMap.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
+        <state relative-caret-position="1020">
           <caret line="64" column="32" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
@@ -958,7 +843,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/DataPanel/CustomStatus.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
+        <state relative-caret-position="1760">
           <caret line="96" column="38" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
@@ -968,8 +853,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/Field/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="68" column="65" lean-forward="true" selection-start-line="68" selection-start-column="65" selection-end-line="68" selection-end-column="65" />
+        <state relative-caret-position="1320">
+          <caret line="68" column="65" selection-start-line="68" selection-start-column="65" selection-end-line="68" selection-end-column="65" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -978,8 +863,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/Field/service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+        <state relative-caret-position="1740">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
         </state>
       </provider>
     </entry>
@@ -992,8 +877,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="316" column="47" lean-forward="true" selection-start-line="316" selection-start-column="47" selection-end-line="316" selection-end-column="47" />
+        <state relative-caret-position="5880">
+          <caret line="316" column="47" selection-start-line="316" selection-start-column="47" selection-end-line="316" selection-end-column="47" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
@@ -1003,9 +888,33 @@
     <entry file="file://$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="125" column="20" lean-forward="true" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
+          <caret line="125" column="20" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="93" lean-forward="true" selection-start-line="1" selection-start-column="93" selection-end-line="1" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header/CustomSearch.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="17" column="2" lean-forward="true" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header/Header.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="107" column="30" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>

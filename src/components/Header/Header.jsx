@@ -4,6 +4,7 @@ import * as userActions from '../../redux/User/actions';
 import {AppBar, Box, Button, Divider, Toolbar, Typography} from "@mui/material";
 import {Logout} from "@mui/icons-material";
 import gridView from '../../assets/header/grid-view.png';
+import logoIcon from '../../assets/header/Logo.png';
 import mapView from '../../assets/header/map-view.png';
 import ContextProvider from "../../hooks/ContextApi";
 import CustomSearch from "../../components/Header/CustomSearch";
@@ -104,9 +105,8 @@ const Header = ({  }) => {
 					borderRadius="0px 0px 0px 20px"
 					marginLeft={4}
 					marginRight={-3}
-					width={80}
 					height={80}
-					src="Images/header/LeketIsraelLogos.png"
+					src={logoIcon}
 				/>
 			</Toolbar>
 		</AppBar>

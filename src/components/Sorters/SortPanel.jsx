@@ -25,7 +25,7 @@ const SortPanel = () => {
 				columnGap={6}
 				marginTop="5%"
 			>
-				{/*<MoreFilters cardText={cardText} imageStyle={imageStyle} />*/}
+				<MoreFilters cardText={cardText} imageStyle={imageStyle} />
 				<FilterCrop cardText={cardText} imageStyle={imageStyle} />
 				<Divider orientation="vertical" light flexItem />
 				<Sort cardText={cardText} />

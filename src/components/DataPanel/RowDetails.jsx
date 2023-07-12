@@ -220,7 +220,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 
 	return (
 		<div className="row-content-wrapper">
-			<Dialog open fullWidth maxWidth="xl">
+			<Dialog open fullWidth maxWidth={false}>
 				<Card
 					elevation={10}
 					sx={{

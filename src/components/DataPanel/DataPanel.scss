@@ -1,5 +1,8 @@
 .MuiTablePagination-actions {
-	direction: ltr;
+}
+
+.MuiTablePagination-actions > svg {
+	font-size: 40px;
 }
 
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
@@ -13,4 +16,10 @@
 .MuiDataGrid-columnHeaderTitle {
 	color: #498758;
 	font-weight: bold !important;
+}
+
+.MuiDataGrid-virtualScroller {
+	max-height: calc(100vh - 600px); /* Set the desired height for the container */
+	overflow-y: auto !important; /* Enable vertical scroll */
+	overflow-x: hidden !important; /* Enable vertical scroll */
 }

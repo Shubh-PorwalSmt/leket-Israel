@@ -3,9 +3,15 @@ import {useDispatch} from "react-redux";
 import * as userActions from '../../redux/User/actions';
 import {AppBar, Box, Button, Divider, Toolbar, Typography} from "@mui/material";
 import {Logout} from "@mui/icons-material";
+
+import gridOff from '../../assets/header/grid-off.png';
+import gridOn from '../../assets/header/grid-on.png';
+import mapOff from '../../assets/header/map-off.png';
+import mapOn from '../../assets/header/map-on.png';
+
 import gridView from '../../assets/header/grid-view.png';
-import logoIcon from '../../assets/header/Logo.png';
 import mapView from '../../assets/header/map-view.png';
+import logoIcon from '../../assets/header/Logo.jpg';
 import ContextProvider from "../../hooks/ContextApi";
 import CustomSearch from "../../components/Header/CustomSearch";
 import useDebounce from '../../hooks/useDebounce';
@@ -53,7 +59,19 @@ const Header = ({  }) => {
 			position="absolute"
 			sx={{ backgroundColor: "#488856" }}>
 			<Toolbar>
-				<img src={mode === 'grid' ? gridView : mapView} onClick={toggleView} alt="" style={{width: '75px', cursor: 'pointer'}} />
+				{/*<img src={mode === 'grid' ? gridView : mapView} onClick={toggleView} alt="" style={{width: '75px', cursor: 'pointer'}} />*/}
+					{
+						mode === 'grid' ?
+							<div>
+								<img src={mapOff} onClick={toggleView} style={{width: '47px', cursor: 'pointer'}} title="תצוגת מפה" />
+								<img src={gridOn} style={{width: '47px'}} title="תצוגה טבלה" />
+							</div>
+							:
+							<div>
+								<img src={mapOn} style={{width: '47px'}} title="תצוגת מפה" />
+								<img src={gridOff} onClick={toggleView} style={{width: '47px', cursor: 'pointer'}} title="תצוגה טבלה" />
+							</div>
+					}
 
 				<CustomSearch setSearchText={setSearchText} />
 

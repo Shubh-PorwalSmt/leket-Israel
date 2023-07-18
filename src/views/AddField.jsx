@@ -74,6 +74,22 @@ const AddField = ({onClose}) => {
 		);
 	};
 
+	const isInIsrael = (lat, lng) => {
+		const israelBoundingBox = {
+			minLng: 34.2676,
+			maxLng: 35.8984,
+			minLat: 29.4544,
+			maxLat: 33.3336,
+		};
+
+		return (
+			lng >= israelBoundingBox.minLng &&
+			lng <= israelBoundingBox.maxLng &&
+			lat >= israelBoundingBox.minLat &&
+			lat <= israelBoundingBox.maxLat
+		);
+	};
+
 	const handleNextSubmit = () => {
 		setStep1Error(null);
 		setStep2Error(null);
@@ -103,6 +119,11 @@ const AddField = ({onClose}) => {
 					return;
 				}
 				break;
+			case 2:
+				if(!isInIsrael(field.xAxis, field.yAxis)) {
+					setStep3Error({name: 'location', text: "המיקום אינו תקין"});
+					return;
+				}
 		}
 		if (activeStep !== 4) {
 			setActiveStep((prevActiveStep) => prevActiveStep + 1);

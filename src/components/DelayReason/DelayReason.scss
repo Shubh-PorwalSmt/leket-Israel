@@ -3,6 +3,10 @@
 	direction: rtl;
 	height: 300px;
 
+	fieldset {
+		border-width: 1px !important;
+	}
+
 	.delay-reason-buttons {
 		padding-top: 60px;
 		display: flex;

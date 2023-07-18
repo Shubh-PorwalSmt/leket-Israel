@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Button, Dialog, DialogTitle, TextField} from "@mui/material";
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
@@ -10,9 +10,11 @@ import './DelayReason.scss';
 
 const DelayReason = props => {
 	const { fieldId, onChange, onClose } = props;
-	const [delayDate, setDelayDate] = useState(new Date());
+	const field = useSelector(state => state.field.fields).find(f => f.id === fieldId);
+	const [delayDate, setDelayDate] = useState(field.delay_date || new Date());
 	const dispatch = useDispatch();
 
+	console.log(field);
 	useEffect(() => {
 		const load = async () => {
 
@@ -36,23 +38,33 @@ const DelayReason = props => {
 		}
 	};
 
+	const styles = {
+		readOnlyInput: {
+			pointerEvents: 'none',
+		},
+	};
+
 	return (
 		<Dialog open maxWidth="l">
 			<div className="delay-reason-container">
-				<DialogTitle>השהיית טיפול בשדה</DialogTitle>
+				<DialogTitle>למתי תרצה להשהות את הטיפול?</DialogTitle>
 				<div>
 					<div>
-						השהייה עד לתאריך
+						לתאריך
 					</div>
 					<div>
 						<LocalizationProvider dateAdapter={AdapterDayjs}>
 							<DatePicker
 								format={DATE_FORMAT}
 								value={delayDate}
-								disableOpenOnEnter
-								InputProps={{ onKeyDown: e => e.preventDefault() }}
+								minDate={new Date()}
 								onChange={(newFromDate) => setDelayDate(newFromDate)}
-								renderInput={(params) => <TextField dir="rtl" {...params} />}
+								renderInput={(props) => (
+									<TextField
+										{...props}
+										onFocus={(e) => {e.target.blur()}}
+									/>
+								)}
 							/>
 						</LocalizationProvider>
 					</div>
@@ -60,20 +72,12 @@ const DelayReason = props => {
 
 				<div className="delay-reason-buttons">
 					<Button
-						variant="outlined"
-						onClick={onClose}
-						color="success"
-						sx={{ borderRadius: "20px", padding: '5px 20px', marginLeft: '20px' }}
-					>
-						ללא תאריך יעד
-					</Button>
-					<Button
 						variant="contained"
 						color="success"
 						onClick={updateDelayDate}
 						sx={{ borderRadius: "20px", padding: '5px 20px' }}
 					>
-						שמור
+						אישור
 					</Button>
 				</div>
 			</div>

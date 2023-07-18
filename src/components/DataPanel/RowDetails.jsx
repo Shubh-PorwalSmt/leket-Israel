@@ -132,7 +132,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 
 		setIndex(Math.random());
 	};
-	
+
 	const onMapClick = (location) => {
 		if(editMode) {
 			const fld = {...editableData};
@@ -287,7 +287,8 @@ const RowDetails = ({ onClose, rowSet }) => {
 											/>
 										</Box>
 										<Divider sx={{paddingLeft: '6px', marginRight: '6px'}} orientation="vertical" flexItem />
-										<CustomStatus onChange={(value) => updateStatus(value)}
+										<CustomStatus fieldId={rowSet.id}
+										              onChange={(value) => updateStatus(value)}
 										              onChangeDelayDate={date => updateEditableData('delay_date', date)}
 										              removeAllOption
 										              status={editableData.status}

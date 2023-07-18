@@ -5,7 +5,6 @@ import * as data from "../../constants/filterSelection";
 import {useDispatch} from "react-redux";
 import * as fieldActions from '../../redux/Field/actions';
 import translator from "../../Utils/translations/translator";
-import {showToast} from "../../Utils/general";
 import DelayReason from "../DelayReason";
 
 const getStatusColor = (status) => {

@@ -1,7 +1,11 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {Button, Card, Checkbox, TablePagination} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import * as fieldActions from '../../redux/Field/actions';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import {DataGrid, GridActionsCellItem, GridToolbarContainer, useGridApiContext} from "@mui/x-data-grid";
 import {Add, Delete} from "@mui/icons-material";
 import {createSvgIcon} from "@mui/material/utils";
@@ -145,23 +149,23 @@ const DataTable = ({rows, onAddField}) => {
 			field: "status",
 			headerName: "סטטוס",
 			width: 140,
-			editable: true,
+			editable: false,
 			sortable: false,
 			renderCell: (params) => <CustomStatus fieldId={params.id} removeAllOption status={params.value} label={translator(params.value)} />,
 		},
-		{
-			field: "actions",
-			type: "actions",
-			width: 50,
-			getActions: (params) => [
-				<GridActionsCellItem
-					icon={<Delete />}
-					label="מחק שדה"
-					onClick={() => confirmDelete(params)}
-					showInMenu
-				/>
-			],
-		},
+		// {
+		// 	field: "actions",
+		// 	type: "actions",
+		// 	width: 50,
+		// 	getActions: (params) => [
+		// 		<GridActionsCellItem
+		// 			icon={<Delete />}
+		// 			label="מחק שדה"
+		// 			onClick={() => confirmDelete(params)}
+		// 			showInMenu
+		// 		/>
+		// 	],
+		// }
 	];
 
 	const isStatusColumn = target => {
@@ -206,10 +210,46 @@ const DataTable = ({rows, onAddField}) => {
 				                 labelRowsPerPage="מספר רשומות בדף:"
 				                 rowsPerPageOptions={[5,10,20]}
 				                 onPageChange={handlePageChange}
-				                 onRowsPerPageChange={handlePageSizeChange} />
+				                 onRowsPerPageChange={handlePageSizeChange}
+				                 ActionsComponent={TablePaginationActions}
+
+				/>
 			</div>
 		)
 	};
+
+	function TablePaginationActions(props) {
+		const { count, page, rowsPerPage, onChangePage } = props;
+
+		const handlePrevButtonClick = () => {
+			setPage(page - 1);
+		};
+
+		const handleNextButtonClick = () => {
+			setPage(page + 1);
+		};
+
+		return (
+			<>
+				<IconButton
+					onClick={handlePrevButtonClick}
+					disabled={page === 0}
+					title="לדף הקודם"
+					aria-label="Previous Page"
+				>
+					<KeyboardArrowRightIcon />
+				</IconButton>
+				<IconButton
+					onClick={handleNextButtonClick}
+					disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+					title="לדף הבא"
+					aria-label="Next Page"
+				>
+					<KeyboardArrowLeftIcon />
+				</IconButton>
+			</>
+		);
+	}
 
 	const GridHeaderButtons = () => {
 		const apiRef = useGridApiContext();
@@ -300,6 +340,7 @@ const DataTable = ({rows, onAddField}) => {
 
 			<DataGrid
 				rows={rows}
+				autoHeight
 				sx={dataGridStyle}
 				onRowClick={handleRowClick}
 				columns={columns}
@@ -311,7 +352,6 @@ const DataTable = ({rows, onAddField}) => {
 				hideFooterSelectedRowCount
 				hideFooterPagination
 				disableSelectionOnClick
-				autoHeight
 				rowThreshold={0}
 				components={{
 					Toolbar: Toolbar,
@@ -326,7 +366,6 @@ const DataTable = ({rows, onAddField}) => {
 					},
 				}}
 			/>
-
 		</Card>
 	);
 };

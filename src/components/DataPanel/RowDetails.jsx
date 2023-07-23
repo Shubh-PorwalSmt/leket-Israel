@@ -93,7 +93,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 		}
 
 		dispatch(fieldActions.updateField(fieldToUpdate, () => {
-			showToast("השדה עודכן.");
+			showToast("השטח עודכן.");
 			onClose();
 		}));
 	};
@@ -356,7 +356,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 									}
 								</div>
 								<div className="row-content-right-history">
-									<div className="row-content-right-history-title">היסטורית שדה</div>
+									<div className="row-content-right-history-title">היסטורית השטח</div>
 									{
 										fieldHistory !== null && fieldHistory.length > 0 &&
 										<div className="row-content-history-content">
@@ -417,7 +417,6 @@ const RowDetails = ({ onClose, rowSet }) => {
 									<div />
 								</div>
 								<div style={{paddingTop: '20px'}}>
-									<div className="row-content-subtitle">השטח:</div>
 									<div>
 										{ renderFieldMap(editableData) }
 									</div>

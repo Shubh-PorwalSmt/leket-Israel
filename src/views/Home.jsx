@@ -18,6 +18,7 @@ const Home = () => {
 	const { additionalProductNames } = useContext(ContextProvider);
 	const { optionRegion } = useContext(ContextProvider);
 	const { optionCareStatus } = useContext(ContextProvider);
+	const { optionFamiliarityStatus } = useContext(ContextProvider);
 	const { optionMoreFilters } = useContext(ContextProvider);
 	const { debouncedSearchText } = useContext(ContextProvider);
 	const { page } = useContext(ContextProvider);
@@ -44,6 +45,7 @@ const Home = () => {
 				products: [...product_name, ...additionalProductNames],
 				regions: optionRegion && optionRegion[0] === 'ALL' ? [] : optionRegion,
 				careStatuses: optionCareStatus && optionCareStatus[0] === 'ALL' ? [] : optionCareStatus,
+				familiarityStatuses: optionFamiliarityStatus && optionFamiliarityStatus[0] === 'ALL' ? [] : optionFamiliarityStatus,
 				optionMoreFilters,
 				polygonFilter,
 				mapZoom,
@@ -55,7 +57,7 @@ const Home = () => {
 			await dispatch(fieldActions.loadFields(filters, mode))
 		};
 		load();
-	}, [debouncedSearchText, product_name, polygonFilter, mapZoom, optionRegion, optionCareStatus, additionalProductNames, optionMoreFilters, sortMethod, page, pageSize, mode]);
+	}, [debouncedSearchText, product_name, polygonFilter, mapZoom, optionRegion, optionCareStatus, optionFamiliarityStatus, additionalProductNames, optionMoreFilters, sortMethod, page, pageSize, mode]);
 
 	return (
 		<Grid container display="grid" marginTop="3%" sx={{ paddingLeft: 7, paddingRight: 7 }}>

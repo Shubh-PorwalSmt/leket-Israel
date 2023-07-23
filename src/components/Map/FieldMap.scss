@@ -9,20 +9,21 @@
 		user-select: none;
 
 		.map-tooltip-header {
-			display: flex;
+			display: grid;
 			align-items: center;
-			justify-content: space-between;
 			border-bottom: 1px solid #E9F0EE;
 			padding-bottom: 10px;
+			grid-template-columns: 140px 1fr 20px;
 
 			.map-tooltip-header-title {
+				width: 100%;
 				font-size: 18px;
 				font-weight: bold;
 				white-space: nowrap;
 				overflow: hidden;
 				padding: 0 10px;
 				text-overflow: ellipsis;
-				direction: rtl;
+				text-align: right;
 			}
 		}
 

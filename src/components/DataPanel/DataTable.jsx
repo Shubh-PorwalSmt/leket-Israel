@@ -58,8 +58,8 @@ const DataTable = ({rows, onAddField}) => {
 
 	const confirmDelete = (field) => {
 		confirmAlert({
-			title: 'מחיקת שדה',
-			message: `השדה "${field.row.name}" ימחק. האם להמשיך?`,
+			title: 'מחיקת שטח',
+			message: `השטח "${field.row.name}" ימחק. האם להמשיך?`,
 			buttons: [
 				{
 					label: 'כן',
@@ -85,7 +85,7 @@ const DataTable = ({rows, onAddField}) => {
 		},
 		{
 			field: "name",
-			headerName: "שם השדה",
+			headerName: "שם השטח",
 			editable: false,
 			sortable: false,
 			flex: 2,
@@ -139,7 +139,7 @@ const DataTable = ({rows, onAddField}) => {
 		},
 		{
 			field: "status_date",
-			headerName: "עדכון אחרון",
+			headerName: "עדכון סטטוס",
 			editable: false,
 			sortable: false,
 			flex: 1,
@@ -160,7 +160,7 @@ const DataTable = ({rows, onAddField}) => {
 		// 	getActions: (params) => [
 		// 		<GridActionsCellItem
 		// 			icon={<Delete />}
-		// 			label="מחק שדה"
+		// 			label="מחק שטח"
 		// 			onClick={() => confirmDelete(params)}
 		// 			showInMenu
 		// 		/>

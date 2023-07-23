@@ -1,7 +1,8 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
+import {useDispatch} from "react-redux";
 import {MapContainer, Marker, Popup, TileLayer, useMapEvents} from 'react-leaflet'
 import {Button} from "@mui/material";
-import {Add} from "@mui/icons-material";
+import {Add, Edit} from "@mui/icons-material";
 import L, {divIcon, Polygon} from 'leaflet';
 import * as XLSX from "xlsx/xlsx.mjs";
 import ContextProvider from "../../hooks/ContextApi";
@@ -10,8 +11,10 @@ import translator from "../../Utils/translations/translator";
 import CustomStatus from "../DataPanel/CustomStatus";
 import moment from "moment/moment";
 import {createSvgIcon} from "@mui/material/utils/index";
+import RowDetails from "../DataPanel/RowDetails";
 
 import './FieldMap.scss';
+import * as fieldActions from "../../redux/Field/actions";
 
 const FieldInfo = ({field, label, highlightValue}) => {
 	return (
@@ -24,6 +27,8 @@ const FieldInfo = ({field, label, highlightValue}) => {
 
 const FieldMap = ({rows, onAddField}) => {
 	const { setPolygonFilter, setMapZoom } = useContext(ContextProvider);
+	const [editedRow, setEditedRow] = useState(null);
+	const dispatch = useDispatch();
 
 	function makeACall(bounds, zoom, zoomThreshold = 8) {
 		const southWest = bounds.getSouthWest();
@@ -42,6 +47,11 @@ const FieldMap = ({rows, onAddField}) => {
 		setMapZoom(zoom);
 	}
 
+	const onEditField = async (field) => {
+		await dispatch(fieldActions.loadFieldHistory(field.id));
+		setEditedRow(field);
+	};
+
 	const onMapReady = (e) => {
 		// delay is required to wait for the map to load and get the correct bounds
 		setTimeout(() => {
@@ -57,6 +67,10 @@ const FieldMap = ({rows, onAddField}) => {
 		return null;
 	};
 
+	const handleClickRowClose = () => {
+		setEditedRow(null);
+	};
+
 	const PopupComponent = ({field}) => {
 		return (
 			<div className="map-tooltip">
@@ -65,6 +79,9 @@ const FieldMap = ({rows, onAddField}) => {
 						<CustomStatus fieldId={field.id} removeAllOption status={field.status} label={translator(field.status)} />
 					</div>
 					<div className="map-tooltip-header-title" title={field.name}>{field.name}</div>
+					<div onClick={() => onEditField(field)} style={{cursor: 'pointer'}}>
+						<Edit />
+					</div>
 				</div>
 				<div className="map-tooltip-body">
 					<div>
@@ -170,6 +187,8 @@ const FieldMap = ({rows, onAddField}) => {
 
 	return (
 		<div>
+			{ editedRow && <RowDetails onClose={handleClickRowClose} rowSet={editedRow} /> }
+
 			<GridHeaderButtons />
 			<MapContainer center={position} zoom={DEFAULT_MAP_ZOOM} whenReady={onMapReady} scrollWheelZoom={true} className="map-container">
 				<TileLayer

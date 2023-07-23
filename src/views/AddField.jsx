@@ -98,7 +98,7 @@ const AddField = ({onClose}) => {
 		switch(activeStep) {
 			case 0:
 				if(field.name == null || field.name === "") {
-					setStep1Error("יש להזין שם שדה");
+					setStep1Error("יש להזין שם שטח");
 					return;
 				}
 				break;
@@ -120,7 +120,7 @@ const AddField = ({onClose}) => {
 				}
 				break;
 			case 2:
-				if(!isInIsrael(field.xAxis, field.yAxis)) {
+				if(field.xAxis && field.xAxis !== "" && field.yAxis && field.yAxis !== "" && !isInIsrael(field.xAxis, field.yAxis)) {
 					setStep3Error({name: 'location', text: "המיקום אינו תקין"});
 					return;
 				}
@@ -132,7 +132,7 @@ const AddField = ({onClose}) => {
 			// console.log(field);
 			dispatch(fieldActions.saveNewField(field));
 			console.log("saved!");
-			showToast("השדה החדש נשמר בהצלחה.");
+			showToast("השטח החדש נשמר בהצלחה.");
 			onClose();
 		}
 	};

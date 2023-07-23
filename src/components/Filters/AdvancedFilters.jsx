@@ -4,7 +4,7 @@ import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {DeleteOutline} from "@mui/icons-material";
 import moment from 'moment';
-import {getDefaultDateFrom, getDefaultDateTo} from "../../Utils/general";
+import {getDefaultDateFrom, getDefaultDateTo, showWarning} from "../../Utils/general";
 import {DATE_FORMAT} from "../../Utils/constants";
 
 const addCropStyle = {
@@ -113,6 +113,11 @@ const AdvancedFilters = props => {
 	}, [options]);
 
 	const onUpdateOptions = () => {
+		if(moment(fromDate).isAfter(toDate)) {
+			showWarning("התאריכים שנבחרו אינם תקינים");
+			return;
+		}
+
 		const from = moment(fromDate).format(DATE_FORMAT);
 		const to = moment(toDate).format(DATE_FORMAT);
 		setOptions({attractionFrom: attractionRange[0], attractionTo: attractionRange[1], ndviFrom: ndviRange[0], ndviTo: ndviRange[1], dateFrom: from, dateTo: to});

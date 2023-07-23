@@ -18,7 +18,7 @@ const Step3 = (props) => {
 				fontSize={16}
 				sx={{ color: "#6A6A6A", fontWeight: "bold" }}
 			>
-				מיקום השדה:
+				מיקום השטח:
 			</Typography>
 			<TextField
 				variant="standard"

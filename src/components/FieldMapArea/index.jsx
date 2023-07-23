@@ -194,7 +194,7 @@ const FieldMapArea = props => {
 	return (
 		<div className="field-map-wrapper">
 			<div style={{display: 'flex', paddingBottom: '10px', alignItems: 'center', justifyContent: 'space-between'}}>
-				<div className="field-map-title" onClick={undoChanges}>שטח השדה:</div>
+				<div className="field-map-title" onClick={undoChanges}>השטח:</div>
 				{ changed && <div className="field-map-link" onClick={undoChanges}>בטל שינויים</div> }
 			</div>
 			<MapContainer center={center} zoom={zoom} whenReady={onMapReady} scrollWheelZoom={true} style={{width: mapWidth, height: mapHeight, borderRadius: '10px'}}>

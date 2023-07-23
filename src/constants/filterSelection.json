@@ -98,5 +98,12 @@
 	"KNOWN_PICKED",
 	"IRRELEVANT",
 	"KNOWN_NOT_PICKED"
+  ],
+  "familiarityOptionsWithAll": [
+	"ALL",
+	"NOT_KNOWN",
+	"KNOWN_PICKED",
+	"IRRELEVANT",
+	"KNOWN_NOT_PICKED"
   ]
 }

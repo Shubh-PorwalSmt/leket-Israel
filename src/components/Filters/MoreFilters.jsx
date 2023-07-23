@@ -3,7 +3,7 @@ import {Box, CardContent, Grid, Link, Typography} from "@mui/material";
 import {KeyboardArrowDown} from "@mui/icons-material";
 import ExpandableMenu from "./ExpandableMenu";
 import ContextProvider from "../../hooks/ContextApi";
-import {areaOptions, careStatusOptions} from "../../constants/filterSelection";
+import {areaOptions, careStatusOptions, familiarityOptionsWithAll} from "../../constants/filterSelection";
 import translator from "../../Utils/translations/translator";
 import {getDefaultDateFrom, getDefaultDateTo} from "../../Utils/general";
 
@@ -31,15 +31,19 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 	const { setPage } = useContext(ContextProvider);
 	const { optionRegion, setOptionRegion } = useContext(ContextProvider);
 	const { optionCareStatus, setOptionCareStatus } = useContext(ContextProvider);
+	const { optionFamiliarityStatus, setOptionFamiliarityStatus } = useContext(ContextProvider);
+
 	const { optionMoreFilters, setOptionMoreFilters } = useContext(ContextProvider);
 
 	const [rotateArrow1, setRotateArrow1] = useState(false);
 	const [rotateArrow2, setRotateArrow2] = useState(false);
 	const [rotateArrow3, setRotateArrow3] = useState(false);
+	const [rotateArrow4, setRotateArrow4] = useState(false);
 
 	const handleClearFilters = () => {
 		setOptionRegion(["ALL"]);
 		setOptionCareStatus(["ALL"]);
+		setOptionFamiliarityStatus(["ALL"]);
 		setProductName([]);
 		setOptionMoreFilters({attractionFrom: 0, attractionTo: 1, ndviFrom: 0, ndviTo: 1, dateFrom: getDefaultDateFrom(), dateTo: getDefaultDateTo()});
 		setAdditionalProductNames([]);
@@ -47,7 +51,6 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 	};
 
 	const TEST_SIZE = "14px";
-	const MORE_FILTER_IDENTIFIER = "MoreFilters";
 
 	const displayRegionTag = (
 		<CardContent>
@@ -119,6 +122,41 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 		</CardContent>
 	);
 
+	const displayFamiliarityStatusTag = (
+		<CardContent>
+			<Box display="flex" flexDirection="row">
+				<KeyboardArrowDown
+					style={{
+						color: "green",
+						alignSelf: "center",
+						rotate: rotateArrow4 ? "180deg" : "0deg",
+					}}
+					sx={imageStyle}
+				/>
+				<div>
+					<Typography
+						component="div"
+						variant="h6"
+						display="ruby"
+						fontSize="14px"
+						sx={careStyle}
+					>
+						מצב הכרות
+					</Typography>
+					<Typography
+						component="div"
+						variant="h6"
+						fontSize="14px"
+						fontWeight="bold"
+						sx={cardText}
+					>
+						{translator(optionFamiliarityStatus.length === 1 ? optionFamiliarityStatus[0] : `נבחרו ${optionFamiliarityStatus.length}`)}
+					</Typography>
+				</div>
+			</Box>
+		</CardContent>
+	);
+
 	const displayMoreFiltersTag = (
 		<CardContent>
 			<Box display="flex" flexDirection="row">
@@ -156,6 +194,11 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 
 	const updateRegions = (regions) => {
 		setOptionRegion(regions);
+		setPage(0);
+	};
+
+	const updateFamiliarityStatus = (statuses) => {
+		setOptionFamiliarityStatus(statuses);
 		setPage(0);
 	};
 
@@ -202,7 +245,16 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 				</Box>
 				<Box display="flex" flexDirection="row">
 					<ExpandableMenu
-						identifier={MORE_FILTER_IDENTIFIER}
+						items={familiarityOptionsWithAll}
+						displayTag={displayFamiliarityStatusTag}
+						setOptions={updateFamiliarityStatus}
+						options={optionFamiliarityStatus}
+						rotateArrow={rotateArrow4}
+						setRotateArrow={setRotateArrow4}
+					/>
+				</Box>
+				<Box display="flex" flexDirection="row">
+					<ExpandableMenu
 						items={careStatusOptions}
 						displayTag={displayCareStatusTag}
 						setOptions={updateCareStatus}
@@ -213,7 +265,6 @@ const MoreFilters = ({ cardText, imageStyle }) => {
 				</Box>
 				<Box display="flex" flexDirection="row">
 					<ExpandableMenu
-						identifier={MORE_FILTER_IDENTIFIER}
 						items={areaOptions}
 						displayTag={displayRegionTag}
 						setOptions={updateRegions}

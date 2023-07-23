@@ -28,7 +28,7 @@ const CustomSearch = ({ setSearchText }) => {
         sx={inputSearchStyle}
         dir="rtl"
         onChange={handleSearchBarChange}
-        placeholder="הקלד שם שדה"
+        placeholder="הקלד שם שטח"
       />
     </Card>
   );

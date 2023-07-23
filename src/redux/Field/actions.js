@@ -58,7 +58,7 @@ export const deleteField = (id) => {
 				type: actionTypes.REMOVE_FIELD,
 				data: id
 			});
-			showToast("השדה נמחק בהצלחה.");
+			showToast("השטח נמחק בהצלחה.");
 		}
 	};
 };

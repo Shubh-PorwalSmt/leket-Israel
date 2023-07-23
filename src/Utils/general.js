@@ -23,6 +23,19 @@ export const showToast = (msg) => {
 	});
 };
 
+export const showWarning = (msg) => {
+	toast.warning(msg, {
+		position: "top-right",
+		autoClose: 3000,
+		hideProgressBar: false,
+		closeOnClick: true,
+		pauseOnHover: true,
+		draggable: true,
+		progress: undefined,
+		theme: "colored",
+	});
+};
+
 const swapPoints = points => {
 	return points.map(p => {
 		return [p[1], p[0]];

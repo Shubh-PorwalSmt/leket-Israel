@@ -104,8 +104,8 @@ const AdvancedFilters = props => {
 
 	useEffect(() => {
 		const load = async () => {
-			setFromDate(options.dateFrom);
-			setToDate(options.dateTo);
+			setFromDate(moment(options.dateFrom, DATE_FORMAT).toDate());
+			setToDate(moment(options.dateTo, DATE_FORMAT).toDate());
 			setAttractionRange([options.attractionFrom, options.attractionTo]);
 			setNdviRange([options.ndviFrom, options.ndviTo]);
 		};

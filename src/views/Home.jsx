@@ -35,18 +35,21 @@ const Home = () => {
 
 	useEffect(() => {
 		const load = async () => {
+			const filterNdviRange = { ndviFrom: optionMoreFilters.ndviFrom, ndviTo: optionMoreFilters.ndviTo };
+			const filterAttractivenessRange = { attractionFrom: optionMoreFilters.attractionFrom, attractionTo: optionMoreFilters.attractionTo };
 			const dateFrom = moment(optionMoreFilters.dateFrom, DATE_FORMAT).toDate();
 			const dateTo = moment(optionMoreFilters.dateTo, DATE_FORMAT).toDate();
-			optionMoreFilters.dateFrom = dateFrom;
-			optionMoreFilters.dateTo = dateTo;
+			const filterDateRange = { dateFrom, dateTo };
 
 			const filters = {
 				prefixName: debouncedSearchText,
 				products: [...product_name, ...additionalProductNames],
 				regions: optionRegion && optionRegion[0] === 'ALL' ? [] : optionRegion,
 				careStatuses: optionCareStatus && optionCareStatus[0] === 'ALL' ? [] : optionCareStatus,
-				familiarityStatuses: optionFamiliarityStatus && optionFamiliarityStatus[0] === 'ALL' ? [] : optionFamiliarityStatus,
-				optionMoreFilters,
+				familiarities: optionFamiliarityStatus && optionFamiliarityStatus[0] === 'ALL' ? [] : optionFamiliarityStatus,
+				filterNdviRange,
+				filterAttractivenessRange,
+				filterDateRange,
 				polygonFilter,
 				mapZoom,
 				sortBy: sortMethod[0].field,

@@ -11,7 +11,7 @@ import mapOn from '../../assets/header/map-on.png';
 
 import gridView from '../../assets/header/grid-view.png';
 import mapView from '../../assets/header/map-view.png';
-import logoIcon from '../../assets/header/Logo.jpg';
+import logoIcon from '../../assets/header/Logo1.jpg';
 import ContextProvider from "../../hooks/ContextApi";
 import CustomSearch from "../../components/Header/CustomSearch";
 import useDebounce from '../../hooks/useDebounce';

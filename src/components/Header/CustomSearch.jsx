@@ -12,11 +12,9 @@ const searchStyle = {
 };
 
 const inputSearchStyle = {
-	".css-yz9k0d-MuiInputBase-input": {
-		padding: "0 4px",
-		width: "200px",
-		color: "#636363",
-	},
+	padding: "0 4px",
+	width: "210px",
+	color: "#636363",
 };
 const CustomSearch = ({ setSearchText }) => {
 	const handleSearchBarChange = (e) => setSearchText(e.target.value);

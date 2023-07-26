@@ -4,7 +4,6 @@
     <list default="true" id="8b74499b-56e1-4993-9197-968bf0bfbb4e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header/CustomSearch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/CustomSearch.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,8 +32,8 @@
       <file leaf-file-name="CustomSearch.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Header/CustomSearch.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="264">
+              <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -157,9 +156,9 @@
       <find>&lt;AdvancedFilters</find>
       <find>logo.</find>
       <find>תצוגה טבלה</find>
-      <find>inputSearchStyle</find>
       <find>&lt;img</find>
       <find>הקלד</find>
+      <find>inputSearchStyle</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -535,12 +534,12 @@
       <workItem from="1689079364913" duration="925000" />
       <workItem from="1689163275247" duration="1826000" />
       <workItem from="1689274100341" duration="34909000" />
-      <workItem from="1690286291472" duration="4191000" />
+      <workItem from="1690286291472" duration="4890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="353833000" />
+    <option name="totallyTimeSpent" value="354532000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1048" extended-state="6" />
@@ -1018,8 +1017,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header/CustomSearch.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        <state relative-caret-position="264">
+          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

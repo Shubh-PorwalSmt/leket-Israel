@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8b74499b-56e1-4993-9197-968bf0bfbb4e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/CustomSearch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/CustomSearch.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,15 +18,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -34,6 +25,18 @@
               <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CustomSearch.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Header/CustomSearch.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,11 +93,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Header.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Header.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Header/Header.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+            <state relative-caret-position="204">
+              <caret line="68" column="29" lean-forward="true" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#51#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,10 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setRotateArrow2</find>
-      <find>rotateArrow2</find>
-      <find>setOptionCareStatus</find>
-      <find>careStatusOptions</find>
       <find>familiarityOptions</find>
       <find>optionCareStatus</find>
       <find>handleClickRowClose</find>
@@ -154,6 +156,10 @@
       <find>toDate</find>
       <find>&lt;AdvancedFilters</find>
       <find>logo.</find>
+      <find>תצוגה טבלה</find>
+      <find>inputSearchStyle</find>
+      <find>&lt;img</find>
+      <find>הקלד</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -193,7 +199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FE/src/redux/User/actions.js" />
         <option value="$PROJECT_DIR$/FE/src/redux/Field/actions.js" />
         <option value="$PROJECT_DIR$/FE/src/redux/Field/service.js" />
         <option value="$PROJECT_DIR$/FE/src/components/DataPanel/CustomStatus.jsx" />
@@ -244,6 +249,7 @@
         <option value="$PROJECT_DIR$/src/views/Home.jsx" />
         <option value="$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx" />
         <option value="$PROJECT_DIR$/src/components/Header/Header.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Header/CustomSearch.jsx" />
       </list>
     </option>
   </component>
@@ -443,17 +449,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JSPX" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Development\leket-Israel" />
-      <recent name="C:\Development\leket-Israel\FE\src\Utils\translations" />
-      <recent name="C:\Development\leket-Israel\FE\src\Utils" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Development\leket-Israel\src\assets\header" />
       <recent name="C:\Development\leket-Israel\FE\src\assets\likeIcons" />
       <recent name="C:\Development\leket-Israel\FE\src\assets" />
       <recent name="C:\Development\leket-Israel\FE\src\components\DataPanel" />
       <recent name="C:\Development\leket-Israel\FE\src\assets\map" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Development\leket-Israel" />
+      <recent name="C:\Development\leket-Israel\FE\src\Utils\translations" />
+      <recent name="C:\Development\leket-Israel\FE\src\Utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -529,12 +535,12 @@
       <workItem from="1689079364913" duration="925000" />
       <workItem from="1689163275247" duration="1826000" />
       <workItem from="1689274100341" duration="34909000" />
-      <workItem from="1690286291472" duration="2178000" />
+      <workItem from="1690286291472" duration="4191000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="351820000" />
+    <option name="totallyTimeSpent" value="353833000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1048" extended-state="6" />
@@ -550,10 +556,10 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32967034" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.47032967" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.47032967" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49814814" visible="true" weight="0.21108742" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49814814" visible="true" weight="0.21108742" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32967034" />
@@ -702,13 +708,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Header/CustomSearch.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -1009,8 +1008,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header/Header.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="47" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+        <state relative-caret-position="204">
+          <caret line="68" column="29" lean-forward="true" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Header/CustomSearch.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

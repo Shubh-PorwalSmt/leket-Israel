@@ -62,14 +62,14 @@ const Header = ({  }) => {
 				{/*<img src={mode === 'grid' ? gridView : mapView} onClick={toggleView} alt="" style={{width: '75px', cursor: 'pointer'}} />*/}
 					{
 						mode === 'grid' ?
-							<div>
+							<div style={{lineHeight: 'initial'}}>
 								<img src={mapOff} onClick={toggleView} style={{width: '47px', cursor: 'pointer'}} title="תצוגת מפה" />
-								<img src={gridOn} style={{width: '47px'}} title="תצוגה טבלה" />
+								<img src={gridOn} style={{width: '47px'}} title="תצוגת טבלה" />
 							</div>
 							:
-							<div>
+							<div style={{lineHeight: 'initial'}}>
 								<img src={mapOn} style={{width: '47px'}} title="תצוגת מפה" />
-								<img src={gridOff} onClick={toggleView} style={{width: '47px', cursor: 'pointer'}} title="תצוגה טבלה" />
+								<img src={gridOff} onClick={toggleView} style={{width: '47px', cursor: 'pointer'}} title="תצוגת טבלה" />
 							</div>
 					}
 

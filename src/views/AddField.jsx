@@ -229,7 +229,7 @@ const AddField = ({onClose}) => {
 									onClick={handleNextSubmit}
 									sx={{ borderRadius: "20px", padding: '5px 20px' }}
 								>
-									{activeStep === 4 ? "סיים" : "המשך"}
+									{activeStep == "4" ? "סיים" : "המשך"}
 								</Button>
 							</CardActions>
 						</Grid>

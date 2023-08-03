@@ -78,6 +78,7 @@ const FilterCrop = ({ cardText, imageStyle }) => {
 				marginTop="20px"
 			>
 				<ExpandableMenu
+					showFilter
 					items={data.product_nameOptions}
 					displayTag={displayTag}
 					product_name={product_name}

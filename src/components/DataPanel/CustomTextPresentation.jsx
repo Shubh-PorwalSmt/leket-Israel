@@ -57,9 +57,9 @@ const CustomTextPresentation = props => {
 	};
 
 	return (
-		<div style={{fontSize: '14px', direction: 'rtl', ...style}}>
+		<div style={{fontSize: '12px', color: '#6A6A6A', direction: 'rtl', ...style}}>
 			<div>{header}</div>
-			<div style={{height: '30px'}}>
+			<div style={{height: '30px', fontSize: '12px', color: '#000', fontWeight: 'bold'}}>
 				{
 					editMode ? renderEditControl() : <div style={{paddingTop: '2px'}}>{translator(value)}</div>
 				}

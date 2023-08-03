@@ -3,7 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="8b74499b-56e1-4993-9197-968bf0bfbb4e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/CustomTextPresentation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/CustomTextPresentation.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/TextWithHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/TextWithHeader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FieldMapArea/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FieldMapArea/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Filters/ExpandableMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Filters/ExpandableMenu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Filters/FilterCrop.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Filters/FilterCrop.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map/FieldMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/FieldMap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map/FieldMap.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/FieldMap.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ToggleFilter/ToggleFilter.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ToggleFilter/ToggleFilter.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/sortSelection.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/sortSelection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/ContextApi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/ContextApi.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AddField.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AddField.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,13 +31,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CustomSearch.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Header/CustomSearch.jsx">
+      <file leaf-file-name="RowDetails.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+            <state relative-caret-position="168">
+              <caret line="328" column="38" lean-forward="true" selection-start-line="328" selection-start-column="38" selection-end-line="328" selection-end-column="38" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -32,8 +46,8 @@
       <file leaf-file-name="Home.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/Home.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="34" />
+            <state relative-caret-position="131">
+              <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -41,17 +55,8 @@
       <file leaf-file-name="Sort.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Sorters/Sort.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sortSelection.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/constants/sortSelection.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            <state relative-caret-position="120">
+              <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -59,8 +64,8 @@
       <file leaf-file-name="AdvancedFilters.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2100">
-              <caret line="112" column="18" selection-start-line="112" selection-start-column="18" selection-end-line="112" selection-end-column="18" />
+            <state relative-caret-position="260">
+              <caret line="162" column="55" selection-start-line="162" selection-start-column="55" selection-end-line="162" selection-end-column="55" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -68,11 +73,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExpandableMenu.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Filters/ExpandableMenu.jsx">
+      <file leaf-file-name="sortSelection.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constants/sortSelection.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+            <state relative-caret-position="20">
+              <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataPanel.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/DataPanel/DataPanel.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -80,31 +94,19 @@
       <file leaf-file-name="SortPanel.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Sorters/SortPanel.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+            <state relative-caret-position="520">
+              <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SortMenu.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Filters/SortMenu.jsx">
+      <file leaf-file-name="DataTable.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="79" column="33" lean-forward="true" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
+            <state relative-caret-position="460">
+              <caret line="338" column="35" selection-start-line="338" selection-start-column="35" selection-end-line="338" selection-end-column="35" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Header.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/Header/Header.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1040">
-              <caret line="68" column="29" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#51#0" expanded="true" />
+                <element signature="e#0#61#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,7 +116,19 @@
         <entry file="file://$PROJECT_DIR$/src/hooks/ContextApi.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="14" column="60" lean-forward="true" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
+              <caret line="14" column="120" lean-forward="true" selection-start-line="14" selection-start-column="120" selection-end-line="14" selection-end-column="120" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExpandableMenu.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Filters/ExpandableMenu.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="163" column="81" selection-start-line="163" selection-start-column="81" selection-end-line="163" selection-end-column="81" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,36 +137,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;a</find>
-      <find>setEditedRow</find>
-      <find>fieldHistory</find>
-      <find>fieldsHistory</find>
-      <find>FIELD_HISTORY_LOADED</find>
-      <find>loadFieldHistory</find>
-      <find>&lt;edit</find>
-      <find>dispatch</find>
-      <find>useDispatch</find>
-      <find>&lt;pop</find>
-      <find>dateto</find>
-      <find>moment</find>
-      <find>&lt;adv</find>
       <find>&lt;ExpandableMenu</find>
-      <find>optionMoreFilters</find>
-      <find>toDate</find>
-      <find>&lt;AdvancedFilters</find>
-      <find>logo.</find>
-      <find>תצוגה טבלה</find>
-      <find>&lt;img</find>
-      <find>הקלד</find>
-      <find>inputSearchStyle</find>
-      <find>sortBy</find>
-      <find>sortMethod</find>
-      <find>&lt;sort</find>
-      <find>sort-icon</find>
-      <find>ndvi</find>
-      <find>א' -</find>
-      <find>latest_attractiveness_metric</find>
-      <find>latest_satellite_date</find>
+      <find>items</find>
+      <find>setoptions</find>
+      <find>toggleOption</find>
+      <find>Remove</find>
+      <find>remove</find>
+      <find>selectedOptionBoxStyle</find>
+      <find>20px</find>
+      <find>155</find>
+      <find>Popup</find>
+      <find>margin</find>
+      <find>line-h</find>
+      <find>line</find>
+      <find>leaflet-popup-</find>
+      <find>6PX</find>
+      <find>6px</find>
+      <find>8px</find>
+      <find>map-tooltip-body-field</find>
+      <find>getFieldMarker</find>
+      <find>filterDateRange</find>
+      <find>טווח תאריכי סטטוס</find>
+      <find>16</find>
+      <find>max</find>
+      <find>PaperProps</find>
+      <find>adv</find>
+      <find>60</find>
+      <find>column</find>
+      <find>attr-asc</find>
+      <find>אטרק</find>
+      <find>renderAttractivenessField</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -192,18 +206,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FE/src/components/DataPanel/CustomStatus.jsx" />
-        <option value="$PROJECT_DIR$/FE/src/components/Login/Signin.jsx" />
-        <option value="$PROJECT_DIR$/FE/src/components/Header/Header.jsx" />
         <option value="$PROJECT_DIR$/FE/.env" />
         <option value="$PROJECT_DIR$/FE/.gitignore" />
         <option value="$PROJECT_DIR$/.github/workflows/deploy.yml" />
         <option value="$PROJECT_DIR$/frontend.Dockerfile" />
         <option value="$PROJECT_DIR$/src/main.jsx" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/components/Filters/ExpandableMenu.jsx" />
         <option value="$PROJECT_DIR$/vite.config.js" />
-        <option value="$PROJECT_DIR$/src/components/Filters/FilterCrop.jsx" />
         <option value="$PROJECT_DIR$/.github/workflows/ecs-task-definition.json" />
         <option value="$PROJECT_DIR$/src/redux/Field/actionTypes.js" />
         <option value="$PROJECT_DIR$/src/redux/Field/reducer.js" />
@@ -219,7 +228,6 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/components/Sorters/SortPanel.jsx" />
         <option value="$PROJECT_DIR$/src/components/addFieldSteps/Step4.jsx" />
-        <option value="$PROJECT_DIR$/src/components/FieldMapArea/index.jsx" />
         <option value="$PROJECT_DIR$/src/components/addFieldSteps/Step3.jsx" />
         <option value="$PROJECT_DIR$/src/components/DataPanel/a.svg" />
         <option value="$PROJECT_DIR$/index.html" />
@@ -229,20 +237,26 @@
         <option value="$PROJECT_DIR$/src/components/DelayReason/DelayReason.scss" />
         <option value="$PROJECT_DIR$/src/components/DelayReason/index.jsx" />
         <option value="$PROJECT_DIR$/src/Utils/general.js" />
-        <option value="$PROJECT_DIR$/src/views/AddField.jsx" />
-        <option value="$PROJECT_DIR$/src/hooks/ContextApi.jsx" />
         <option value="$PROJECT_DIR$/src/constants/filterSelection.json" />
-        <option value="$PROJECT_DIR$/src/components/Filters/MoreFilters.jsx" />
-        <option value="$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Map/FieldMap.scss" />
-        <option value="$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Map/FieldMap.jsx" />
-        <option value="$PROJECT_DIR$/src/views/Home.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx" />
         <option value="$PROJECT_DIR$/src/components/Header/Header.jsx" />
         <option value="$PROJECT_DIR$/src/components/Header/CustomSearch.jsx" />
         <option value="$PROJECT_DIR$/src/components/Filters/SortMenu.jsx" />
+        <option value="$PROJECT_DIR$/src/components/ToggleFilter/ToggleFilter.scss" />
+        <option value="$PROJECT_DIR$/src/components/FieldMapArea/index.jsx" />
+        <option value="$PROJECT_DIR$/src/views/AddField.jsx" />
+        <option value="$PROJECT_DIR$/src/components/DataPanel/CustomTextPresentation.jsx" />
+        <option value="$PROJECT_DIR$/src/components/DataPanel/TextWithHeader.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Filters/FilterCrop.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Filters/MoreFilters.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Map/FieldMap.scss" />
+        <option value="$PROJECT_DIR$/src/components/Map/FieldMap.jsx" />
+        <option value="$PROJECT_DIR$/src/components/Filters/ExpandableMenu.jsx" />
+        <option value="$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx" />
+        <option value="$PROJECT_DIR$/src/hooks/ContextApi.jsx" />
         <option value="$PROJECT_DIR$/src/constants/sortSelection.json" />
+        <option value="$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx" />
+        <option value="$PROJECT_DIR$/src/views/Home.jsx" />
+        <option value="$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx" />
       </list>
     </option>
   </component>
@@ -276,12 +290,26 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
               <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
@@ -381,6 +409,13 @@
               <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
               <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="ToggleFilter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leket-Israel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leket-Israel" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="constants" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -425,13 +460,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="adv&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Filters/AdvancedFilters.jsx&#10;addf&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;שגג&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;delay&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DelayReason/DelayReason.scss&#10;customstat&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/CustomStatus.jsx&#10;row&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;signin&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Login/Signin.jsx&#10;home&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/Home.jsx&#10;sort&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Sorters/SortPanel.jsx&#10;map&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Map/FieldMap.jsx&#10;addfield&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;addfie&#9;FILE&#9;file://C:/Development/leket-Israel/dist/Images/addfield&#10;rowde&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;datatab&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/DataTable.jsx&#10;custom&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/CustomStatus.jsx&#10;login&#9;null&#9;null&#10;datatable&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;step4&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step4.jsx&#10;datata&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;gener&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/general.js&#10;en.&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/en.json&#10;transl&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/translator.js&#10;step5&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step5.jsx&#10;ad&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;דאקפ3&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step3.jsx&#10;step2&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step2.jsx&#10;he.j&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;context&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/hooks/ContextApi.jsx&#10;header&#9;null&#9;null&#10;app&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/App.jsx&#10;he&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;step1&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step1.jsx&#10;add&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;gridrowutils&#9;FILE&#9;file://C:/Development/leket-Israel/FE/node_modules/@mui/x-data-grid/hooks/features/rows/gridRowsUtils.d.ts&#10;datap&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx&#10;i18&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/i18n/i18n.js&#10;MORE&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;moref&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;data&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;datapa&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx" />
+    <property name="SearchEverywhereHistoryKey" value="צשפ&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Map/FieldMap.jsx&#10;rowd&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;שגג&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;step5&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/addFieldSteps/Step5.jsx&#10;adv&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Filters/AdvancedFilters.jsx&#10;addf&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;delay&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DelayReason/DelayReason.scss&#10;customstat&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/CustomStatus.jsx&#10;row&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;signin&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Login/Signin.jsx&#10;home&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/Home.jsx&#10;sort&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Sorters/SortPanel.jsx&#10;map&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Map/FieldMap.jsx&#10;addfield&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;addfie&#9;FILE&#9;file://C:/Development/leket-Israel/dist/Images/addfield&#10;rowde&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;datatab&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/DataTable.jsx&#10;custom&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/CustomStatus.jsx&#10;login&#9;null&#9;null&#10;datatable&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;step4&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step4.jsx&#10;datata&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;gener&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/general.js&#10;en.&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/en.json&#10;transl&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/translator.js&#10;ad&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;דאקפ3&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step3.jsx&#10;step2&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step2.jsx&#10;he.j&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;context&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/hooks/ContextApi.jsx&#10;header&#9;null&#9;null&#10;app&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/App.jsx&#10;he&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;step1&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step1.jsx&#10;add&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;gridrowutils&#9;FILE&#9;file://C:/Development/leket-Israel/FE/node_modules/@mui/x-data-grid/hooks/features/rows/gridRowsUtils.d.ts&#10;datap&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx&#10;i18&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/i18n/i18n.js&#10;MORE&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;moref&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;data&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;datapa&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
@@ -442,17 +474,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JSPX" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Development\leket-Israel" />
+      <recent name="C:\Development\leket-Israel\FE\src\Utils\translations" />
+      <recent name="C:\Development\leket-Israel\FE\src\Utils" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Development\leket-Israel\src\assets\header" />
       <recent name="C:\Development\leket-Israel\FE\src\assets\likeIcons" />
       <recent name="C:\Development\leket-Israel\FE\src\assets" />
       <recent name="C:\Development\leket-Israel\FE\src\components\DataPanel" />
       <recent name="C:\Development\leket-Israel\FE\src\assets\map" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Development\leket-Israel" />
-      <recent name="C:\Development\leket-Israel\FE\src\Utils\translations" />
-      <recent name="C:\Development\leket-Israel\FE\src\Utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -529,16 +561,16 @@
       <workItem from="1689163275247" duration="1826000" />
       <workItem from="1689274100341" duration="34909000" />
       <workItem from="1690286291472" duration="5817000" />
-      <workItem from="1690868650448" duration="1014000" />
+      <workItem from="1690868650448" duration="1660000" />
+      <workItem from="1690893754089" duration="13580000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356473000" />
+    <option name="totallyTimeSpent" value="370699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -550,10 +582,10 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32967034" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.47032967" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.31978023" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49814814" visible="true" weight="0.21321961" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49814814" visible="true" weight="0.2153518" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32967034" />
@@ -577,6 +609,7 @@
     <option name="exactExcludedFiles">
       <list>
         <option value="$PROJECT_DIR$/../galileo/GalileoChat/client/node_modules/react-markdown/lib/complex-types.d.ts" />
+        <option value="$PROJECT_DIR$/../connact.external.backend.app/node_modules/exceljs/index.d.ts" />
       </list>
     </option>
   </component>
@@ -625,66 +658,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/@mui/material/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="190" column="20" selection-start-line="190" selection-start-column="20" selection-end-line="190" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/xlsx/xlsx.mjs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/RowDetails.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/User/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="72" column="11" lean-forward="true" selection-start-line="72" selection-start-column="11" selection-end-line="72" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Utils/translations/en.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Login/Signin.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Utils/translations/he.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/Field/service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1740">
-          <caret line="87" selection-start-line="87" selection-end-line="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/addFieldSteps/Step5.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -702,13 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/assets/index-2ecf1203.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="381" column="11213" selection-start-line="381" selection-start-column="11213" selection-end-line="381" selection-end-column="11213" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Input/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -720,13 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/CustomTextPresentation.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
@@ -748,13 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="55" selection-start-column="55" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FieldMapArea/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -821,30 +777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/DataPanel.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Map/FieldMap.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/redux/Field/reducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
@@ -852,54 +784,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/redux/Field/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Map/FieldMap.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4020">
-          <caret line="201" column="44" selection-start-line="201" selection-start-column="44" selection-end-line="201" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/AddField.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="84" column="16" lean-forward="true" selection-start-line="84" selection-start-column="16" selection-end-line="84" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -914,36 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2260">
           <caret line="115" column="13" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Filters/MoreFilters.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Filters/ExpandableMenu.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="112" column="18" selection-start-line="112" selection-start-column="18" selection-end-line="112" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -959,7 +817,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Header/CustomSearch.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="260">
           <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -967,48 +825,217 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/Home.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hooks/ContextApi.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="14" column="60" lean-forward="true" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Sorters/SortPanel.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="30" column="17" lean-forward="true" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Filters/SortMenu.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="79" column="33" lean-forward="true" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
+        <state relative-caret-position="1540">
+          <caret line="79" column="33" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="33" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Sorters/Sort.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/ToggleFilter/ToggleFilter.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+          <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FieldMapArea/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/addFieldSteps/Step5.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/AddField.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="231" column="48" selection-start-line="231" selection-start-column="48" selection-end-line="231" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/TextWithHeader.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/CustomTextPresentation.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Utils/translations/translator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Filters/MoreFilters.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="236" column="35" selection-start-line="236" selection-start-column="35" selection-end-line="236" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Filters/FilterCrop.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="80" column="30" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/history-row-marker.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Map/FieldMap.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Map/FieldMap.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend.Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/Field/actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/redux/Field/service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/assets/index-2ecf1203.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="267" column="99721" selection-start-line="267" selection-start-column="99721" selection-end-line="267" selection-end-column="99721" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Filters/ExpandableMenu.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="163" column="81" selection-start-line="163" selection-start-column="81" selection-end-line="163" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Sorters/SortPanel.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="30" column="20" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Sorters/Sort.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hooks/ContextApi.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="14" column="120" lean-forward="true" selection-start-line="14" selection-start-column="120" selection-end-line="14" selection-end-column="120" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/sortSelection.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        <state relative-caret-position="20">
+          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Filters/AdvancedFilters.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="162" column="55" selection-start-line="162" selection-start-column="55" selection-end-line="162" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Home.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="48" column="31" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/DataPanel.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="338" column="35" selection-start-line="338" selection-start-column="35" selection-end-line="338" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="328" column="38" lean-forward="true" selection-start-line="328" selection-start-column="38" selection-end-line="328" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

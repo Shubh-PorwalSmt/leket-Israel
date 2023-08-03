@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Card, Checkbox, Divider, FormControlLabel, Menu, MenuItem} from "@mui/material";
-import {DeleteOutline} from "@mui/icons-material";
-import {useState} from "react";
+import {DeleteOutline, Search, Clear} from "@mui/icons-material";
 import AdvancedFilters from "./AdvancedFilters";
 import translator from "../../Utils/translations/translator";
 
 const ExpandableMenu = ({
+	                        showFilter,
 	                        isAdvanced,
 	                        items,
 	                        displayTag,
@@ -17,6 +17,7 @@ const ExpandableMenu = ({
 	                        setRotateArrow,
                         }) => {
 	const [anchorEl, setAnchorEl] = useState(null);
+	const [filter, setFilter] = useState("");
 
 	const open = Boolean(anchorEl);
 
@@ -73,11 +74,36 @@ const ExpandableMenu = ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
-		width: 155,
 		userSelect: 'none',
 		height: 80,
 		borderRadius: "10px",
 		border: open ? "1px solid green" : "",
+	};
+	
+	const toggleOption = async (option) => {
+		let selectedOptions = [...options];
+
+		if(selectedOptions.includes(option)) {
+			selectedOptions = selectedOptions.filter(op => op !== option);
+		}
+		else {
+			selectedOptions.push(option);
+		}
+		setOptions(selectedOptions);
+	};
+
+	const selectedOptionBoxStyle = {
+		position: '',
+		margin: '2px',
+		cursor: 'pointer',
+		userSelect: 'none',
+		backgroundColor: '#D0EACF',
+		fontSize: '12px',
+		fontWeight: 'bold',
+		display: 'inline-flex',
+		alignItems: 'center',
+		padding: '7px 11px',
+		borderRadius: '16px'
 	};
 
 	return (
@@ -109,49 +135,74 @@ const ExpandableMenu = ({
 						borderRadius: '10px',
 						marginTop: '5px',
 						minWidth: '155px',
+						maxWidth: '400px',
 						padding: '0 10px',
+						overflow: 'hidden',
 						maxHeight: '70vh'
 					},
 				}}
 			>
-				{!isAdvanced ? (
-					items.map((item) => (
-						<MenuItem
-							sx={{
-								marginBottom: '6px',
-								background: options.includes(item) ? "#d0eacf" : "",
-								borderRadius: "10px",
-								"&:hover": {
-									background: options.includes(item) ? "#d0eacf" : "",
-								},
-							}}
-							key={item}
-							onClick={(e) => handleMenuItemClick(e, item)}
-						>
-							<FormControlLabel
+				{
+					showFilter &&
+					<div style={{marginBottom: '10px'}}>
+						<div style={{margin: '10px 0', border: '1px solid #C5C5C5', borderRadius: '10px', padding: '0 10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+							<input style={{border: '0', padding: '10px 0', outline: 'none'}} type="text" placeholder="הקלד שם יבול" value={filter} onChange={(event) => setFilter(event.target.value)} />
+							<Search style={{color: '#C5C5C5'}} />
+						</div>
+						{
+							items.map((item, i) => (
+								<div key={i} onClick={() => toggleOption(item)}
+								     style={options.includes(item) ? selectedOptionBoxStyle : {position: 'absolute', display: 'none'}}>
+									{translator(item)}
+									&nbsp;
+									<Clear style={{fontSize: '14px', color: '#3A6E47'}} />
+									</div>
+							))
+						}
+					</div>
+				}
+				<div style={{overflowY: 'auto', maxHeight: isAdvanced ? 'auto' : '60vh', minHeight: '150px'}}>
+					{!isAdvanced ? (
+						items.map((item) => (
+							<MenuItem
 								sx={{
-									marginRight: 0,
-									marginLeft: 0,
-									".css-ahj2mt-MuiTypography-root": {
-										fontWeight: options.includes(item) ? "bold" : "",
+									opacity: translator(item).indexOf(filter) > -1 ? 1 : 0,
+									position: translator(item).indexOf(filter) > -1 ? '' : 'absolute',
+									marginBottom: '6px',
+									background: options.includes(item) ? "#d0eacf" : "",
+									borderRadius: "10px",
+									"&:hover": {
+										background: options.includes(item) ? "#d0eacf" : "",
 									},
 								}}
-								control={
-									<Checkbox
-										sx={{ borderRadius: "10px" }}
-										checked={options.includes(item) ? true : false}
-										color="success"
-										size="small"
-									/>
-								}
-								label={translator(item)}
-								labelPlacement="end"
-							/>
-						</MenuItem>
-					))
-				) : (
-					<AdvancedFilters options={options} setOptions={updateOptions} />
-				)}
+								key={item}
+								onClick={(e) => handleMenuItemClick(e, item)}
+							>
+								<FormControlLabel
+									sx={{
+										marginRight: 0,
+										marginLeft: 0,
+										".css-ahj2mt-MuiTypography-root": {
+											fontWeight: options.includes(item) ? "bold" : "",
+										},
+									}}
+									control={
+										<Checkbox
+											sx={{ borderRadius: "10px" }}
+											checked={options.includes(item) ? true : false}
+											color="success"
+											size="small"
+										/>
+									}
+									label={translator(item)}
+									labelPlacement="end"
+								/>
+							</MenuItem>
+						))
+					) : (
+						<AdvancedFilters options={options} setOptions={updateOptions} />
+					)}
+				</div>
 				{!isAdvanced ? <Divider /> : ""}
 				{!isAdvanced ? (
 					<MenuItem

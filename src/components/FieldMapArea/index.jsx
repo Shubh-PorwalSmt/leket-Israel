@@ -13,7 +13,7 @@ const FieldMapArea = props => {
 	// const [originalPolygonLayer, setOriginalPolygonLayer] = useState(null);
 	const [zoom, setZoom] = useState((polygonCoordinates != null || (xAxis !== "" && yAxis !== "")) ? 15 : 7);
 	const mapWidth = width || '700px';
-	const mapHeight = height || '400px';
+	const mapHeight = height || '40vh';
 
 	// hide tooltips because in small map they prevent the ability to edit
 	L.drawLocal.edit.handlers.edit.tooltip.subtext = '';

@@ -98,14 +98,14 @@ const DataTable = ({rows, onAddField}) => {
 			flex: 1,
 			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
-		{
-			field: "latest_attractiveness_metric",
-			headerName: "מדד אטרקטיביות",
-			flex: 1,
-			editable: false,
-			sortable: false,
-			renderCell: (params) => <div>{params.value ? (parseInt(params.value * 100) / 100) : '-'}</div>
-		},
+		// {
+		// 	field: "latest_attractiveness_metric",
+		// 	headerName: "מדד אטרקטיביות",
+		// 	flex: 1,
+		// 	editable: false,
+		// 	sortable: false,
+		// 	renderCell: (params) => <div>{params.value ? (parseInt(params.value * 100) / 100) : '-'}</div>
+		// },
 		{
 			field: "latest_satellite_metric",
 			headerName: "NDVI",
@@ -148,7 +148,7 @@ const DataTable = ({rows, onAddField}) => {
 		{
 			field: "status",
 			headerName: "סטטוס",
-			width: 140,
+			width: 150,
 			editable: false,
 			sortable: false,
 			renderCell: (params) => <CustomStatus fieldId={params.id} removeAllOption status={params.value} label={translator(params.value)} />,

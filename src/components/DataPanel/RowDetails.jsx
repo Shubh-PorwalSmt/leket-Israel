@@ -188,7 +188,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 	const renderAttractivenessField = (row) => {
 		return (
 			<div>
-				<div style={{fontSize: '14px', direction: 'rtl'}}>
+				<div style={{fontSize: '12px', color: '#6A6A6A', direction: 'rtl'}}>
 					<div>מדד אטרקטיביות</div>
 					<div className="row-content-highlight-value">{row.latest_attractiveness_metric || '-'}</div>
 				</div>
@@ -206,7 +206,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 
 	const renderNDVIField = (row) => {
 		return (
-			<div style={{fontSize: '14px', direction: 'rtl'}}>
+			<div style={{fontSize: '12px', color: '#6A6A6A', direction: 'rtl'}}>
 				<div>NDVI</div>
 				<div className="row-content-highlight-value">{row.latest_satellite_metric ? parseInt(row.latest_satellite_metric * 100) / 100 : '-'}</div>
 			</div>
@@ -328,7 +328,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 										onChange={(value) => updateEditableData('region', value)}
 									/>
 									{ renderNDVIField(rowSet) }
-									{ renderAttractivenessField(rowSet) }
+									{/*{ renderAttractivenessField(rowSet) }*/}
 									<TextWithHeader
 										editMode={false}
 										header="תאריך הקמת השטח"

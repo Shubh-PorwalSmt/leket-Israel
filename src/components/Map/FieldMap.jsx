@@ -19,7 +19,7 @@ import * as fieldActions from "../../redux/Field/actions";
 const FieldInfo = ({field, label, highlightValue}) => {
 	return (
 		<div className="map-tooltip-body-field">
-			<div className={highlightValue ? 'map-tooltip-body-field-highlight-value' : 'map-tooltip-body-field-value'}>{field}</div>
+			<div className={highlightValue ? 'map-tooltip-body-field-highlight-value' : 'map-tooltip-body-field-value'}>{field || 'N/A'}</div>
 			<div style={{width: '80px'}}>{label}</div>
 		</div>
 	)
@@ -204,7 +204,7 @@ const FieldMap = ({rows, onAddField}) => {
 							return (
 								<Marker key={i} position={field.point.coordinates}
 								        icon={divIcon({ className: 'custom-marker', html: getFieldMarker(field) })}>
-									<Popup autoPan={false} maxWidth={350} minWidth={350} className="map-marker-popup">
+									<Popup autoPan autoPanPadding={[5, 5]} maxWidth={350} minWidth={350} className="map-marker-popup">
 										<PopupComponent field={field} />
 									</Popup>
 								</Marker>

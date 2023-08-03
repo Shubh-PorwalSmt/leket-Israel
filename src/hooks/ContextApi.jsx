@@ -12,7 +12,7 @@ export const ContextProvider = ({ children }) => {
 	const [mode, setMode] = useState("grid");
 	const [polygonFilter, setPolygonFilter] = useState(null);
 	const [mapZoom, setMapZoom] = useState(DEFAULT_MAP_ZOOM);
-	const [sortMethod, setSortMethod] = useState([{ "key": "attr-asc", "label": "אטרקטביות", "field": "name", "dir": "asc" }]);
+	const [sortMethod, setSortMethod] = useState([{ "key": "a2z", "label": "א' - ת'", "field": "name", "dir": "asc" }]);
 	const [product_name, setProductName] = useState([]);
 	const [additionalProductNames, setAdditionalProductNames] = useState([]);
 	const [optionRegion, setOptionRegion] = useState(["ALL"]);

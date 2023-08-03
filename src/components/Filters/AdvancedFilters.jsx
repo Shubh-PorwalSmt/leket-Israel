@@ -159,7 +159,7 @@ const AdvancedFilters = props => {
 			</Typography>
 			<Divider light />
 
-			<SliderComponent title="טווח מדד אטרקטביות" value={attractionRange} onChange={handleAttractionChange} />
+			{/*<SliderComponent title="טווח מדד אטרקטביות" value={attractionRange} onChange={handleAttractionChange} />*/}
 			<SliderComponent title="טווח מדד NDVI" value={ndviRange} onChange={handleNdviChange} />
 
 			<Divider light sx={{ marginTop: 1 }} />

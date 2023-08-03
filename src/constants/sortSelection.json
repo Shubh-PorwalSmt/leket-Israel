@@ -1,6 +1,4 @@
 [
-  { "key": "attr-asc", "label": "אטרקטביות", "field": "latest_attractiveness_metric", "dir": "asc" },
-  { "key": "attr-desc", "label": "אטרקטביות", "field": "latest_attractiveness_metric", "dir": "desc" },
   { "key": "ndvi-asc", "label": "NDVI", "field": "latest_satellite_metric", "dir": "asc" },
   { "key": "ndvi-desc", "label": "NDVI", "field": "latest_satellite_metric", "dir": "desc" },
   { "key": "a2z", "label": "א' - ת'", "field": "name", "dir": "asc" },

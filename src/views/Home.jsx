@@ -35,8 +35,7 @@ const Home = () => {
 
 	useEffect(() => {
 		const load = async () => {
-			const filterNdviRange = { ndviFrom: optionMoreFilters.ndviFrom, ndviTo: optionMoreFilters.ndviTo };
-			const filterAttractivenessRange = { attractionFrom: optionMoreFilters.attractionFrom, attractionTo: optionMoreFilters.attractionTo };
+			// const filterAttractivenessRange = { attractionFrom: optionMoreFilters.attractionFrom, attractionTo: optionMoreFilters.attractionTo };
 			const dateFrom = moment(optionMoreFilters.dateFrom, DATE_FORMAT).toDate();
 			const dateTo = moment(optionMoreFilters.dateTo, DATE_FORMAT).toDate();
 			const filterDateRange = { dateFrom, dateTo };
@@ -47,8 +46,6 @@ const Home = () => {
 				regions: optionRegion && optionRegion[0] === 'ALL' ? [] : optionRegion,
 				careStatuses: optionCareStatus && optionCareStatus[0] === 'ALL' ? [] : optionCareStatus,
 				familiarities: optionFamiliarityStatus && optionFamiliarityStatus[0] === 'ALL' ? [] : optionFamiliarityStatus,
-				filterNdviRange,
-				filterAttractivenessRange,
 				filterDateRange,
 				polygonFilter,
 				mapZoom,
@@ -57,13 +54,18 @@ const Home = () => {
 				page,
 				pageSize
 			};
+
+			if(optionMoreFilters.ndviFrom > 0 || optionMoreFilters.ndviTo < 1) {
+				filters.filterNdviRange = { ndviFrom: optionMoreFilters.ndviFrom, ndviTo: optionMoreFilters.ndviTo };
+			}
+
 			await dispatch(fieldActions.loadFields(filters, mode))
 		};
 		load();
 	}, [debouncedSearchText, product_name, polygonFilter, mapZoom, optionRegion, optionCareStatus, optionFamiliarityStatus, additionalProductNames, optionMoreFilters, sortMethod, page, pageSize, mode]);
 
 	return (
-		<Grid container display="grid" marginTop="3%" sx={{ paddingLeft: 7, paddingRight: 7 }}>
+		<Grid container display="grid" marginTop="3%" sx={{ paddingLeft: '40px', paddingRight: '40px' }}>
 			<SortPanel />
 			{ !loading && fields && <DataPanel fields={fields || []} /> }
 		</Grid>

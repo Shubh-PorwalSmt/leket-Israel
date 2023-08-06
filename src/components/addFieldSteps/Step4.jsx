@@ -48,6 +48,7 @@ const Step4 = (props) => {
 	return (
 		<FieldMapArea
 			editable
+			onClick={() => {}}
 			onReset={resetLocation}
 			onUpdate={updateFields}
 			key={index}

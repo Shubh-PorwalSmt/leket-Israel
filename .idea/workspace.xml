@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8b74499b-56e1-4993-9197-968bf0bfbb4e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/DataTable.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DataPanel/RowDetails.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DataPanel/RowDetails.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Map/FieldMap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/FieldMap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Map/FieldMap.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/FieldMap.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/addFieldSteps/Step4.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/addFieldSteps/Step4.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RowDetails.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RowDetails.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="334" selection-start-line="334" selection-end-line="334" />
+            <state relative-caret-position="148">
+              <caret line="333" column="38" lean-forward="true" selection-start-line="333" selection-start-column="38" selection-end-line="333" selection-end-column="38" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -42,6 +37,33 @@
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddField.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/AddField.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="231" column="48" selection-start-line="231" selection-start-column="48" selection-end-line="231" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/FieldMapArea/index.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Step4.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/addFieldSteps/Step4.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="307">
+              <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -73,47 +95,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomTextPresentation.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/DataPanel/CustomTextPresentation.jsx">
+      <file leaf-file-name="Step5.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/addFieldSteps/Step5.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomDropdown.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/addFieldSteps/CustomDropdown.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vite.config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vite.config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="80">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -134,11 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>column</find>
-      <find>attr-asc</find>
-      <find>אטרק</find>
-      <find>renderAttractivenessField</find>
-      <find>moment</find>
       <find>DATE_FORMAT</find>
       <find>edit</find>
       <find>setedit</find>
@@ -164,6 +145,11 @@
       <find>&lt;fieldm</find>
       <find>אטרקטיביות</find>
       <find>ven, a</find>
+      <find>MapEvents</find>
+      <find>MapEvents</find>
+      <find>onClick</find>
+      <find>onMapClick</find>
+      <find>&lt;FieldMapArea</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -203,7 +189,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/FE/.gitignore" />
         <option value="$PROJECT_DIR$/.github/workflows/deploy.yml" />
         <option value="$PROJECT_DIR$/frontend.Dockerfile" />
         <option value="$PROJECT_DIR$/src/main.jsx" />
@@ -221,7 +206,6 @@
         <option value="$PROJECT_DIR$/src/redux/Field/service.js" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/src/components/Sorters/SortPanel.jsx" />
-        <option value="$PROJECT_DIR$/src/components/addFieldSteps/Step4.jsx" />
         <option value="$PROJECT_DIR$/src/components/addFieldSteps/Step3.jsx" />
         <option value="$PROJECT_DIR$/src/components/DataPanel/a.svg" />
         <option value="$PROJECT_DIR$/index.html" />
@@ -254,6 +238,8 @@
         <option value="$PROJECT_DIR$/src/components/Map/FieldMap.scss" />
         <option value="$PROJECT_DIR$/src/components/Map/FieldMap.jsx" />
         <option value="$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx" />
+        <option value="$PROJECT_DIR$/src/components/addFieldSteps/Step4.jsx" />
+        <option value="$PROJECT_DIR$/src/components/addFieldSteps/Step5.jsx" />
       </list>
     </option>
   </component>
@@ -449,7 +435,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="row&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;צשפ&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Map/FieldMap.jsx&#10;rowd&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;שגג&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;step5&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/addFieldSteps/Step5.jsx&#10;adv&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Filters/AdvancedFilters.jsx&#10;addf&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;delay&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DelayReason/DelayReason.scss&#10;customstat&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/CustomStatus.jsx&#10;signin&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Login/Signin.jsx&#10;home&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/Home.jsx&#10;sort&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Sorters/SortPanel.jsx&#10;map&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Map/FieldMap.jsx&#10;addfield&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;addfie&#9;FILE&#9;file://C:/Development/leket-Israel/dist/Images/addfield&#10;rowde&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;datatab&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/DataTable.jsx&#10;custom&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/CustomStatus.jsx&#10;login&#9;null&#9;null&#10;datatable&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;step4&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step4.jsx&#10;datata&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;gener&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/general.js&#10;en.&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/en.json&#10;transl&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/translator.js&#10;ad&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;דאקפ3&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step3.jsx&#10;step2&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step2.jsx&#10;he.j&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;context&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/hooks/ContextApi.jsx&#10;header&#9;null&#9;null&#10;app&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/App.jsx&#10;he&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;step1&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step1.jsx&#10;add&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;gridrowutils&#9;FILE&#9;file://C:/Development/leket-Israel/FE/node_modules/@mui/x-data-grid/hooks/features/rows/gridRowsUtils.d.ts&#10;datap&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx&#10;i18&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/i18n/i18n.js&#10;MORE&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;moref&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;data&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;datapa&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx" />
+    <property name="SearchEverywhereHistoryKey" value="add&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;step5&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/addFieldSteps/Step5.jsx&#10;row&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;צשפ&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Map/FieldMap.jsx&#10;rowd&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;שגג&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;adv&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Filters/AdvancedFilters.jsx&#10;addf&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;delay&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DelayReason/DelayReason.scss&#10;customstat&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/CustomStatus.jsx&#10;signin&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Login/Signin.jsx&#10;home&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/Home.jsx&#10;sort&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Sorters/SortPanel.jsx&#10;map&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/Map/FieldMap.jsx&#10;addfield&#9;FILE&#9;file://C:/Development/leket-Israel/src/views/AddField.jsx&#10;addfie&#9;FILE&#9;file://C:/Development/leket-Israel/dist/Images/addfield&#10;rowde&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/RowDetails.jsx&#10;datatab&#9;FILE&#9;file://C:/Development/leket-Israel/src/components/DataPanel/DataTable.jsx&#10;custom&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/CustomStatus.jsx&#10;login&#9;null&#9;null&#10;datatable&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;step4&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step4.jsx&#10;datata&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;gener&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/general.js&#10;en.&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/en.json&#10;transl&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/translator.js&#10;ad&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/views/AddField.jsx&#10;דאקפ3&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step3.jsx&#10;step2&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step2.jsx&#10;he.j&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;context&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/hooks/ContextApi.jsx&#10;header&#9;null&#9;null&#10;app&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/App.jsx&#10;he&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/Utils/translations/he.json&#10;step1&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/addFieldSteps/Step1.jsx&#10;gridrowutils&#9;FILE&#9;file://C:/Development/leket-Israel/FE/node_modules/@mui/x-data-grid/hooks/features/rows/gridRowsUtils.d.ts&#10;datap&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx&#10;i18&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/i18n/i18n.js&#10;MORE&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;moref&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/Filters/MoreFilters.jsx&#10;data&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataTable.jsx&#10;datapa&#9;FILE&#9;file://C:/Development/leket-Israel/FE/src/components/DataPanel/DataPanel.jsx" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
@@ -548,12 +534,12 @@
       <workItem from="1689274100341" duration="34909000" />
       <workItem from="1690286291472" duration="5817000" />
       <workItem from="1690868650448" duration="1660000" />
-      <workItem from="1690893754089" duration="23346000" />
+      <workItem from="1690893754089" duration="24428000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="380465000" />
+    <option name="totallyTimeSpent" value="381547000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1048" extended-state="6" />
@@ -649,13 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
           <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/addFieldSteps/Step4.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -784,27 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FieldMapArea/index.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/addFieldSteps/Step5.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/AddField.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="231" column="48" selection-start-line="231" selection-start-column="48" selection-end-line="231" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1029,11 +987,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/DataPanel/RowDetails.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="334" selection-start-line="334" selection-end-line="334" />
+        <state relative-caret-position="148">
+          <caret line="333" column="38" lean-forward="true" selection-start-line="333" selection-start-column="38" selection-end-line="333" selection-end-column="38" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/AddField.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="231" column="48" selection-start-line="231" selection-start-column="48" selection-end-line="231" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FieldMapArea/index.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/addFieldSteps/Step4.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/addFieldSteps/Step5.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

@@ -85,8 +85,10 @@ const FieldMap = ({rows, onAddField}) => {
 				</div>
 				<div className="map-tooltip-body">
 					<div>
-						<FieldInfo field={field.latest_attractiveness_metric} label="אטרקטיביות" highlightValue />
-						<FieldInfo field={field.latest_satellite_metric ? parseInt(field.latest_satellite_metric * 100) / 100 : '-'} label="NDVI" highlightValue />
+						{/*<FieldInfo field={field.latest_attractiveness_metric} label="אטרקטיביות" highlightValue />*/}
+						<FieldInfo field={translator(field.familiarity)} label="מצב היכרות" />
+						<FieldInfo field={field.latest_satellite_metric ? parseInt(field.latest_satellite_metric * 100) / 100 : '-'} label="NDVI ערך" />
+						<FieldInfo field={moment(field.latest_satellite_date).format(DATE_FORMAT)} label="NDVI עדכון" />
 					</div>
 					<div className="map-tooltip-body-center" />
 					<div>
@@ -94,7 +96,6 @@ const FieldMap = ({rows, onAddField}) => {
 						<FieldInfo field={translator(field.region)} label="איזור" />
 						<FieldInfo field={moment(field.status_date).format(DATE_FORMAT)} label="תאריך עדכון" />
 						<FieldInfo field={field.farmer_id} label="מספר חקלאי" />
-						<FieldInfo field={translator(field.familiarity)} label="מצב היכרות" />
 					</div>
 				</div>
 			</div>

@@ -12,12 +12,14 @@ import {createSvgIcon} from "@mui/material/utils";
 import CustomStatus from "./CustomStatus";
 import AddField from '../../views/AddField';
 import {confirmAlert} from 'react-confirm-alert';
+import moment from 'moment';
 import * as XLSX from "xlsx/xlsx.mjs";
 import RowDetails from "./RowDetails";
 import DelayReason from "../DelayReason";
 import translator from "../../Utils/translations/translator";
 import ContextProvider from "../../hooks/ContextApi";
 import {getFieldLastUpdated} from "../../Utils/general";
+import {DATE_FORMAT} from "../../Utils/constants";
 
 import './DataPanel.scss';
 
@@ -98,14 +100,6 @@ const DataTable = ({rows, onAddField}) => {
 			flex: 1,
 			renderCell: (params) => (<div>{translator(params.value)}</div>),
 		},
-		// {
-		// 	field: "latest_attractiveness_metric",
-		// 	headerName: "מדד אטרקטיביות",
-		// 	flex: 1,
-		// 	editable: false,
-		// 	sortable: false,
-		// 	renderCell: (params) => <div>{params.value ? (parseInt(params.value * 100) / 100) : '-'}</div>
-		// },
 		{
 			field: "latest_satellite_metric",
 			headerName: "NDVI",
@@ -115,9 +109,17 @@ const DataTable = ({rows, onAddField}) => {
 			renderCell: (params) => <div>{params.value ? (parseInt(params.value * 100) / 100) : '-'}</div>
 		},
 		{
+			field: "latest_satellite_date",
+			headerName: "עדכון לווין אחרון",
+			flex: 1,
+			editable: false,
+			sortable: false,
+			renderCell: (params) => <div>{moment(params.value).format(DATE_FORMAT)}</div>
+		},
+		{
 			field: "region",
 			headerName: "אזור",
-			editable: false,
+			editable: false, 
 			sortable: false,
 			flex: 1,
 			renderCell: (params) => (<div>{translator(params.value)}</div>),

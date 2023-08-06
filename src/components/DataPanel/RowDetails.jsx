@@ -309,7 +309,7 @@ const RowDetails = ({ onClose, rowSet }) => {
 										editMode={editMode}
 										value={editableData.product_name}
 										typeField={TypeField.DROPDOWN}
-										options={data.product_nameOptions.sort((a, b) => translator(a).localeCompare(translator(b)))}
+										options={data.product_nameOptions}
 										onChange={(value) => updateEditableData('product_name', value)}
 									/>
 									<CustomTextPresentation
@@ -327,12 +327,17 @@ const RowDetails = ({ onClose, rowSet }) => {
 										options={data.areaOptions.filter(op => op !== "ALL")}
 										onChange={(value) => updateEditableData('region', value)}
 									/>
-									{ renderNDVIField(rowSet) }
-									{/*{ renderAttractivenessField(rowSet) }*/}
 									<TextWithHeader
 										editMode={false}
 										header="תאריך הקמת השטח"
 										value={moment(editableData.created_date).format(DATE_FORMAT)}
+									/>
+									{ renderNDVIField(rowSet) }
+									{/*{ renderAttractivenessField(rowSet) }*/}
+									<TextWithHeader
+										editMode={false}
+										header="עדכון לווין אחרון"
+										value={moment(editableData.latest_satellite_date).format(DATE_FORMAT)}
 									/>
 									<CustomTextPresentation
 										header="מצב היכרות"

@@ -90,6 +90,7 @@ const Header = ({  }) => {
 					}}
 				>
 					חיבור
+
 					{/* התנתקות */}
 				</Button>
 				<Divider

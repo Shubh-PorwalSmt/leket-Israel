@@ -89,7 +89,8 @@ const Header = ({  }) => {
 						borderRadius: "10px",
 					}}
 				>
-					התנתקות
+					חיבור
+					{/* התנתקות */}
 				</Button>
 				<Divider
 					orientation="vertical"
